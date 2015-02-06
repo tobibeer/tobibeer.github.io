@@ -443,8 +443,6 @@ Error message and password prompt
 
 <li>$:/status/UserName</li>
 
-<li>$:/StoryList</li>
-
 <li>$:/styles/fixed-table</li>
 
 <li>$:/styles/gtd</li>
@@ -743,9 +741,9 @@ Error message and password prompt
 
 <li>fiddle</li>
 
-<li>fields</li>
-
 <li>Fields</li>
+
+<li>fields</li>
 
 <li>Fields: Core</li>
 
@@ -769,9 +767,9 @@ Error message and password prompt
 
 <li>FilterOperator: join</li>
 
-<li>filters</li>
-
 <li>Filters</li>
+
+<li>filters</li>
 
 <li>focus</li>
 
@@ -845,9 +843,9 @@ Error message and password prompt
 
 <li>ImageMaps</li>
 
-<li>Images</li>
-
 <li>images</li>
+
+<li>Images</li>
 
 <li>Import</li>
 
@@ -1169,9 +1167,9 @@ Error message and password prompt
 
 <li>Table Of Contents In Sidebar</li>
 
-<li>tables</li>
-
 <li>Tables</li>
+
+<li>tables</li>
 
 <li>Tables Without Borders</li>
 
@@ -1215,9 +1213,9 @@ Error message and password prompt
 
 <li>Testing New Stuff</li>
 
-<li>Text</li>
-
 <li>text</li>
+
+<li>Text</li>
 
 <li>Text On A Vectorpath</li>
 
@@ -4587,13 +4585,14 @@ font-weight:bold;
 &lt;/div&gt;
 &lt;/$tiddler&gt;</pre>
 </div>
-<div created="20141206115206017" creator="Tobias Beer" modified="20141208110620537" modifier="Tobias Beer" summary="override for core save handling of `$:/temp/...` see &lt;&lt;git5 issues/1199#issuecomment-65830444&gt;&gt;" tags="" title="$:/.tb/templates/tw-save">
+<div created="20141206115206017" creator="Tobias Beer" modified="20150206170907873" modifier="Tobias Beer" summary="override for core save handling of `$:/temp/...` see &lt;&lt;git5 issues/1199#issuecomment-65830444&gt;&gt;" tags="" title="$:/.tb/templates/tw-save">
 <pre>\define saveTiddlerFilter()
 [is[tiddler]]
 -[prefix[$:/state/]]
 -[prefix[$:/temp/]]
 -[prefix[$://]]
 -[[$:/HistoryList]]
+-[[$:/StoryList]]
 -[[$:/boot/boot.js]]
 -[[$:/boot/boot.css]]
 -[[$:/boot/bootprefix.js]]
@@ -12971,9 +12970,6 @@ exports.let = function(source,operator,options) {
 <div created="20141113132701705" creator="T" modified="20141113132703143" modifier="Tobias Bee" title="$:/status/UserName">
 <pre>Tobias Beer</pre>
 </div>
-<div list="fiddle Welcome" title="$:/StoryList">
-<pre></pre>
-</div>
 <div created="20141128172305347" creator="Tobias Beer" modified="20141128172350710" modifier="Tobias Beer" summary="see [[Overflowing Tables — Help!]] for instructions." tags="[[Danielo Rodríguez]]" title="$:/styles/fixed-table" type="text/css">
 <pre>.fixed td {
     /* css-3 */
@@ -14942,12 +14938,12 @@ http://tiddlywiki.com&lt;br&gt;
 <div created="20150206170249924" creator="Tobias Beer" modified="20150206170523168" modifier="Tobias Beer" summary="@@color:red; ''caution'' know the consequences of enabling `&lt;script&gt;` tags" tags="[[Tobias Beer]] Solutions JavaScript" title="fiddle" url="http://fiddle.tiddlyspot.com">
 <pre>The `&lt;&lt;script&gt;&gt;` macro allows you to run JavaScript directly from within tiddlers.</pre>
 </div>
+<div created="20150116142911883" creator="Tobias Beer" icon="$:/core/images/permalink-button" modified="20150116142911883" modifier="Tobias Beer" title="Fields">
+<pre></pre>
+</div>
 <div created="20150201195001262" creator="Tobias Beer" follow="yes" modified="20150201195135725" modifier="Tobias Beer" summary="explorations as to imporoving working with tiddler fields" tags="[[Tobias Beer]] Fields" title="fields" url="http://fields.tiddlyspot.com">
 <pre>; topics
 : http://fields.tiddlyspot.com/#FieldsPopup</pre>
-</div>
-<div created="20150116142911883" creator="Tobias Beer" icon="$:/core/images/permalink-button" modified="20150116142911883" modifier="Tobias Beer" title="Fields">
-<pre></pre>
 </div>
 <div caption="core" created="20141118195032028" creator="Tobias Beer" modified="20150107195102560" modifier="Tobias Beer" tags="Fields Lists Filters Core" title="Fields: Core">
 <pre>all [[core fields|Fields: Core]] except [[standard fields|Fields: Standard]] as documented in the TiddlyWiki core:
@@ -15145,10 +15141,10 @@ drag to your wiki &lt;&lt;source [[$:/.tb/modules/filters/toc.js]]&gt;&gt;</pre>
 
 see source: &lt;&lt;source $:/core/modules/filters/join.js&gt;&gt;</pre>
 </div>
-<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150108114049101" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://filters.tiddlyspot.com">
+<div created="20141126021240947" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150116141444836" modifier="Tobias Beer" tags="" title="Filters">
 <pre></pre>
 </div>
-<div created="20141126021240947" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150116141444836" modifier="Tobias Beer" tags="" title="Filters">
+<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150108114049101" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://filters.tiddlyspot.com">
 <pre></pre>
 </div>
 <div created="20141202232934876" creator="Tobias Beer" follow="yes" modified="20150108114133865" modifier="Tobias Beer" summary="trying to have the standard theme focus more on content, hiding controls from visitors&lt;!--focus--&gt;" tags="[[Tobias Beer]]" title="focus" url="http://focus.tiddlyspot.com">
@@ -15698,9 +15694,6 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 
 &lt;&lt;source &quot;$:/.tb/demo/image-map&quot;&gt;&gt;</pre>
 </div>
-<div icon="$:/core/images/storyview-zoomin" modified="20141201174313618" modifier="Tobias Beer" title="Images">
-<pre></pre>
-</div>
 <div created="20141203173130415" creator="Tobias Beer" modified="20141203173139233" modifier="Tobias Beer" tags="Markup" title="images">
 <pre>&lt;dt&gt;
 
@@ -15719,6 +15712,9 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 [img width=16 [http://www.tiddlywiki.com/favicon.ico]]&lt;br&gt;
 [img class=&quot;tc-image&quot; [http://www.tiddlywiki.com/favicon.ico]]
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/storyview-zoomin" modified="20141201174313618" modifier="Tobias Beer" title="Images">
+<pre></pre>
 </div>
 <div created="20150116144431513" creator="Tobias Beer" icon="$:/core/images/export-button" modified="20150116144431513" modifier="Tobias Beer" title="Import">
 <pre></pre>
@@ -18802,6 +18798,9 @@ super^^script^^
 &lt;&lt;ximg toc.jpg tooltip:&quot;example toc from tiddlywiki.com&quot; class:&quot;pretty&quot;&gt;&gt;
 example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 </div>
+<div created="20150116145013865" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116145013865" modifier="Tobias Beer" title="Tables">
+<pre></pre>
+</div>
 <div created="20141203173550546" creator="Tobias Beer" modified="20141203173601868" modifier="Tobias Beer" tags="Markup" title="tables">
 <pre>&lt;dt style=&quot;font-size:80%;&quot;&gt;
 
@@ -18825,9 +18824,6 @@ example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 |and|now| vertical |
 |&gt;| right|~|
 &lt;/dd&gt;</pre>
-</div>
-<div created="20150116145013865" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116145013865" modifier="Tobias Beer" title="Tables">
-<pre></pre>
 </div>
 <div created="20150206013252827" creator="Tobias Beer" modified="20150206014255748" modifier="Tobias Beer" tags="Tables Presentation Styles" title="Tables Without Borders">
 <pre>If you are wishing to use borderless tables [[like Diane|https://groups.google.com/d/msg/tiddlywiki/lPvh5gcea70/JHWgVmIvHdIJ]], here's what you do:
@@ -19106,9 +19102,6 @@ When was the last time you visited a website that allowed you to do just that?!
 
 Find something to be off? Then check out this [[simple documentation workflow|Documentation]] on how easy it is to make things better for the rest of us.</pre>
 </div>
-<div created="20150116142447533" creator="Tobias Beer" icon="$:/core/images/edit-button" modified="20150116142447533" modifier="Tobias Beer" title="Text">
-<pre></pre>
-</div>
 <div created="20150109171138176" creator="Tobias Beer" modified="20150109180720115" modifier="Tobias Beer" tags="" title="text">
 <pre>The ''text'' macro provides a most simple macro to output colored text...
 
@@ -19136,6 +19129,9 @@ So, learning a bit of [[wikitext markup|Markup]] may be that better choice.
 !! Installation
 
 Drag to your wiki: &lt;&lt;source [[$:/.tb/macros/text]]&gt;&gt;</pre>
+</div>
+<div created="20150116142447533" creator="Tobias Beer" icon="$:/core/images/edit-button" modified="20150116142447533" modifier="Tobias Beer" title="Text">
+<pre></pre>
 </div>
 <div created="20141203134558759" creator="Tobias Beer" modified="20141206175524116" modifier="Tobias Beer" tags="Images Solutions Presentation" title="Text On A Vectorpath">
 <pre>Here's [[an experiment by BuggyJ|http://xlink.tiddlyspot.com/#Making%20curved%20text%20with%20inline%20SVG]] showing how to render text on a svg vector graphic.
