@@ -159,7 +159,7 @@ Error message and password prompt
 
 <li>Projects</li>
 
-<li>tb5@tiddlyspot</li>
+<li>tb5</li>
 
 <li>TiddlySpace</li>
 
@@ -181,15 +181,17 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
-<div created="20150109114505490" modified="20150206132300710" summary="outputs a definition list of summaries for tiddlers matching a filter, by default tagging to the current tiddler" tags="$:/tags/Macro" title="$:/.tb/macros/summaries">
+<div created="20150109114505490" modified="20150206140422769" summary="outputs a definition list of summaries for tiddlers matching a filter, by default tagging to the current tiddler" tags="$:/tags/Macro" title="$:/.tb/macros/summaries">
 <pre>\define summaries(filter:&quot;[tag{!!title}sort[]]&quot;,url)
 &lt;dl&gt;
-&lt;$list filter=&quot;$filter$&quot; variable=&quot;item&quot;&gt;
-&lt;dt&gt;&lt;$link to=&lt;&lt;item&gt;&gt;&gt;&lt;$view tiddler=&lt;&lt;item&gt;&gt; field=&quot;title&quot;/&gt;&lt;/$link&gt;&lt;/dt&gt;
-&lt;$list filter=&quot;[all[current]summaries[url]&quot;&gt;
-&lt;dd&gt;&lt;$transclude tiddler=&lt;&lt;item&gt;&gt; field=&quot;url&quot;/&gt;&lt;/dd&gt;
+&lt;$list filter=&quot;$filter$&quot;&gt;
+&lt;$list filter=&quot;[all[current]goto[url]]&quot;&gt;
+&lt;dt&gt;{{!!url}}&lt;$link&gt;...&lt;/$link&gt;&lt;br&gt;&lt;/dt&gt;
 &lt;/$list&gt;
-&lt;dd&gt;@@color:grey;//&lt;$transclude tiddler=&lt;&lt;item&gt;&gt; field=&quot;summary&quot;/&gt;//@@&lt;/dd&gt;
+&lt;$list filter=&quot;[all[current]!has[goto]]&quot;&gt;
+&lt;dt&gt;&lt;$link&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;&lt;/dt&gt;
+&lt;/$list&gt;
+&lt;dd&gt;@@color:grey;//{{!!summary}}//@@&lt;/dd&gt;
 &lt;/$list&gt;
 &lt;/dl&gt;
 \end</pre>
@@ -5556,7 +5558,7 @@ padding-top: 0;
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[$:/.tb/styles]]</pre>
+# [[$:/.tb/macros/summaries]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -5576,7 +5578,7 @@ padding-top: 0;
 <div modified="20150206132310078" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div list="Welcome" title="$:/StoryList">
+<div list="$:/Import $:/.tb/macros/summaries Welcome" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -5684,7 +5686,7 @@ padding-top: 0;
 <div created="20150206131811250" modified="20150206131815537" tags="" title="Projects">
 <pre></pre>
 </div>
-<div created="20150206131818570" modified="20150206133655916" summary="a collection of references and sandbox for testing concepts around TiddlyWiki" tags="Projects" title="tb5@tiddlyspot" url="http://tb5.tiddlyspot.com">
+<div created="20150206131818570" goto="url" modified="20150206140329241" summary="A collection of references and sandbox for testing concepts around TiddlyWiki" tags="Projects" title="tb5" url="[ext[/tb5|tb5.html]]">
 <pre></pre>
 </div>
 <div created="20150206134716123" modified="20150206134733931" summary="helping you organise your thoughts and ideas" title="TiddlySpace" url="http://tiddlyspace.com">
