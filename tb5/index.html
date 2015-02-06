@@ -12955,7 +12955,7 @@ exports.let = function(source,operator,options) {
 <div created="20141113132701705" creator="T" modified="20141113132703143" modifier="Tobias Bee" title="$:/status/UserName">
 <pre>Tobias Beer</pre>
 </div>
-<div list="$:/ControlPanel Welcome" title="$:/StoryList">
+<div list="Latest" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20141128172305347" creator="Tobias Beer" modified="20141128172350710" modifier="Tobias Beer" summary="see [[Overflowing Tables — Help!]] for instructions." tags="[[Danielo Rodríguez]]" title="$:/styles/fixed-table" type="text/css">
@@ -15960,7 +15960,7 @@ Here's just the date as a plain link to that tiddler...
 &lt;$link&gt;&lt;$view field=modified format=&quot;date&quot; template=&quot;0DD. MMM YYYY&quot;/&gt; &lt;/$link&gt;
 &lt;/$list&gt;'&gt;&gt;</pre>
 </div>
-<div created="20150204075631015" creator="Tobias Beer" date="modified" limit="30" modified="20150204133646998" modifier="Tobias Beer" summary="the most recent additions to this collection" tags="" title="Latest">
+<div created="20150204075631015" creator="Tobias Beer" date="modified" limit="20" modified="20150206155954122" modifier="Tobias Beer" summary="the most recent additions to this collection" tags="" title="Latest">
 <pre>''datefield:'' &lt;$select field=&quot;date&quot; default={{!!date}}&gt;
 &lt;$list filter=&quot;modified created&quot;&gt;
 &lt;option&gt;{{!!title}}&lt;/option&gt;
@@ -15971,12 +15971,12 @@ Here's just the date as a plain link to that tiddler...
 &lt;option&gt;{{!!title}}&lt;/option&gt;
 &lt;/$list&gt;
 &lt;/$select&gt;
+
 &lt;div class=&quot;solutions&quot;&gt;
 &lt;$set name=&quot;date&quot; value={{!!date}}&gt;
 &lt;$set name=&quot;remove&quot; value=&quot;Solutions&quot;&gt;
-
-&lt;&lt;list-search
-&quot;
+&lt;$macrocall $name=&quot;list-search&quot;
+filter=&quot;
 [tag[Solutions]]
 [tag[Macro]]
 [tag[Plugin]]
@@ -15987,12 +15987,16 @@ Here's just the date as a plain link to that tiddler...
 [tag[Markup]]
 -[tag[Personal]]
 +[!sort&lt;date&gt;]&quot;
-&quot;search&quot;
-&quot;$:/temp/tb/solutions&quot;
-&quot;$:/.tb/templates/tagged-recent&quot;
-limit: {{!!limit}}
-variable: &quot;item&quot;
-&gt;&gt;
+
+search=&quot;search&quot;
+
+state=&quot;$:/temp/tb/solutions&quot;
+
+template=&quot;$:/.tb/templates/tagged-recent&quot;
+
+limit={{!!limit}}
+
+variable=&quot;item&quot;/&gt;
 &lt;/$set&gt;
 &lt;/$set&gt;
 &lt;/div&gt;</pre>
