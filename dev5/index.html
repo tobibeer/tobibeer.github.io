@@ -6438,7 +6438,7 @@ very-muted-foreground: #888888</pre>
 <div modified="20150206093306235" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div list="$:/ControlPanel Start [[editing the color field]]" title="$:/StoryList">
+<div list="$:/ControlPanel [[macro evaluation]] Start" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6796,7 +6796,7 @@ $tw.utils.each(
 
 &lt;&lt;source $:/macros/example.js&gt;&gt;</pre>
 </div>
-<div created="20150206092411168" modified="20150206093356768" tags="macros" title="macro evaluation">
+<div created="20150206092411168" modified="20150206231317565" tags="macros" title="macro evaluation">
 <pre>[[Danielo Rodríguez asks|https://groups.google.com/d/msg/tiddlywiki/vUD67EIJg7w/bb2cNy0aHcIJ]]:
 
 &lt;&lt;&lt;
@@ -6808,7 +6808,10 @@ For example, if I use the result of a macro for a action-set-field widget, is th
 Here is your answer as [[given by Felix Küppers|https://groups.google.com/d/msg/tiddlywiki/vUD67EIJg7w/hApClz99rk0J]]:
 
 &lt;$macrocall $name=&quot;`&quot; text=&quot;&quot;&quot;&lt;$button set=&quot;macro evaluation!!tags&quot; setTo=&lt;&lt;now &quot;DDth mmm hh:mm:ss&quot;&gt;&gt;&gt;click me&lt;/$button&gt;&quot;&quot;&quot;/&gt;
-</pre>
+
+As Jeremy explains...
+
+&gt; In fact, what triggers the re-evaluation of the macro in Felix's example is the refresh cycle triggered by the previous update to `HelloThere!!tags`.</pre>
 </div>
 <div created="20150109155017706" modified="20150109155832870" summary="defining the default value for a macro parameter using a macro" tags="macro parameter default Dev" title="macro parameter default as macro">
 <pre>\define render(out:&lt;&lt;version&gt;&gt;)
