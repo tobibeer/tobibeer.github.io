@@ -119,6 +119,8 @@ Error message and password prompt
 
 <li>$:/.tb/macros/summaries</li>
 
+<li>$:/.tb/styles</li>
+
 <li>$:/.tb/ui/ViewTemplate/summary</li>
 
 <li>$:/.tb/ui/ViewTemplate/url</li>
@@ -159,7 +161,11 @@ Error message and password prompt
 
 <li>tb5@tiddlyspot</li>
 
+<li>TiddlySpace</li>
+
 <li>TiddlyWiki</li>
+
+<li>tobibeer@github</li>
 
 <li>tobibeer@tiddlyspace</li>
 
@@ -187,6 +193,140 @@ Error message and password prompt
 &lt;/$list&gt;
 &lt;/dl&gt;
 \end</pre>
+</div>
+<div created="20141119102634212" creator="Tobias Beer" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20150206085831803" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles" type="text/css">
+<pre>a.tc-tiddlylink-shadow {
+color:#567;
+font-weight:normal;
+}
+
+a.tc-tiddlylink-resolves.tc-tiddlylink-shadow {
+font-weight:bold;
+}
+
+.tc-tiddler-body .tc-tag-list-item,
+.tc-tiddler-body .tc-tag-label{
+margin:0;
+}
+
+.tc-tiddler-title-icon &gt; svg{
+fill:#bbb;
+}
+
+.tb-taglist-columns{
+column-count: 4;
+-moz-column-count: 4;
+-webkit-column-count: 4;
+}
+
+.tb-taglist .tb-taglist-item{
+width:145px;
+}
+
+.tb-taglist-columns .tb-taglist-item{
+width:auto;
+display:block;
+}
+
+.tb-taglist .tc-menu-list-count,
+.tb-taglist-columns .tc-menu-list-count{
+margin-left:-10px;
+display:inline-block;
+width:25px;
+text-align:right;
+}
+
+.tb-taglist-item{
+display:inline-block;
+padding-top:5px;
+}
+
+.tb-timeline-item{
+margin:2px -5px 5px -5px;
+padding:2px 5px 5px 5px;
+}
+
+.tb-timeline-item:hover{
+background: #f3f3f3;
+}
+
+.tb-timeline-date{
+float:right;
+color:#ccf;
+font-size:0.8em;
+}
+
+.tb-timeline-tags {
+color:#ccc;
+}
+
+.tb-timeline-tags button {
+font-size:0.8em;
+}
+
+.tb-timeline-tags .tc-tag-list-item {
+margin-right: 3px;
+}
+
+.tb-thumbs{
+width: 160px;
+margin: 0 10px 10px 0;
+}
+
+.redirected {
+color:#dd1144;
+}
+
+.tb-links dd span:not(:last-child):after{
+content:&quot;, &quot;;
+}
+
+.no-border,
+.no-border th,
+.no-border tr,
+.no-border td {
+border:0;
+}
+
+.warn,
+.warn a {
+color: #dd1144;
+}
+
+dl:not(.tb5-markup){
+margin:0;
+}
+
+dd{
+margin-left:14px;
+}
+
+dd:before{
+content: &quot;» &quot;;
+}
+
+.no-before:before{
+content:none;
+}
+
+div.slider-contents{
+padding: 5px;
+border: 1px solid #eee;
+background: #fcfcfc;
+border-radius:3px;
+}
+
+ol ol {
+list-style-type: lower-alpha;
+}
+
+ol ol ol{
+list-style-type: decimal;
+}
+
+.tc-search-results {
+padding-top: 0;
+}</pre>
 </div>
 <div created="20141119004109928" creator="Tobias Beer" list-after="$:/core/ui/ViewTemplate/tags" modified="20150109180317430" modifier="Tobias Beer" summary="shows summary for all system tiddlers" tags="$:/tags/ViewTemplate" title="$:/.tb/ui/ViewTemplate/summary">
 <pre>&lt;$list filter=&quot;[all[current]has[summary]]&quot;&gt;
@@ -5416,7 +5556,7 @@ Error message and password prompt
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[$:/.tb/macros/summaries]]</pre>
+# [[$:/.tb/styles]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -5453,7 +5593,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div title="$:/temp/NewTagName">
+<div created="20150206134829764" modified="20150206134830471" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="A clean theme that emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.7">
@@ -5533,8 +5673,13 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20150206123958309" modified="20150206124124605" summary="websites hosted directly from GitHub repositories — just edit, push, and changes are live" title="GitHub" url="https://pages.github.com">
-<pre></pre>
+<div created="20150206123958309" modified="20150206134620286" title="GitHub">
+<pre>; me
+: https://github.com/tobibeer
+; GitHub pages
+: https://pages.github.com
+: websites hosted directly from GitHub repositories
+: just edit, push, and changes are live</pre>
 </div>
 <div created="20150206131811250" modified="20150206131815537" tags="" title="Projects">
 <pre></pre>
@@ -5542,7 +5687,13 @@ Error message and password prompt
 <div created="20150206131818570" modified="20150206133655916" summary="a collection of references and sandbox for testing concepts around TiddlyWiki" tags="Projects" title="tb5@tiddlyspot" url="http://tb5.tiddlyspot.com">
 <pre></pre>
 </div>
+<div created="20150206134716123" modified="20150206134733931" summary="helping you organise your thoughts and ideas" title="TiddlySpace" url="http://tiddlyspace.com">
+<pre></pre>
+</div>
 <div created="20150206123914590" modified="20150206131624918" summary="a non-linear personal web notebook" title="TiddlyWiki" url="http://tiddlywiki.com">
+<pre></pre>
+</div>
+<div created="20150206134757273" modified="20150206134853250" summary="my GitHub repositories mostly revolving around TiddlyWiki" tags="Projects" title="tobibeer@github" url="https://github.com/tobibeer">
 <pre></pre>
 </div>
 <div created="20150206133539252" modified="20150206133909825" summary="tiddlyspace hub for my TiddlySpace / TiddlyWiki classic projects and plugins" tags="Projects" title="tobibeer@tiddlyspace" url="http://tobibeer.tiddlyspace.com">
