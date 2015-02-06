@@ -741,9 +741,9 @@ Error message and password prompt
 
 <li>fiddle</li>
 
-<li>Fields</li>
-
 <li>fields</li>
+
+<li>Fields</li>
 
 <li>Fields: Core</li>
 
@@ -767,9 +767,9 @@ Error message and password prompt
 
 <li>FilterOperator: join</li>
 
-<li>Filters</li>
-
 <li>filters</li>
+
+<li>Filters</li>
 
 <li>focus</li>
 
@@ -843,9 +843,9 @@ Error message and password prompt
 
 <li>ImageMaps</li>
 
-<li>images</li>
-
 <li>Images</li>
+
+<li>images</li>
 
 <li>Import</li>
 
@@ -1167,9 +1167,9 @@ Error message and password prompt
 
 <li>Table Of Contents In Sidebar</li>
 
-<li>Tables</li>
-
 <li>tables</li>
+
+<li>Tables</li>
 
 <li>Tables Without Borders</li>
 
@@ -1253,9 +1253,9 @@ Error message and password prompt
 
 <li>Tobias Beer</li>
 
-<li>toc</li>
-
 <li>ToC</li>
+
+<li>toc</li>
 
 <li>Toggle</li>
 
@@ -1346,6 +1346,8 @@ Error message and password prompt
 <li>Workflows</li>
 
 <li>Working With Macros</li>
+
+<li>ximg</li>
 
 <li>xlist</li>
 
@@ -14852,37 +14854,8 @@ font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-str
 <div created="20141115113614252" creator="Tobias Beer" modified="20141125200243435" modifier="Tobias Beer" summary="renders months or year calendars allowing to or create journal tiddlers" tags="Dates Calendars Plugin Solutions" title="Extendable Calendar" url="http://bjtools.tiddlyspot.com/#ExtendableCalendar">
 <pre></pre>
 </div>
-<div created="20141116141105240" creator="Tobias Beer" modified="20141125110846994" modifier="Tobias Beer" tags="Macros Solutions Images" title="External Image Path">
-<pre>This solution inspired by [[PMario|https://groups.google.com/d/msg/tiddlywiki/ChRV6sjQpn4/bCm35_XhGmkJ]] defines a global folder path for external images. This is more powerful than using relative paths `[img[subfolder/file.JPG]]` as you can move that image folder anywhere and simply redefine the location using configuration. 
-
-!! Step 1 — create or import the ximg macro
-The following macro tiddler is tagged [[$:/tags/Macro]] so as to make it a global macro: &lt;&lt;source $:/macros/ximg&gt;&gt;
-
-!!Step 2 — environment configuration
-Create a tiddler [[$:/macros/ximg/path]] containing your base path.
-
-;network share
-:`file:\\\\\COMPUTER_NAME\Users\Mario\Pictures\2010-10\`
-;same computer absolute path
-:`file:\\\c:\Users\Mario\Pictures\2010-10\`
-;relative path as subdirectory of tw
-:`.\images\`
-
-The &quot;backslash&quot; at the end is important!!
-
-!!Step 3 — using the ximg macro
-;basic usage
-:`&lt;&lt;ximg &quot;some image.gif&quot;&gt;&gt;`
-;custom tooltip
-:`&lt;&lt;ximg &quot;some image.gif&quot; tooltip:&quot;my tooltip&quot;&gt;&gt; `
-;custom path
-:`&lt;&lt;ximg &quot;some image.gif&quot; pathConfig:&quot;otherImagePathConfigTiddler&quot;&gt;&gt;`
-:path defaults to content of [[$:/macros/ximg/path]]
-
-!! Example
-`&lt;&lt;ximg toc.jpg class:pretty width:200px tooltip:&quot;example toc&quot;&gt;&gt;`
-
-&lt;&lt;ximg toc.jpg class:pretty width:200px tooltip:&quot;example toc&quot;&gt;&gt;</pre>
+<div created="20141116141105240" creator="Tobias Beer" modified="20150206230107784" modifier="Tobias Beer" tags="Macros Solutions Images" title="External Image Path">
+<pre>{{ximg}}</pre>
 </div>
 <div created="20141203173159261" creator="Tobias Beer" modified="20141203173211005" modifier="Tobias Beer" tags="Markup" title="external-images">
 <pre>&lt;dt&gt;
@@ -14938,12 +14911,12 @@ http://tiddlywiki.com&lt;br&gt;
 <div created="20150206170249924" creator="Tobias Beer" modified="20150206170523168" modifier="Tobias Beer" summary="@@color:red; ''caution'' know the consequences of enabling `&lt;script&gt;` tags" tags="[[Tobias Beer]] Solutions JavaScript" title="fiddle" url="http://fiddle.tiddlyspot.com">
 <pre>The `&lt;&lt;script&gt;&gt;` macro allows you to run JavaScript directly from within tiddlers.</pre>
 </div>
-<div created="20150116142911883" creator="Tobias Beer" icon="$:/core/images/permalink-button" modified="20150116142911883" modifier="Tobias Beer" title="Fields">
-<pre></pre>
-</div>
 <div created="20150201195001262" creator="Tobias Beer" follow="yes" modified="20150201195135725" modifier="Tobias Beer" summary="explorations as to imporoving working with tiddler fields" tags="[[Tobias Beer]] Fields" title="fields" url="http://fields.tiddlyspot.com">
 <pre>; topics
 : http://fields.tiddlyspot.com/#FieldsPopup</pre>
+</div>
+<div created="20150116142911883" creator="Tobias Beer" icon="$:/core/images/permalink-button" modified="20150116142911883" modifier="Tobias Beer" title="Fields">
+<pre></pre>
 </div>
 <div caption="core" created="20141118195032028" creator="Tobias Beer" modified="20150107195102560" modifier="Tobias Beer" tags="Fields Lists Filters Core" title="Fields: Core">
 <pre>all [[core fields|Fields: Core]] except [[standard fields|Fields: Standard]] as documented in the TiddlyWiki core:
@@ -15141,10 +15114,10 @@ drag to your wiki &lt;&lt;source [[$:/.tb/modules/filters/toc.js]]&gt;&gt;</pre>
 
 see source: &lt;&lt;source $:/core/modules/filters/join.js&gt;&gt;</pre>
 </div>
-<div created="20141126021240947" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150116141444836" modifier="Tobias Beer" tags="" title="Filters">
+<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150108114049101" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://filters.tiddlyspot.com">
 <pre></pre>
 </div>
-<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150108114049101" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://filters.tiddlyspot.com">
+<div created="20141126021240947" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150116141444836" modifier="Tobias Beer" tags="" title="Filters">
 <pre></pre>
 </div>
 <div created="20141202232934876" creator="Tobias Beer" follow="yes" modified="20150108114133865" modifier="Tobias Beer" summary="trying to have the standard theme focus more on content, hiding controls from visitors&lt;!--focus--&gt;" tags="[[Tobias Beer]]" title="focus" url="http://focus.tiddlyspot.com">
@@ -15694,6 +15667,9 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 
 &lt;&lt;source &quot;$:/.tb/demo/image-map&quot;&gt;&gt;</pre>
 </div>
+<div icon="$:/core/images/storyview-zoomin" modified="20141201174313618" modifier="Tobias Beer" title="Images">
+<pre></pre>
+</div>
 <div created="20141203173130415" creator="Tobias Beer" modified="20141203173139233" modifier="Tobias Beer" tags="Markup" title="images">
 <pre>&lt;dt&gt;
 
@@ -15712,9 +15688,6 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 [img width=16 [http://www.tiddlywiki.com/favicon.ico]]&lt;br&gt;
 [img class=&quot;tc-image&quot; [http://www.tiddlywiki.com/favicon.ico]]
 &lt;/dd&gt;</pre>
-</div>
-<div icon="$:/core/images/storyview-zoomin" modified="20141201174313618" modifier="Tobias Beer" title="Images">
-<pre></pre>
 </div>
 <div created="20150116144431513" creator="Tobias Beer" icon="$:/core/images/export-button" modified="20150116144431513" modifier="Tobias Beer" title="Import">
 <pre></pre>
@@ -18798,9 +18771,6 @@ super^^script^^
 &lt;&lt;ximg toc.jpg tooltip:&quot;example toc from tiddlywiki.com&quot; class:&quot;pretty&quot;&gt;&gt;
 example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 </div>
-<div created="20150116145013865" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116145013865" modifier="Tobias Beer" title="Tables">
-<pre></pre>
-</div>
 <div created="20141203173550546" creator="Tobias Beer" modified="20141203173601868" modifier="Tobias Beer" tags="Markup" title="tables">
 <pre>&lt;dt style=&quot;font-size:80%;&quot;&gt;
 
@@ -18824,6 +18794,9 @@ example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 |and|now| vertical |
 |&gt;| right|~|
 &lt;/dd&gt;</pre>
+</div>
+<div created="20150116145013865" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116145013865" modifier="Tobias Beer" title="Tables">
+<pre></pre>
 </div>
 <div created="20150206013252827" creator="Tobias Beer" modified="20150206014255748" modifier="Tobias Beer" tags="Tables Presentation Styles" title="Tables Without Borders">
 <pre>If you are wishing to use borderless tables [[like Diane|https://groups.google.com/d/msg/tiddlywiki/lPvh5gcea70/JHWgVmIvHdIJ]], here's what you do:
@@ -19299,6 +19272,9 @@ If you neither have a TiddlyWiki or TiddlySpot yet, here's a simple process to d
 &quot;$:/.tb/templates/list-search-me&quot;&gt;&gt;
 &lt;/dl&gt;</pre>
 </div>
+<div created="20150116141836162" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116141836162" modifier="Tobias Beer" title="ToC">
+<pre></pre>
+</div>
 <div created="20141125232200140" creator="Tobias Beer" modified="20141125232258995" modifier="Tobias Beer" title="toc">
 <pre>\define regexp-headings() (^!+.*)(?gmi)
 &lt;div class=&quot;tidtoc tc-tiddler-frame&quot;&gt;
@@ -19355,9 +19331,6 @@ float:right;
 text-align:right;
 }
 &lt;/style&gt;</pre>
-</div>
-<div created="20150116141836162" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116141836162" modifier="Tobias Beer" title="ToC">
-<pre></pre>
 </div>
 <div created="20150119101745352" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150119101745352" modifier="Tobias Beer" title="Toggle">
 <pre></pre>
@@ -19945,6 +19918,38 @@ CamelCase&lt;br&gt;
 ** you can only use plain strings
 * macros can also be invoked with the `&lt;$macrocall&gt; widget`
 ** allows attributes to be specified as transclusions or macro invocations</pre>
+</div>
+<div created="20150206230110302" creator="Tobias Beer" modified="20150206230117446" modifier="Tobias Beer" tags="" title="ximg">
+<pre>This solution inspired by [[PMario|https://groups.google.com/d/msg/tiddlywiki/ChRV6sjQpn4/bCm35_XhGmkJ]] defines a global folder path for external images. This is more powerful than using relative paths `[img[subfolder/file.JPG]]` as you can move that image folder anywhere and simply redefine the location using configuration. 
+
+!! Step 1 — create or import the ximg macro
+The following macro tiddler is tagged [[$:/tags/Macro]] so as to make it a global macro: &lt;&lt;source $:/macros/ximg&gt;&gt;
+
+!!Step 2 — environment configuration
+Create a tiddler [[$:/macros/ximg/path]] containing your base path.
+
+;network share
+:`file:\\\\\COMPUTER_NAME\Users\Mario\Pictures\2010-10\`
+;same computer absolute path
+:`file:\\\c:\Users\Mario\Pictures\2010-10\`
+;relative path as subdirectory of tw
+:`.\images\`
+
+The &quot;backslash&quot; at the end is important!!
+
+!!Step 3 — using the ximg macro
+;basic usage
+:`&lt;&lt;ximg &quot;some image.gif&quot;&gt;&gt;`
+;custom tooltip
+:`&lt;&lt;ximg &quot;some image.gif&quot; tooltip:&quot;my tooltip&quot;&gt;&gt; `
+;custom path
+:`&lt;&lt;ximg &quot;some image.gif&quot; pathConfig:&quot;otherImagePathConfigTiddler&quot;&gt;&gt;`
+:path defaults to content of [[$:/macros/ximg/path]]
+
+!! Example
+`&lt;&lt;ximg toc.jpg class:pretty width:200px tooltip:&quot;example toc&quot;&gt;&gt;`
+
+&lt;&lt;ximg toc.jpg class:pretty width:200px tooltip:&quot;example toc&quot;&gt;&gt;</pre>
 </div>
 <div created="20150113131225483" creator="Tobias Beer" modified="20150114231040767" modifier="Tobias Beer" summary="the ''xlist'' macro shows crosslists of tiddlers tagging to categories grouped by another category" tags="[[Tobias Beer]]" title="xlist" url="http://xlist.tiddlyspot.com">
 <pre>Developed as a [[reply to James|https://groups.google.com/d/msg/tiddlywiki/EzypDKdUOFE/ML_q1pSSvCIJ]], the [[xlist|http://xlist.tiddlyspot.com]] macro ([[$:/.tb/macros/xlist]]) allows you to list items grouped by category whereas an item needs to be tagged both with the current tiddler title as well as one of the categories listed in the `catlist` field.
