@@ -1,3 +1,3 @@
-### tobibeer www
+### [tobibeer.github.io](http://tobibeer.github.io)
 
-repository to publish contents managed via github
+repository to publish content managed via github
