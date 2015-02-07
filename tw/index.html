@@ -127,6 +127,12 @@ Error message and password prompt
 
 <li>$:/.tb/ui/ViewTemplate/url</li>
 
+<li>$:/config/AutoSave</li>
+
+<li>$:/config/Navigation/UpdateAddressBar</li>
+
+<li>$:/config/Navigation/UpdateHistory</li>
+
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/home</li>
 
 <li>$:/core</li>
@@ -143,9 +149,13 @@ Error message and password prompt
 
 <li>$:/state/showeditpreview</li>
 
+<li>$:/state/tab-1749438307</li>
+
 <li>$:/state/tab/moresidebar-401116514</li>
 
 <li>$:/state/tab/sidebar--1835078512</li>
+
+<li>$:/status/UserName</li>
 
 <li>$:/StoryList</li>
 
@@ -169,6 +179,8 @@ Error message and password prompt
 
 <li>TiddlyWikiClassic</li>
 
+<li>Tobias Beer</li>
+
 <li>tobibeer@github</li>
 
 <li>tobibeer@tiddlyspace</li>
@@ -185,9 +197,12 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
-<div created="20150206140759706" modified="20150206141053250" tags="$:/tags/Macro" title="$:/.tb/macros/goto">
+<div created="20150206140759706" creator="Tobias Beer" modified="20150207084850210" modifier="Tobias Beer" tags="$:/tags/Macro" title="$:/.tb/macros/goto">
 <pre>\define goto($where$)
 [ext[/$where$|../$where$]]
+\end
+\define goto-url($where$)
+[ext[https://tobibeer.github.io/$where$|../$where$]]
 \end</pre>
 </div>
 <div created="20150109114505490" modified="20150207083959832" summary="outputs a definition list of summaries for tiddlers matching a filter, by default tagging to the current tiddler" tags="$:/tags/Macro" title="$:/.tb/macros/summaries">
@@ -346,10 +361,22 @@ padding-top: 0;
 @@color:grey; //&lt;$transclude field=&quot;summary&quot; mode=&quot;block&quot;/&gt; //@@
 &lt;/$list&gt;</pre>
 </div>
-<div created="20141115163812813" creator="Tobias Beer" list-after="$:/core/ui/ViewTemplate/tags" modified="20150109180613498" modifier="Tobias Beer" summary="shows a conditional viewtemplate section for tiddlers having a url field defined" tags="$:/tags/ViewTemplate" title="$:/.tb/ui/ViewTemplate/url">
+<div created="20141115163812813" creator="Tobias Beer" list-after="$:/core/ui/ViewTemplate/tags" modified="20150207084903413" modifier="Tobias Beer" summary="shows a conditional viewtemplate section for tiddlers having a url field defined" tags="$:/tags/ViewTemplate" title="$:/.tb/ui/ViewTemplate/url">
 <pre>&lt;$list filter=&quot;[all[current]has[url]]&quot;&gt;
 &lt;$transclude field=&quot;url&quot; mode=&quot;block&quot;/&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[all[current]has[goto]]&quot;&gt;
+&lt;$macrocall $name=&quot;goto-url&quot; where={{!!goto}}/&gt;
 &lt;/$list&gt;</pre>
+</div>
+<div modified="20150207084234054" modifier="Tobias Beer" title="$:/config/AutoSave">
+<pre>no</pre>
+</div>
+<div modified="20150207084228093" modifier="Tobias Beer" title="$:/config/Navigation/UpdateAddressBar">
+<pre>permalink</pre>
+</div>
+<div modified="20150207084231749" modifier="Tobias Beer" title="$:/config/Navigation/UpdateHistory">
+<pre>yes</pre>
 </div>
 <div modified="20150206123845341" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/home">
 <pre>show</pre>
@@ -5583,11 +5610,17 @@ padding-top: 0;
 <div modified="20150206133520725" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
+<div modified="20150207084224943" modifier="Tobias Beer" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Settings</pre>
+</div>
 <div modified="20150206131856486" title="$:/state/tab/moresidebar-401116514">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div modified="20150207084008011" title="$:/state/tab/sidebar--1835078512">
+<div modified="20150207084918358" modifier="Tobias Beer" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
+</div>
+<div created="20150207084217117" creator="T" modified="20150207084219175" modifier="Tobias Bee" title="$:/status/UserName">
+<pre>Tobias Beer</pre>
 </div>
 <div list="Welcome" title="$:/StoryList">
 <pre></pre>
@@ -5606,7 +5639,7 @@ padding-top: 0;
     }
 }</pre>
 </div>
-<div created="20150206134829764" modified="20150207083712788" title="$:/temp/NewTagName">
+<div created="20150206134829764" creator="Tobias Beer" modified="20150207084651154" modifier="Tobias Beer" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="A clean theme that emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.7">
@@ -5686,41 +5719,42 @@ padding-top: 0;
     }
 }</pre>
 </div>
-<div created="20150206123958309" modified="20150206134620286" title="GitHub">
-<pre>; me
-: https://github.com/tobibeer
-; GitHub pages
-: https://pages.github.com
+<div created="20150206123958309" creator="Tobias Beer" modified="20150207084948992" modifier="Tobias Beer" title="GitHub">
+<pre>{{tobibeer@github}}
+
+!! GitHub Pages
+; https://pages.github.com
 : websites hosted directly from GitHub repositories
 : just edit, push, and changes are live</pre>
 </div>
-<div created="20150206131811250" modified="20150206131815537" tags="" title="Projects">
-<pre></pre>
-</div>
-<div created="20150206131818570" goto="tb5" modified="20150207083752095" prio="1" summary="a collection of references and sandbox for testing concepts around TiddlyWiki" tags="TiddlyWiki" title="tb5">
-<pre></pre>
-</div>
-<div created="20150206134716123" modified="20150206134733931" summary="helping you organise your thoughts and ideas" title="TiddlySpace" url="http://tiddlyspace.com">
-<pre></pre>
-</div>
-<div created="20150206123914590" modified="20150207084027392" prio="20" summary="a non-linear personal web notebook" tags="Projects" title="TiddlyWiki" url="http://tiddlywiki.com">
-<pre>&lt;&lt;summaries&gt;&gt;</pre>
-</div>
-<div created="20150206141443581" modified="20150207084033903" prio="30" summary="the first chapters of TiddlyWiki" tags="Projects" title="TiddlyWikiClassic" url="http://classic.tiddlywiki.com">
-<pre>&lt;&lt;summaries&gt;&gt;</pre>
-</div>
-<div created="20150206134757273" modified="20150207084018448" prio="10" summary="my GitHub repositories mostly revolving around TiddlyWiki" tags="Projects" title="tobibeer@github" url="https://github.com/tobibeer">
-<pre></pre>
-</div>
-<div created="20150206133539252" modified="20150207083741365" prio="1" summary="tiddlyspace hub for my TiddlySpace / TiddlyWikiClassic projects and plugins" tags="TiddlyWikiClassic" title="tobibeer@tiddlyspace" url="http://tobibeer.tiddlyspace.com">
-<pre></pre>
-</div>
-<div created="20150206123854218" modified="20150207084126649" title="Welcome">
+<div created="20150206131811250" creator="Tobias Beer" modified="20150207084325665" modifier="Tobias Beer" tags="" title="Projects">
 <pre>My projects on...
 
-&lt;$tiddler tiddler=&quot;Projects&quot;&gt;
-&lt;&lt;summaries&gt;&gt;
-&lt;/$tiddler&gt;</pre>
+&lt;&lt;summaries&gt;&gt;</pre>
+</div>
+<div created="20150206131818570" creator="Tobias Beer" goto="tb5" modified="20150207084744922" modifier="Tobias Beer" prio="1" summary="a collection of references and sandbox for testing concepts around TiddlyWiki" tags="TiddlyWiki" title="tb5">
+<pre></pre>
+</div>
+<div created="20150206134716123" creator="Tobias Beer" modified="20150207084641152" modifier="Tobias Beer" summary="helping you organise your thoughts and ideas" title="TiddlySpace" url="http://tiddlyspace.com">
+<pre></pre>
+</div>
+<div created="20150206123914590" creator="Tobias Beer" modified="20150207084623520" modifier="Tobias Beer" prio="20" summary="a non-linear personal web notebook and then some" tags="Projects" title="TiddlyWiki" url="http://tiddlywiki.com">
+<pre>&lt;&lt;summaries&gt;&gt;</pre>
+</div>
+<div created="20150206141443581" creator="Tobias Beer" modified="20150207084252460" modifier="Tobias Beer" prio="30" summary="the first chapters of TiddlyWiki" tags="Projects" title="TiddlyWikiClassic" url="http://classic.tiddlywiki.com">
+<pre>&lt;&lt;summaries&gt;&gt;</pre>
+</div>
+<div created="20150207084355258" creator="Tobias Beer" modified="20150207085102997" modifier="Tobias Beer" title="Tobias Beer" url="{{tobibeer@github!!url}}">
+<pre></pre>
+</div>
+<div created="20150206134757273" creator="Tobias Beer" modified="20150207085114290" modifier="Tobias Beer" prio="10" summary="my GitHub repositories mostly revolving around TiddlyWiki" tags="Projects" title="tobibeer@github" url=" https://github.com/tobibeer — https://tobibeer.github.io">
+<pre></pre>
+</div>
+<div created="20150206133539252" creator="Tobias Beer" modified="20150207084711837" modifier="Tobias Beer" prio="100" summary="tiddlyspace hub for my TiddlySpace / TiddlyWikiClassic projects and plugins" tags="TiddlyWikiClassic TiddlySpace" title="tobibeer@tiddlyspace" url="http://tobibeer.tiddlyspace.com">
+<pre></pre>
+</div>
+<div created="20150206123854218" creator="Tobias Beer" modified="20150207084319617" modifier="Tobias Beer" title="Welcome">
+<pre>{{Projects}}</pre>
 </div>
 
 </div>
