@@ -159,11 +159,11 @@ loadRemoteFile = function(url,callback,params)
 //}}}
 </pre>
 </div>
-<div title="MarkupPreHeadX" creator="YourName" modifier="Tobias Beer" created="201502062229" modified="201502062332" changecount="5">
+<div title="MarkupPreHeadX" creator="YourName" modifier="Tobias Beer" created="201502062229" modified="201502070832" changecount="6">
 <pre>&lt;!--{{{--&gt;
 &lt;script&gt;
 var 
-  target = &quot;http://tobibeer.github.io/tb5/&quot;
+  target = &quot;http://tobibeer.github.io/tb-cook/&quot;
   hash = (window.location.hash || &quot;&quot;);
 if(hash.toLowerCase() != &quot;#start:safe&quot;) {
     window.location.replace(target + hash);
@@ -251,7 +251,7 @@ merge(config.optionsDesc,{
 */
 //}}}</pre>
 </div>
-<div title="TspotSetupPlugin" creator="Tobias Beer" modifier="Tobias Beer" created="201502062230" modified="201502062334" tags="systemConfig" changecount="3">
+<div title="TspotSetupPlugin" creator="Tobias Beer" modifier="Tobias Beer" created="201502062230" modified="201502070832" tags="systemConfig" changecount="4">
 <pre>/***
 Description: Contains the stuff you need to use Tiddlyspot
 Note, you also need UploadPlugin, PasswordOptionPlugin and LoadRemoteFileThroughProxy
@@ -260,7 +260,7 @@ from http://tiddlywiki.bidix.info for a complete working Tiddlyspot site.
 //{{{
 
 // edit this if you are migrating sites or retrofitting an existing TW
-config.tiddlyspotSiteId = 'tb5';
+config.tiddlyspotSiteId = 'tb-cook';
 
 // make it so you can by default see edit controls via http
 config.options.chkHttpReadOnly = false;
@@ -318,10 +318,6 @@ merge(config.shadowTiddlers,{
 });
 //}}}
 </pre>
-</div>
-<div title="UploadLog" modifier="Tobias Beer" created="201502062232" modified="201502062232">
-<pre>| !date | !user | !location | !storeUrl | !uploadDir | !toFilename | !backupdir | !origin |
-| 06/02/2015 23:32:37 | Tobias Beer | [[tiny.html|file:///C:/GIT/tobibeer.github.io/redirect/tiny.html]] | [[store.cgi|http://tb5.tiddlyspot.com/store.cgi]] | . | [[index.html | http://tb5.tiddlyspot.com/index.html]] | . |</pre>
 </div>
 <div title="UploadPlugin" creator="Tobias Beer" modifier="Tobias Beer" created="201502062231" tags="systemConfig" changecount="1">
 <pre>/***
