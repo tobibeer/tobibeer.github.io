@@ -190,8 +190,8 @@ Error message and password prompt
 [ext[/$where$|../$where$]]
 \end</pre>
 </div>
-<div created="20150109114505490" modified="20150206141124927" summary="outputs a definition list of summaries for tiddlers matching a filter, by default tagging to the current tiddler" tags="$:/tags/Macro" title="$:/.tb/macros/summaries">
-<pre>\define summaries(filter:&quot;[tag{!!title}sort[]]&quot;,url)
+<div created="20150109114505490" modified="20150207083959832" summary="outputs a definition list of summaries for tiddlers matching a filter, by default tagging to the current tiddler" tags="$:/tags/Macro" title="$:/.tb/macros/summaries">
+<pre>\define summaries(filter:&quot;[tag{!!title}sort[]sort[prio]]&quot;,url)
 &lt;dl&gt;
 &lt;$list filter=&quot;$filter$&quot;&gt;
 &lt;$list filter=&quot;[all[current]has[goto]]&quot;&gt;
@@ -5586,7 +5586,7 @@ padding-top: 0;
 <div modified="20150206131856486" title="$:/state/tab/moresidebar-401116514">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div modified="20150206141132132" title="$:/state/tab/sidebar--1835078512">
+<div modified="20150207084008011" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div list="Welcome" title="$:/StoryList">
@@ -5606,7 +5606,7 @@ padding-top: 0;
     }
 }</pre>
 </div>
-<div created="20150206134829764" modified="20150206140821041" title="$:/temp/NewTagName">
+<div created="20150206134829764" modified="20150207083712788" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="A clean theme that emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.7">
@@ -5697,26 +5697,28 @@ padding-top: 0;
 <div created="20150206131811250" modified="20150206131815537" tags="" title="Projects">
 <pre></pre>
 </div>
-<div created="20150206131818570" goto="tb5" modified="20150206141330946" summary="a collection of references and sandbox for testing concepts around TiddlyWiki" tags="Projects" title="tb5">
+<div created="20150206131818570" goto="tb5" modified="20150207083752095" prio="1" summary="a collection of references and sandbox for testing concepts around TiddlyWiki" tags="TiddlyWiki" title="tb5">
 <pre></pre>
 </div>
 <div created="20150206134716123" modified="20150206134733931" summary="helping you organise your thoughts and ideas" title="TiddlySpace" url="http://tiddlyspace.com">
 <pre></pre>
 </div>
-<div created="20150206123914590" modified="20150206131624918" summary="a non-linear personal web notebook" title="TiddlyWiki" url="http://tiddlywiki.com">
+<div created="20150206123914590" modified="20150207084027392" prio="20" summary="a non-linear personal web notebook" tags="Projects" title="TiddlyWiki" url="http://tiddlywiki.com">
+<pre>&lt;&lt;summaries&gt;&gt;</pre>
+</div>
+<div created="20150206141443581" modified="20150207084033903" prio="30" summary="the first chapters of TiddlyWiki" tags="Projects" title="TiddlyWikiClassic" url="http://classic.tiddlywiki.com">
+<pre>&lt;&lt;summaries&gt;&gt;</pre>
+</div>
+<div created="20150206134757273" modified="20150207084018448" prio="10" summary="my GitHub repositories mostly revolving around TiddlyWiki" tags="Projects" title="tobibeer@github" url="https://github.com/tobibeer">
 <pre></pre>
 </div>
-<div created="20150206141443581" modified="20150206141558904" summary="the first chapters of TiddlyWiki" tags="" title="TiddlyWikiClassic" url="http://classic.tiddlywiki.com">
+<div created="20150206133539252" modified="20150207083741365" prio="1" summary="tiddlyspace hub for my TiddlySpace / TiddlyWikiClassic projects and plugins" tags="TiddlyWikiClassic" title="tobibeer@tiddlyspace" url="http://tobibeer.tiddlyspace.com">
 <pre></pre>
 </div>
-<div created="20150206134757273" modified="20150206134853250" summary="my GitHub repositories mostly revolving around TiddlyWiki" tags="Projects" title="tobibeer@github" url="https://github.com/tobibeer">
-<pre></pre>
-</div>
-<div created="20150206133539252" modified="20150206141519670" summary="tiddlyspace hub for my TiddlySpace / TiddlyWikiClassic projects and plugins" tags="Projects" title="tobibeer@tiddlyspace" url="http://tobibeer.tiddlyspace.com">
-<pre></pre>
-</div>
-<div created="20150206123854218" modified="20150206133645866" title="Welcome">
-<pre>&lt;$tiddler tiddler=&quot;Projects&quot;&gt;
+<div created="20150206123854218" modified="20150207084126649" title="Welcome">
+<pre>My projects on...
+
+&lt;$tiddler tiddler=&quot;Projects&quot;&gt;
 &lt;&lt;summaries&gt;&gt;
 &lt;/$tiddler&gt;</pre>
 </div>
