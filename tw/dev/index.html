@@ -233,8 +233,6 @@ Error message and password prompt
 
 <li>$:/temp/list-search-sidebar-shadows</li>
 
-<li>$:/temp/newfieldname</li>
-
 <li>$:/temp/NewTagName</li>
 
 <li>$:/temp/search</li>
@@ -412,6 +410,8 @@ Error message and password prompt
 <li>GettingStarted</li>
 
 <li>GitHub</li>
+
+<li>GlobalFocusFilter</li>
 
 <li>Google Analytics</li>
 
@@ -6531,7 +6531,7 @@ search
 <div created="20141125155100841" creator="T" modified="20141125155102803" modifier="Tobias Bee" title="$:/status/UserName">
 <pre>Tobias Beer</pre>
 </div>
-<div list="GettingStarted" title="$:/StoryList">
+<div list="GettingStarted Plugin" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6551,10 +6551,7 @@ search
 <div created="20150118222506906" creator="Tobias Beer" modified="20150202183042645" modifier="Tobias Beer" title="$:/temp/list-search-sidebar-shadows">
 <pre>viewt</pre>
 </div>
-<div created="20150131132456500" creator="Tobias Beer" modified="20150131132457919" modifier="Tobias Beer" title="$:/temp/newfieldname">
-<pre></pre>
-</div>
-<div created="20141223133459180" creator="Tobias Beer" modified="20150207115858016" modifier="Tobias Beer" title="$:/temp/NewTagName">
+<div created="20141223133459180" creator="Tobias Beer" modified="20150203162605411" modifier="Tobias Beer" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div created="20141220152319780" creator="Tobias Beer" modified="20150207081209548" modifier="Tobias Beer" title="$:/temp/search">
@@ -6975,7 +6972,7 @@ There is the emptyMessage attribute of the list widget that could be used to dis
 
 https://groups.google.com/d/msg/tiddlywiki/-qevGMkbWBQ/lgUu0j_wlnkJ</pre>
 </div>
-<div created="20150120232926236" creator="Tobias Beer" modified="20150207115900308" modifier="Tobias Beer" summary="for a data tiddler, returns the value at the index specified in the operand" tags="Pull 5.1.8 Accepted" title="1452-index-filter" url="&lt;&lt;git5 issues/1452&gt;&gt;">
+<div created="20150120232926236" creator="Tobias Beer" modified="20150203112736158" modifier="Tobias Beer" summary="for a data tiddler, returns the value at the index specified in the operand" tags="Pull 5.1.8 Open" title="1452-index-filter" url="&lt;&lt;git5 issues/1452&gt;&gt;">
 <pre>`&lt;$list filter=&quot;[&lt;dataTiddler&gt;index&lt;dataIndex&gt;]&quot;/&gt;`
 
 ; demo
@@ -7481,6 +7478,17 @@ or
 !! Pull Requests
 
 &gt; It's OK to send a pull request on your master, but it means that you'll need to create a fork for any further unrelated modifications you might make. @@float:right;[[Jeremy Ruston|https://github.com/Jermolene/TiddlyWiki5/pull/1396#issuecomment-71644734]]@@</pre>
+</div>
+<div created="20150207120207153" creator="Tobias Beer" modified="20150207120316609" modifier="Tobias Beer" tags="Plugin" title="GlobalFocusFilter" url="https://github.com/Jermolene/TiddlyWiki5/issues/1459">
+<pre>&lt;&lt;&lt;
+Certain applications, e.g. GTD, would benefit a lot from an ability to dynamically set a global filter that constrains all lists to only those matching that filter, e.g. only ''status:#next'', only ''realm:-work'' or both.
+
+Imagine a &quot;focus&quot; tab in the sidebar, or a corresponding button popup in the toolbar with predefined filter options which when clicked constrain all (filtered) lists to just that.
+
+Feasible?
+
+This would also be a way to provide more flexibility to as well hide things by default in the sense of &lt;&lt;git5 issues/1210&gt;&gt;, e.g. &quot;Admin&quot; pages that are only visible when one clicks a checkbox to remove ''[tag[Admin]]'' from that global &quot;focus filter&quot; and thus have these things listed and searchable.
+&lt;&lt;&lt;</pre>
 </div>
 <div created="20141127031702077" creator="Tobias Beer" modified="20141127032021612" modifier="Tobias Beer" tags="Tutorials" title="Google Analytics" url="http://tiddlywiki.com/#%24%3A%2Fplugins%2Ftiddlywiki%2Fgoogleanalytics">
 <pre>[[Metabele|https://groups.google.com/d/msg/tiddlywiki/krl1pEz8L9o/C19iAM68G7oJ]]
