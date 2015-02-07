@@ -157,6 +157,8 @@ Error message and password prompt
 
 <li>$:/state/showeditpreview</li>
 
+<li>$:/state/tab--1498284803</li>
+
 <li>$:/state/tab--1963855381</li>
 
 <li>$:/state/tab-1749438307</li>
@@ -169,9 +171,13 @@ Error message and password prompt
 
 <li>$:/StoryList</li>
 
+<li>$:/temp/advancedsearch</li>
+
 <li>$:/temp/info-plugin</li>
 
 <li>$:/temp/NewTagName</li>
+
+<li>$:/theme</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
@@ -238,7 +244,7 @@ Error message and password prompt
 &lt;/dl&gt;
 \end</pre>
 </div>
-<div created="20141119102634212" creator="Tobias Beer" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20150206085831803" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles" type="text/css">
+<div created="20141119102634212" creator="Tobias Beer" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20150207110432349" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles" type="text/css">
 <pre>a.tc-tiddlylink-shadow {
 color:#567;
 font-weight:normal;
@@ -372,34 +378,25 @@ list-style-type: decimal;
 padding-top: 0;
 }</pre>
 </div>
-<div created="20141202213135062" modified="20141203213535226" tags="$:/tags/Stylesheet" title="$:/.tb/ui/styles/focus" type="text/css">
-<pre>/* CONTROL BUTTONS */
+<div created="20141202213135062" creator="Tobias Beer" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20150207110633615" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/ui/styles/focus" type="text/css">
+<pre>/* ONLY WIDE SCREEN */
+
+@media (min-width: 800px) {
+
+/* CONTROL BUTTONS */
 
 body.tc-dirty span.tc-dirty-indicator svg,
-.tc-sidebar-scrollable svg,
-.tc-tiddler-view-frame .tc-tiddler-controls svg {
+.tc-sidebar-scrollable svg {
     fill:transparent;
 }
 
 .tc-sidebar-scrollable:hover svg,
-.tc-sidebar-scrollable svg.tc-image-advanced-search-button,
-.tc-tiddler-view-frame .tc-tiddler-controls:hover svg,
-.tc-tiddler-view-frame .tc-tiddler-controls [aria-label~=close] svg,
-.tc-tiddler-view-frame .tc-tiddler-controls .tc-popup svg {
+.tc-sidebar-scrollable svg.tc-image-advanced-search-button {
     fill:#cccccc;
 }
 
 body.tc-dirty .tc-sidebar-scrollable:hover span.tc-dirty-indicator svg{
     fill:#ff0000;
-}
-
-/* BUTTON ANIMATION */
-
-.tc-page-controls svg,
-.tc-tiddler-controls svg,
-.tc-topbar button svg,
-.tc-sidebar-scrollable {
-    &lt;&lt;transition &quot;fill 50ms ease-in-out&quot;&gt;&gt;
 }
 
 /* SIDEBAR */
@@ -411,11 +408,44 @@ body.tc-dirty .tc-sidebar-scrollable:hover span.tc-dirty-indicator svg{
     visibility:visible;
 }
 
+}
+
+/* TIDDLER TOOLBAR */
+
+.tc-tiddler-view-frame .tc-tiddler-controls svg {
+    fill:transparent;
+}
+
+.tc-tiddler-view-frame .tc-tiddler-controls:hover svg,
+.tc-tiddler-view-frame .tc-tiddler-controls [aria-label~=close] svg,
+.tc-tiddler-view-frame .tc-tiddler-controls .tc-popup svg {
+    fill:#cccccc;
+}
+
+/* BUTTON ANIMATION */
+
+.tc-page-controls svg,
+.tc-tiddler-controls svg,
+.tc-topbar button svg,
+.tc-sidebar-scrollable {
+    &lt;&lt;transition &quot;fill 50ms ease-in-out&quot;&gt;&gt;
+}
+
 /* EDIT MODE */
 
 textarea.tc-edit-texteditor, code, kbd, pre, samp {
      font-family: Consolas, Inconsolata, monospace, serif;
      font-size: 1em;
+}
+
+/* ONLY WIDE SCREEN */
+
+@media (max-width: 800px) {
+
+/* FIX TIDDLER WIDTH */
+.tc-storyview-zoomin-tiddler {
+width: 100% !important;
+}
 }</pre>
 </div>
 <div created="20141119004109928" creator="Tobias Beer" list-after="$:/core/ui/ViewTemplate/tags" modified="20150109180317430" modifier="Tobias Beer" summary="shows summary for all system tiddlers" tags="$:/tags/ViewTemplate" title="$:/.tb/ui/ViewTemplate/summary">
@@ -5661,7 +5691,7 @@ textarea.tc-edit-texteditor, code, kbd, pre, samp {
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[$:/palettes/Vanilla-tb5]]</pre>
+# [[$:/.tb/ui/styles/focus]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -5779,8 +5809,11 @@ very-muted-foreground: #888888</pre>
 <div modified="20150206133520725" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div modified="20150207103012815" modifier="Tobias Beer" title="$:/state/tab--1963855381">
-<pre>$:/core/ui/ControlPanel/Palette</pre>
+<div modified="20150207110157752" modifier="Tobias Beer" title="$:/state/tab--1498284803">
+<pre>$:/core/ui/AdvancedSearch/Filter</pre>
+</div>
+<div modified="20150207110320355" modifier="Tobias Beer" title="$:/state/tab--1963855381">
+<pre>$:/core/ui/ControlPanel/Theme</pre>
 </div>
 <div modified="20150207103003835" modifier="Tobias Beer" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Appearance</pre>
@@ -5788,14 +5821,17 @@ very-muted-foreground: #888888</pre>
 <div modified="20150206131856486" title="$:/state/tab/moresidebar-401116514">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div modified="20150207102836397" modifier="Tobias Beer" title="$:/state/tab/sidebar--1835078512">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div modified="20150207105654740" modifier="Tobias Beer" title="$:/state/tab/sidebar--1835078512">
+<pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20150207084217117" creator="T" modified="20150207084219175" modifier="Tobias Bee" title="$:/status/UserName">
 <pre>Tobias Beer</pre>
 </div>
-<div list="Welcome GitHub tobibeer.github.io" title="$:/StoryList">
+<div list="$:/ControlPanel $:/AdvancedSearch $:/.tb/ui/styles/focus $:/themes/tiddlywiki/vanilla/base $:/.tb/styles Welcome" title="$:/StoryList">
 <pre></pre>
+</div>
+<div created="20150207110159463" creator="Tobias Beer" modified="20150207110219651" modifier="Tobias Beer" title="$:/temp/advancedsearch">
+<pre>[all[tiddlers+shadows]regexp:text[84px]]</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -5813,6 +5849,9 @@ very-muted-foreground: #888888</pre>
 </div>
 <div created="20150206134829764" creator="Tobias Beer" modified="20150207102017206" modifier="Tobias Beer" title="$:/temp/NewTagName">
 <pre></pre>
+</div>
+<div modified="20150207110512293" modifier="Tobias Beer" title="$:/theme">
+<pre>$:/themes/tiddlywiki/snowwhite</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="A clean theme that emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.7">
 <pre>{
