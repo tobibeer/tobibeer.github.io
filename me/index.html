@@ -137,9 +137,33 @@ Error message and password prompt
 
 <li>$:/config/Navigation/UpdateHistory</li>
 
+<li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/control-panel</li>
+
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/home</li>
 
+<li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/new-tiddler</li>
+
+<li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/save-wiki</li>
+
+<li>$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/close</li>
+
+<li>$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/edit</li>
+
+<li>$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/info</li>
+
+<li>$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/new-tiddler</li>
+
+<li>$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/save-wiki</li>
+
 <li>$:/core</li>
+
+<li>$:/core/ui/Buttons/home</li>
+
+<li>$:/core/ui/Buttons/save-wiki</li>
+
+<li>$:/core/ui/MoreSideBar/Tags</li>
+
+<li>$:/core/ui/SideBar/Tools</li>
 
 <li>$:/core/wiki/title</li>
 
@@ -159,11 +183,17 @@ Error message and password prompt
 
 <li>$:/state/showeditpreview</li>
 
+<li>$:/state/tab--1095126628</li>
+
 <li>$:/state/tab--1498284803</li>
+
+<li>$:/state/tab--1936963165</li>
 
 <li>$:/state/tab--1963855381</li>
 
 <li>$:/state/tab-1749438307</li>
+
+<li>$:/state/tab-840082419</li>
 
 <li>$:/state/tab/moresidebar-401116514</li>
 
@@ -380,7 +410,7 @@ list-style-type: decimal;
 padding-top: 0;
 }</pre>
 </div>
-<div created="20141202213135062" creator="Tobias Beer" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20150207110633615" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/ui/styles/focus" type="text/css">
+<div created="20141202213135062" creator="Tobias Beer" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20150208131252385" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/ui/styles/focus" type="text/css">
 <pre>/* ONLY WIDE SCREEN */
 
 @media (min-width: 800px) {
@@ -419,7 +449,7 @@ body.tc-dirty .tc-sidebar-scrollable:hover span.tc-dirty-indicator svg{
 }
 
 .tc-tiddler-view-frame .tc-tiddler-controls:hover svg,
-.tc-tiddler-view-frame .tc-tiddler-controls [aria-label~=close] svg,
+.tc-tiddler-view-frame .tc-tiddler-controls [aria-label~=home] svg,
 .tc-tiddler-view-frame .tc-tiddler-controls .tc-popup svg {
     fill:#cccccc;
 }
@@ -475,8 +505,32 @@ width: 100% !important;
 <div modified="20150207084231749" modifier="Tobias Beer" title="$:/config/Navigation/UpdateHistory">
 <pre>yes</pre>
 </div>
+<div modified="20150208131408755" modifier="Tobias Beer" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/control-panel">
+<pre>hide</pre>
+</div>
 <div modified="20150206123845341" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/home">
 <pre>show</pre>
+</div>
+<div modified="20150208131405596" modifier="Tobias Beer" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/new-tiddler">
+<pre>hide</pre>
+</div>
+<div modified="20150208131411371" modifier="Tobias Beer" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/save-wiki">
+<pre>hide</pre>
+</div>
+<div modified="20150208131314726" modifier="Tobias Beer" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/close">
+<pre>hide</pre>
+</div>
+<div modified="20150208131327182" modifier="Tobias Beer" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/edit">
+<pre>hide</pre>
+</div>
+<div modified="20150208131328359" modifier="Tobias Beer" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/info">
+<pre>show</pre>
+</div>
+<div modified="20150208131546496" modifier="Tobias Beer" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/new-tiddler">
+<pre>hide</pre>
+</div>
+<div modified="20150208131730554" modifier="Tobias Beer" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/save-wiki">
+<pre>hide</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core plugin" list="readme" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.7">
 <pre>{
@@ -5687,6 +5741,67 @@ width: 100% !important;
     }
 }</pre>
 </div>
+<div caption="{{$:/core/images/home-button}} {{$:/language/Buttons/Home/Caption}}" created="20150208131229696" creator="Tobias Beer" description="{{$:/language/Buttons/Home/Hint}}" modified="20150208131229696" modifier="Tobias Beer" tags="$:/tags/ViewToolbar" title="$:/core/ui/Buttons/home">
+<pre>&lt;$button message=&quot;tm-home&quot; tooltip={{$:/language/Buttons/Home/Hint}} aria-label={{$:/language/Buttons/Home/Caption}} class=&lt;&lt;tv-config-toolbar-class&gt;&gt;&gt;
+&lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;prefix[yes]]&quot;&gt;
+{{$:/core/images/home-button}}
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;tv-config-toolbar-text&gt;prefix[yes]]&quot;&gt;
+&lt;span class=&quot;tc-btn-text&quot;&gt;&lt;$text text={{$:/language/Buttons/Home/Caption}}/&gt;&lt;/span&gt;
+&lt;/$list&gt;
+&lt;/$button&gt;</pre>
+</div>
+<div caption="{{$:/core/images/save-button}} {{$:/language/Buttons/SaveWiki/Caption}}" created="20150208131722687" creator="Tobias Beer" description="{{$:/language/Buttons/SaveWiki/Hint}}" modified="20150208131722687" modifier="Tobias Beer" tags="$:/tags/PageControls $:/tags/ViewToolbar" title="$:/core/ui/Buttons/save-wiki">
+<pre>&lt;$button message=&quot;tm-save-wiki&quot; param={{$:/config/SaveWikiButton/Template}} tooltip={{$:/language/Buttons/SaveWiki/Hint}} aria-label={{$:/language/Buttons/SaveWiki/Caption}} class=&lt;&lt;tv-config-toolbar-class&gt;&gt;&gt;
+&lt;span class=&quot;tc-dirty-indicator&quot;&gt;
+&lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;prefix[yes]]&quot;&gt;
+{{$:/core/images/save-button}}
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;tv-config-toolbar-text&gt;prefix[yes]]&quot;&gt;
+&lt;span class=&quot;tc-btn-text&quot;&gt;&lt;$text text={{$:/language/Buttons/SaveWiki/Caption}}/&gt;&lt;/span&gt;
+&lt;/$list&gt;
+&lt;/span&gt;
+&lt;/$button&gt;</pre>
+</div>
+<div caption="{{$:/language/SideBar/Tags/Caption}}" created="20141119013247870" creator="Tobias Beer" list-before="$:/core/ui/SideBar/More" modified="20141119015301771" modifier="Tobias Beer" tags="$:/tags/SideBar" title="$:/core/ui/MoreSideBar/Tags">
+<pre>&lt;$list filter=&quot;[tags[]!is[system]sort[title]]&quot;&gt;
+
+&lt;$transclude tiddler=&quot;$:/core/ui/TagTemplate&quot;/&gt; &lt;small class=&quot;tc-menu-list-count&quot;&gt;&lt;$count filter=&quot;[all[current]tagging[]]&quot;/&gt;&lt;/small&gt;
+
+&lt;/$list&gt;
+
+&lt;hr class=&quot;tc-untagged-separator&quot;&gt;
+
+{{$:/core/ui/UntaggedTemplate}} &lt;small class=&quot;tc-menu-list-count&quot;&gt;&lt;$count filter=&quot;[untagged[]!is[system]] -[tags[]]&quot;/&gt;&lt;/small&gt;
+</pre>
+</div>
+<div caption="{{$:/language/SideBar/Tools/Caption}}" created="20141119013200798" creator="Tobias Beer" list-after="$:/core/ui/MoreSideBar/All" modified="20141124105851065" modifier="Tobias Beer" tags="$:/tags/MoreSideBar" title="$:/core/ui/SideBar/Tools">
+<pre>\define lingo-base() $:/language/ControlPanel/
+\define config-title()
+$:/config/PageControlButtons/Visibility/$(listItem)$
+\end
+
+&lt;&lt;lingo Basics/Version/Prompt&gt;&gt; &lt;&lt;version&gt;&gt;
+
+&lt;$set name=&quot;tv-config-toolbar-icons&quot; value=&quot;yes&quot;&gt;
+
+&lt;$set name=&quot;tv-config-toolbar-text&quot; value=&quot;yes&quot;&gt;
+
+&lt;$set name=&quot;tv-config-toolbar-class&quot; value=&quot;&quot;&gt;
+
+&lt;$list filter=&quot;[all[shadows+tiddlers]tag[$:/tags/PageControls]!has[draft.of]]&quot; variable=&quot;listItem&quot;&gt;
+
+&lt;$checkbox tiddler=&lt;&lt;config-title&gt;&gt; field=&quot;text&quot; checked=&quot;show&quot; unchecked=&quot;hide&quot; default=&quot;show&quot;/&gt; &lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt; &lt;i class=&quot;tc-muted&quot;&gt;&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt; field=&quot;description&quot;/&gt;&lt;/i&gt;
+
+&lt;/$list&gt;
+
+&lt;/$set&gt;
+
+&lt;/$set&gt;
+
+&lt;/$set&gt;
+</pre>
+</div>
 <div created="20150207171636176" creator="Tobias Beer" modified="20150207171637265" modifier="Tobias Beer" title="$:/core/wiki/title" type="text/vnd.tiddlywiki">
 <pre>{{$:/SiteTitle}} {{$:/SiteSubtitle}}</pre>
 </div>
@@ -5696,7 +5811,8 @@ width: 100% !important;
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[$:/.tb/ui/styles/focus]]</pre>
+# [[$:/core/ui/MoreSideBar/Tags]]
+# [[$:/core/ui/SideBar/Tools]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -5811,28 +5927,37 @@ very-muted-foreground: #888888</pre>
 <div created="20150206123827805" creator="Tobias Beer" modified="20150207102904992" modifier="Tobias Beer" title="$:/SiteTitle">
 <pre>[[tb|Welcome]]</pre>
 </div>
-<div modified="20150206133520725" title="$:/state/showeditpreview">
+<div modified="20150208131721570" modifier="Tobias Beer" title="$:/state/showeditpreview">
 <pre>no</pre>
+</div>
+<div modified="20150208131542790" modifier="Tobias Beer" title="$:/state/tab--1095126628">
+<pre>$:/core/ui/TiddlerInfo/Tools</pre>
 </div>
 <div modified="20150207110157752" modifier="Tobias Beer" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
 </div>
-<div modified="20150207110320355" modifier="Tobias Beer" title="$:/state/tab--1963855381">
-<pre>$:/core/ui/ControlPanel/Theme</pre>
+<div modified="20150208131337690" modifier="Tobias Beer" title="$:/state/tab--1936963165">
+<pre>$:/core/ui/TiddlerInfo/Tools</pre>
 </div>
-<div modified="20150207103003835" modifier="Tobias Beer" title="$:/state/tab-1749438307">
+<div modified="20150208131310155" modifier="Tobias Beer" title="$:/state/tab--1963855381">
+<pre>$:/core/ui/ControlPanel/Toolbars</pre>
+</div>
+<div modified="20150208131308135" modifier="Tobias Beer" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
-<div modified="20150207171621053" modifier="Tobias Beer" title="$:/state/tab/moresidebar-401116514">
+<div modified="20150208131727730" modifier="Tobias Beer" title="$:/state/tab-840082419">
+<pre>$:/core/ui/TiddlerInfo/Tools</pre>
+</div>
+<div modified="20150208131657168" modifier="Tobias Beer" title="$:/state/tab/moresidebar-401116514">
 <pre>$:/core/ui/MoreSideBar/Shadows</pre>
 </div>
-<div modified="20150207171704447" modifier="Tobias Beer" title="$:/state/tab/sidebar--1835078512">
+<div modified="20150208131742475" modifier="Tobias Beer" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20150207084217117" creator="T" modified="20150207084219175" modifier="Tobias Bee" title="$:/status/UserName">
 <pre>Tobias Beer</pre>
 </div>
-<div list="Welcome TiddlyWiki" title="$:/StoryList">
+<div list="Welcome" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20150207110159463" creator="Tobias Beer" modified="20150207110219651" modifier="Tobias Beer" title="$:/temp/advancedsearch">
@@ -5852,7 +5977,7 @@ very-muted-foreground: #888888</pre>
     }
 }</pre>
 </div>
-<div created="20150206134829764" creator="Tobias Beer" modified="20150207102017206" modifier="Tobias Beer" title="$:/temp/NewTagName">
+<div created="20150206134829764" creator="Tobias Beer" modified="20150208131719961" modifier="Tobias Beer" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div modified="20150207110512293" modifier="Tobias Beer" title="$:/theme">
