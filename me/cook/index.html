@@ -213,8 +213,6 @@ Error message and password prompt
 
 <li>$:/temp/list-search-sidebar-system-and-shadows</li>
 
-<li>$:/temp/newfieldname</li>
-
 <li>$:/temp/NewTagName</li>
 
 <li>$:/temp/RenameTags/replace</li>
@@ -688,7 +686,7 @@ height:120px;
 <div created="20150204172551944" modified="20150204172619658" tags="" title="$:/.tb/ui/ListItemTemplate">
 <pre>&amp;raquo; &lt;$link&gt;&lt;$view field=title/&gt;&lt;/$link&gt;&lt;br&gt;</pre>
 </div>
-<div created="20150204100725189" creator="Tobias Beer" list-after="$:/core/ui/ViewTemplate/tags" modified="20150204230834383" modifier="Tobias Beer" summary="displays recipe related things" tags="$:/tags/ViewTemplate" title="$:/.tb/ui/ViewTemplate/cook">
+<div created="20150204100725189" creator="Tobias Beer" list-after="$:/core/ui/ViewTemplate/tags" modified="20150209135123499" modifier="Tobias Beer" summary="displays recipe related things" tags="$:/tags/ViewTemplate" title="$:/.tb/ui/ViewTemplate/cook">
 <pre>&lt;$list filter=&quot;[all[current]has[cook]get[cook]removesuffix[-list]]&quot;&gt;
 &lt;$list filter=&quot;[cook&lt;currentTiddler&gt;sort[]]&quot;&gt;
 &amp;raquo; &lt;$link&gt;&lt;$view field=title/&gt;&lt;/$link&gt;&lt;br&gt;
@@ -699,6 +697,13 @@ height:120px;
 &lt;/$list&gt;
 &lt;$list filter=&quot;[all[current]has[image]get[image]]&quot;&gt;
 &lt;&lt;cook-img&gt;&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[all[current]has[ximg]get[ximg]]&quot; variable=&quot;img&quot;&gt;
+&lt;$macrocall
+$name=ximg
+image=&lt;&lt;img&gt;&gt;
+tooltip=&lt;&lt;currentTiddler&gt;&gt;
+class=&quot;cook pretty&quot;/&gt;
 &lt;/$list&gt;</pre>
 </div>
 <div created="20150205194730911" creator="Tobias Beer" list-after="$:/core/ui/ViewTemplate/body" modified="20150205195824885" modifier="Tobias Beer" summary="displays related recipes for recipe bases" tags="$:/tags/ViewTemplate" title="$:/.tb/ui/ViewTemplate/cook-base">
@@ -6429,14 +6434,14 @@ exports.top = TopStoryView;
 <div modified="20150205201512132" title="$:/state/tab/moresidebar-401116514">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div modified="20150205201806845" title="$:/state/tab/sidebar--1835078512">
+<div modified="20150209134944441" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div list="$:/ControlPanel Welcome" title="$:/StoryList">
+<div list="$:/.tb/macros/cook-img $:/.tb/ui/ViewTemplate/cook Welcome" title="$:/StoryList">
 <pre></pre>
 </div>
 <div title="$:/temp/focussedTiddler">
-<pre>Welcome</pre>
+<pre>$:/.tb/ui/ViewTemplate/cook</pre>
 </div>
 <div title="$:/temp/focussedTiddler/refresh">
 <pre></pre>
@@ -6456,9 +6461,6 @@ exports.top = TopStoryView;
 }</pre>
 </div>
 <div created="20150204170750408" modified="20150205201559846" title="$:/temp/list-search-sidebar-system-and-shadows">
-<pre></pre>
-</div>
-<div created="20150205194952766" modified="20150205194955482" title="$:/temp/newfieldname">
 <pre></pre>
 </div>
 <div created="20150202162555547" modified="20150205201734762" title="$:/temp/NewTagName">
@@ -6656,8 +6658,10 @@ exports.top = TopStoryView;
 <div created="20150202152431985" icon="$:/core/images/close-others-button" modified="20150204170952741" tags="Category" title="Cakes">
 <pre></pre>
 </div>
-<div cook="recipe" created="20150202180123876" modified="20150205201656133" tags="Cakes Baking Favourites Recipe" title="Carrot Cake" veggies="carrots">
-<pre>!!Dough
+<div cook="recipe" created="20150202180123876" modified="20150209135229287" tags="Cakes Baking Favourites Recipe" title="Carrot Cake" veggies="carrots" ximg="CarrotCake.jpg">
+<pre>A most delicious treat presumably from the Brits. Savoury, spongy, yummy.
+
+!!Dough
 
 @@.use
 * 2 cups flour
