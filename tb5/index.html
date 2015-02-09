@@ -119,13 +119,13 @@ Error message and password prompt
 
 <li>$:/_snapshots</li>
 
-<li>$:/_tb/demo/reorder</li>
-
 <li>$:/.img/fish.svg</li>
 
 <li>$:/.tb/0</li>
 
 <li>$:/.tb/config/redirected-tb5</li>
+
+<li>$:/.tb/demo/2015-02-09</li>
 
 <li>$:/.tb/demo/Buttons/new-recipe</li>
 
@@ -134,6 +134,8 @@ Error message and password prompt
 <li>$:/.tb/demo/image-map</li>
 
 <li>$:/.tb/demo/makedoc</li>
+
+<li>$:/.tb/demo/reorder</li>
 
 <li>$:/.tb/demo/Template/new-foo</li>
 
@@ -268,6 +270,8 @@ Error message and password prompt
 <li>$:/.tb/ui/TopLeftBar</li>
 
 <li>$:/.tb/ui/TopLeftBar/config</li>
+
+<li>$:/.tb/ui/ViewTemplate/journal-entries</li>
 
 <li>$:/.tb/ui/ViewTemplate/keywords</li>
 
@@ -1067,6 +1071,8 @@ Error message and password prompt
 
 <li>RegExp</li>
 
+<li>Related Journal Entries</li>
+
 <li>Relationships</li>
 
 <li>Renaming</li>
@@ -1375,17 +1381,6 @@ Error message and password prompt
 <pre>{
     &quot;On Stories&quot;: &quot;[[Saving And Loading A History Snapshot]] $:/.tb/ui/MoreSideBar/Stories&quot;
 }</pre>
-</div>
-<div created="20150126155022392" creator="Tobias Beer" modified="20150126165944663" modifier="Tobias Beer" tags="" title="$:/_tb/demo/reorder">
-<pre>&lt;div class=&quot;tc-tiddler-controls&quot; style=&quot;float:none;&quot;&gt;
-&lt;$list filter=&quot;[has[order]sort[order]]&quot;&gt;
-&lt;$button set=&quot;!!order&quot; setTo=&lt;&lt;calc !!order 1&gt;&gt; class=&quot;tc-btn-invisible&quot;&gt;{{$:/core/images/chevron-down}}&lt;/$button&gt; 
-&lt;$button set=&quot;!!order&quot; setTo=&lt;&lt;calc !!order -1 0&gt;&gt; class=&quot;tc-btn-invisible&quot;&gt;{{$:/core/images/chevron-up}}&lt;/$button&gt;
-&lt;$link&gt;&lt;$view field=title/&gt;&lt;/$link&gt;
-@@color:#ccc; {{!!order}}@@
-&lt;br&gt;
-&lt;/$list&gt;
-&lt;/div&gt;</pre>
 </div>
 <div created="20150113195340078" creator="Tobias Beer" modified="20150113195412446" modifier="Tobias Beer" title="$:/.img/fish.svg" type="image/svg+xml" url="http://tiddlywiki.com/poster">
 <pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
@@ -3442,7 +3437,10 @@ https://groups.google.com/d/msg/tiddlywiki/v_xIDW8_D7Y/mXaVka0C51EJ
 &quot;tb-cook&quot;:&quot;[[me/cook]]&quot;
 }</pre>
 </div>
-<div caption="new recipe" created="20150128123128853" creator="Tobias Beer" description="Add a new recipe..." modified="20150128142809081" modifier="Tobias Beer" tags="$:/tags/PageControls" title="$:/.tb/demo/Buttons/new-recipe">
+<div created="20150209210641749" creator="Tobias Beer" modified="20150209210807151" modifier="Tobias Beer" tags="[[Related Journal Entries]] Journal" title="$:/.tb/demo/2015-02-09">
+<pre></pre>
+</div>
+<div caption="new recipe" created="20150128123128853" creator="Tobias Beer" description="Add a new recipe..." modified="20150209210608598" modifier="Tobias Beer" tags="$:/tags/PageControls" title="$:/.tb/demo/Buttons/new-recipe">
 <pre>&lt;$button
 param=&quot;$:/.tb/demo/Template/new-recipe&quot;
 message=&quot;tm-new-tiddler&quot;
@@ -3484,6 +3482,17 @@ class=&lt;&lt;tv-config-toolbar-class&gt;&gt;&gt;
 
 {{!!text}}</pre>
 </div>
+<div created="20150126155022392" creator="Tobias Beer" modified="20150209210300408" modifier="Tobias Beer" tags="" title="$:/.tb/demo/reorder">
+<pre>&lt;div class=&quot;tc-tiddler-controls&quot; style=&quot;float:none;&quot;&gt;
+&lt;$list filter=&quot;[has[order]sort[order]]&quot;&gt;
+&lt;$button set=&quot;!!order&quot; setTo=&lt;&lt;calc !!order 1&gt;&gt; class=&quot;tc-btn-invisible&quot;&gt;{{$:/core/images/chevron-down}}&lt;/$button&gt; 
+&lt;$button set=&quot;!!order&quot; setTo=&lt;&lt;calc !!order -1 0&gt;&gt; class=&quot;tc-btn-invisible&quot;&gt;{{$:/core/images/chevron-up}}&lt;/$button&gt;
+&lt;$link&gt;&lt;$view field=title/&gt;&lt;/$link&gt;
+@@color:#ccc; {{!!order}}@@
+&lt;br&gt;
+&lt;/$list&gt;
+&lt;/div&gt;</pre>
+</div>
 <div created="20150206161204933" creator="Tobias Beer" foo="field" modified="20150206162014531" modifier="Tobias Beer" tags="Foo" title="$:/.tb/demo/Template/new-foo">
 <pre>!! My Template Heading
 
@@ -3524,7 +3533,7 @@ $foo$
 * &lt;&lt;var&gt;&gt;
 * &lt;&lt;data&gt;&gt;</pre>
 </div>
-<div created="20150118164820924" creator="Tobias Beer" modified="20150118170435092" modifier="Tobias Beer" tags="$:/tags/Stylesheet Examples" title="$:/.tb/examples/overlay" type="text/css" what="Hover Me!" with="Voilà, an overlay! — [[$:/.tb/examples/overlay]]">
+<div created="20150118164820924" creator="Tobias Beer" modified="20150209210716777" modifier="Tobias Beer" tags="$:/tags/Stylesheet Examples" title="$:/.tb/examples/overlay" type="text/css" what="Hover Me!" with="Voilà, an overlay! — [[$:/.tb/examples/overlay]]">
 <pre>.overlay-example .overlay-what{
 background-color:#fef;
 padding:10px;
@@ -4861,6 +4870,18 @@ field=&quot;story-name&quot;&gt;
 </div>
 <div created="20141125205730428" creator="Tobias Beer" list="Welcome Solutions Plugins Developer Core References Markup" modified="20150206124447460" modifier="Tobias Beer" title="$:/.tb/ui/TopLeftBar/config">
 <pre></pre>
+</div>
+<div created="20150209205259313" creator="Tobias Beer" list-after="$:/core/ui/ViewTemplate/body" modified="20150209205911966" modifier="Tobias Beer" tags="$:/tags/ViewTemplate" title="$:/.tb/ui/ViewTemplate/journal-entries">
+<pre>&lt;$list filter=&quot;[all[current]tagging[]tag[Journal]sort[created]limit[1]]&quot; variable=&quot;none&quot;&gt;
+&lt;h2&gt;Journal Entries&lt;/h2&gt;
+&lt;$list filter=&quot;[all[current]tagging[]tag[Journal]sort[created]]&quot;&gt;
+@@color:grey;
+&lt;$view field=&quot;created&quot; format=&quot;date&quot; template=&quot;YYYY-0MM-0DD&quot;/&gt;
+&lt;$link&gt;&lt;$view field=title/&gt;&lt;/$link&gt;
+@@
+&lt;br&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;</pre>
 </div>
 <div created="20150116165843966" creator="Tobias Beer" list-after="$:/core/ui/ViewTemplate/body" modified="20150116171818472" modifier="Tobias Beer" summary="shows keywords of a tiddler at the bottom" tags="$:/tags/ViewTemplate" title="$:/.tb/ui/ViewTemplate/keywords">
 <pre>&lt;$list filter=&quot;[all[current]has[keywords]]-[list[$:/config/Hide/Keywords!!text]]&quot;&gt;
@@ -12140,7 +12161,7 @@ exports.run = function() {
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[$:/.tb/macros/calc]]</pre>
+# [[$:/.my/ui/ViewTemplate/journal-entries]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -13760,7 +13781,7 @@ easy
 <div created="20150116141948744" creator="Tobias Beer" icon="$:/core/images/new-button" modified="20150116141948744" modifier="Tobias Beer" title="Buttons">
 <pre></pre>
 </div>
-<div counter="1" created="20150126150739422" creator="Tobias Beer" foo="foo value" modified="20150129082846479" modifier="Tobias Beer" order="1" tags="Macros Calculation Solutions" title="calc">
+<div counter="1" created="20150126150739422" creator="Tobias Beer" foo="foo value" modified="20150209210341706" modifier="Tobias Beer" order="1" tags="Macros Calculation Solutions" title="calc">
 <pre>Inspired by [[mathmacros @ tiddlyspot|http://mathmacros.tiddlyspot.com]] from [[Danielo Rodríguez]], the ''calc'' macro allows you to do simple calculations based on tiddler fields.
 
 ```
@@ -13794,11 +13815,11 @@ Drag to your wiki: [[$:/.tb/macros/calc]] — version: ''&lt;$view tiddler=&quot
 
 Here's a rudimentary example to reorder lists using the ''calc'' macro...
 
-{{$:/_tb/demo/reorder}}
+{{$:/.tb/demo/reorder}}
 
 ''Rendered via:''
 
-&lt;&lt;source $:/_tb/demo/reorder&gt;&gt;
+&lt;&lt;source $:/.tb/demo/reorder&gt;&gt;
 
 !!! More Examples
 
@@ -18004,6 +18025,15 @@ Here's a more interactive version of it:
 </div>
 <div created="20150116144136296" creator="Tobias Beer" icon="$:/core/images/permalink-button" modified="20150116144136296" modifier="Tobias Beer" title="RegExp">
 <pre></pre>
+</div>
+<div created="20150209205658599" creator="Tobias Beer" modified="20150209210520000" modifier="Tobias Beer" tags="Journal Solutions Lists" title="Related Journal Entries">
+<pre>In a [[response to RickL|https://groups.google.com/d/msg/tiddlywiki/DO_ZEh4TEuY/kWwxIOq46_kJ]], here's how you can show related journal entries to any tiddler...
+
+!! Install
+
+Drag to you wiki: [[$:/.tb/ui/ViewTemplate/journal-entries]]
+
+@@color:#f0f;The below section is rendered for any tiddler with Journal tiddlers tagging to it:@@</pre>
 </div>
 <div icon="$:/core/images/globe" modified="20150204133415729" modifier="Tobias Beer" title="Relationships">
 <pre></pre>
