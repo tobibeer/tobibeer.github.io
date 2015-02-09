@@ -301,6 +301,8 @@ Error message and password prompt
 
 <li>1452-index-filter</li>
 
+<li>1476-fix-tm-delete-tiddler-doesnt-exist</li>
+
 <li>3rd Party Libraries</li>
 
 <li>Accepted</li>
@@ -6531,7 +6533,7 @@ search
 <div created="20141125155100841" creator="T" modified="20141125155102803" modifier="Tobias Bee" title="$:/status/UserName">
 <pre>Tobias Beer</pre>
 </div>
-<div list="GettingStarted Plugin" title="$:/StoryList">
+<div list="$:/ControlPanel [[Pull Requests]] Pull 1127-fix-notification-z-index GettingStarted" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6551,7 +6553,7 @@ search
 <div created="20150118222506906" creator="Tobias Beer" modified="20150202183042645" modifier="Tobias Beer" title="$:/temp/list-search-sidebar-shadows">
 <pre>viewt</pre>
 </div>
-<div created="20141223133459180" creator="Tobias Beer" modified="20150203162605411" modifier="Tobias Beer" title="$:/temp/NewTagName">
+<div created="20141223133459180" creator="Tobias Beer" modified="20150209230136611" modifier="Tobias Beer" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div created="20141220152319780" creator="Tobias Beer" modified="20150207081209548" modifier="Tobias Beer" title="$:/temp/search">
@@ -6808,8 +6810,8 @@ font-size:1.2em;
 <div created="20141125205730428" creator="Tobias Beer" list="GettingStarted [[Pull Requests]] [[Code Guidelines]] GitHub TidU Actions Mockups" modified="20150109185719512" modifier="Tobias Beer" title="$:/ui/TopLeftBar/config">
 <pre></pre>
 </div>
-<div created="20141125155118872" creator="Tobias Beer" modified="20141125155119825" modifier="Tobias Beer" title="$:/UploadName">
-<pre>tb5dev</pre>
+<div created="20141125155118872" creator="Tobias Beer" modified="20150209230221511" modifier="Tobias Beer" title="$:/UploadName">
+<pre></pre>
 </div>
 <div created="20141206180730515" creator="Tobias Beer" modified="20141206230051267" modifier="Tobias Beer" tags="TidU" title="0">
 <pre>;read
@@ -6979,6 +6981,18 @@ https://groups.google.com/d/msg/tiddlywiki/-qevGMkbWBQ/lgUu0j_wlnkJ</pre>
 : http://tbdemo.tiddlyspot.com/#Index%20Filter
 ; was
 : &lt;&lt;git5 issues/1375&gt;&gt;</pre>
+</div>
+<div created="20150209230104906" creator="Tobias Beer" modified="20150209230206409" modifier="Tobias Beer" summary="Fix issue deleting non-existent tiddler" tags="Pull Accepted 5.1.8" title="1476-fix-tm-delete-tiddler-doesnt-exist" url="&lt;&lt;git5 &quot;pull/1476&quot;&gt;&gt;">
+<pre>Currently ''tm-delete-tiddler'' throws a red error box:
+
+```
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-delete-tiddler&quot; $param=&quot;DoesntExist&quot;/&gt;
+delete non-existing
+&lt;/$button&gt;
+```
+
+`Uncaught TypeError: Cannot read property 'fields' of undefined`</pre>
 </div>
 <div created="20141206172121993" creator="Tobias Beer" modified="20141209120735375" modifier="Tobias Beer" tags="Concepts" title="3rd Party Libraries" url="https://groups.google.com/d/msg/tiddlywiki/7StDWFV9Wh0/lCITmvKLNlYJ">
 <pre>To include a third party javascript library in the header section...
