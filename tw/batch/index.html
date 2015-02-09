@@ -137,6 +137,12 @@ Error message and password prompt
 
 <li>$:/isEncrypted</li>
 
+<li>$:/language/Batch/Data/Add/Index/Placeholder</li>
+
+<li>$:/language/Batch/Data/Add/Value/Placeholder</li>
+
+<li>$:/language/Batch/Data/Edit/Value/Placeholder</li>
+
 <li>$:/SiteSubtitle</li>
 
 <li>$:/SiteTitle</li>
@@ -151,11 +157,11 @@ Error message and password prompt
 
 <li>$:/temp/batch-select</li>
 
-<li>$:/temp/batchname</li>
-
 <li>$:/temp/info-plugin</li>
 
 <li>$:/temp/NewTagName</li>
+
+<li>$:/temp/search</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
@@ -177,9 +183,11 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
-<div caption="Batch Editor" created="20150209085100009" modified="20150209110825115" tags="" title="$:/.tb/ui/BatchEdit">
+<div caption="Batch Editor" created="20150209085100009" modified="20150209123345539" tags="" title="$:/.tb/ui/BatchEdit">
 <pre>\define lingo-base() $:/language/Batch/
+
 \define index() $(currentTiddler)$##$(currentIndex)$
+
 \define new-index(index,value)
 &lt;$reveal type=&quot;nomatch&quot; text=&quot;&quot; default=&quot;&quot;&quot;$index$&quot;&quot;&quot;&gt;
 &lt;$set name=&quot;currentIndex&quot; value=&quot;$index$&quot;&gt;
@@ -192,13 +200,14 @@ Error message and password prompt
 &lt;/$reveal&gt;
 \end
 
-&lt;$fieldmangler tiddler=&quot;$:/temp/batchname&quot;&gt;
+&lt;$reveal type=&quot;match&quot; state=&quot;$:/temp/batch-select&quot; text=&quot;&quot;&gt;
+&lt;$fieldmangler tiddler=&quot;$:/temp/batch-select&quot;&gt;
 &lt;$edit-text tiddler=&quot;$:/temp/batch-select&quot; tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;select data tiddler&quot; focusPopup=&lt;&lt;qualify &quot;$:/state/popup/batch-auto-complete&quot;&gt;&gt;/&gt;
 &lt;div class=&quot;tc-block-dropdown-wrapper&quot;&gt;
 &lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/batch-auto-complete&quot;&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; default=&quot;&quot;&gt;
 &lt;div class=&quot;tc-block-dropdown&quot;&gt;
 &lt;$linkcatcher to=&quot;$:/temp/batch-select&quot; set=&quot;text&quot; setTo=&quot;&quot;&gt;
-&lt;$list filter=&quot;[type[application/x-tiddler-dictionary]] [type[application/json]] +[search:title{$:/temp/batch-select}sort[title]]&quot;&gt;
+&lt;$list filter=&quot;[type[application/x-tiddler-dictionary]] [type[application/json]] -[[$:/HistoryList]] -[has[plugin-type]]+[search:title{$:/temp/batch-select}sort[title]]&quot;&gt;
 &lt;$link&gt;&lt;$view field=&quot;title&quot; format=&quot;text&quot;/&gt;&lt;/$link&gt;
 &lt;/$list&gt;
 &lt;/$linkcatcher&gt;
@@ -206,21 +215,27 @@ Error message and password prompt
 &lt;/$reveal&gt;
 &lt;/div&gt;
 &lt;/$fieldmangler&gt;
+&lt;/$reveal&gt;
 &lt;$reveal type=&quot;nomatch&quot; state=&quot;$:/temp/batch-select&quot; text=&quot;&quot;&gt;
 &lt;$tiddler tiddler={{$:/temp/batch-select}}&gt;
 &lt;div class=&quot;tc-edit-fields&quot;&gt;
+&lt;$link&gt;&lt;$view field=title/&gt;&lt;/$link&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot;&gt;
+&lt;$action-setfield $tiddler=&quot;$:/temp/batch-select&quot; text=&quot;&quot; /&gt;
+{{$:/core/images/close-button}}
+&lt;/$button&gt;
+&lt;br&gt;
 &lt;table class=&quot;tc-edit-fields&quot;&gt;
 &lt;tbody&gt;
-&lt;$list filter=&quot;[{$:/temp/batch-select}indexes[]sort[title]] +[sort[title]]&quot; variable=&quot;currentIndex&quot;&gt;
+&lt;$list filter=&quot;[{$:/temp/batch-select}indexes[]]&quot; variable=&quot;currentIndex&quot;&gt;
 &lt;tr class=&quot;tc-edit-field&quot;&gt;
 &lt;td class=&quot;tc-edit-field-name&quot;&gt;
 &lt;$view tiddler=&lt;&lt;currentIndex&gt;&gt; field=title/&gt;:&lt;/td&gt;
 &lt;td class=&quot;tc-edit-field-value&quot;&gt;
-&lt;$edit-text index=&lt;&lt;currentIndex&gt;&gt; placeholder=&lt;&lt;lingo Data/Add/Value/Placeholder&gt;&gt; tag=&quot;input&quot; default=&quot;&quot; class=&quot;tc-edit-texteditor&quot;/&gt;
+&lt;$edit-text index=&lt;&lt;currentIndex&gt;&gt; placeholder=&lt;&lt;lingo Data/Edit/Value/Placeholder&gt;&gt; tag=&quot;input&quot; default=&quot;&quot; class=&quot;tc-edit-texteditor&quot;/&gt;
 &lt;/td&gt;
 &lt;td class=&quot;tc-edit-field-remove&quot;&gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&lt;&lt;lingo Data/Remove/Hint&gt;&gt; aria-label=&lt;&lt;lingo Data/Remove/Caption&gt;&gt; set=&lt;&lt;index&gt;&gt;&gt;
-&lt;&lt;index&gt;&gt;
 {{$:/core/images/delete-button}}
 &lt;/$button&gt;
 &lt;/td&gt;
@@ -236,10 +251,10 @@ Error message and password prompt
 &lt;&lt;lingo Fields/Add/Prompt&gt;&gt;
 &lt;/em&gt;
 &lt;span class=&quot;tc-edit-field-add-name&quot;&gt;
-&lt;$edit-text tiddler=&quot;$:/temp/batch-new-index&quot; tag=&quot;input&quot; default=&quot;&quot; placeholder=&lt;&lt;lingo Data/Add/Name/Placeholder&gt;&gt; class=&quot;tc-edit-texteditor&quot;/&gt;
+&lt;$edit-text tiddler=&quot;$:/temp/batch-new-index&quot; tag=&quot;input&quot; default=&quot;&quot; placeholder={{$:/language/Batch/Data/Add/Index/Placeholder}} class=&quot;tc-edit-texteditor&quot;/&gt;
 &lt;/span&gt;
 &lt;span class=&quot;tc-edit-field-add-value&quot;&gt;
-&lt;$edit-text tiddler=&quot;$:/temp/batch-new-value&quot; tag=&quot;input&quot; default=&quot;&quot; placeholder=&lt;&lt;lingo Data/Add/Value/Placeholder&gt;&gt; class=&quot;tc-edit-texteditor&quot;/&gt;
+&lt;$edit-text tiddler=&quot;$:/temp/batch-new-value&quot; tag=&quot;input&quot; default=&quot;&quot; placeholder={{$:/language/Batch/Data/Add/Value/Placeholder}} class=&quot;tc-edit-texteditor&quot;/&gt;
 &lt;/span&gt;
 &lt;span class=&quot;tc-edit-field-add-button&quot;&gt;
 &lt;$macrocall $name=&quot;new-index&quot; index={{$:/temp/batch-new-index}} value={{$:/temp/batch-new-value}}/&gt;
@@ -5470,20 +5485,33 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20150209085513220" modified="20150209094718673" tags="" title="$:/data/dict" type="application/x-tiddler-dictionary">
+<div created="20150209085513220" modified="20150209111113659" tags="" title="$:/data/dict" type="application/x-tiddler-dictionary">
 <pre>foo: bar
 index: undefined
-dasdasd: 
+dasdasd: undefined
 sdfsdf: undefined</pre>
 </div>
-<div created="20150209085536833" modified="20150209093217490" tags="" title="$:/data/json" type="application/json" value="">
-<pre>{}</pre>
+<div created="20150209085536833" modified="20150209122939325" tags="" title="$:/data/json" type="application/json" value="">
+<pre>{
+    &quot;foo&quot;: &quot;bar&quot;,
+    &quot;baz&quot;: &quot;mumble&quot;,
+    &quot;frotz&quot;: &quot;gronk&quot;
+}</pre>
 </div>
 <div created="20150209082156259" modified="20150209082156919" title="$:/DefaultTiddlers">
 <pre>Welcome</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
+</div>
+<div created="20150209122849598" modified="20150209122922274" tags="" title="$:/language/Batch/Data/Add/Index/Placeholder">
+<pre>new index</pre>
+</div>
+<div created="20150209122901475" modified="20150209122912847" tags="" title="$:/language/Batch/Data/Add/Value/Placeholder">
+<pre>new index value</pre>
+</div>
+<div created="20150209120924714" modified="20150209120933720" tags="" title="$:/language/Batch/Data/Edit/Value/Placeholder">
+<pre>input data</pre>
 </div>
 <div created="20150209082146434" modified="20150209082154231" title="$:/SiteSubtitle">
 <pre>bulk edit tiddlers</pre>
@@ -5494,20 +5522,17 @@ sdfsdf: undefined</pre>
 <div modified="20150209082212886" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Plugins</pre>
 </div>
-<div modified="20150209085612535" title="$:/state/tab/moresidebar-401116514">
+<div modified="20150209122845966" title="$:/state/tab/moresidebar-401116514">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div modified="20150209110902187" title="$:/state/tab/sidebar--1835078512">
+<div modified="20150209123427096" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div list="" title="$:/StoryList">
+<div list="$:/.tb/ui/BatchEdit" title="$:/StoryList">
 <pre></pre>
 </div>
-<div modified="20150209094140039" title="$:/temp/batch-select">
-<pre>$:/data/dict</pre>
-</div>
-<div created="20150209090637267" modified="20150209092749327" title="$:/temp/batchname">
-<pre>$:/data/json</pre>
+<div modified="20150209123358069" title="$:/temp/batch-select">
+<pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -5524,6 +5549,9 @@ sdfsdf: undefined</pre>
 }</pre>
 </div>
 <div modified="20150209085522636" title="$:/temp/NewTagName">
+<pre></pre>
+</div>
+<div created="20150209114517635" modified="20150209114519957" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="A clean theme that emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.7">
