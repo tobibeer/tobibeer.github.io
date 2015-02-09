@@ -6820,7 +6820,7 @@ exports.invokeUpgraders = function(titles,tiddlers) {
 })();
 </pre>
 </div>
-<div created="20150209085513220" index="dasdasd" modified="20150209131041503" tags="" title="$:/data/dict" type="application/x-tiddler-dictionary">
+<div created="20150209085513220" index="dasdasd" modified="20150209131741009" tags="" title="$:/data/dict" type="application/x-tiddler-dictionary">
 <pre>foo: bar
 baz: mumble
 frotz: gronk</pre>
@@ -6871,7 +6871,7 @@ frotz: gronk</pre>
 <div modified="20150209131122112" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div list="Welcome" title="$:/StoryList">
+<div list="Welcome ActionSetField-RemoveIndex" title="$:/StoryList">
 <pre></pre>
 </div>
 <div modified="20150209130121810" title="$:/temp/batch-select">
@@ -7004,7 +7004,7 @@ delete: foo
 : `invokeAction()`
 :: [[$:/core/modules/widgets/action-setfield.js]]</pre>
 </div>
-<div created="20150209130823431" modified="20150209131036055" tags="" title="ActionSetField-RemoveIndex">
+<div created="20150209130823431" modified="20150209131728340" tags="" title="ActionSetField-RemoveIndex">
 <pre>&lt;$tiddler tiddler=&quot;$:/data/dict&quot;&gt;
 &lt;$button&gt;
 &lt;$action-setfield $index=&quot;howdy&quot; $value=&quot;udo&quot;/&gt;
@@ -7015,7 +7015,13 @@ set: howdy =&gt; udo
 delete: howdy
 &lt;/$button&gt;
 index ''howdy'': {{##howdy}}
+
+&lt;$transclude field=&quot;text&quot;/&gt;
 &lt;/$tiddler&gt;
+
+~
+
+''via:''
 
 ```
 &lt;$tiddler tiddler=&quot;$:/data/dict&quot;&gt;
