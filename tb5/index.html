@@ -4403,7 +4403,7 @@ width:16px;
     right: 10px; /* space between number and text */
 }</pre>
 </div>
-<div created="20150211085313169" creator="Tobias Beer" modified="20150211085523853" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles/ribbon" type="text/css">
+<div created="20150211085313169" creator="Tobias Beer" modified="20150211091220613" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles/ribbon" type="text/css">
 <pre>.tc-tagged-ribbon {
 overflow:hidden;
 padding-bottom: 28px;
@@ -4431,6 +4431,20 @@ width: 220px;
 .corner-ribbon.blue{
 background: #39d;
 color:white;
+}
+
+@media (max-width: 960px) {
+.corner-ribbon.bottom-right {
+bottom: -20px;
+right: 0;
+transform: none;
+-webkit-transform: none;
+position: relative;
+padding: 10px 7px 15px 7px;
+text-align: center;
+width: auto;
+margin: -20px;
+}
 }</pre>
 </div>
 <div created="20150118215408304" creator="Tobias Beer" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20150121123638448" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles/tb5" type="text/css">
@@ -19211,7 +19225,7 @@ For packaging your plugin you finally simply run a shell script which packs the 
 ;test drive
 :http://thediveo.github.io/ThirdFlow/output/thirdflow.html</pre>
 </div>
-<div created="20150128131136881" creator="Tobias Beer" modified="20150211085636805" modifier="Tobias Beer" ribbon="Hello, everyone!" tags="ribbon" title="Tiddler Ribbon">
+<div created="20150128131136881" creator="Tobias Beer" modified="20150211091345427" modifier="Tobias Beer" ribbon="Hello, everyone!" tags="ribbon" title="Tiddler Ribbon">
 <pre>Following [[these instructions|http://codepen.io/eode9/pen/twkKm]], here's how you can show a ribbon at each tiddler using a [[Conditional ViewTemplate Section]] and some css.
 
 ; the ribbon
@@ -19219,7 +19233,9 @@ For packaging your plugin you finally simply run a shell script which packs the 
 ; the styles
 : [[$:/.tb/styles/ribbon]]
 
-For the ribbon to not show as an overlay, but cut-off, this tiddler is also tagged {{ribbon||$:/core/ui/TagTemplate}}. This tag is hidden in view-mode via [[Hide Tag Buttons]]. However, this brings the problem that popups will be cut-off (&lt;&lt;git5 issues/1102&gt;&gt;). Try clicking the above tag button.</pre>
+For the ribbon to not show as an overlay, but cut-off, this tiddler is also tagged {{ribbon||$:/core/ui/TagTemplate}}. This tag is hidden in view-mode via [[Hide Tag Buttons]]. However, this brings the problem that popups will be cut-off (&lt;&lt;git5 issues/1102&gt;&gt;). Try clicking the above tag button.
+
+''Note'': For small screen widths the ribbon is shown as a bottom bar.</pre>
 </div>
 <div created="20141209163738177" creator="Tobias Beer" icon="$:/core/images/edit-button" modified="20150116143042444" modifier="Tobias Beer" title="Tiddlers">
 <pre></pre>
