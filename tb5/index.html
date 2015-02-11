@@ -221,6 +221,8 @@ Error message and password prompt
 
 <li>$:/.tb/styles/really-numbered</li>
 
+<li>$:/.tb/styles/ribbon</li>
+
 <li>$:/.tb/styles/tb5</li>
 
 <li>$:/.tb/styles/tiddlylinks</li>
@@ -845,17 +847,17 @@ Error message and password prompt
 
 <li>ibox</li>
 
-<li>icons</li>
-
 <li>Icons</li>
+
+<li>icons</li>
 
 <li>iframe-1</li>
 
 <li>ImageMaps</li>
 
-<li>Images</li>
-
 <li>images</li>
+
+<li>Images</li>
 
 <li>Import</li>
 
@@ -1225,9 +1227,9 @@ Error message and password prompt
 
 <li>Testing New Stuff</li>
 
-<li>text</li>
-
 <li>Text</li>
+
+<li>text</li>
 
 <li>Text On A Vectorpath</li>
 
@@ -1265,9 +1267,9 @@ Error message and password prompt
 
 <li>Tobias Beer</li>
 
-<li>toc</li>
-
 <li>ToC</li>
+
+<li>toc</li>
 
 <li>Toggle</li>
 
@@ -4401,6 +4403,36 @@ width:16px;
     right: 10px; /* space between number and text */
 }</pre>
 </div>
+<div created="20150211085313169" creator="Tobias Beer" modified="20150211085523853" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles/ribbon" type="text/css">
+<pre>.tc-tagged-ribbon {
+overflow:hidden;
+padding-bottom: 28px;
+}
+
+.corner-ribbon.sticky{
+position: fixed;
+}
+
+.corner-ribbon.shadow{
+box-shadow: 0 0 3px rgba(0,0,0,.3);
+}
+
+.corner-ribbon.bottom-right{
+top: 20px;
+right: -480px;
+transform: rotate(-45deg);
+-webkit-transform: rotate(-45deg);
+position: relative;
+padding: 7px;
+text-align: center;
+width: 220px;
+}
+
+.corner-ribbon.blue{
+background: #39d;
+color:white;
+}</pre>
+</div>
 <div created="20150118215408304" creator="Tobias Beer" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20150121123638448" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles/tb5" type="text/css">
 <pre>.tb5-version{
 display:inline-block;
@@ -4908,42 +4940,8 @@ moved to {{$:/.tb/config/redirected-tb5##$(currentTiddler)$}}
 \end
 &lt;&lt;handleRedirects&gt;&gt;</pre>
 </div>
-<div created="20150128131146030" creator="Tobias Beer" modified="20150128132754513" modifier="Tobias Beer" tags="$:/tags/ViewTemplate" title="$:/.tb/ui/ViewTemplate/ribbon">
-<pre>&lt;$list filter=&quot;[all[current]has[ribbon]]&quot;&gt;
-&lt;style&gt;
-.tc-tagged-ribbon {
-overflow:hidden;
-padding-bottom: 28px;
-}
-
-.corner-ribbon.sticky{
-position: fixed;
-}
-
-.corner-ribbon.shadow{
-box-shadow: 0 0 3px rgba(0,0,0,.3);
-}
-
-.corner-ribbon.bottom-right{
-top: 0;
-right: -480px;
-transform: rotate(-45deg);
--webkit-transform: rotate(-45deg);
-position: relative;
-padding: 7px;
-text-align: center;
-width: 220px;
-}
-
-.corner-ribbon.blue{
-background: #39d;
-color:white;
-}
-&lt;/style&gt;
-&lt;div class=&quot;corner-ribbon bottom-right sticky blue shadow&quot;&gt;
-{{!!ribbon}}
-&lt;/div&gt;
-&lt;/$list&gt;</pre>
+<div created="20150128131146030" creator="Tobias Beer" modified="20150211085445339" modifier="Tobias Beer" tags="$:/tags/ViewTemplate" title="$:/.tb/ui/ViewTemplate/ribbon">
+<pre>&lt;$list filter=&quot;[all[current]has[ribbon]]&quot;&gt;&lt;div class=&quot;corner-ribbon bottom-right sticky blue shadow&quot;&gt;{{!!ribbon}}&lt;/div&gt;&lt;/$list&gt;</pre>
 </div>
 <div created="20141119004109928" creator="Tobias Beer" list-after="$:/core/ui/ViewTemplate/tags" modified="20150109180317430" modifier="Tobias Beer" summary="shows summary for all system tiddlers" tags="$:/tags/ViewTemplate" title="$:/.tb/ui/ViewTemplate/summary">
 <pre>&lt;$list filter=&quot;[all[current]has[summary]]&quot;&gt;
@@ -15693,10 +15691,10 @@ HTML tags work like that.
 <div created="20141211125930733" creator="Tobias Beer" follow="yes" modified="20150209132500215" modifier="Tobias Beer" summary="demonstrating lightboxes in tw5&lt;!--ibox--&gt;" tags="[[Tobias Beer]]" title="ibox" url="http://tobibeer.github.io/tw/ibox">
 <pre></pre>
 </div>
-<div created="20150202230519361" creator="Tobias Beer" follow="yes" modified="20150202230722869" modifier="Tobias Beer" summary="a showcase and reference for icon fonts and libraries with previews" tags="[[Tobias Beer]] Solutions Fonts Icons Presentation" title="icons" url="http://icons.tiddlyspot.com">
+<div icon="$:/core/images/star-filled" modified="20150202230419819" modifier="Tobias Beer" title="Icons">
 <pre></pre>
 </div>
-<div icon="$:/core/images/star-filled" modified="20150202230419819" modifier="Tobias Beer" title="Icons">
+<div created="20150202230519361" creator="Tobias Beer" follow="yes" modified="20150202230722869" modifier="Tobias Beer" summary="a showcase and reference for icon fonts and libraries with previews" tags="[[Tobias Beer]] Solutions Fonts Icons Presentation" title="icons" url="http://icons.tiddlyspot.com">
 <pre></pre>
 </div>
 <div created="20150105231913568" creator="Tobias Beer" follow="no" modified="20150108114142058" modifier="Tobias Beer" summary="testing how two ~TiddlyWikis behave which mutually iframe their contents" tags="[[Tobias Beer]]" title="iframe-1" url="http://iframe-1.tiddlyspot.com">
@@ -15711,9 +15709,6 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 {{$:/.tb/demo/image-map}}
 
 &lt;&lt;source &quot;$:/.tb/demo/image-map&quot;&gt;&gt;</pre>
-</div>
-<div icon="$:/core/images/storyview-zoomin" modified="20141201174313618" modifier="Tobias Beer" title="Images">
-<pre></pre>
 </div>
 <div created="20141203173130415" creator="Tobias Beer" modified="20141203173139233" modifier="Tobias Beer" tags="Markup" title="images">
 <pre>&lt;dt&gt;
@@ -15733,6 +15728,9 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 [img width=16 [http://www.tiddlywiki.com/favicon.ico]]&lt;br&gt;
 [img class=&quot;tc-image&quot; [http://www.tiddlywiki.com/favicon.ico]]
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/storyview-zoomin" modified="20141201174313618" modifier="Tobias Beer" title="Images">
+<pre></pre>
 </div>
 <div created="20150116144431513" creator="Tobias Beer" icon="$:/core/images/export-button" modified="20150116144431513" modifier="Tobias Beer" title="Import">
 <pre></pre>
@@ -19136,6 +19134,9 @@ When was the last time you visited a website that allowed you to do just that?!
 
 Find something to be off? Then check out this [[simple documentation workflow|Documentation]] on how easy it is to make things better for the rest of us.</pre>
 </div>
+<div created="20150116142447533" creator="Tobias Beer" icon="$:/core/images/edit-button" modified="20150116142447533" modifier="Tobias Beer" title="Text">
+<pre></pre>
+</div>
 <div created="20150109171138176" creator="Tobias Beer" modified="20150109180720115" modifier="Tobias Beer" tags="" title="text">
 <pre>The ''text'' macro provides a most simple macro to output colored text...
 
@@ -19163,9 +19164,6 @@ So, learning a bit of [[wikitext markup|Markup]] may be that better choice.
 !! Installation
 
 Drag to your wiki: &lt;&lt;source [[$:/.tb/macros/text]]&gt;&gt;</pre>
-</div>
-<div created="20150116142447533" creator="Tobias Beer" icon="$:/core/images/edit-button" modified="20150116142447533" modifier="Tobias Beer" title="Text">
-<pre></pre>
 </div>
 <div created="20141203134558759" creator="Tobias Beer" modified="20141206175524116" modifier="Tobias Beer" tags="Images Solutions Presentation" title="Text On A Vectorpath">
 <pre>Here's [[an experiment by BuggyJ|http://xlink.tiddlyspot.com/#Making%20curved%20text%20with%20inline%20SVG]] showing how to render text on a svg vector graphic.
@@ -19213,13 +19211,13 @@ For packaging your plugin you finally simply run a shell script which packs the 
 ;test drive
 :http://thediveo.github.io/ThirdFlow/output/thirdflow.html</pre>
 </div>
-<div created="20150128131136881" creator="Tobias Beer" modified="20150129160943311" modifier="Tobias Beer" ribbon="Hello, everyone!" tags="ribbon" title="Tiddler Ribbon">
+<div created="20150128131136881" creator="Tobias Beer" modified="20150211085636805" modifier="Tobias Beer" ribbon="Hello, everyone!" tags="ribbon" title="Tiddler Ribbon">
 <pre>Following [[these instructions|http://codepen.io/eode9/pen/twkKm]], here's how you can show a ribbon at each tiddler using a [[Conditional ViewTemplate Section]] and some css.
 
 ; the ribbon
 : [[$:/.tb/ui/ViewTemplate/ribbon]]
-
-While the above works, it is advisable to extract the style definitions it contains into a separate stylesheet tiddler tagged {{$:/tags/Stylesheet||$:/core/ui/TagTemplate}}.
+; the styles
+: [[$:/.tb/styles/ribbon]]
 
 For the ribbon to not show as an overlay, but cut-off, this tiddler is also tagged {{ribbon||$:/core/ui/TagTemplate}}. This tag is hidden in view-mode via [[Hide Tag Buttons]]. However, this brings the problem that popups will be cut-off (&lt;&lt;git5 issues/1102&gt;&gt;). Try clicking the above tag button.</pre>
 </div>
@@ -19333,6 +19331,9 @@ If you neither have a TiddlyWiki or TiddlySpot yet, here's a simple process to d
 &quot;$:/.tb/templates/list-search-me&quot;&gt;&gt;
 &lt;/dl&gt;</pre>
 </div>
+<div created="20150116141836162" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116141836162" modifier="Tobias Beer" title="ToC">
+<pre></pre>
+</div>
 <div created="20141125232200140" creator="Tobias Beer" modified="20141125232258995" modifier="Tobias Beer" title="toc">
 <pre>\define regexp-headings() (^!+.*)(?gmi)
 &lt;div class=&quot;tidtoc tc-tiddler-frame&quot;&gt;
@@ -19389,9 +19390,6 @@ float:right;
 text-align:right;
 }
 &lt;/style&gt;</pre>
-</div>
-<div created="20150116141836162" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116141836162" modifier="Tobias Beer" title="ToC">
-<pre></pre>
 </div>
 <div created="20150119101745352" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150119101745352" modifier="Tobias Beer" title="Toggle">
 <pre></pre>
