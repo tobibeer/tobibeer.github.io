@@ -233,6 +233,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/showeditpreview</li>
+
 <li>$:/state/tab--1498284803</li>
 
 <li>$:/state/tab-1749438307</li>
@@ -6088,7 +6090,7 @@ fill:$(foregroundColor)$;
 color:$(foregroundColor)$;
 \end</pre>
 </div>
-<div created="20150126124420601" creator="Tobias Beer" modified="20150126175615050" modifier="Tobias Beer" module-type="filteroperator" tags="[[Cleanup 5.1.8]]" title="$:/core/modules/filters/each.js" type="application/javascript">
+<div created="20150126124420601" creator="Tobias Beer" modified="20150211183856859" modifier="Tobias Beer" module-type="filteroperator" tags="[[Cleanup 5.1.8]]" title="$:/core/modules/filters/each.js" type="application/javascript">
 <pre>/*\
 title: $:/core/modules/filters/each.js
 type: application/javascript
@@ -6108,31 +6110,38 @@ With suffix &quot;list&quot;, selects all tiddlers that are values in a specifie
 Export our filter function
 */
 exports.each = function(source,operator,options) {
-	var results = [],
-		values = {},
-		list = &quot;list&quot; === operator.suffix;
-	source(function(tiddler,title) {
-		if(tiddler) {
-			var field = operator.operand || &quot;title&quot;,
-				value = list ?
-					options.wiki.getTiddlerList(title,field) :
-					[ &quot;title&quot; === field ? title : tiddler.getFieldString(operator.operand)];
-			$tw.utils.each(
-				value,
-				function(value){
-					if(!$tw.utils.hop(values,value)) {
-						values[value] = true;
-						results.push(list ? value : title);
-					}
+	var results =[] ,
+		value,values = {},
+		field = operator.operand || &quot;title&quot;;
+	if(operator.suffix !== &quot;list&quot;) {
+		source(function(tiddler,title) {
+			if(tiddler) {
+				value = (field === &quot;title&quot;) ? title : tiddler.getFieldString(field);
+				if(!$tw.utils.hop(values,value)) {
+					values[value] = true;
+					results.push(title);
 				}
-			)
-		}
-	});
+			}
+		});
+	} else {
+		source(function(tiddler,title) {
+			if(tiddler) {
+				$tw.utils.each(
+					options.wiki.getTiddlerList(title,field),
+					function(value) {
+						if(!$tw.utils.hop(values,value)) {
+							values[value] = true;
+							results.push(value);
+						}
+					}
+				);
+			}
+		});
+	}
 	return results;
 };
 
-})();
-</pre>
+})();</pre>
 </div>
 <div created="20150117110518161" creator="Tobias Beer" modified="20150204004753265" modifier="Tobias Beer" module-type="filteroperator" tags="[[Cleanup 5.1.8]]" title="$:/core/modules/filters/getindex.js" type="application/javascript">
 <pre>/*\
@@ -9369,22 +9378,25 @@ exports.run = function(text, tiddler) {
 <div created="20141124072004487" creator="Tobias Beer" modified="20141124072808736" modifier="Tobias Beer" title="$:/SiteTitle">
 <pre>tbDemo</pre>
 </div>
+<div modified="20150211183855438" modifier="Tobias Beer" title="$:/state/showeditpreview">
+<pre>no</pre>
+</div>
 <div modified="20150119162605621" modifier="Tobias Beer" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
 </div>
 <div modified="20150126102444335" modifier="Tobias Beer" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Saving</pre>
 </div>
-<div modified="20150126124354958" modifier="Tobias Beer" title="$:/state/tab/moresidebar-401116514">
-<pre>$:/core/ui/MoreSideBar/Shadows</pre>
+<div modified="20150211183903320" modifier="Tobias Beer" title="$:/state/tab/moresidebar-401116514">
+<pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div modified="20150126124526483" modifier="Tobias Beer" title="$:/state/tab/sidebar--1835078512">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div modified="20150211183859812" modifier="Tobias Beer" title="$:/state/tab/sidebar--1835078512">
+<pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20141124072011177" creator="T" modified="20141124072012776" modifier="Tobias Bee" title="$:/status/UserName">
 <pre>Tobias Beer</pre>
 </div>
-<div list="$:/ControlPanel GettingStarted" title="$:/StoryList">
+<div list="each:list $:/core/modules/filters/each.js" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20141119102634212" creator="Tobias Beer" modified="20141123114922273" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/styles/tb5" type="text/css">
