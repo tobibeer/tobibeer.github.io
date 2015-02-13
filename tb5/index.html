@@ -295,6 +295,8 @@ Error message and password prompt
 
 <li>$:/.tb/ui/ViewTemplate/url</li>
 
+<li>$:/.tb/wizards/replace-tag</li>
+
 <li>$:/books/CuisineMondiale</li>
 
 <li>$:/books/EnglishToday</li>
@@ -595,9 +597,9 @@ Error message and password prompt
 
 <li>Clone Wikis Via store.php</li>
 
-<li>code</li>
-
 <li>Code</li>
+
+<li>code</li>
 
 <li>Code-101</li>
 
@@ -757,9 +759,9 @@ Error message and password prompt
 
 <li>Felix Küppers</li>
 
-<li>Fields</li>
-
 <li>fields</li>
+
+<li>Fields</li>
 
 <li>Fields: Core</li>
 
@@ -783,9 +785,9 @@ Error message and password prompt
 
 <li>FilterOperator: join</li>
 
-<li>filters</li>
-
 <li>Filters</li>
+
+<li>filters</li>
 
 <li>focus</li>
 
@@ -861,9 +863,9 @@ Error message and password prompt
 
 <li>ImageMaps</li>
 
-<li>Images</li>
-
 <li>images</li>
+
+<li>Images</li>
 
 <li>Import</li>
 
@@ -1195,9 +1197,9 @@ Error message and password prompt
 
 <li>Table Of Contents In Sidebar</li>
 
-<li>Tables</li>
-
 <li>tables</li>
+
+<li>Tables</li>
 
 <li>Tables Without Borders</li>
 
@@ -1275,9 +1277,9 @@ Error message and password prompt
 
 <li>Tobias Beer</li>
 
-<li>toc</li>
-
 <li>ToC</li>
+
+<li>toc</li>
 
 <li>Toggle</li>
 
@@ -1293,9 +1295,9 @@ Error message and password prompt
 
 <li>traffic-light-buttons.gif</li>
 
-<li>transclusion</li>
-
 <li>Transclusion</li>
+
+<li>transclusion</li>
 
 <li>Translate TW5</li>
 
@@ -5042,6 +5044,84 @@ color:#bbb;
 <pre>&lt;$list filter=&quot;[all[current]has[url]]&quot;&gt;
 &lt;$transclude field=&quot;url&quot; mode=&quot;block&quot;/&gt;
 &lt;/$list&gt;</pre>
+</div>
+<div created="20150213200150156" creator="Tobias Beer" modified="20150213200259124" modifier="Tobias Beer" summary="a wizard to search and replace an old tag name with a new one" title="$:/.tb/wizards/replace-tag">
+<pre>\define lingo-base() $:/language/EditTemplate/
+
+&lt;$fieldmangler&gt;
+&lt;dl&gt;
+&lt;dt&gt;replace tag:&lt;/dt&gt;
+&lt;dd&gt;&lt;$edit-text
+tiddler=&quot;$:/temp/replace-tag&quot;
+field=&quot;replace&quot;
+tag=&quot;input&quot;
+default=&quot;&quot;
+placeholder={{$:/language/EditTemplate/Tags/Add/Placeholder}}
+focusPopup=&lt;&lt;qualify &quot;$:/state/popup/replace-tags&quot;&gt;&gt;
+class=&quot;tc-popup-handle&quot;/&gt;
+&lt;$button
+popup=&lt;&lt;qualify &quot;$:/state/popup/replace-tags&quot;&gt;&gt;
+class=&quot;tc-btn-invisible tc-btn-dropdown&quot;
+tooltip={{$:/language/EditTemplate/Tags/Dropdown/Hint}}
+aria-label={{$:/language/EditTemplate/Tags/Dropdown/Caption}}&gt;
+{{$:/core/images/down-arrow}}&lt;/$button&gt;
+&lt;$reveal state=&quot;$:/temp/replace-tag!!replace&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+&lt;$button class=&quot;tc-btn-invisible tc-btn-dropdown&quot;&gt;
+&lt;$action-deletetiddler $tiddler=&quot;$:/temp/replace-tag&quot;/&gt;
+{{$:/core/images/close-button}}
+&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;div class=&quot;tc-block-dropdown-wrapper&quot;&gt;
+&lt;$reveal
+state=&lt;&lt;qualify &quot;$:/state/popup/replace-tags&quot;&gt;&gt;
+type=&quot;nomatch&quot;
+text=&quot;&quot;
+default=&quot;&quot;&gt;
+&lt;div class=&quot;tc-block-dropdown&quot;&gt;
+&lt;$linkcatcher to=&quot;$:/temp/replace-tag!!replace&quot;&gt;
+&lt;$list filter=&quot;[tags[]search:title{$:/temp/replace-tag!!replace}sort[]]&quot;&gt;
+{{||$:/core/ui/Components/tag-link}}
+&lt;/$list&gt;
+&lt;/$linkcatcher&gt;
+&lt;/div&gt;
+&lt;/$reveal&gt;
+&lt;/div&gt;
+&lt;/dd&gt;
+&lt;dt&gt;with tag:&lt;/dt&gt;
+&lt;dd&gt;&lt;$edit-text
+tiddler='$:/temp/replace-tag'
+field='with'/&gt;&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/$fieldmangler&gt;
+
+&lt;$list filter='[tag{$:/temp/replace-tag!!replace}]'&gt;
+&lt;$fieldmangler tiddler=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;$button tooltip=&quot;Click to replace tag&quot;&gt;
+{{$:/core/images/done-button}}
+&lt;$action-sendmessage $message=&quot;tm-remove-tag&quot;
+$param={{$:/temp/replace-tag!!replace}}/&gt;
+&lt;$action-sendmessage $message='tm-add-tag'
+$param={{$:/temp/replace-tag!!with}}/&gt;
+&lt;/$button&gt;
+&lt;$link&gt;&lt;$view field=title/&gt;&lt;/$link&gt;&lt;br&gt;
+&lt;/$fieldmangler&gt;
+&lt;/$list&gt;
+
+&lt;$reveal type=&quot;nomatch&quot; state=&quot;$:/temp/replace-tag!!with&quot; text=&quot;&quot;&gt;
+&lt;$list filter=&quot;[title{$:/temp/replace-tag!!replace}is[tiddler]]&quot;&gt;
+&lt;$button&gt;
+rename tag &quot;{{$:/temp/replace-tag!!replace}}&quot; to &quot;{{$:/temp/replace-tag!!with}}&quot;
+&lt;$action-setfield
+$tiddler={{$:/temp/replace-tag!!replace}}
+title={{$:/temp/replace-tag!!with}}/&gt;
+&lt;$action-deletetiddler
+$tiddler={{$:/temp/replace-tag!!replace}}/&gt;
+&lt;$action-sendmessage
+$message=&quot;tm-close-tiddler&quot;
+$param={{$:/temp/replace-tag!!replace}}/&gt;
+&lt;/$button&gt;
+&lt;/$list&gt;
+&lt;/$reveal&gt;</pre>
 </div>
 <div courses="French English" created="20141121102432731" creator="Tobias Beer" levels="A2 B1 B2" modified="20141122121853686" modifier="Tobias Beer" title="$:/books/CuisineMondiale">
 <pre>;courses
@@ -13991,15 +14071,15 @@ Here's a rudimentary example to reorder lists using the ''calc'' macro...
 
 For example, you could have your own ''empty.html'' with customizations and plugins and then simply change the name of your wiki under [[ControlPanel|$:/ControlPanel]] / ''Saving'' and set ''Upload Filename'' accordingly. Then load that cloned wiki and continue to work there, saving changes to the new location.</pre>
 </div>
+<div created="20150116142054259" creator="Tobias Beer" icon="$:/core/images/permalink-button" modified="20150116142054259" modifier="Tobias Beer" title="Code">
+<pre></pre>
+</div>
 <div created="20141203172342097" creator="Tobias Beer" modified="20141203172352230" modifier="Tobias Beer" tags="Markup" title="code">
 <pre>&lt;dt&gt;&lt;pre&gt;&amp;#96;code&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
 &lt;dd&gt;`code` ...via backticks&lt;/dd&gt;
 
 &lt;dt&gt;&lt;pre&gt;&amp;#96;&amp;#96;with &amp;#96;backticks&amp;#96; &amp;#96;&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
 &lt;dd&gt;``with `backticks` ``&lt;/dd&gt;</pre>
-</div>
-<div created="20150116142054259" creator="Tobias Beer" icon="$:/core/images/permalink-button" modified="20150116142054259" modifier="Tobias Beer" title="Code">
-<pre></pre>
 </div>
 <div created="20150121121317298" creator="Tobias Beer" modified="20150122021331885" modifier="Tobias Beer" tags="Developer Code" title="Code-101">
 <pre>If you're new to TiddlyWiki, if not anything that looks like code, [[this discussion with Mat|https://groups.google.com/d/msg/tiddlywiki/l1Tu5uxSHSk/k8N9rvAm2OEJ]] may give you some pointers on how to approach all things programatic.
@@ -15005,13 +15085,13 @@ http://tiddlywiki.com&lt;br&gt;
 <div created="20141122081432373" creator="Tobias Beer" icon="$:/core/images/plugin-generic-language" modified="20150116143501588" modifier="Tobias Beer" summary="inventor of TaskGraph&lt;!--Felix Küppers, vis.js--&gt;" tags="Community" title="Felix Küppers" url="[[felixhayashi@GitHub|https://github.com/felixhayashi/tw-taskgraph/issues/]]">
 <pre></pre>
 </div>
-<div created="20150116142911883" creator="Tobias Beer" icon="$:/core/images/permalink-button" modified="20150116142911883" modifier="Tobias Beer" title="Fields">
-<pre></pre>
-</div>
 <div created="20150201195001262" creator="Tobias Beer" follow="yes" modified="20150209084520349" modifier="Tobias Beer" summary="explorations as to imporoving working with tiddler fields" tags="[[Tobias Beer]] Fields" title="fields" url="http://tobibeer.github.io/tw/fields">
 <pre>!!! Topics
 ; [[FieldsPopup|http://tobibeer.github.io/tw/fields/#FieldsPopup]]
 : &lt;&lt;git5 issues/1448&gt;&gt; — field editing popups</pre>
+</div>
+<div created="20150116142911883" creator="Tobias Beer" icon="$:/core/images/permalink-button" modified="20150116142911883" modifier="Tobias Beer" title="Fields">
+<pre></pre>
 </div>
 <div caption="core" created="20141118195032028" creator="Tobias Beer" modified="20150107195102560" modifier="Tobias Beer" tags="Fields Lists Filters Core" title="Fields: Core">
 <pre>all [[core fields|Fields: Core]] except [[standard fields|Fields: Standard]] as documented in the TiddlyWiki core:
@@ -15202,10 +15282,10 @@ drag to your wiki &lt;&lt;source [[$:/.tb/modules/filters/toc.js]]&gt;&gt;</pre>
 
 see source: &lt;&lt;source $:/core/modules/filters/join.js&gt;&gt;</pre>
 </div>
-<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150207094021145" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters">
+<div created="20141126021240947" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150116141444836" modifier="Tobias Beer" tags="" title="Filters">
 <pre></pre>
 </div>
-<div created="20141126021240947" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150116141444836" modifier="Tobias Beer" tags="" title="Filters">
+<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150207094021145" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters">
 <pre></pre>
 </div>
 <div created="20141202232934876" creator="Tobias Beer" follow="yes" modified="20150207103743726" modifier="Tobias Beer" summary="trying to have the standard theme focus more on content, hiding controls from visitors&lt;!--focus--&gt;" tags="[[Tobias Beer]]" title="focus" url="http://tobibeer.github.io/tw/focus">
@@ -15781,9 +15861,6 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 
 &lt;&lt;source &quot;$:/.tb/demo/image-map&quot;&gt;&gt;</pre>
 </div>
-<div icon="$:/core/images/storyview-zoomin" modified="20141201174313618" modifier="Tobias Beer" title="Images">
-<pre></pre>
-</div>
 <div created="20141203173130415" creator="Tobias Beer" modified="20141203173139233" modifier="Tobias Beer" tags="Markup" title="images">
 <pre>&lt;dt&gt;
 
@@ -15802,6 +15879,9 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 [img width=16 [http://www.tiddlywiki.com/favicon.ico]]&lt;br&gt;
 [img class=&quot;tc-image&quot; [http://www.tiddlywiki.com/favicon.ico]]
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/storyview-zoomin" modified="20141201174313618" modifier="Tobias Beer" title="Images">
+<pre></pre>
 </div>
 <div created="20150116144431513" creator="Tobias Beer" icon="$:/core/images/export-button" modified="20150116144431513" modifier="Tobias Beer" title="Import">
 <pre></pre>
@@ -18297,87 +18377,15 @@ To get this functionality, simply drag and drop the following link to your Tiddl
 <div created="20141125030449729" creator="Tobias Beer" icon="$:/core/images/advanced-search-button" modified="20150116143240942" modifier="Tobias Beer" title="Search">
 <pre></pre>
 </div>
-<div created="20141121222335988" creator="Tobias Beer" modified="20150213194101339" modifier="Tobias Beer" tags="Solutions Tags Renaming Batch" title="Search And Replace Tag">
-<pre>\define lingo-base() $:/language/EditTemplate/
+<div created="20141121222335988" creator="Tobias Beer" modified="20150213200440686" modifier="Tobias Beer" summary="{{$:/.tb/wizards/replace-tag!!summary}}" tags="Solutions Tags Renaming Batch" title="Search And Replace Tag">
+<pre>&gt; {{$:/.tb/wizards/replace-tag}}
 
-A solution to simplify renaming a tag inspired by [[Jed Carty|https://groups.google.com/d/msg/tiddlywiki/eGvsXFm8zAk/2d05mC6bwQwJ]].
+Inspired by [[Jed Carty|https://groups.google.com/d/msg/tiddlywiki/eGvsXFm8zAk/2d05mC6bwQwJ]].
 
-&lt;$fieldmangler&gt;
-&lt;dl&gt;
-&lt;dt&gt;replace tag:&lt;/dt&gt;
-&lt;dd&gt;&lt;$edit-text
-tiddler=&quot;$:/temp/replace-tag&quot;
-field=&quot;replace&quot;
-tag=&quot;input&quot;
-default=&quot;&quot;
-placeholder={{$:/language/EditTemplate/Tags/Add/Placeholder}}
-focusPopup=&lt;&lt;qualify &quot;$:/state/popup/replace-tags&quot;&gt;&gt;
-class=&quot;tc-popup-handle&quot;/&gt;
-&lt;$button
-popup=&lt;&lt;qualify &quot;$:/state/popup/replace-tags&quot;&gt;&gt;
-class=&quot;tc-btn-invisible tc-btn-dropdown&quot;
-tooltip={{$:/language/EditTemplate/Tags/Dropdown/Hint}}
-aria-label={{$:/language/EditTemplate/Tags/Dropdown/Caption}}&gt;
-{{$:/core/images/down-arrow}}&lt;/$button&gt;
-&lt;$reveal state=&quot;$:/temp/replace-tag!!replace&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-&lt;$button class=&quot;tc-btn-invisible tc-btn-dropdown&quot;&gt;
-&lt;$action-deletetiddler $tiddler=&quot;$:/temp/replace-tag&quot;/&gt;
-{{$:/core/images/close-button}}
-&lt;/$button&gt;
-&lt;/$reveal&gt;
-&lt;div class=&quot;tc-block-dropdown-wrapper&quot;&gt;
-&lt;$reveal
-state=&lt;&lt;qualify &quot;$:/state/popup/replace-tags&quot;&gt;&gt;
-type=&quot;nomatch&quot;
-text=&quot;&quot;
-default=&quot;&quot;&gt;
-&lt;div class=&quot;tc-block-dropdown&quot;&gt;
-&lt;$linkcatcher to=&quot;$:/temp/replace-tag!!replace&quot;&gt;
-&lt;$list filter=&quot;[tags[]search:title{$:/temp/replace-tag!!replace}sort[]]&quot;&gt;
-{{||$:/core/ui/Components/tag-link}}
-&lt;/$list&gt;
-&lt;/$linkcatcher&gt;
-&lt;/div&gt;
-&lt;/$reveal&gt;
-&lt;/div&gt;
-&lt;/dd&gt;
-&lt;dt&gt;with tag:&lt;/dt&gt;
-&lt;dd&gt;&lt;$edit-text
-tiddler='$:/temp/replace-tag'
-field='with'/&gt;&lt;/dd&gt;
-&lt;/dl&gt;
-&lt;/$fieldmangler&gt;
 
-&lt;$list filter='[tag{$:/temp/replace-tag!!replace}]'&gt;
-&lt;$fieldmangler tiddler=&lt;&lt;currentTiddler&gt;&gt;&gt;
-&lt;$button tooltip=&quot;Click to replace tag&quot;&gt;
-{{$:/core/images/done-button}}
-&lt;$action-sendmessage $message=&quot;tm-remove-tag&quot;
-$param={{$:/temp/replace-tag!!replace}}/&gt;
-&lt;$action-sendmessage $message='tm-add-tag'
-$param={{$:/temp/replace-tag!!with}}/&gt;
-&lt;/$button&gt;
-&lt;$link&gt;&lt;$view field=title/&gt;&lt;/$link&gt;&lt;br&gt;
-&lt;/$fieldmangler&gt;
-&lt;/$list&gt;
+!! Installation
 
-&lt;$reveal type=&quot;nomatch&quot; state=&quot;$:/temp/replace-tag!!with&quot; text=&quot;&quot;&gt;
-&lt;$list filter=&quot;[title{$:/temp/replace-tag!!replace}is[tiddler]]&quot;&gt;
-&lt;$button&gt;
-rename tag &quot;{{$:/temp/replace-tag!!replace}}&quot; to &quot;{{$:/temp/replace-tag!!with}}&quot;
-&lt;$action-setfield
-$tiddler={{$:/temp/replace-tag!!replace}}
-title={{$:/temp/replace-tag!!with}}/&gt;
-&lt;$action-deletetiddler
-$tiddler={{$:/temp/replace-tag!!replace}}/&gt;
-&lt;$action-sendmessage
-$message=&quot;tm-close-tiddler&quot;
-$param={{$:/temp/replace-tag!!replace}}/&gt;
-&lt;/$button&gt;
-&lt;/$list&gt;
-&lt;/$reveal&gt;
-
-You can use this in your wiki simply by dragging [[this link|Search And Replace Tag]] over.</pre>
+Drag to your wiki: [[$:/.tb/wizards/replace-tag]]</pre>
 </div>
 <div created="20150116165114001" creator="Tobias Beer" keywords="search, keywords, field" modified="20150116172218934" modifier="Tobias Beer" tags="Search Solutions Tabs Hide" title="Search By Keywords Tab">
 <pre>Inspired by a [[discussion with Mat|https://groups.google.com/d/msg/tiddlywiki/iNVgY_NdVTQ/25xJhGoCPvUJ]] on search and tags — based on the method explained at [[Custom Search Tab Exact]] — you can create a new search tab to list tiddlers with a ''keywords'' field matching the search term: [[$:/.tb/ui/SearchResults/keywords]].
@@ -18967,9 +18975,6 @@ via &lt;&lt;source &quot;$:/.tb/demo/svg-circle&quot;&gt;&gt;</pre>
 &lt;&lt;ximg toc.jpg tooltip:&quot;example toc from tiddlywiki.com&quot; class:&quot;pretty&quot;&gt;&gt;
 example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 </div>
-<div created="20150116145013865" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116145013865" modifier="Tobias Beer" title="Tables">
-<pre></pre>
-</div>
 <div created="20141203173550546" creator="Tobias Beer" modified="20141203173601868" modifier="Tobias Beer" tags="Markup" title="tables">
 <pre>&lt;dt style=&quot;font-size:80%;&quot;&gt;
 
@@ -18993,6 +18998,9 @@ example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 |and|now| vertical |
 |&gt;| right|~|
 &lt;/dd&gt;</pre>
+</div>
+<div created="20150116145013865" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116145013865" modifier="Tobias Beer" title="Tables">
+<pre></pre>
 </div>
 <div created="20150206013252827" creator="Tobias Beer" modified="20150206014255748" modifier="Tobias Beer" tags="Tables Presentation Styles" title="Tables Without Borders">
 <pre>If you are wishing to use borderless tables [[like Diane|https://groups.google.com/d/msg/tiddlywiki/lPvh5gcea70/JHWgVmIvHdIJ]], here's what you do:
@@ -19461,6 +19469,9 @@ If you neither have a TiddlyWiki or TiddlySpot yet, here's a simple process to d
 &quot;$:/.tb/templates/list-search-me&quot;&gt;&gt;
 &lt;/dl&gt;</pre>
 </div>
+<div created="20150116141836162" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116141836162" modifier="Tobias Beer" title="ToC">
+<pre></pre>
+</div>
 <div created="20141125232200140" creator="Tobias Beer" modified="20141125232258995" modifier="Tobias Beer" title="toc">
 <pre>\define regexp-headings() (^!+.*)(?gmi)
 &lt;div class=&quot;tidtoc tc-tiddler-frame&quot;&gt;
@@ -19517,9 +19528,6 @@ float:right;
 text-align:right;
 }
 &lt;/style&gt;</pre>
-</div>
-<div created="20150116141836162" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116141836162" modifier="Tobias Beer" title="ToC">
-<pre></pre>
 </div>
 <div created="20150119101745352" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150119101745352" modifier="Tobias Beer" title="Toggle">
 <pre></pre>
@@ -19617,6 +19625,9 @@ The defined styles here...
 <div title="traffic-light-buttons.gif" type="image/gif">
 <pre>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</pre>
 </div>
+<div created="20150116142305496" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150116142305497" modifier="Tobias Beer" title="Transclusion">
+<pre></pre>
+</div>
 <div created="20141203173927301" creator="Tobias Beer" modified="20141206141731598" modifier="Tobias Beer" tags="Markup" title="transclusion" url="http://tiddlywiki.com/#Transclusion%20in%20WikiText">
 <pre>&lt;dt&gt;
 
@@ -19645,9 +19656,6 @@ The defined styles here...
 » list of tiddlers tagged `Foo`&lt;br&gt;
 » same using template `Bar`
 &lt;/dd&gt;</pre>
-</div>
-<div created="20150116142305496" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150116142305497" modifier="Tobias Beer" title="Transclusion">
-<pre></pre>
 </div>
 <div created="20141114203626843" creator="Tobias Beer" modified="20141204134556861" modifier="Tobias Beer" tags="Developer" title="Translate TW5">
 <pre>;Interactive Tool
