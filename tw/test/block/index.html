@@ -121,6 +121,8 @@ Error message and password prompt
 
 <li>$:/.tb/styles</li>
 
+<li>$:/.tb/ui/ViewTemplate/compare</li>
+
 <li>$:/.tb/ui/ViewTemplate/summary</li>
 
 <li>$:/.tb/ui/ViewTemplate/url</li>
@@ -379,6 +381,16 @@ list-style-type: decimal;
 .tc-search-results {
 padding-top: 0;
 }</pre>
+</div>
+<div created="20150213111113651" creator="Tobias Beer" list-after="$:/core/ui/ViewTemplate/body" modified="20150213111319972" modifier="Tobias Beer" summary="shows working alternatives" tags="$:/tags/ViewTemplate" title="$:/.tb/ui/ViewTemplate/compare">
+<pre>&lt;$list filter=&quot;[all[current]has[compare]]&quot;&gt;
+&lt;dl&gt;
+&lt;dt&gt;compare to these alternatives that work&lt;/dt&gt;
+&lt;$list filter=&quot;[all[current]list[!!compare]]&quot;&gt;
+&lt;dd&gt;&lt;$link&gt;&lt;$view field=title/&gt;&lt;/$link&gt;&lt;/dd&gt;
+&lt;/$list&gt;
+&lt;/dl&gt;
+&lt;/$list&gt;</pre>
 </div>
 <div created="20141119004109928" creator="Tobias Beer" list-after="$:/core/ui/ViewTemplate/tags" modified="20150109180317430" modifier="Tobias Beer" summary="shows summary for all system tiddlers" tags="$:/tags/ViewTemplate" title="$:/.tb/ui/ViewTemplate/summary">
 <pre>&lt;$list filter=&quot;[all[current]has[summary]]&quot;&gt;
@@ -5637,10 +5649,10 @@ padding-top: 0;
 <div modified="20150213105352228" title="$:/state/tab/moresidebar-401116514">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div modified="20150213105604842" title="$:/state/tab/sidebar--1835078512">
+<div modified="20150213111336002" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div list="Welcome" title="$:/StoryList">
+<div list="$:/.tb/ui/ViewTemplate/compare Script-Compare Script120 Script040 Script045" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -5832,7 +5844,7 @@ ls -al
 
 &lt;/$tiddler&gt;'&gt;&gt;</pre>
 </div>
-<div compare="Script120 Script045" created="20150213102612508" modified="20150213110717865" summary="{{why##use}}" tags="Script Test Fails" title="Script040">
+<div compare="Script120 Script045" created="20150213102612508" modified="20150213105322048" tags="Script Test Fails" title="Script040">
 <pre>&lt;&lt;`
 '&lt;$tiddler tiddler=&quot;Script&quot;&gt;
 
@@ -5945,18 +5957,14 @@ ls -al
 : [[Script-Fails]]
 : [[Script-Compare]]</pre>
 </div>
-<div created="20150213104404193" modified="20150213110700621" tags="" title="why" type="application/x-tiddler-dictionary">
+<div created="20150213104404193" modified="20150213110013200" tags="" title="why" type="application/x-tiddler-dictionary">
 <pre>FAILS
 
 newline: fails as expected as we're not forcing blockmode with an initial newline
 
 WORKS
 
-mode: works, since `mode=&quot;block&quot;` forces block-mode for the transclude widget
-
-HINT
-
-use: use `mode=&quot;block&quot;` to force block-mode for the transclude widget</pre>
+mode: works, since `mode=&quot;block&quot;` forces block-mode for the transclude widget</pre>
 </div>
 
 </div>
