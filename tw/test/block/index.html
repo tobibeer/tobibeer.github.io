@@ -165,6 +165,18 @@ Error message and password prompt
 
 <li>$:/UploadName</li>
 
+<li>BlockQuote</li>
+
+<li>BlockQuote-Compare</li>
+
+<li>BlockQuote-Fails</li>
+
+<li>BlockQuote-Works</li>
+
+<li>BlockQuote010</li>
+
+<li>BlockQuote020</li>
+
 <li>Script</li>
 
 <li>Script-Compare</li>
@@ -5640,7 +5652,7 @@ padding-top: 0;
 <div modified="20150213105604842" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div list="Welcome Script-Compare Script120" title="$:/StoryList">
+<div list="Welcome BlockQuote-Compare BlockQuote-Fails BlockQuote010 Script-Fails Script-Works" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -5657,7 +5669,7 @@ padding-top: 0;
     }
 }</pre>
 </div>
-<div created="20150213102234455" modified="20150213105437190" title="$:/temp/NewTagName">
+<div created="20150213102234455" modified="20150214152844925" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="A clean theme that emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.7">
@@ -5739,6 +5751,90 @@ padding-top: 0;
 </div>
 <div created="20150213101813862" modified="20150213101915643" title="$:/UploadName">
 <pre></pre>
+</div>
+<div created="20150214152304054" modified="20150214152734622" title="BlockQuote">
+<pre>```
+!! Markup
+
+* example
+```
+
+&lt;&lt;&lt;
+!! Markup
+
+* example
+&lt;&lt;&lt;</pre>
+</div>
+<div created="20150214152757053" modified="20150214152817564" summary="these cases are interesting in that the left fails but the right works" tags="" title="BlockQuote-Compare">
+<pre>&lt;table&gt;
+&lt;tr&gt;&lt;th style=&quot;width:50%&quot;&gt;Fails&lt;/th&gt;&lt;th&gt;Works&lt;/th&gt;&lt;/tr&gt;
+&lt;$list filter=&quot;[tag[BlockQuote]has[compare]]&quot;&gt;
+&lt;$list filter=&quot;[all[current]list[!!compare]]&quot; variable=&quot;works&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;
+
+&lt;$link&gt;&lt;$view field=title/&gt;&lt;/$link&gt;
+
+{{!!text}}
+
+//@@color:grey;{{!!summary}}@@//
+
+&lt;/td&gt;
+&lt;td&gt;
+&lt;$tiddler tiddler=&lt;&lt;works&gt;&gt;&gt;
+
+&lt;$link&gt;&lt;$view field=title/&gt;&lt;/$link&gt;
+
+{{!!text}}
+
+//@@color:grey;{{!!summary}}@@//
+
+&lt;/$tiddler&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/table&gt;</pre>
+</div>
+<div created="20150214153102526" modified="20150214153255495" tags="" title="BlockQuote-Fails">
+<pre>Also see [[BlockQuote-Works]]...
+
+&lt;$list filter=&quot;[tag[BlockQuote]tag[Fails]sort[]]&quot;&gt;
+
+!!&lt;$link&gt;&lt;$view field=title/&gt;&lt;/$link&gt;
+
+//@@color:grey;{{!!summary}}@@//
+
+{{!!text}}
+
+&lt;/$list&gt;</pre>
+</div>
+<div created="20150214153044058" modified="20150214153332874" tags="" title="BlockQuote-Works">
+<pre>Also see [[BlockQuote-Fails]]...
+
+&lt;$list filter=&quot;[tag[BlockQuote]tag[Works]sort[]]&quot;&gt;
+
+!!&lt;$link&gt;&lt;$view field=title/&gt;&lt;/$link&gt;
+
+{{!!text}}
+
+&lt;/$list&gt;</pre>
+</div>
+<div compare="BlockQuote020" created="20150214152424569" modified="20150214153304439" summary="tiddlers ending with block-mode element fail using the view widget" tags="Test Fails BlockQuote" title="BlockQuote010">
+<pre>&lt;&lt;`
+'&lt;$tiddler tiddler=&quot;BlockQuote&quot;&gt;
+
+!!&lt;$view field=&quot;title&quot;/&gt;
+&lt;$transclude/&gt;
+&lt;/$tiddler&gt;'&gt;&gt;</pre>
+</div>
+<div created="20150214152246149" modified="20150214153341429" summary="using the transclusion shorthand, tiddlers ending with block-mode elements work" tags="Test Works BlockQuote" title="BlockQuote020">
+<pre>&lt;&lt;`
+'&lt;$tiddler tiddler=&quot;BlockQuote&quot;&gt;
+
+!!{{!!title}}
+{{!!text}}
+&lt;/$tiddler&gt;'&gt;&gt;</pre>
 </div>
 <div created="20150213102123406" modified="20150213102216987" tags="" title="Script">
 <pre>try this:
@@ -5935,7 +6031,7 @@ ls -al
 <div created="20150213102029492" modified="20150213102115604" title="TiddlyWiki" url="http://tiddlywiki.com">
 <pre></pre>
 </div>
-<div created="20150213101954811" modified="20150213104627345" title="Welcome">
+<div created="20150213101954811" modified="20150214153038286" title="Welcome">
 <pre>This wiki demonstrates and experiments with what's called &quot;block mode&quot; in TiddlyWiki.
 
 !! Tests
@@ -5943,7 +6039,12 @@ ls -al
 ; [[Script]]
 : [[Script-Works]]
 : [[Script-Fails]]
-: [[Script-Compare]]</pre>
+: [[Script-Compare]]
+
+; BlockQuote
+: [[BlockQuote-Works]]
+: [[BlockQuote-Fails]]
+: [[BlockQuote-Compare]]</pre>
 </div>
 <div created="20150213104404193" modified="20150213110700621" tags="" title="why" type="application/x-tiddler-dictionary">
 <pre>FAILS
