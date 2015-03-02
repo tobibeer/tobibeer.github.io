@@ -411,6 +411,8 @@ Error message and password prompt
 
 <li>fontsize 0</li>
 
+<li>FootNotes</li>
+
 <li>FrameWorks</li>
 
 <li>GettingStarted</li>
@@ -510,6 +512,8 @@ Error message and password prompt
 <li>Presentation</li>
 
 <li>Projects</li>
+
+<li>Publishing Apps</li>
 
 <li>Pull</li>
 
@@ -6547,7 +6551,7 @@ search
 <div created="20141125155100841" creator="T" modified="20141125155102803" modifier="Tobias Bee" title="$:/status/UserName">
 <pre>Tobias Beer</pre>
 </div>
-<div list="GettingStarted [[Baby Journal]]" title="$:/StoryList">
+<div list="FootNotes GettingStarted Plugin" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6570,7 +6574,7 @@ search
 <div created="20141223133459180" creator="Tobias Beer" modified="20150301194616280" modifier="Tobias Beer" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20141220152319780" creator="Tobias Beer" modified="20150302111537319" modifier="Tobias Beer" title="$:/temp/search">
+<div created="20141220152319780" creator="Tobias Beer" modified="20150302165753477" modifier="Tobias Beer" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20141126010753205" creator="Tobias Beer" modified="20141126010806430" modifier="Tobias Beer" title="$:/theme">
@@ -7427,6 +7431,21 @@ avoid all[...] if you want source to decide how to iterate
 <pre>;console
 :`$tw.wiki.deleteTiddler(&quot;$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize&quot;)`</pre>
 </div>
+<div created="20150302165759309" creator="Tobias Beer" modified="20150302170316070" modifier="Tobias Beer" tags="Plugin" title="FootNotes" url="https://groups.google.com/d/msg/tiddlywiki/c-y7E6GDX3Y/E2uXQZsDvE8J">
+<pre>Provide something much more generic!
+
+* use global js object to store rendered footnotes!
+** `$tw.footnotes[&lt;namespaceId&gt;]`
+*** generic `namespaceID` is `0`
+* declare footnote once — where first used — assign to footnotes namespace
+* use macro to reset __temporary__ footnotes namespace object
+** allows to reuse same footnotes object when rendering tiddlers
+** footnotes object only exists during rendering a tiddler
+* use same macro to output footnotes list
+** only at the bottom of a tiddler after all footnotes where processed!
+* create backlink to element with `rel=&quot;&lt;footnoteID&gt;&quot;` from bottom to top
+** could be multiple instances / a popup!</pre>
+</div>
 <div created="20150204111345738" creator="Tobias Beer" modified="20150204111350546" modifier="Tobias Beer" tags="TidU" title="FrameWorks">
 <pre></pre>
 </div>
@@ -7840,6 +7859,10 @@ In the future, there are plans to include those functions into the core, which w
 </div>
 <div created="20141205010831584" creator="Tobias Beer" modified="20141205010845061" modifier="Tobias Beer" tags="TidU" title="Projects">
 <pre></pre>
+</div>
+<div created="20150302133239459" creator="Tobias Beer" modified="20150302133259094" modifier="Tobias Beer" tags="" title="Publishing Apps">
+<pre>; Scalar
+: http://scalar.usc.edu/features/overview</pre>
 </div>
 <div color="#477340" created="20141126230229987" creator="Tobias Beer" list-before="" modified="20141213123831519" modifier="Tobias Beer" title="Pull">
 <pre>My pull-requests for tw...
