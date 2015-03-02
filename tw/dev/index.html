@@ -7431,19 +7431,19 @@ avoid all[...] if you want source to decide how to iterate
 <pre>;console
 :`$tw.wiki.deleteTiddler(&quot;$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize&quot;)`</pre>
 </div>
-<div created="20150302165759309" creator="Tobias Beer" modified="20150302170316070" modifier="Tobias Beer" tags="Plugin" title="FootNotes" url="https://groups.google.com/d/msg/tiddlywiki/c-y7E6GDX3Y/E2uXQZsDvE8J">
+<div created="20150302165759309" creator="Tobias Beer" modified="20150302170515217" modifier="Tobias Beer" tags="Plugin" title="FootNotes" url="https://groups.google.com/d/msg/tiddlywiki/c-y7E6GDX3Y/E2uXQZsDvE8J">
 <pre>Provide something much more generic!
 
 * use global js object to store rendered footnotes!
-** `$tw.footnotes[&lt;namespaceId&gt;]`
-*** generic `namespaceID` is `0`
+** `$tw.footnotes[&lt;NameSpaceID&gt;]`
+*** generic `NameSpaceID` is `0`
 * declare footnote once — where first used — assign to footnotes namespace
 * use macro to reset __temporary__ footnotes namespace object
 ** allows to reuse same footnotes object when rendering tiddlers
 ** footnotes object only exists during rendering a tiddler
 * use same macro to output footnotes list
 ** only at the bottom of a tiddler after all footnotes where processed!
-* create backlink to element with `rel=&quot;&lt;footnoteID&gt;&quot;` from bottom to top
+* create backlink to inline element having `rel=&quot;&lt;NameSpaceID&gt;&lt;FootNoteID&gt;&quot;` from bottom to top
 ** could be multiple instances / a popup!</pre>
 </div>
 <div created="20150204111345738" creator="Tobias Beer" modified="20150204111350546" modifier="Tobias Beer" tags="TidU" title="FrameWorks">
