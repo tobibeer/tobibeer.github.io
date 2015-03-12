@@ -203,6 +203,8 @@ Error message and password prompt
 
 <li>$:/.tb/macros/timeline-full</li>
 
+<li>$:/.tb/macros/toc-auto-collapse</li>
+
 <li>$:/.tb/macros/toggle-content</li>
 
 <li>$:/.tb/macros/tw.com</li>
@@ -555,6 +557,8 @@ Error message and password prompt
 
 <li>attribute-transclusion</li>
 
+<li>Autocollapsing ToC</li>
+
 <li>Backup</li>
 
 <li>Basic Javascript Macro</li>
@@ -783,9 +787,9 @@ Error message and password prompt
 
 <li>FilterOperator: join</li>
 
-<li>Filters</li>
-
 <li>filters</li>
+
+<li>Filters</li>
 
 <li>focus</li>
 
@@ -861,9 +865,9 @@ Error message and password prompt
 
 <li>ImageMaps</li>
 
-<li>Images</li>
-
 <li>images</li>
+
+<li>Images</li>
 
 <li>Import</li>
 
@@ -1195,9 +1199,9 @@ Error message and password prompt
 
 <li>Table Of Contents In Sidebar</li>
 
-<li>tables</li>
-
 <li>Tables</li>
+
+<li>tables</li>
 
 <li>Tables Without Borders</li>
 
@@ -1235,9 +1239,9 @@ Error message and password prompt
 
 <li>Testing New Stuff</li>
 
-<li>Text</li>
-
 <li>text</li>
+
+<li>Text</li>
 
 <li>Text On A Vectorpath</li>
 
@@ -4026,6 +4030,70 @@ content:&quot;\&quot;&quot;;
 &lt;/div&gt;
 &lt;/$list&gt;
 &lt;/div&gt;
+\end</pre>
+</div>
+<div created="20150312164114008" creator="Tobias Beer" modified="20150312164913938" modifier="Tobias Beer" summary="an extension to the core toc macro providing an auto-collapsible toc" tags="$:/tags/Macro" title="$:/.tb/macros/toc-auto-collapse">
+<pre>\define toc-selective-single-expandable(tag,sort:&quot;&quot;,itemClassFilter)
+&lt;ol class=&quot;tc-toc toc-selective-expandable tc-table-of-contents&quot;&gt;
+&lt;$list filter=&quot;[all[shadows+tiddlers]tag[$tag$]!has[draft.of]$sort$]&quot;&gt;
+&lt;$list filter=&quot;[all[current]toc-link[no]]&quot; variable=&quot;ignore&quot; emptyMessage=&quot;&lt;&lt;toc-linked-selective-single-expandable-body tag:'$tag$' sort:'$sort$' itemClassFilter:'$itemClassFilter$'&gt;&gt;&quot;&gt;
+&lt;&lt;toc-unlinked-selective-single-expandable-body tag:&quot;&quot;&quot;$tag$&quot;&quot;&quot; sort:&quot;&quot;&quot;$sort$&quot;&quot;&quot; itemClassFilter:&quot;&quot;&quot;$itemClassFilter$&quot;&quot;&quot;&gt;&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/ol&gt;
+\end
+
+\define toc-linked-selective-single-expandable-body(tag,sort:&quot;&quot;,itemClassFilter)
+&lt;$set name=&quot;toc-state&quot; value=&lt;&lt;qualify &quot;$:/state/toc/$tag$&quot;&gt;&gt;&gt;
+&lt;$set name=&quot;toc-item-class&quot; filter=&quot;&quot;&quot;$itemClassFilter$&quot;&quot;&quot; value=&quot;toc-item-selected&quot; emptyValue=&quot;toc-item&quot;&gt;
+&lt;li class=&lt;&lt;toc-item-class&gt;&gt;&gt;
+&lt;$link&gt;
+&lt;$list filter=&quot;[all[current]tagging[]limit[1]]&quot; variable=&quot;ignore&quot; emptyMessage=&quot;&lt;$button class='tc-btn-invisible'&gt;{{$:/core/images/blank}}&lt;/$button&gt;&quot;&gt;
+&lt;$reveal type=&quot;nomatch&quot; state=&lt;&lt;toc-state&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;$button set=&lt;&lt;toc-state&gt;&gt; setTo=&lt;&lt;currentTiddler&gt;&gt; class=&quot;tc-btn-invisible&quot;&gt;
+{{$:/core/images/right-arrow}}
+&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type=&quot;match&quot; state=&lt;&lt;toc-state&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;$button set=&lt;&lt;toc-state&gt;&gt; setTo=&quot;x-all-close&quot; class=&quot;tc-btn-invisible&quot;&gt;
+{{$:/core/images/down-arrow}}
+&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;/$list&gt;
+&lt;&lt;toc-caption&gt;&gt;
+&lt;/$link&gt;
+&lt;$reveal type=&quot;match&quot; state=&lt;&lt;toc-state&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;$macrocall $name=&quot;toc-selective-single-expandable&quot; tag=&lt;&lt;currentTiddler&gt;&gt; sort=&quot;&quot;&quot;$sort$&quot;&quot;&quot; itemClassFilter=&quot;&quot;&quot;$itemClassFilter$&quot;&quot;&quot;/&gt;
+&lt;/$reveal&gt;
+&lt;/li&gt;
+&lt;/$set&gt;
+&lt;/$set&gt;
+\end
+
+\define toc-unlinked-selective-single-expandable-body(tag,sort:&quot;&quot;,itemClassFilter)
+&lt;$set name=&quot;toc-state&quot; value=&lt;&lt;qualify &quot;$:/state/toc/$tag$&quot;&gt;&gt;&gt;
+&lt;$set name=&quot;toc-item-class&quot; filter=&quot;&quot;&quot;$itemClassFilter$&quot;&quot;&quot; value=&quot;toc-item-selected&quot; emptyValue=&quot;toc-item&quot;&gt;
+&lt;li class=&lt;&lt;toc-item-class&gt;&gt;&gt;
+&lt;$list filter=&quot;[all[current]tagging[]limit[1]]&quot; variable=&quot;ignore&quot; emptyMessage=&quot;&lt;$button class='tc-btn-invisible'&gt;{{$:/core/images/blank}}&lt;/$button&gt; &lt;$view field='caption'&gt;&lt;$view field='title'/&gt;&lt;/$view&gt;&quot;&gt;
+&lt;$reveal type=&quot;nomatch&quot; state=&lt;&lt;toc-state&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;$button set=&lt;&lt;toc-state&gt;&gt; setTo=&lt;&lt;currentTiddler&gt;&gt; class=&quot;tc-btn-invisible&quot;&gt;
+{{$:/core/images/right-arrow}}
+&lt;&lt;toc-caption&gt;&gt;
+&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type=&quot;match&quot; state=&lt;&lt;toc-state&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;$button set=&lt;&lt;toc-state&gt;&gt; setTo=&quot;close&quot; class=&quot;tc-btn-invisible&quot;&gt;
+{{$:/core/images/down-arrow}}
+&lt;&lt;toc-caption&gt;&gt;
+&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;/$list&gt;
+&lt;$reveal type=&quot;match&quot; state=&lt;&lt;toc-state&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;$macrocall $name=&quot;&quot;&quot;toc-selective-single-expandable&quot;&quot;&quot; tag=&lt;&lt;currentTiddler&gt;&gt; sort=&quot;&quot;&quot;$sort$&quot;&quot;&quot; itemClassFilter=&quot;&quot;&quot;$itemClassFilter$&quot;&quot;&quot;/&gt;
+&lt;/$reveal&gt;
+&lt;/li&gt;
+&lt;/$set&gt;
+&lt;/$set&gt;
 \end</pre>
 </div>
 <div created="20141207212428123" creator="Tobias Beer" modified="20141209152123264" modifier="Tobias Beer" summary="macros to [[toggle remote contents|Toggle Contents]] via links" tags="$:/tags/Macro" title="$:/.tb/macros/toggle-content">
@@ -13796,6 +13864,26 @@ params via
 embed via transclusion
 &lt;/dd&gt;</pre>
 </div>
+<div created="20150312163852543" creator="Tobias Beer" modified="20150312165328747" modifier="Tobias Beer" tags="ToC Solutions Menus" title="Autocollapsing ToC">
+<pre>The following solution [[proposed by Andreas Hahn|https://groups.google.com/d/msg/tiddlywiki/DNNRxc94MJM/e2pzQVjNABAJ]] provides additional toc macros that allow you to render an autocollapsing table of content.
+
+!!Installation
+
+Drag to your wiki: [[$:/.tb/macros/toc-auto-collapse]]
+
+!!Example
+
+&lt;$macrocall $name=` text=
+&quot;&quot;&quot;&lt;div class=&quot;tc-table-of-contents&quot;&gt;
+&lt;&lt;toc-selective-single-expandable 'Welcome'&gt;&gt;
+&lt;/div&gt;&quot;&quot;&quot;/&gt;
+
+To additionally sort entries by a custom field, use the second macro parameter:
+
+```
+&lt;&lt;toc-selective-single-expandable &quot;TableOfContents&quot; &quot;sort[caption]&quot;&gt;&gt;
+```</pre>
+</div>
 <div created="20150116142020158" creator="Tobias Beer" icon="$:/core/images/options-button" modified="20150116142020158" modifier="Tobias Beer" title="Backup">
 <pre></pre>
 </div>
@@ -14363,7 +14451,7 @@ This process can be further simplified and reused using a macro...
 
 {{makedoc}}</pre>
 </div>
-<div created="20141201111400337" creator="Tobias Beer" modified="20150206125024583" modifier="Tobias Beer" tags="Solutions ToC Tabs Tables" title="Creating A Tabbed ToC">
+<div created="20141201111400337" creator="Tobias Beer" modified="20150312164503473" modifier="Tobias Beer" tags="Solutions ToC Tabs Tables" title="Creating A Tabbed ToC">
 <pre>With version 5.1.5 TiddlyWiki is now [[capable of rendering a vertically tabbed toc|http://tiddlywiki.com/#TableOfContentsMacro%20Tabbed%20Example]] which should come in very handy for documentation projects, control panels, etc...
 
 Here's an example markup:
@@ -14380,7 +14468,7 @@ This renders a tabbed table of contents with the tiddlers tagging to [[Welcome]]
 
 The state of this example toc, i.e. the currently selected tab, is stored in the field ''state'' of a system tiddler called `$:/temp/tb5-tabbed-toc-example`.
 
-''Note:'' As of 5.1.5 the ability to define a custom template for the actual contents is missing yet. This is now fixed in [[5.1.6 prerelease|http://tiddlywiki.com/prerelease/#%24%3A%2Fcore%2Fmacros%2Ftoc]] ([[1|https://github.com/Jermolene/TiddlyWiki5/commit/b220c19fb7b789eb6d00c9d1a71414676d87130e]], [[2|https://github.com/Jermolene/TiddlyWiki5/commit/1e7d9bd3cd17be006b035ada8e45f83f154e61e9]]), which is why you can see it in use here since I already imported the updated macro. If you should import that into your wiki, as well, make sure to remove it again after [[upgrading to 5.1.6|Cleanup 5.1.6]].
+''Note:'' As of 5.1.5 the ability to define a custom template for the actual contents is missing yet. This is now fixed in [[5.1.6 prerelease|http://tiddlywiki.com/prerelease/#%24%3A%2Fcore%2Fmacros%2Ftoc]] ([[1|https://github.com/Jermolene/TiddlyWiki5/commit/b220c19fb7b789eb6d00c9d1a71414676d87130e]], [[2|https://github.com/Jermolene/TiddlyWiki5/commit/1e7d9bd3cd17be006b035ada8e45f83f154e61e9]]), which is why you can see it in use here since I already imported the updated macro. If you should import that into your wiki, as well, make sure to remove it again after upgrading to 5.1.6.
 
 Here's the above toc generated:
 
@@ -15277,10 +15365,10 @@ drag to your wiki &lt;&lt;source [[$:/.tb/modules/filters/toc.js]]&gt;&gt;</pre>
 
 see source: &lt;&lt;source $:/core/modules/filters/join.js&gt;&gt;</pre>
 </div>
-<div created="20141126021240947" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150116141444836" modifier="Tobias Beer" tags="" title="Filters">
+<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150207094021145" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters">
 <pre></pre>
 </div>
-<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150207094021145" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters">
+<div created="20141126021240947" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150116141444836" modifier="Tobias Beer" tags="" title="Filters">
 <pre></pre>
 </div>
 <div created="20141202232934876" creator="Tobias Beer" follow="yes" modified="20150207103743726" modifier="Tobias Beer" summary="trying to have the standard theme focus more on content, hiding controls from visitors&lt;!--focus--&gt;" tags="[[Tobias Beer]]" title="focus" url="http://tobibeer.github.io/tw/focus">
@@ -15856,9 +15944,6 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 
 &lt;&lt;source &quot;$:/.tb/demo/image-map&quot;&gt;&gt;</pre>
 </div>
-<div icon="$:/core/images/storyview-zoomin" modified="20141201174313618" modifier="Tobias Beer" title="Images">
-<pre></pre>
-</div>
 <div created="20141203173130415" creator="Tobias Beer" modified="20141203173139233" modifier="Tobias Beer" tags="Markup" title="images">
 <pre>&lt;dt&gt;
 
@@ -15877,6 +15962,9 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 [img width=16 [http://www.tiddlywiki.com/favicon.ico]]&lt;br&gt;
 [img class=&quot;tc-image&quot; [http://www.tiddlywiki.com/favicon.ico]]
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/storyview-zoomin" modified="20141201174313618" modifier="Tobias Beer" title="Images">
+<pre></pre>
 </div>
 <div created="20150116144431513" creator="Tobias Beer" icon="$:/core/images/export-button" modified="20150116144431513" modifier="Tobias Beer" title="Import">
 <pre></pre>
@@ -18977,6 +19065,9 @@ via &lt;&lt;source &quot;$:/.tb/demo/svg-circle&quot;&gt;&gt;</pre>
 &lt;&lt;ximg toc.jpg tooltip:&quot;example toc from tiddlywiki.com&quot; class:&quot;pretty&quot;&gt;&gt;
 example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 </div>
+<div created="20150116145013865" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116145013865" modifier="Tobias Beer" title="Tables">
+<pre></pre>
+</div>
 <div created="20141203173550546" creator="Tobias Beer" modified="20141203173601868" modifier="Tobias Beer" tags="Markup" title="tables">
 <pre>&lt;dt style=&quot;font-size:80%;&quot;&gt;
 
@@ -19000,9 +19091,6 @@ example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 |and|now| vertical |
 |&gt;| right|~|
 &lt;/dd&gt;</pre>
-</div>
-<div created="20150116145013865" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116145013865" modifier="Tobias Beer" title="Tables">
-<pre></pre>
 </div>
 <div created="20150206013252827" creator="Tobias Beer" modified="20150206014255748" modifier="Tobias Beer" tags="Tables Presentation Styles" title="Tables Without Borders">
 <pre>If you are wishing to use borderless tables [[like Diane|https://groups.google.com/d/msg/tiddlywiki/lPvh5gcea70/JHWgVmIvHdIJ]], here's what you do:
@@ -19272,9 +19360,6 @@ When was the last time you visited a website that allowed you to do just that?!
 
 Find something to be off? Then check out this [[simple documentation workflow|Documentation]] on how easy it is to make things better for the rest of us.</pre>
 </div>
-<div created="20150116142447533" creator="Tobias Beer" icon="$:/core/images/edit-button" modified="20150116142447533" modifier="Tobias Beer" title="Text">
-<pre></pre>
-</div>
 <div created="20150109171138176" creator="Tobias Beer" modified="20150109180720115" modifier="Tobias Beer" tags="" title="text">
 <pre>The ''text'' macro provides a most simple macro to output colored text...
 
@@ -19302,6 +19387,9 @@ So, learning a bit of [[wikitext markup|Markup]] may be that better choice.
 !! Installation
 
 Drag to your wiki: &lt;&lt;source [[$:/.tb/macros/text]]&gt;&gt;</pre>
+</div>
+<div created="20150116142447533" creator="Tobias Beer" icon="$:/core/images/edit-button" modified="20150116142447533" modifier="Tobias Beer" title="Text">
+<pre></pre>
 </div>
 <div created="20141203134558759" creator="Tobias Beer" modified="20141206175524116" modifier="Tobias Beer" tags="Images Solutions Presentation" title="Text On A Vectorpath">
 <pre>Here's [[an experiment by BuggyJ|http://xlink.tiddlyspot.com/#Making%20curved%20text%20with%20inline%20SVG]] showing how to render text on a svg vector graphic.
