@@ -765,9 +765,9 @@ Error message and password prompt
 
 <li>Felix Küppers</li>
 
-<li>fields</li>
-
 <li>Fields</li>
+
+<li>fields</li>
 
 <li>Fields: Core</li>
 
@@ -869,9 +869,9 @@ Error message and password prompt
 
 <li>ImageMaps</li>
 
-<li>Images</li>
-
 <li>images</li>
+
+<li>Images</li>
 
 <li>Import</li>
 
@@ -949,9 +949,9 @@ Error message and password prompt
 
 <li>Macrocall vs. Macro</li>
 
-<li>macros</li>
-
 <li>Macros</li>
+
+<li>macros</li>
 
 <li>magictabs</li>
 
@@ -1283,9 +1283,9 @@ Error message and password prompt
 
 <li>Tobias Beer</li>
 
-<li>toc</li>
-
 <li>ToC</li>
+
+<li>toc</li>
 
 <li>Toggle</li>
 
@@ -15007,10 +15007,12 @@ To reference a number of pdfs at the same location, you can modify the macro mac
 
 Here, location and filetype are set by the macro.</pre>
 </div>
-<div created="20150114102951794" creator="Tobias Beer" modified="20150131124554324" modifier="Tobias Beer" tags="Embed Text Files" title="Embedding A Text File">
+<div created="20150114102951794" creator="Tobias Beer" modified="20150915103855245" modifier="Tobias Beer" tags="Embed Text Files" title="Embedding A Text File">
 <pre>You can use the html object element to embed a text file. For a local text file in the same directory as your TiddlyWiki, use...
 
 `data=&quot;./example.txt&quot;`
+
+''Note:'' This will not work using the [[node.js server version of TiddlyWiki|http://tiddlywiki.com/#TiddlyWiki%20on%20Node.js]].
 
 !!Example
 
@@ -15203,13 +15205,13 @@ http://tiddlywiki.com&lt;br&gt;
 <div created="20141122081432373" creator="Tobias Beer" icon="$:/core/images/plugin-generic-language" modified="20150116143501588" modifier="Tobias Beer" summary="inventor of TaskGraph&lt;!--Felix Küppers, vis.js--&gt;" tags="Community" title="Felix Küppers" url="[[felixhayashi@GitHub|https://github.com/felixhayashi/tw-taskgraph/issues/]]">
 <pre></pre>
 </div>
+<div created="20150116142911883" creator="Tobias Beer" icon="$:/core/images/permalink-button" modified="20150116142911883" modifier="Tobias Beer" title="Fields">
+<pre></pre>
+</div>
 <div created="20150201195001262" creator="Tobias Beer" follow="yes" modified="20150209084520349" modifier="Tobias Beer" summary="explorations as to imporoving working with tiddler fields" tags="[[Tobias Beer]] Fields" title="fields" url="http://tobibeer.github.io/tw/fields">
 <pre>!!! Topics
 ; [[FieldsPopup|http://tobibeer.github.io/tw/fields/#FieldsPopup]]
 : &lt;&lt;git5 issues/1448&gt;&gt; — field editing popups</pre>
-</div>
-<div created="20150116142911883" creator="Tobias Beer" icon="$:/core/images/permalink-button" modified="20150116142911883" modifier="Tobias Beer" title="Fields">
-<pre></pre>
 </div>
 <div caption="core" created="20141118195032028" creator="Tobias Beer" modified="20150107195102560" modifier="Tobias Beer" tags="Fields Lists Filters Core" title="Fields: Core">
 <pre>all [[core fields|Fields: Core]] except [[standard fields|Fields: Standard]] as documented in the TiddlyWiki core:
@@ -15986,9 +15988,6 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 
 &lt;&lt;source &quot;$:/.tb/demo/image-map&quot;&gt;&gt;</pre>
 </div>
-<div icon="$:/core/images/storyview-zoomin" modified="20141201174313618" modifier="Tobias Beer" title="Images">
-<pre></pre>
-</div>
 <div created="20141203173130415" creator="Tobias Beer" modified="20141203173139233" modifier="Tobias Beer" tags="Markup" title="images">
 <pre>&lt;dt&gt;
 
@@ -16007,6 +16006,9 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 [img width=16 [http://www.tiddlywiki.com/favicon.ico]]&lt;br&gt;
 [img class=&quot;tc-image&quot; [http://www.tiddlywiki.com/favicon.ico]]
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/storyview-zoomin" modified="20141201174313618" modifier="Tobias Beer" title="Images">
+<pre></pre>
 </div>
 <div created="20150116144431513" creator="Tobias Beer" icon="$:/core/images/export-button" modified="20150116144431513" modifier="Tobias Beer" title="Import">
 <pre></pre>
@@ -16638,6 +16640,9 @@ To use, simply install &lt;&lt;source $:/.tb/macros/localfolder&gt;&gt;
 
 &gt; It's actually historical. The angle bracket syntax for macros was first implemented early on, before transcluded attributes. Then as the widget syntax evolved it was clear that it was more flexible and extensible. Internally, everything is a widget, even plain text. All the wikitext syntax beyond the widget syntax is really just a series of shortcuts for more easily typing widgets and HTML. My expectation is that more and more of the basic idioms that we discover as we explore the way that widgets fit together will end up being elevated to wiki syntax. For example, we could evolve a wikitext syntax for assigning variables that is terser than the current `&lt;$set&gt;` widget.</pre>
 </div>
+<div created="20141125030221729" creator="Tobias Beer" icon="$:/core/images/right-arrow" modified="20150116143635878" modifier="Tobias Beer" title="Macros">
+<pre></pre>
+</div>
 <div created="20141203174056270" creator="Tobias Beer" modified="20141220114540160" modifier="Tobias Beer" tags="Markup" title="macros">
 <pre>\define test(x, y, z:'0')
 $x$ $y$ $z$
@@ -16719,9 +16724,6 @@ $name=&quot;test&quot;
 x=&lt;&lt;version&gt;&gt;
 y={{!!title}}/&gt;&lt;/code&gt;
 &lt;/dd&gt;</pre>
-</div>
-<div created="20141125030221729" creator="Tobias Beer" icon="$:/core/images/right-arrow" modified="20150116143635878" modifier="Tobias Beer" title="Macros">
-<pre></pre>
 </div>
 <div created="20150204132834965" creator="Tobias Beer" modified="20150205182656047" modifier="Tobias Beer" summary="by [[Alberto Molina]], enhances TiddlyWiki with a tabsbar at the bottom of each tiddler to manage related tiddlers via lists, allowing to create related items via forms&lt;!--magictabs, bottomtabs--&gt;" tags="References Solutions Tabs Info Lists Relationships [[Alberto Molina]]" title="magictabs" url="http://magictabs.tiddlyspot.com">
 <pre>; discussion
@@ -19597,6 +19599,9 @@ If you neither have a TiddlyWiki or TiddlySpot yet, here's a simple process to d
 &quot;$:/.tb/templates/list-search-me&quot;&gt;&gt;
 &lt;/dl&gt;</pre>
 </div>
+<div created="20150116141836162" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116141836162" modifier="Tobias Beer" title="ToC">
+<pre></pre>
+</div>
 <div created="20141125232200140" creator="Tobias Beer" modified="20141125232258995" modifier="Tobias Beer" title="toc">
 <pre>\define regexp-headings() (^!+.*)(?gmi)
 &lt;div class=&quot;tidtoc tc-tiddler-frame&quot;&gt;
@@ -19653,9 +19658,6 @@ float:right;
 text-align:right;
 }
 &lt;/style&gt;</pre>
-</div>
-<div created="20150116141836162" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116141836162" modifier="Tobias Beer" title="ToC">
-<pre></pre>
 </div>
 <div created="20150119101745352" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150119101745352" modifier="Tobias Beer" title="Toggle">
 <pre></pre>
