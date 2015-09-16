@@ -525,6 +525,8 @@ Error message and password prompt
 
 <li>Adding A ColorPicker For Editing Images</li>
 
+<li>Adding a Date Picker</li>
+
 <li>Adding A Sketch</li>
 
 <li>Adding A Tag Icon</li>
@@ -793,9 +795,9 @@ Error message and password prompt
 
 <li>FilterOperator: join</li>
 
-<li>filters</li>
-
 <li>Filters</li>
+
+<li>filters</li>
 
 <li>focus</li>
 
@@ -863,17 +865,17 @@ Error message and password prompt
 
 <li>ibox</li>
 
-<li>icons</li>
-
 <li>Icons</li>
+
+<li>icons</li>
 
 <li>iframe-1</li>
 
 <li>ImageMaps</li>
 
-<li>images</li>
-
 <li>Images</li>
+
+<li>images</li>
 
 <li>Import</li>
 
@@ -1245,9 +1247,9 @@ Error message and password prompt
 
 <li>Testing New Stuff</li>
 
-<li>Text</li>
-
 <li>text</li>
+
+<li>Text</li>
 
 <li>Text On A Vectorpath</li>
 
@@ -1285,9 +1287,9 @@ Error message and password prompt
 
 <li>Tobias Beer</li>
 
-<li>toc</li>
-
 <li>ToC</li>
+
+<li>toc</li>
 
 <li>Toggle</li>
 
@@ -13617,6 +13619,23 @@ Try it out editing and see if you can manage to play with opacity, as well...
 
 &lt;&lt;linkimg Jack.jpg Jack.jpg&gt;&gt;</pre>
 </div>
+<div created="20150916080902132" creator="Tobias Beer" modified="20150916081510327" modifier="Tobias Beer" tags="Solutions [[GSD5 — Getting Stuff Done]] Dates" title="Adding a Date Picker">
+<pre>As indicated [[in this discussion|https://groups.google.com/d/msg/tiddlywiki/SZ5Rl5rZZqA/LU6f1aFpAQAJ]], [[GSD5|GSD5 — Getting Stuff Done]] features a reusable date picker.
+
+To use it for modifying any of your fields, install the following plugin in your TiddlyWiki:
+
+* [[$:/plugins/gsd5/ticklers|http://gsd5.tiddlyspot.com/#%24%3A%2Fplugins%2Fgsd5%2Fticklers]]
+
+!! Usage
+
+To use a date picker for a field called ''datefield'' in an [[edit template|http://tobibeer.github.io/tb5/#Conditional%20ViewTemplate%20Section]], use...
+
+```
+&lt;$date field=&quot;datefield&quot;/&gt;
+```
+
+For an example, see [[here|http://gsd5.tiddlyspot.com/#%24%3A%2Fplugins%2Fgsd5%2Fcore%2Fui%2Faddins%2FViewTickler]].</pre>
+</div>
 <div created="20141202082846907" creator="Tobias Beer" modified="20150131122631939" modifier="Tobias Beer" tags="Solutions Images Editing Buttons" title="Adding A Sketch">
 <pre>Yesterday I showed you how you can more easily [[chose the color and line-width|Adding A ColorPicker For Editing Images]] for TiddlyWiki's ability to [[draw on images|http://tiddlywiki.com/#EditBitmapWidget]].
 
@@ -15420,10 +15439,10 @@ drag to your wiki &lt;&lt;source [[$:/.tb/modules/filters/toc.js]]&gt;&gt;</pre>
 
 see source: &lt;&lt;source $:/core/modules/filters/join.js&gt;&gt;</pre>
 </div>
-<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150207094021145" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters">
+<div created="20141126021240947" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150116141444836" modifier="Tobias Beer" tags="" title="Filters">
 <pre></pre>
 </div>
-<div created="20141126021240947" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150116141444836" modifier="Tobias Beer" tags="" title="Filters">
+<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150207094021145" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters">
 <pre></pre>
 </div>
 <div created="20141202232934876" creator="Tobias Beer" follow="yes" modified="20150207103743726" modifier="Tobias Beer" summary="trying to have the standard theme focus more on content, hiding controls from visitors&lt;!--focus--&gt;" tags="[[Tobias Beer]]" title="focus" url="http://tobibeer.github.io/tw/focus">
@@ -15537,8 +15556,11 @@ To display [[your calendar|$:/template/sidebar-calendar]] in the sidebar...
 &lt;/$list&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20141120150208191" creator="Tobias Beer" modified="20141120150422646" modifier="Tobias Beer" tags="Solutions GTD Dates Calendars" title="GSD5 — Getting Stuff Done" url="http://gsd5.tiddlyspot.com">
-<pre>GSD5 is a plugin attempting to implement the workflow and philosophy of David Allen's [[Getting Things Done|http://www.amazon.com/Getting-Things-Done-Stress-Free-Productivity/dp/0142000280/]] for tw5 and is is heavily influenced by [[mGSD|http://mgsd.tiddlyspot.com/]] for ~TiddlyWiki classic.</pre>
+<div created="20141120150208191" creator="Tobias Beer" modified="20150916081628604" modifier="Tobias Beer" tags="Solutions GTD Dates Calendars" title="GSD5 — Getting Stuff Done" url="http://gsd5.tiddlyspot.com">
+<pre>GSD5 is a plugin attempting to implement the workflow and philosophy of David Allen's [[Getting Things Done|http://www.amazon.com/Getting-Things-Done-Stress-Free-Productivity/dp/0142000280/]] for tw5 and is is heavily influenced by [[mGSD|http://mgsd.tiddlyspot.com/]] for ~TiddlyWiki classic.
+
+!! Related Topics
+&lt;&lt;tagging&gt;&gt;</pre>
 </div>
 <div created="20141119175251805" creator="Tobias Beer" icon="$:/core/images/save-button" modified="20150116143325221" modifier="Tobias Beer" summary="GTD stands for Getting Things Done and these are all the solutions documented here that help you do just that with tw5..." tags="Project" title="GTD">
 <pre></pre>
@@ -15987,10 +16009,10 @@ HTML tags work like that.
 <div created="20141211125930733" creator="Tobias Beer" follow="yes" modified="20150209132500215" modifier="Tobias Beer" summary="demonstrating lightboxes in tw5&lt;!--ibox--&gt;" tags="[[Tobias Beer]]" title="ibox" url="http://tobibeer.github.io/tw/ibox">
 <pre></pre>
 </div>
-<div created="20150202230519361" creator="Tobias Beer" follow="yes" modified="20150213194129182" modifier="Tobias Beer" summary="a showcase and reference for icon fonts and libraries with previews" tags="[[Tobias Beer]] Solutions Icons Presentation Fonts" title="icons" url="http://tobibeer.github.io/tw/icons">
+<div icon="$:/core/images/star-filled" modified="20150202230419819" modifier="Tobias Beer" title="Icons">
 <pre></pre>
 </div>
-<div icon="$:/core/images/star-filled" modified="20150202230419819" modifier="Tobias Beer" title="Icons">
+<div created="20150202230519361" creator="Tobias Beer" follow="yes" modified="20150213194129182" modifier="Tobias Beer" summary="a showcase and reference for icon fonts and libraries with previews" tags="[[Tobias Beer]] Solutions Icons Presentation Fonts" title="icons" url="http://tobibeer.github.io/tw/icons">
 <pre></pre>
 </div>
 <div created="20150105231913568" creator="Tobias Beer" follow="no" modified="20150108114142058" modifier="Tobias Beer" summary="testing how two ~TiddlyWikis behave which mutually iframe their contents" tags="[[Tobias Beer]]" title="iframe-1" url="http://iframe-1.tiddlyspot.com">
@@ -16005,6 +16027,9 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 {{$:/.tb/demo/image-map}}
 
 &lt;&lt;source &quot;$:/.tb/demo/image-map&quot;&gt;&gt;</pre>
+</div>
+<div icon="$:/core/images/storyview-zoomin" modified="20141201174313618" modifier="Tobias Beer" title="Images">
+<pre></pre>
 </div>
 <div created="20141203173130415" creator="Tobias Beer" modified="20141203173139233" modifier="Tobias Beer" tags="Markup" title="images">
 <pre>&lt;dt&gt;
@@ -16024,9 +16049,6 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 [img width=16 [http://www.tiddlywiki.com/favicon.ico]]&lt;br&gt;
 [img class=&quot;tc-image&quot; [http://www.tiddlywiki.com/favicon.ico]]
 &lt;/dd&gt;</pre>
-</div>
-<div icon="$:/core/images/storyview-zoomin" modified="20141201174313618" modifier="Tobias Beer" title="Images">
-<pre></pre>
 </div>
 <div created="20150116144431513" creator="Tobias Beer" icon="$:/core/images/export-button" modified="20150116144431513" modifier="Tobias Beer" title="Import">
 <pre></pre>
@@ -19418,9 +19440,6 @@ When was the last time you visited a website that allowed you to do just that?!
 
 Find something to be off? Then check out this [[simple documentation workflow|Documentation]] on how easy it is to make things better for the rest of us.</pre>
 </div>
-<div created="20150116142447533" creator="Tobias Beer" icon="$:/core/images/edit-button" modified="20150116142447533" modifier="Tobias Beer" title="Text">
-<pre></pre>
-</div>
 <div created="20150109171138176" creator="Tobias Beer" modified="20150109180720115" modifier="Tobias Beer" tags="" title="text">
 <pre>The ''text'' macro provides a most simple macro to output colored text...
 
@@ -19448,6 +19467,9 @@ So, learning a bit of [[wikitext markup|Markup]] may be that better choice.
 !! Installation
 
 Drag to your wiki: &lt;&lt;source [[$:/.tb/macros/text]]&gt;&gt;</pre>
+</div>
+<div created="20150116142447533" creator="Tobias Beer" icon="$:/core/images/edit-button" modified="20150116142447533" modifier="Tobias Beer" title="Text">
+<pre></pre>
 </div>
 <div created="20141203134558759" creator="Tobias Beer" modified="20141206175524116" modifier="Tobias Beer" tags="Images Solutions Presentation" title="Text On A Vectorpath">
 <pre>Here's [[an experiment by BuggyJ|http://xlink.tiddlyspot.com/#Making%20curved%20text%20with%20inline%20SVG]] showing how to render text on a svg vector graphic.
@@ -19620,6 +19642,9 @@ If you neither have a TiddlyWiki or TiddlySpot yet, here's a simple process to d
 &quot;$:/.tb/templates/list-search-me&quot;&gt;&gt;
 &lt;/dl&gt;</pre>
 </div>
+<div created="20150116141836162" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116141836162" modifier="Tobias Beer" title="ToC">
+<pre></pre>
+</div>
 <div created="20141125232200140" creator="Tobias Beer" modified="20141125232258995" modifier="Tobias Beer" title="toc">
 <pre>\define regexp-headings() (^!+.*)(?gmi)
 &lt;div class=&quot;tidtoc tc-tiddler-frame&quot;&gt;
@@ -19676,9 +19701,6 @@ float:right;
 text-align:right;
 }
 &lt;/style&gt;</pre>
-</div>
-<div created="20150116141836162" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116141836162" modifier="Tobias Beer" title="ToC">
-<pre></pre>
 </div>
 <div created="20150119101745352" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150119101745352" modifier="Tobias Beer" title="Toggle">
 <pre></pre>
