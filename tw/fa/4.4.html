@@ -163,6 +163,8 @@ Error message and password prompt
 
 <li>$:/isEncrypted</li>
 
+<li>$:/language/MissingTiddler/Hint</li>
+
 <li>$:/palettes/Vanilla</li>
 
 <li>$:/SiteSubtitle</li>
@@ -190,6 +192,8 @@ Error message and password prompt
 <li>$:/temp/newfieldname</li>
 
 <li>$:/temp/NewTagName</li>
+
+<li>$:/temp/search</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
@@ -302,6 +306,8 @@ Error message and password prompt
 <li>fa-barcode</li>
 
 <li>fa-bars</li>
+
+<li>fa-battery-empty</li>
 
 <li>fa-bed</li>
 
@@ -1055,6 +1061,8 @@ Error message and password prompt
 
 <li>fa-rupee</li>
 
+<li>fa-safari</li>
+
 <li>fa-save</li>
 
 <li>fa-scissors</li>
@@ -1454,7 +1462,7 @@ match:&quot;match&quot;
 &lt;/$reveal&gt;
 \end</pre>
 </div>
-<div created="20141128201617657" creator="Tobias Beer" modified="20150124024148199" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles/fa" type="text/css">
+<div created="20141128201617657" creator="Tobias Beer" modified="20150916070653410" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles/fa" type="text/css">
 <pre>.tc-tiddler-missing,
 .tc-tagged-FontAwesome {
 background-color: #5778d8;
@@ -1512,10 +1520,20 @@ font-style:normal;
 color:white;
 }
 
+.tc-tiddler-missing h1,
+.tc-tagged-Official h1 {
+margin: 2em 0 0 145px;
+}
+
 .tc-tiddler-missing .preview-fa,
 .tc-tagged-Official .preview-fa {
 padding-bottom:1.5em;
-display:block;
+margin-top: 0px !important;
+}
+
+.tc-tiddler-missing .preview-fa-icon,
+.tc-tagged-Official .preview-fa-icon {
+margin: -50px 0 0 0;
 }
 
 .tc-tags-wrapper{
@@ -1524,16 +1542,16 @@ margin:0;
 
 .preview-fa-icon{
 clear: left;
-line-height: 1.2em;
-display: block;
-font-size: 10em;
+line-height: 1.2em !important;
+font-size: 7em !important;
 margin-top:20px;
+width: 140px;
 }
 
 .preview-fa{
 font-size: 2em;
 color:#ccc;
-margin-left:1em;
+margin:-1em 0 0 0;
 }
 
 .icon-fa{
@@ -1678,12 +1696,12 @@ padding-right:7px;
 &lt;/span&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20141119132924619" creator="Tobias Beer" modified="20150108101446180" modifier="Tobias Beer" tags="$:/tags/ViewTemplate" title="$:/.tb/ui/ViewTemplate/tagging">
-<pre>&lt;$list filter=&quot;[all[current]is[missing]tagging[]sort[title]]&quot;&gt;
+<div created="20141119132924619" creator="Tobias Beer" modified="20150916064901089" modifier="Tobias Beer" tags="$:/tags/ViewTemplate" title="$:/.tb/ui/ViewTemplate/tagging">
+<pre>&lt;$list filter=&quot;[all[current]tagging[]sort[title]]&quot;&gt;
 
 &lt;h1&gt;&lt;$link&gt;&lt;$view field=title/&gt;&lt;/$link&gt;&lt;/h1&gt;
-&lt;span class=&quot;fa fa-5x preview-fa-icon&quot;&gt;{{!!awe}}
-&lt;/span&gt;&lt;span class=&quot;preview-fa&quot;&gt;
+&lt;span class=&quot;fa fa-5x preview-fa-icon&quot;&gt;{{!!awe}}&lt;/span&gt;
+&lt;span class=&quot;preview-fa&quot;&gt;
 &lt;$view field=&quot;awe&quot; format=&quot;text/plain&quot;/&gt;
 &lt;/span&gt;
 &lt;/$list&gt;</pre>
@@ -7697,6 +7715,9 @@ src: local(&quot;FontAwesome&quot;), url(data:application/font-woff;base64,
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
+<div created="20150916070942055" creator="Tobias Beer" modified="20150916070942247" modifier="Tobias Beer" title="$:/language/MissingTiddler/Hint">
+<pre></pre>
+</div>
 <div description="Pale and unobtrusive" modified="20141130161219538" modifier="Tobias Beer" name="Vanilla" tags="$:/tags/Palette" title="$:/palettes/Vanilla" type="application/x-tiddler-dictionary">
 <pre>alert-background: #ffe476
 alert-border: #b99e2f
@@ -7807,10 +7828,10 @@ very-muted-foreground: #888888</pre>
 <div modified="20150915192009172" modifier="Tobias Beer" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
-<div modified="20150915192415250" modifier="Tobias Beer" title="$:/state/tab/moresidebar-401116514">
-<pre>$:/core/ui/MoreSideBar/System</pre>
+<div modified="20150916070929461" modifier="Tobias Beer" title="$:/state/tab/moresidebar-401116514">
+<pre>$:/core/ui/MoreSideBar/Shadows</pre>
 </div>
-<div modified="20150916063109789" modifier="Tobias Beer" title="$:/state/tab/sidebar--1835078512">
+<div modified="20150916070954272" modifier="Tobias Beer" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div modified="20150915192048692" modifier="Tobias Beer" title="$:/state/tag-manager/4.3">
@@ -7822,7 +7843,7 @@ very-muted-foreground: #888888</pre>
 <div created="20141128185442657" creator="T" modified="20141128185444360" modifier="Tobias Bee" title="$:/status/UserName">
 <pre>Tobias Beer</pre>
 </div>
-<div list="Installation GettingStarted" title="$:/StoryList">
+<div list="GettingStarted" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20150212065627403" creator="Tobias Beer" modified="20150212065640590" modifier="Tobias Beer" title="$:/temp/filter-fa">
@@ -7845,7 +7866,10 @@ very-muted-foreground: #888888</pre>
 <div created="20150915191907352" creator="Tobias Beer" modified="20150915191909176" modifier="Tobias Beer" title="$:/temp/newfieldname">
 <pre></pre>
 </div>
-<div created="20150915184320211" creator="Tobias Beer" modified="20150915193921818" modifier="Tobias Beer" title="$:/temp/NewTagName">
+<div created="20150915184320211" creator="Tobias Beer" modified="20150916071227461" modifier="Tobias Beer" title="$:/temp/NewTagName">
+<pre></pre>
+</div>
+<div created="20150916065607600" creator="Tobias Beer" modified="20150916065616185" modifier="Tobias Beer" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="A clean theme that emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.7">
@@ -7931,10 +7955,10 @@ very-muted-foreground: #888888</pre>
 <div color="#1fa67a" created="20141130183132141" creator="Tobias Beer" icon="$:/core/images/globe" modified="20141130183416791" modifier="Tobias Beer" tags="Releases Official" title="4.2">
 <pre></pre>
 </div>
-<div color="#1fa67a" created="20150124015519562" creator="Tobias Beer" icon="$:/core/images/globe" modified="20150124015519562" modifier="Tobias Beer" title="4.3">
+<div color="#1fa67a" created="20150124015519562" creator="Tobias Beer" icon="$:/core/images/globe" modified="20150916065624890" modifier="Tobias Beer" tags="Official Releases" title="4.3">
 <pre></pre>
 </div>
-<div color="#1fa67a" created="20150915191909485" creator="Tobias Beer" icon="$:/core/images/globe" modified="20150915192043301" modifier="Tobias Beer" title="4.4">
+<div color="#1fa67a" created="20150915191909485" creator="Tobias Beer" icon="$:/core/images/globe" modified="20150916065635628" modifier="Tobias Beer" tags="Official Releases" title="4.4">
 <pre></pre>
 </div>
 <div created="20141202152915078" creator="Tobias Beer" modified="20141202201438483" modifier="Tobias Beer" tags="" title="All">
@@ -8085,6 +8109,9 @@ very-muted-foreground: #888888</pre>
 <pre></pre>
 </div>
 <div awe="&amp;#xf0c9;" created="20141201101957665" creator="Tobias Beer" modified="20141201102008239" modifier="Tobias Beer" tags="FontAwesome WebApp Hamburger Pile List" title="fa-bars">
+<pre></pre>
+</div>
+<div awe="&amp;#xf244;" created="20150916064231135" creator="Tobias Beer" modified="20150916064317221" modifier="Tobias Beer" tags="4.4 FontAwesome WebApp Devices" title="fa-battery-empty">
 <pre></pre>
 </div>
 <div awe="&amp;#xf236;" created="20150124014124041" creator="Tobias Beer" modified="20150124014339328" modifier="Tobias Beer" tags="FontAwesome Night Sleep House WebApp 4.3" title="fa-bed">
@@ -9213,6 +9240,9 @@ very-muted-foreground: #888888</pre>
 <pre></pre>
 </div>
 <div awe="&amp;#xf156;" modified="20141127220000000" tags="FontAwesome" title="fa-rupee">
+<pre></pre>
+</div>
+<div awe="&amp;#xf267;" created="20150916071150303" creator="Tobias Beer" modified="20150916071228754" modifier="Tobias Beer" tags="4.4 FontAwesome App Browser OS" title="fa-safari">
 <pre></pre>
 </div>
 <div awe="&amp;#xf0c7;" modified="20141127220000000" tags="FontAwesome" title="fa-save">
