@@ -247,6 +247,8 @@ Error message and password prompt
 
 <li>updating a tiddler</li>
 
+<li>updating tiddler tags</li>
+
 </ul>
 </p>
 
@@ -6438,7 +6440,7 @@ very-muted-foreground: #888888</pre>
 <div modified="20150206093306235" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div list="[[editing the color field]]" title="$:/StoryList">
+<div list="[[updating tiddler tags]] Start [[access variable in js macro]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6458,7 +6460,7 @@ very-muted-foreground: #888888</pre>
 <div created="20150109155655454" modified="20150121194550674" title="$:/temp/list-search-list-examples">
 <pre></pre>
 </div>
-<div created="20150108211157577" modified="20150206212903186" title="$:/temp/NewTagName">
+<div created="20150108211157577" modified="20150917102404254" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div created="20150121142438533" modified="20150124001111442" title="$:/temp/search">
@@ -6928,6 +6930,18 @@ The tiddler constructor accepts multiple parameters, and therefore it has to han
 &lt;&lt;&lt;
 
 Perhaps the simplest implementation of updating a tiddler is found in the function ''setText'' in ''wiki.js''.</pre>
+</div>
+<div created="20150917102141819" modified="20150917102423733" summary="a snippet to update the tags of an existing tiddler" tags="js Dev snippet tags" title="updating tiddler tags">
+<pre>The following code [[given by Felix Krüppers|https://github.com/felixhayashi/TW5-TiddlyMap/issues/141#issuecomment-111241301]] does the job...
+
+```
+var tObj = $tw.wiki.getTiddler(&quot;Foo&quot;);
+var newTags = [ &quot;bar&quot;, &quot;baz&quot; ]; 
+newTags.push.apply(newTags, tObj.fields.tags || [])
+$tw.wiki.addTiddler(new $tw.Tiddler({ title: &quot;Foo&quot;, tags: newTags}));
+```
+
+To test, create a tiddler called [[Foo]], then run the above in the console.</pre>
 </div>
 
 </div>
