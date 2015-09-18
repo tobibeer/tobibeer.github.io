@@ -15575,7 +15575,7 @@ or combine both
 
 more at: [[Conditional ViewTemplate Section]]</pre>
 </div>
-<div created="20150918130245123" creator="Tobias Beer" modified="20150918131854135" modifier="Tobias Beer" tags="Widgets Presentation Tables" title="Conditional Table Rows">
+<div created="20150918130245123" creator="Tobias Beer" modified="20150918132010601" modifier="Tobias Beer" tags="Widgets Presentation Tables" title="Conditional Table Rows">
 <pre>As [[discussed here|https://groups.google.com/d/msg/tiddlywiki/Z9xgAOUD0v4/omc3RXeLAwAJ]], you can make table rows display conditionally using the [[reveal widget|http://tiddlywiki.com/static/RevealWidget.html]] like so...
 
 &lt;&lt;` '&lt;$reveal type=&quot;match&quot; state=&quot;$:/state/example-rows&quot; text=&quot;&quot;&gt;
@@ -15594,7 +15594,7 @@ more at: [[Conditional ViewTemplate Section]]</pre>
 &lt;/$reveal&gt;
 &lt;/table&gt;'&gt;&gt;
 
-An alternative way would be to assign a css class to a wrapper and then use css to hide all rows...
+An alternative way to using a reveal widget for every row would be to assign a css class to a wrapper and then use some css to hide all rows at once...
 
 &lt;&lt;` '&lt;style&gt;
 .hide-rows tr{display:none}
