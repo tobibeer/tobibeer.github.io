@@ -161,6 +161,8 @@ Error message and password prompt
 
 <li>$:/.tb/macros/demo-filter</li>
 
+<li>$:/.tb/macros/edit-inline</li>
+
 <li>$:/.tb/macros/example-svg-text-on-path</li>
 
 <li>$:/.tb/macros/excerpt</li>
@@ -813,9 +815,9 @@ Error message and password prompt
 
 <li>FilterOperator: join</li>
 
-<li>filters</li>
-
 <li>Filters</li>
+
+<li>filters</li>
 
 <li>focus</li>
 
@@ -903,6 +905,8 @@ Error message and password prompt
 
 <li>Info</li>
 
+<li>Inline Renaming And Editing</li>
+
 <li>inline-styles</li>
 
 <li>Interactive SVG Image Map</li>
@@ -971,9 +975,9 @@ Error message and password prompt
 
 <li>Macrocall vs. Macro</li>
 
-<li>macros</li>
-
 <li>Macros</li>
+
+<li>macros</li>
 
 <li>magictabs</li>
 
@@ -1313,9 +1317,9 @@ Error message and password prompt
 
 <li>Tobias Beer</li>
 
-<li>ToC</li>
-
 <li>toc</li>
+
+<li>ToC</li>
 
 <li>Toggle</li>
 
@@ -1333,9 +1337,9 @@ Error message and password prompt
 
 <li>traffic-light-buttons.gif</li>
 
-<li>transclusion</li>
-
 <li>Transclusion</li>
+
+<li>transclusion</li>
 
 <li>Translate TW5</li>
 
@@ -3790,6 +3794,53 @@ exports.run = function(value, operation, until, beyond, decimals, tiddler) {
 &lt;/blockquote&gt;&lt;/dd&gt;
 &lt;/dl&gt;
 \end</pre>
+</div>
+<div created="20150918220410471" creator="Tobias Beer" modified="20150918230218796" modifier="Tobias Beer" summary="allows inline editing for renaming a tiddler title" tags="$:/tags/Macro $:/tags/Stylesheet" title="$:/.tb/macros/edit-inline">
+<pre>\define tb-edit-save(tiddler,field:&quot;title&quot;)
+&lt;$set name=&quot;currentTiddler&quot; value=&quot;&quot;&quot;$(state)$&quot;&quot;&quot;&gt;
+&lt;$button set=&quot;&quot;&quot;$(state)$&quot;&quot;&quot; setTo=&quot;&quot; tooltip=&quot;apply&quot;&gt;
+&lt;$action-setfield $tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; $field$={{!!new-value}}/&gt;
+&lt;$reveal  type=&quot;match&quot; default=&quot;$field$&quot; text=&quot;title&quot;&gt;
+&lt;$action-deletetiddler $tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot;/&gt;
+&lt;/$reveal&gt;
+Ok
+&lt;/$button&gt;
+&lt;/$set&gt;
+\end
+
+\define tb-edit-inline(tiddler,field:&quot;title&quot;)
+&lt;$set name=&quot;state&quot; value=&lt;&lt;qualify &quot;$:/state/edit-title/$tiddler$-$field$&quot;&gt;&gt;&gt;
+&lt;$reveal type=&quot;match&quot; state=&lt;&lt;state&gt;&gt; text=&quot;&quot;&gt;
+&lt;$button
+set=&lt;&lt;state&gt;&gt;
+setTo=&quot;editing&quot;
+class=&quot;tc-btn-invisible tc-btn-edit-inline&quot;
+tooltip=&quot;edit tiddler field&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;state&gt;&gt; new-value={{!!$field$}}/&gt;
+&lt;$view tiddler=&quot;$tiddler$&quot; field=&quot;$field$&quot;/&gt;
+&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type=&quot;match&quot; state=&lt;&lt;state&gt;&gt; text=&quot;editing&quot;&gt;
+&lt;div&gt;
+&lt;$edit tiddler=&lt;&lt;state&gt;&gt; field=&quot;new-value&quot;/&gt;
+&lt;&lt;tb-edit-save &quot;&quot;&quot;$tiddler$&quot;&quot;&quot; &quot;$field$&quot;&gt;&gt;
+&lt;$button set=&lt;&lt;state&gt;&gt; setTo=&quot;&quot; tooltip=&quot;cancel edit&quot;&gt;
+Cancel
+&lt;/$button&gt;&lt;/div&gt;
+&lt;/$reveal&gt;
+&lt;/$set&gt;
+\end
+
+.tc-btn-invisible.tc-btn-edit-inline {
+display:block;
+padding:2px 0 2px 1px;
+background:#fbfbfb;
+border: 1px solid #fbfbfb;
+text-align:left;
+height:1.6em;
+display:inline-block;
+min-width:1.6em;
+}</pre>
 </div>
 <div created="20141203134758209" creator="Tobias Beer" modified="20141209151914632" modifier="Tobias Beer" summary="an example macro to demonstrate [[dynamic svg|Text On A Vectorpath]]" tags="$:/tags/Macro" title="$:/.tb/macros/example-svg-text-on-path">
 <pre>\define textOnPath(text)
@@ -16790,10 +16841,10 @@ drag to your wiki &lt;&lt;source [[$:/.tb/modules/filters/toc.js]]&gt;&gt;</pre>
 
 see source: &lt;&lt;source $:/core/modules/filters/join.js&gt;&gt;</pre>
 </div>
-<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150207094021145" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters">
+<div created="20141126021240947" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150116141444836" modifier="Tobias Beer" tags="" title="Filters">
 <pre></pre>
 </div>
-<div created="20141126021240947" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150116141444836" modifier="Tobias Beer" tags="" title="Filters">
+<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150207094021145" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters">
 <pre></pre>
 </div>
 <div created="20141202232934876" creator="Tobias Beer" follow="yes" modified="20150207103743726" modifier="Tobias Beer" summary="trying to have the standard theme focus more on content, hiding controls from visitors&lt;!--focus--&gt;" tags="[[Tobias Beer]]" title="focus" url="http://tobibeer.github.io/tw/focus">
@@ -17463,6 +17514,34 @@ Notice how, in one case, the styling from the template is applied whereas in the
 <div icon="$:/core/images/info-button" modified="20150204133310183" modifier="Tobias Beer" title="Info">
 <pre></pre>
 </div>
+<div created="20150918185744314" creator="Tobias Beer" foo="bar" modified="20150918230725010" modifier="Tobias Beer" tags="Solutions Tiddlers Actions" title="Inline Renaming And Editing">
+<pre>With a little [[help from Andreas Hahn|https://groups.google.com/d/msg/tiddlywiki/-yqMeKtTsMk/x_Nvls62AQAJ]], here's a prototype for a little wizard that allows to inline edit tiddler titles or other fields.
+
+!! Usage
+
+The following example creates a list and calls the macro ''tb-rename inline'' specifying the tiddler to be renamed as the current list item. Without the second parameter, the macro assumes we're editing tiddler titles.
+
+&lt;$macrocall $name=&quot;`&quot; text=&quot;&quot;&quot;&lt;$list filter=&quot;[tag[Actions]]&quot;&gt;
+&lt;div&gt;
+&lt;$macrocall $name=&quot;tb-edit-inline&quot;
+tiddler=&lt;&lt;currentTiddler&gt;&gt;/&gt;
+&lt;/div&gt;
+&lt;/$list&gt;&quot;&quot;&quot;/&gt;
+
+The next example uses the second macro parameter to edit a tiddlers field called ''foo'' rather than the title...
+
+&lt;$macrocall $name=&quot;`&quot; text=&quot;&quot;&quot;&lt;$list filter=&quot;[tag[Actions]]&quot;&gt;
+&lt;div&gt;
+&lt;$link&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;:&lt;br&gt;
+&lt;$macrocall $name=&quot;tb-edit-inline&quot;
+tiddler=&lt;&lt;currentTiddler&gt;&gt; field=&quot;foo&quot;/&gt;
+&lt;/div&gt;
+&lt;/$list&gt;&quot;&quot;&quot;/&gt;
+
+!! Installation
+
+Drag to your wiki: &lt;&lt;source [[$:/.tb/macros/edit-inline]]&gt;&gt;</pre>
+</div>
 <div created="20141203175812927" creator="Tobias Beer" modified="20141220114207215" modifier="Tobias Beer" tags="Markup" title="inline-styles">
 <pre>&lt;dt&gt;
 
@@ -18031,6 +18110,9 @@ To use, simply install &lt;&lt;source $:/.tb/macros/localfolder&gt;&gt;
 
 &gt; It's actually historical. The angle bracket syntax for macros was first implemented early on, before transcluded attributes. Then as the widget syntax evolved it was clear that it was more flexible and extensible. Internally, everything is a widget, even plain text. All the wikitext syntax beyond the widget syntax is really just a series of shortcuts for more easily typing widgets and HTML. My expectation is that more and more of the basic idioms that we discover as we explore the way that widgets fit together will end up being elevated to wiki syntax. For example, we could evolve a wikitext syntax for assigning variables that is terser than the current `&lt;$set&gt;` widget.</pre>
 </div>
+<div created="20141125030221729" creator="Tobias Beer" icon="$:/core/images/right-arrow" modified="20150116143635878" modifier="Tobias Beer" title="Macros">
+<pre></pre>
+</div>
 <div created="20141203174056270" creator="Tobias Beer" modified="20141220114540160" modifier="Tobias Beer" tags="Markup" title="macros">
 <pre>\define test(x, y, z:'0')
 $x$ $y$ $z$
@@ -18112,9 +18194,6 @@ $name=&quot;test&quot;
 x=&lt;&lt;version&gt;&gt;
 y={{!!title}}/&gt;&lt;/code&gt;
 &lt;/dd&gt;</pre>
-</div>
-<div created="20141125030221729" creator="Tobias Beer" icon="$:/core/images/right-arrow" modified="20150116143635878" modifier="Tobias Beer" title="Macros">
-<pre></pre>
 </div>
 <div created="20150204132834965" creator="Tobias Beer" modified="20150205182656047" modifier="Tobias Beer" summary="by [[Alberto Molina]], enhances TiddlyWiki with a tabsbar at the bottom of each tiddler to manage related tiddlers via lists, allowing to create related items via forms&lt;!--magictabs, bottomtabs--&gt;" tags="References Solutions Tabs Info Lists Relationships [[Alberto Molina]]" title="magictabs" url="http://magictabs.tiddlyspot.com">
 <pre>; discussion
@@ -21115,9 +21194,6 @@ If you neither have a TiddlyWiki or TiddlySpot yet, here's a simple process to d
 &quot;$:/.tb/templates/list-search-me&quot;&gt;&gt;
 &lt;/dl&gt;</pre>
 </div>
-<div created="20150116141836162" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116141836162" modifier="Tobias Beer" title="ToC">
-<pre></pre>
-</div>
 <div created="20141125232200140" creator="Tobias Beer" modified="20141125232258995" modifier="Tobias Beer" title="toc">
 <pre>\define regexp-headings() (^!+.*)(?gmi)
 &lt;div class=&quot;tidtoc tc-tiddler-frame&quot;&gt;
@@ -21174,6 +21250,9 @@ float:right;
 text-align:right;
 }
 &lt;/style&gt;</pre>
+</div>
+<div created="20150116141836162" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116141836162" modifier="Tobias Beer" title="ToC">
+<pre></pre>
 </div>
 <div created="20150119101745352" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150119101745352" modifier="Tobias Beer" title="Toggle">
 <pre></pre>
@@ -21281,6 +21360,9 @@ The defined styles here...
 <div title="traffic-light-buttons.gif" type="image/gif">
 <pre>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</pre>
 </div>
+<div created="20150116142305496" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150116142305497" modifier="Tobias Beer" title="Transclusion">
+<pre></pre>
+</div>
 <div created="20141203173927301" creator="Tobias Beer" modified="20141206141731598" modifier="Tobias Beer" tags="Markup" title="transclusion" url="http://tiddlywiki.com/#Transclusion%20in%20WikiText">
 <pre>&lt;dt&gt;
 
@@ -21309,9 +21391,6 @@ The defined styles here...
 » list of tiddlers tagged `Foo`&lt;br&gt;
 » same using template `Bar`
 &lt;/dd&gt;</pre>
-</div>
-<div created="20150116142305496" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150116142305497" modifier="Tobias Beer" title="Transclusion">
-<pre></pre>
 </div>
 <div created="20141114203626843" creator="Tobias Beer" modified="20141204134556861" modifier="Tobias Beer" tags="Developer" title="Translate TW5">
 <pre>;Interactive Tool
