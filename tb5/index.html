@@ -163,6 +163,8 @@ Error message and password prompt
 
 <li>$:/.tb/macros/example-svg-text-on-path</li>
 
+<li>$:/.tb/macros/excerpt</li>
+
 <li>$:/.tb/macros/generic-template</li>
 
 <li>$:/.tb/macros/inc</li>
@@ -985,6 +987,8 @@ Error message and password prompt
 
 <li>Maths</li>
 
+<li>Matias Goldman</li>
+
 <li>me/cook</li>
 
 <li>me/ubi</li>
@@ -1258,6 +1262,8 @@ Error message and password prompt
 <li>text</li>
 
 <li>Text</li>
+
+<li>Text Excerpts</li>
 
 <li>Text On A Vectorpath</li>
 
@@ -3789,6 +3795,47 @@ $text$
 &lt;/svg&gt;
 
 \end</pre>
+</div>
+<div created="20150918065252754" creator="Tobias Beer" modified="20150918073727402" modifier="Tobias Beer" tags="$:/tags/Macro $:/tags/Stylesheet" title="$:/.tb/macros/excerpt">
+<pre>\define excerpt(text)
+&lt;span class=&quot;tc-excerpt&quot;&gt;$text$&lt;/span&gt;
+\end
+
+\define excerpts(filter:&quot;[all[]]&quot;)
+&lt;$list filter=&quot;$filter$&quot; variable=&quot;tid&quot;&gt;
+&lt;$list filter=&quot;[title&lt;tid&gt;regexp:text[\&lt;\&lt;excerpt\s]]&quot;&gt;
+&lt;div class=&quot;tc-excerpts-title&quot;&gt;
+&lt;$link to=&lt;&lt;tid&gt;&gt;&gt;
+&lt;$view field=&quot;title&quot;/&gt;
+&lt;/$link&gt;
+&lt;/div&gt;
+&lt;div class=&quot;tc-excerpts&quot;&gt;
+{{!!text}}
+&lt;/div&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+\end
+
+.tc-excerpts {
+visibility:hidden;
+line-height:0;
+}
+
+.tc-excerpts * {
+display:none;
+}
+
+.tc-excerpts .tc-excerpt {
+visibility:visible;
+line-height:1.5em;
+display:block;
+}
+
+.tc-excerpts .tc-excerpt:before {
+content:&quot;&amp;raquo;&quot;;
+padding:0 7px;
+color:#ccc;
+}</pre>
 </div>
 <div created="20141210080434506" creator="Tobias Beer" modified="20141210172243243" modifier="Tobias Beer" summary="a macro serving as a shorthand to render any [[templates that are hidden|Hidden Templates]] under an otherwise lengthy system path" tags="$:/tags/Macro" title="$:/.tb/macros/generic-template">
 <pre>\define ||(template, content)
@@ -15038,8 +15085,8 @@ The link: http://tiddlywiki.com/alltiddlers.html#HelloThere
 &lt;iframe src=&quot;http://tiddlywiki.com/alltiddlers.html#HelloThere&quot; style=&quot;height:600px;width:100%;border:none;overflow-x:hidden:overflow-y:auto;&quot;/&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20141206103001758" creator="Tobias Beer" modified="20150206130337173" modifier="Tobias Beer" tags="[[Render A Tag Button]] [[Tagging Macro]] Examples" title="An Example Tiddler">
-<pre>This tiddler is used to show some results elsewhere for demonstration purposes.</pre>
+<div created="20141206103001758" creator="Tobias Beer" modified="20150918073957809" modifier="Tobias Beer" tags="[[Render A Tag Button]] [[Tagging Macro]] Examples" title="An Example Tiddler">
+<pre>This tiddler is used to show some results elsewhere for demonstration purposes. It also has &lt;&lt;excerpt &quot;an example excerpt&quot;&gt;&gt;.</pre>
 </div>
 <div created="20141121102550597" creator="Tobias Beer" modified="20150131123000072" modifier="Tobias Beer" tags="Lists Filters Solutions Fields [[Stephan Hradek]]" title="AND Logic Using Nested Lists" type="">
 <pre>\define getBooks() &lt;$list filter=&quot;[tag[Resource]field:courses&lt;course&gt; +tag[Resource]field:level&lt;level&gt;]&quot; /&gt;
@@ -18913,6 +18960,17 @@ width:16px;
 <div icon="$:/core/images/permalink-button" modified="20150202230301722" modifier="Tobias Beer" title="Maths">
 <pre></pre>
 </div>
+<div created="20150918074354076" creator="Tobias Beer" modified="20150918074824995" modifier="Tobias Beer" tags="" title="Matias Goldman" url="http://twaddle.tiddlyspot.com">
+<pre>A collection of hints and tips, musings and proposals  from Mat, a highly enthusiastic long-time member of the TiddlyWiki community.
+
+&lt;&lt;&lt;
+This is Mat's, a.k.a &lt;:-) little man-cave in the ~TiddlyVerse.
+
+Most TW development is, understandably, based on the premise that &quot;Improve code ➔ Better TW&quot;. TWaddle is also about developing TW but from the perspective that Bigger Community ⇄ Better TW. Thus, TWaddle looks more to people issues - how to attract them, how to make them stick with TW etc.
+
+I'm not a programmer but I am a TW enthusiast so I tiddlefiddle enough to make the occasional discovery of something cool. Given the amount of words I utter, it is also a mere numbers game before I say something that makes sense. TWaddle is intended to capture these eventualities.
+&lt;&lt;&lt;</pre>
+</div>
 <div created="20150204085249697" creator="Tobias Beer" follow="no" modified="20150207094055440" modifier="Tobias Beer" summary="finally using TiddlyWiki for a handful of recipes" tags="[[Tobias Beer]] Personal" title="me/cook" url="https://tobibeer.github.io/me/cook">
 <pre></pre>
 </div>
@@ -20703,6 +20761,31 @@ Drag to your wiki: &lt;&lt;source [[$:/.tb/macros/text]]&gt;&gt;</pre>
 </div>
 <div created="20150116142447533" creator="Tobias Beer" icon="$:/core/images/edit-button" modified="20150116142447533" modifier="Tobias Beer" title="Text">
 <pre></pre>
+</div>
+<div created="20150918064818701" creator="Tobias Beer" modified="20150918075109594" modifier="Tobias Beer" tags="Text Solutions [[Matias Goldman]]" title="Text Excerpts">
+<pre>As &lt;&lt;excerpt &quot;I was wondering&quot;&gt;&gt; how to do simple text excerpts, &lt;&lt;excerpt &quot;I stumbled upon&quot;&gt;&gt; [[this post|https://groups.google.com/d/msg/tiddlywiki/8rXt-qVqTb0/gbgWItz0CgAJ]] by [[Mat|Matias Goldman]] and was inspired to create the following macros.
+
+!! Usage
+
+Using the `&lt;&lt;excerpt&gt;&gt;` macro, provided by $:/.tb/macros/excerpt, define the text you wish to use as an excerpt as its first parameter, e.g.:
+
+`&lt;&lt;excerpt &quot;this is an excerpt&quot;&gt;&gt;`
+
+&gt; &lt;&lt;excerpt &quot;this is an excerpt&quot;&gt;&gt;
+
+At the point where you wish to output a list of excerpts, use the `&lt;&lt;excerpts&gt;&gt;` macro. For performance reasons consider specifying a filter as the first parameter.
+
+`&lt;&lt;excerpts&gt;&gt;`
+
+&gt; &lt;&lt;excerpts&gt;&gt;
+
+`&lt;&lt;excerpts [tag[Solutions]]&gt;&gt;`
+
+&gt; &lt;&lt;excerpts [tag[Solutions]]&gt;&gt;
+
+!!Installation
+
+Drag to your wiki: &lt;&lt;source [[$:/.tb/macros/excerpt]]&gt;&gt;</pre>
 </div>
 <div created="20141203134558759" creator="Tobias Beer" modified="20141206175524116" modifier="Tobias Beer" tags="Images Solutions Presentation" title="Text On A Vectorpath">
 <pre>Here's [[an experiment by BuggyJ|http://xlink.tiddlyspot.com/#Making%20curved%20text%20with%20inline%20SVG]] showing how to render text on a svg vector graphic.
