@@ -15613,18 +15613,18 @@ An alternative way to using a reveal widget for every row would be to assign a c
 &lt;tr&gt;&lt;td&gt;frotz&lt;/td&gt;&lt;td&gt;gronk&lt;/td&gt;&lt;/tr&gt;
 &lt;/table&gt;'&gt;&gt;</pre>
 </div>
-<div created="20150918144721849" creator="Tobias Beer" magic="abracadabra" modified="20150918145633909" modifier="Tobias Beer" tags="Solutions Variables Widgets" title="Conditional Variable Assignment">
+<div created="20150918144721849" creator="Tobias Beer" magic="abracadabr" modified="20150918145846068" modifier="Tobias Beer" tags="Solutions Variables Widgets" title="Conditional Variable Assignment">
 <pre>Using the [[$set widget|http://tiddlywiki.com/static/SetWidget.html]], you can conditionally assign content to a variable by evaluating a filter and then using the ''emptyValue'' parameter as a fallback when the filter returns an empty string.
 
 !! Example
 
 Try changing the content of the field ''magic'' below.
 
-&lt;$macrocall $name=&quot;`&quot; text=&quot;&quot;&quot;&lt;$set name=&quot;var&quot;
+&lt;$macrocall $name=&quot;`&quot; text=&quot;&quot;&quot;&lt;$set name=&quot;OpenSesame&quot;
 filter=&quot;[all[current]field:magic[abracadabra]]&quot;
 value=&quot;Look, Sir, the Sesame is open.&quot;
 emptyValue=&quot;Nope, Sir, no entry for you.&quot;&gt;
-&lt;$text text=&lt;&lt;var&gt;&gt;/&gt;
+&lt;$text text=&lt;&lt;OpenSesame&gt;&gt;/&gt;
 &lt;/$set&gt;
 
 ; magic
