@@ -881,9 +881,9 @@ Error message and password prompt
 
 <li>ibox</li>
 
-<li>icons</li>
-
 <li>Icons</li>
+
+<li>icons</li>
 
 <li>iframe-1</li>
 
@@ -1311,9 +1311,9 @@ Error message and password prompt
 
 <li>Tobias Beer</li>
 
-<li>ToC</li>
-
 <li>toc</li>
+
+<li>ToC</li>
 
 <li>Toggle</li>
 
@@ -15575,7 +15575,7 @@ or combine both
 
 more at: [[Conditional ViewTemplate Section]]</pre>
 </div>
-<div created="20150918130245123" creator="Tobias Beer" modified="20150918132010601" modifier="Tobias Beer" tags="Widgets Presentation Tables" title="Conditional Table Rows">
+<div created="20150918130245123" creator="Tobias Beer" modified="20150918132527113" modifier="Tobias Beer" tags="Widgets Presentation Tables" title="Conditional Table Rows">
 <pre>As [[discussed here|https://groups.google.com/d/msg/tiddlywiki/Z9xgAOUD0v4/omc3RXeLAwAJ]], you can make table rows display conditionally using the [[reveal widget|http://tiddlywiki.com/static/RevealWidget.html]] like so...
 
 &lt;&lt;` '&lt;$reveal type=&quot;match&quot; state=&quot;$:/state/example-rows&quot; text=&quot;&quot;&gt;
@@ -15597,22 +15597,18 @@ more at: [[Conditional ViewTemplate Section]]</pre>
 An alternative way to using a reveal widget for every row would be to assign a css class to a wrapper and then use some css to hide all rows at once...
 
 &lt;&lt;` '&lt;style&gt;
-.hide-rows tr{display:none}
+.hide-rows tr td{display:none}
 &lt;/style&gt;
-&lt;$reveal type=&quot;match&quot; state=&quot;$:/state/example-rows&quot; text=&quot;hide&quot;&gt;
-&lt;$button set=&quot;$:/state/example-rows&quot; setTo=&quot;show&quot;&gt;Expand Rows&lt;/$button&gt;
+&lt;$reveal type=&quot;match&quot; state=&quot;$:/state/example-rows&quot; text=&quot;hide-rows&quot;&gt;
+&lt;$button set=&quot;$:/state/example-rows&quot; setTo=&quot;show-rows&quot;&gt;Expand Rows&lt;/$button&gt;
 &lt;/$reveal&gt;
-&lt;$reveal type=&quot;nomatch&quot; state=&quot;$:/state/example-rows&quot; text=&quot;hide&quot;&gt;
-&lt;$button set=&quot;$:/state/example-rows&quot; setTo=&quot;hide&quot;&gt;Collapse Rows&lt;/$button&gt;
+&lt;$reveal type=&quot;nomatch&quot; state=&quot;$:/state/example-rows&quot; text=&quot;hide-rows&quot;&gt;
+&lt;$button set=&quot;$:/state/example-rows&quot; setTo=&quot;hide-rows&quot;&gt;Collapse Rows&lt;/$button&gt;
 &lt;/$reveal&gt;
 &lt;table class={{$:/state/example-rows}}&gt;
 &lt;tr&gt;&lt;th&gt;foo&lt;/th&gt;&lt;th&gt;bar&lt;/th&gt;&lt;/tr&gt;
-&lt;$reveal type=&quot;match&quot; state=&quot;$:/state/example-rows&quot; text=&quot;show&quot; tag=&quot;tr&quot;&gt;
-&lt;td&gt;baz&lt;/td&gt;&lt;td&gt;mumble&lt;/td&gt;
-&lt;/$reveal&gt;
-&lt;$reveal type=&quot;match&quot; state=&quot;$:/state/example-rows&quot; text=&quot;show&quot; tag=&quot;tr&quot;&gt;
-&lt;td&gt;frotz&lt;/td&gt;&lt;td&gt;gronk&lt;/td&gt;
-&lt;/$reveal&gt;
+&lt;tr&gt;&lt;td&gt;baz&lt;/td&gt;&lt;td&gt;mumble&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;frotz&lt;/td&gt;&lt;td&gt;gronk&lt;/td&gt;&lt;/tr&gt;
 &lt;/table&gt;'&gt;&gt;</pre>
 </div>
 <div created="20141113121650583" creator="Tobias Beer" modified="20150302121548369" modifier="Tobias Beer" tags="UI Solutions Lists Templates" title="Conditional ViewTemplate Section">
@@ -17342,10 +17338,10 @@ HTML tags work like that.
 <div created="20141211125930733" creator="Tobias Beer" follow="yes" modified="20150209132500215" modifier="Tobias Beer" summary="demonstrating lightboxes in tw5&lt;!--ibox--&gt;" tags="[[Tobias Beer]]" title="ibox" url="http://tobibeer.github.io/tw/ibox">
 <pre></pre>
 </div>
-<div created="20150202230519361" creator="Tobias Beer" follow="yes" modified="20150213194129182" modifier="Tobias Beer" summary="a showcase and reference for icon fonts and libraries with previews" tags="[[Tobias Beer]] Solutions Icons Presentation Fonts" title="icons" url="http://tobibeer.github.io/tw/icons">
+<div icon="$:/core/images/star-filled" modified="20150202230419819" modifier="Tobias Beer" title="Icons">
 <pre></pre>
 </div>
-<div icon="$:/core/images/star-filled" modified="20150202230419819" modifier="Tobias Beer" title="Icons">
+<div created="20150202230519361" creator="Tobias Beer" follow="yes" modified="20150213194129182" modifier="Tobias Beer" summary="a showcase and reference for icon fonts and libraries with previews" tags="[[Tobias Beer]] Solutions Icons Presentation Fonts" title="icons" url="http://tobibeer.github.io/tw/icons">
 <pre></pre>
 </div>
 <div created="20150105231913568" creator="Tobias Beer" follow="no" modified="20150108114142058" modifier="Tobias Beer" summary="testing how two ~TiddlyWikis behave which mutually iframe their contents" tags="[[Tobias Beer]]" title="iframe-1" url="http://iframe-1.tiddlyspot.com">
@@ -21097,9 +21093,6 @@ If you neither have a TiddlyWiki or TiddlySpot yet, here's a simple process to d
 &quot;$:/.tb/templates/list-search-me&quot;&gt;&gt;
 &lt;/dl&gt;</pre>
 </div>
-<div created="20150116141836162" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116141836162" modifier="Tobias Beer" title="ToC">
-<pre></pre>
-</div>
 <div created="20141125232200140" creator="Tobias Beer" modified="20141125232258995" modifier="Tobias Beer" title="toc">
 <pre>\define regexp-headings() (^!+.*)(?gmi)
 &lt;div class=&quot;tidtoc tc-tiddler-frame&quot;&gt;
@@ -21156,6 +21149,9 @@ float:right;
 text-align:right;
 }
 &lt;/style&gt;</pre>
+</div>
+<div created="20150116141836162" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116141836162" modifier="Tobias Beer" title="ToC">
+<pre></pre>
 </div>
 <div created="20150119101745352" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150119101745352" modifier="Tobias Beer" title="Toggle">
 <pre></pre>
