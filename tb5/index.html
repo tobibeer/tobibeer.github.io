@@ -759,6 +759,8 @@ Error message and password prompt
 
 <li>EncryptTiddler</li>
 
+<li>Eric Shulman</li>
+
 <li>Errors</li>
 
 <li>EucalyJ</li>
@@ -16363,6 +16365,9 @@ Here, location and filetype are set by the macro.</pre>
 * allows sensible data in a day to day wiki
 * theoretically you can double encrypt by encrypting your wiki too</pre>
 </div>
+<div created="20150918112509352" creator="Tobias Beer" modified="20150918112539583" modifier="Tobias Beer" summary="An inexpendable resource and mastermind behind a plethora of plugins and codebits for classic TiddlyWiki." tags="Community" title="Eric Shulman" url="http://tiddlytools.com">
+<pre></pre>
+</div>
 <div created="20150116144459713" creator="Tobias Beer" icon="$:/core/images/permalink-button" modified="20150116144459713" modifier="Tobias Beer" title="Errors">
 <pre></pre>
 </div>
@@ -18992,10 +18997,8 @@ width:16px;
 <div icon="$:/core/images/permalink-button" modified="20150202230301722" modifier="Tobias Beer" title="Maths">
 <pre></pre>
 </div>
-<div created="20150918074354076" creator="Tobias Beer" modified="20150918074824995" modifier="Tobias Beer" tags="" title="Matias Goldman" url="http://twaddle.tiddlyspot.com">
-<pre>A collection of hints and tips, musings and proposals  from Mat, a highly enthusiastic long-time member of the TiddlyWiki community.
-
-&lt;&lt;&lt;
+<div created="20150918074354076" creator="Tobias Beer" modified="20150918112331179" modifier="Tobias Beer" summary="A collection of hints and tips, musings and proposals  from Mat, a highly enthusiastic long-time member of the TiddlyWiki community." tags="Community" title="Matias Goldman" url="http://twaddle.tiddlyspot.com">
+<pre>&lt;&lt;&lt;
 This is Mat's, a.k.a &lt;:-) little man-cave in the ~TiddlyVerse.
 
 Most TW development is, understandably, based on the premise that &quot;Improve code ➔ Better TW&quot;. TWaddle is also about developing TW but from the perspective that Bigger Community ⇄ Better TW. Thus, TWaddle looks more to people issues - how to attract them, how to make them stick with TW etc.
@@ -20865,9 +20868,9 @@ For packaging your plugin you finally simply run a shell script which packs the 
 ;test drive
 :http://thediveo.github.io/ThirdFlow/output/thirdflow.html</pre>
 </div>
-<div created="20150918102956402" creator="Tobias Beer" modified="20150918105907108" modifier="Tobias Beer" tags="Solutions Macros Transclusion" title="Tiddler Macro">
+<div created="20150918102956402" creator="Tobias Beer" modified="20150918112207930" modifier="Tobias Beer" tags="Solutions Macros Transclusion [[Eric Shulman]]" title="Tiddler Macro">
 <pre>\define me(vehicle, dwelling, kin)
-I drive a $vehicle$, live in a $dwelling$, and have $kin$.
+I drive a $vehicle$, live in $dwelling$, and have $kin$.
 \end
 
 [[Transclusion|http://tiddlywiki.com/static/Transclusion.html]] is an integral part of modern TiddlyWiki 5. As a consequence, the [[tiddler macro|http://tiddlywiki.org/#tiddler]] of a classic TiddlyWiki is no longer of need or present.
@@ -20876,32 +20879,32 @@ Using templates and placeholders became a lot more flexible than in the old days
 
 ```
 \define me(vehicle, dwelling, kin)
-I drive a $vehicle$, live in a $dwelling$, and have $kin$.
+I drive a $vehicle$, live in $dwelling$, and have $kin$.
 \end
 
-&lt;&lt;me &quot;bicycle and I love it&quot; &quot;flat&quot; &quot;great friends&quot;&gt;&gt;
+&lt;&lt;me &quot;bicycle and I love it&quot; &quot;a flat&quot; &quot;great friends&quot;&gt;&gt;
 ```
 
-&gt; &lt;&lt;me &quot;bicycle and I love it&quot; &quot;flat&quot; &quot;great friends&quot;&gt;&gt;
+&gt; &lt;&lt;me &quot;bicycle and I love it&quot; &quot;a flat&quot; &quot;great friends&quot;&gt;&gt;
 
 You can even be specific about your parameters, e.g.:
 
 ```
-&lt;&lt;me vehicle:&quot;bicycle and I love it&quot; dwelling:&quot;flat&quot; kin:&quot;great friends&quot;&gt;&gt;
+&lt;&lt;me vehicle:&quot;bicycle and I love it&quot; dwelling:&quot;a flat&quot; kin:&quot;great friends&quot;&gt;&gt;
 ```
 
-&gt; &lt;&lt;me vehicle:&quot;bicycle and I love it&quot; dwelling:&quot;flat&quot; kin:&quot;great friends&quot;&gt;&gt;
+&gt; &lt;&lt;me vehicle:&quot;bicycle and I love it&quot; dwelling:&quot;a flat&quot; kin:&quot;great friends&quot;&gt;&gt;
 
 In classic TiddlyWiki things would have looked like so...
 
 ```
 title: me
 
-I drive a $1, live in a $2, and have $3.
+I drive a $1, live in $2, and have $3.
 
 title: test me
 
-&lt;&lt;tiddler me with: &quot;bicycle and I love it&quot; &quot;flat&quot; &quot;great friends&quot;&gt;&gt;
+&lt;&lt;tiddler me with: &quot;bicycle and I love it&quot; &quot;a flat&quot; &quot;great friends&quot;&gt;&gt;
 ```
 
 {{$:/.tb/msg/tid-file}}
@@ -20910,7 +20913,7 @@ You can see how, while being concise, the classic template is far less readable 
 
 Nevertheless, if you truly desired a tiddler macro as you were used to, you can achieve something resembling the old functionality using a global macro like [[$:/.tb/macros/tiddler]].
 
-Note, however that you must adapt your old placeholders from being `$1` to `&lt;&lt;$1&gt;&gt;` as Eric Shulman explains [[here|https://groups.google.com/d/msg/tiddlywiki/XHvrJQVUqYs/lb7quEe2AgAJ]].
+Note, however that you must adapt your old placeholders from being `$1` to `&lt;&lt;$1&gt;&gt;` as Eric Shulman explains [[here|https://groups.google.com/d/msg/tiddlywiki/XHvrJQVUqYs/lb7quEe2AgAJ]]. Plus, unless you wanted to introduce a superfluous dummy parameter to capture it, you also need to remove any old `with:`.
 
 The syntax to model the above example would be...
 
