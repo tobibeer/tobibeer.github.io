@@ -871,9 +871,9 @@ Error message and password prompt
 
 <li>ibox</li>
 
-<li>Icons</li>
-
 <li>icons</li>
+
+<li>Icons</li>
 
 <li>iframe-1</li>
 
@@ -1295,9 +1295,9 @@ Error message and password prompt
 
 <li>Tobias Beer</li>
 
-<li>toc</li>
-
 <li>ToC</li>
+
+<li>toc</li>
 
 <li>Toggle</li>
 
@@ -3473,14 +3473,14 @@ https://groups.google.com/d/msg/tiddlywiki/v_xIDW8_D7Y/mXaVka0C51EJ
 &quot;tb-cook&quot;:&quot;[[me/cook]]&quot;
 }</pre>
 </div>
-<div created="20150918044432450" creator="Tobias Beer" custom="$:/.tb/ui/MoreSideBar/" modified="20150918051906743" modifier="Tobias Beer" summary="allows to toggle sidebar tabs" title="$:/.tb/config/sidebar-tabs">
+<div created="20150918044432450" creator="Tobias Beer" custom="$:/.tb/ui/MoreSideBar/" modified="20150918062155644" modifier="Tobias Beer" summary="allows to toggle sidebar tabs" title="$:/.tb/config/sidebar-tabs">
 <pre>&lt;table&gt;
 &lt;tr&gt;
 &lt;th&gt;Tab&lt;/th&gt;
 &lt;th&gt;Sidebar&lt;/th&gt;
 &lt;th&gt;More&lt;/th&gt;
 &lt;/tr&gt;
-&lt;$list filter=&quot;[all[system+shadows]prefix[$:/core/ui/SideBar/]] [all[system+shadows]prefix[$:/core/ui/MoreSideBar/]] [prefix{!!custom}] +[sort[title]]&quot;&gt;
+&lt;$list filter=&quot;[all[shadows+tiddlers]prefix[$:/core/ui/SideBar/]] [all[shadows+tiddlers]prefix[$:/core/ui/MoreSideBar/]] [all[shadows+tiddlers]prefix{!!custom}] +[sort[title]]&quot;&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;$link to={{!!title}}&gt;&lt;$view tiddler={{!!title}} field=&quot;title&quot;/&gt;&lt;/$link&gt;&lt;/td&gt;
 &lt;td&gt;&lt;span title=&quot;Toggle Sidebar&quot;&gt;&lt;$checkbox tiddler={{!!title}} tag=&quot;$:/tags/SideBar&quot;/&gt;&lt;/span&gt;&lt;/td&gt;
@@ -17216,10 +17216,10 @@ HTML tags work like that.
 <div created="20141211125930733" creator="Tobias Beer" follow="yes" modified="20150209132500215" modifier="Tobias Beer" summary="demonstrating lightboxes in tw5&lt;!--ibox--&gt;" tags="[[Tobias Beer]]" title="ibox" url="http://tobibeer.github.io/tw/ibox">
 <pre></pre>
 </div>
-<div icon="$:/core/images/star-filled" modified="20150202230419819" modifier="Tobias Beer" title="Icons">
+<div created="20150202230519361" creator="Tobias Beer" follow="yes" modified="20150213194129182" modifier="Tobias Beer" summary="a showcase and reference for icon fonts and libraries with previews" tags="[[Tobias Beer]] Solutions Icons Presentation Fonts" title="icons" url="http://tobibeer.github.io/tw/icons">
 <pre></pre>
 </div>
-<div created="20150202230519361" creator="Tobias Beer" follow="yes" modified="20150213194129182" modifier="Tobias Beer" summary="a showcase and reference for icon fonts and libraries with previews" tags="[[Tobias Beer]] Solutions Icons Presentation Fonts" title="icons" url="http://tobibeer.github.io/tw/icons">
+<div icon="$:/core/images/star-filled" modified="20150202230419819" modifier="Tobias Beer" title="Icons">
 <pre></pre>
 </div>
 <div created="20150105231913568" creator="Tobias Beer" follow="no" modified="20150108114142058" modifier="Tobias Beer" summary="testing how two ~TiddlyWikis behave which mutually iframe their contents" tags="[[Tobias Beer]]" title="iframe-1" url="http://iframe-1.tiddlyspot.com">
@@ -20875,6 +20875,9 @@ If you neither have a TiddlyWiki or TiddlySpot yet, here's a simple process to d
 &quot;$:/.tb/templates/list-search-me&quot;&gt;&gt;
 &lt;/dl&gt;</pre>
 </div>
+<div created="20150116141836162" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116141836162" modifier="Tobias Beer" title="ToC">
+<pre></pre>
+</div>
 <div created="20141125232200140" creator="Tobias Beer" modified="20141125232258995" modifier="Tobias Beer" title="toc">
 <pre>\define regexp-headings() (^!+.*)(?gmi)
 &lt;div class=&quot;tidtoc tc-tiddler-frame&quot;&gt;
@@ -20931,9 +20934,6 @@ float:right;
 text-align:right;
 }
 &lt;/style&gt;</pre>
-</div>
-<div created="20150116141836162" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116141836162" modifier="Tobias Beer" title="ToC">
-<pre></pre>
 </div>
 <div created="20150119101745352" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150119101745352" modifier="Tobias Beer" title="Toggle">
 <pre></pre>
