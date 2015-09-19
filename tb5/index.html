@@ -21024,7 +21024,7 @@ For packaging your plugin you finally simply run a shell script which packs the 
 ;test drive
 :http://thediveo.github.io/ThirdFlow/output/thirdflow.html</pre>
 </div>
-<div created="20150918102956402" creator="Tobias Beer" modified="20150919131535231" modifier="Tobias Beer" tags="Solutions Macros Transclusion [[Eric Shulman]]" title="Tiddler Macro">
+<div created="20150918102956402" creator="Tobias Beer" modified="20150919131844710" modifier="Tobias Beer" tags="Solutions Macros Transclusion [[Eric Shulman]]" title="Tiddler Macro">
 <pre>\define me(vehicle, dwelling, kin)
 I drive a $vehicle$, live in $dwelling$, and have $kin$.
 \end
@@ -21084,12 +21084,16 @@ The syntax to model the above example would be...
 ```
 title: me
 
-I drive a $1, live in a $2, and have $3.
+I drive a &lt;&lt;$1&gt;&gt;, live in a &lt;&lt;$2&gt;&gt;, and have &lt;&lt;$3&gt;&gt;.
+```
 
+```
 title: test me
 
-&lt;&lt;tiddler me with: &quot;bicycle and I love it&quot; &quot;flat&quot; &quot;great friends&quot;&gt;&gt;
+&lt;&lt;tiddler me &quot;bicycle and I love it&quot; &quot;flat&quot; &quot;great friends&quot;&gt;&gt;
 ```
+
+To be honest, it's difficult to see a benefit in doing that.
 
 Here the source of the tiddler macro remake as per Eric Shulman:
 &lt;&lt;source [[$:/.tb/macros/tiddler]]&gt;&gt;</pre>
