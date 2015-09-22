@@ -6116,10 +6116,12 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20150922102041627" modified="20150922140420687" tags="$:/tags/Macro" title="$:/core/macros/toobar-button" type="text/vnd.tiddlywiki">
-<pre>\define toolbar-button(button, icon, text, class)
-&lt;$vars tv-config-toolbar-icons=&quot;$icon$&quot; tv-config-toolbar-text=&quot;$text$&quot;
+<div created="20150922102041627" modified="20150922150002673" tags="$:/tags/Macro" title="$:/core/macros/toobar-button" type="text/vnd.tiddlywiki">
+<pre>\define toolbar-button(button, icon:&quot;yes&quot;, text:&quot;yes&quot;, class)
+&lt;$set name=&quot;tv-config-toolbar-icons&quot; filter=&quot;[[$icon$]]&quot; value=&quot;$icon$&quot; emtpyValue=&lt;&lt;tv-config-toolbar-icons&gt;&gt;&gt;
+&lt;$vars tv-config-toolbar-text=&quot;$text$&quot;
 tv-config-toolbar-class=&quot;$class$&quot;&gt;&lt;$transclude tiddler=&quot;$button$&quot;/&gt;&lt;/$vars&gt;
+&lt;/$set&gt;
 \end</pre>
 </div>
 <div caption="{{$:/core/images/down-arrow}} {{$:/language/Buttons/More/Caption}}" created="20150922104201568" description="{{$:/language/Buttons/More/Hint}}" modified="20150922142349008" tags="$:/tags/PageControls" title="$:/core/ui/Buttons/more-page-actions">
@@ -6280,7 +6282,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20150922134538117" modified="20150922144838053" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div list="Modifications" title="$:/StoryList">
+<div list="Modifications $:/core/macros/toobar-button" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -8437,13 +8439,13 @@ body.tc-dirty span.tc-dirty-indicator, body.tc-dirty span.tc-dirty-indicator svg
 }
 </pre>
 </div>
-<div created="20150922134036910" list="Modifications $:/core/macros/toobar-button $:/core/ui/Buttons/more-page-actions $:/core/ui/Buttons/more-tiddler-actions $:/core/ui/ControlPanel/Toolbars/EditToolbar $:/core/ui/ControlPanel/Toolbars/PageControls $:/core/ui/ControlPanel/Toolbars/ViewToolbar $:/core/ui/MoreSideBar/Tags $:/core/ui/SideBar/Tools $:/core/ui/TiddlerInfo/Tools $:/themes/tiddlywiki/vanilla/base" modified="20150922144909537" tags="" title="Modifications">
+<div created="20150922134036910" list="Modifications $:/core/macros/toobar-button $:/core/ui/Buttons/more-page-actions $:/core/ui/Buttons/more-tiddler-actions $:/core/ui/ControlPanel/Toolbars/EditToolbar $:/core/ui/ControlPanel/Toolbars/PageControls $:/core/ui/ControlPanel/Toolbars/ViewToolbar $:/core/ui/MoreSideBar/Tags $:/core/ui/SideBar/Tools $:/core/ui/TiddlerInfo/Tools $:/themes/tiddlywiki/vanilla/base" modified="20150922150012610" tags="" title="Modifications">
 <pre>This macro demonstrates what was intended to be a helper macro to output a toolbar button, e.g. via...
 
 ```
-&lt;&lt;toolbar-button $:/core/ui/Buttons/new-journal no yes&gt;&gt;
+&lt;&lt;toolbar-button $:/core/ui/Buttons/new-journal no&gt;&gt;
 ```
-&gt; &lt;&lt;toolbar-button $:/core/ui/Buttons/new-journal no yes&gt;&gt;
+&gt; &lt;&lt;toolbar-button $:/core/ui/Buttons/new-journal no&gt;&gt;
 
 !!New
 
