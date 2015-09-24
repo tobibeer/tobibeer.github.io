@@ -139,6 +139,8 @@ Error message and password prompt
 
 <li>$:/.tb/demo/makedoc</li>
 
+<li>$:/.tb/demo/onhover-toolbar-styles</li>
+
 <li>$:/.tb/demo/reorder</li>
 
 <li>$:/.tb/demo/svg-circle</li>
@@ -619,9 +621,9 @@ Error message and password prompt
 
 <li>Clone Wikis Via store.php</li>
 
-<li>code</li>
-
 <li>Code</li>
+
+<li>code</li>
 
 <li>Code-101</li>
 
@@ -979,9 +981,9 @@ Error message and password prompt
 
 <li>Macrocall vs. Macro</li>
 
-<li>Macros</li>
-
 <li>macros</li>
+
+<li>Macros</li>
 
 <li>magictabs</li>
 
@@ -1239,9 +1241,9 @@ Error message and password prompt
 
 <li>Table Of Contents In Sidebar</li>
 
-<li>Tables</li>
-
 <li>tables</li>
+
+<li>Tables</li>
 
 <li>Tables Without Borders</li>
 
@@ -1279,9 +1281,9 @@ Error message and password prompt
 
 <li>Testing New Stuff</li>
 
-<li>text</li>
-
 <li>Text</li>
+
+<li>text</li>
 
 <li>Text Excerpts</li>
 
@@ -1323,9 +1325,9 @@ Error message and password prompt
 
 <li>Tobias Beer</li>
 
-<li>ToC</li>
-
 <li>toc</li>
+
+<li>ToC</li>
 
 <li>Toggle</li>
 
@@ -1343,9 +1345,9 @@ Error message and password prompt
 
 <li>traffic-light-buttons.gif</li>
 
-<li>Transclusion</li>
-
 <li>transclusion</li>
+
+<li>Transclusion</li>
 
 <li>Translate TW5</li>
 
@@ -3575,6 +3577,21 @@ class=&lt;&lt;tv-config-toolbar-class&gt;&gt;&gt;
 
 {{!!text}}</pre>
 </div>
+<div created="20150924065447163" creator="Tobias Beer" modified="20150924065518389" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/demo/onhover-toolbar-styles" type="text/css">
+<pre>.tc-tiddler-frame .tc-titlebar button {
+opacity: 0;
+-webkit-transition: opacity 1s ease-in-out;
+-moz-transition: opacity 1s ease-in-out;
+-ms-transition: opacity 1s ease-in-out;
+-o-transition: opacity 1s ease-in-out;
+transition: opacity 1s ease-in-out;
+}
+.tc-tiddler-frame:hover .tc-titlebar button {
+zoom: 1;
+filter: alpha(opacity=100);
+opacity: 1;
+}</pre>
+</div>
 <div created="20150126155022392" creator="Tobias Beer" modified="20150209210300408" modifier="Tobias Beer" tags="" title="$:/.tb/demo/reorder">
 <pre>&lt;div class=&quot;tc-tiddler-controls&quot; style=&quot;float:none;&quot;&gt;
 &lt;$list filter=&quot;[has[order]sort[order]]&quot;&gt;
@@ -4426,7 +4443,7 @@ exports.toc = function(source,operator,options) {
 <div created="20150918105409132" creator="Tobias Beer" modified="20150918105507957" modifier="Tobias Beer" tags="" title="$:/.tb/msg/tid-file">
 <pre>''Note:'' The above denotes [[TiddlerFiles Syntax|http://tiddlywiki.com/#TiddlerFiles]].</pre>
 </div>
-<div created="20141119102634212" creator="Tobias Beer" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20150924064659918" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles" type="text/css">
+<div created="20141119102634212" creator="Tobias Beer" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20150924065442179" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles" type="text/css">
 <pre>a.tc-tiddlylink-shadow {
 color:#567;
 font-weight:normal;
@@ -4562,20 +4579,6 @@ list-style-type: decimal;
 
 .tc-search-results {
 padding-top: 0;
-}
-
-.tc-tiddler-frame .tc-titlebar button {
-opacity: 0;
--webkit-transition: opacity 1s ease-in-out;
--moz-transition: opacity 1s ease-in-out;
--ms-transition: opacity 1s ease-in-out;
--o-transition: opacity 1s ease-in-out;
-transition: opacity 1s ease-in-out;
-}
-.tc-tiddler-frame:hover .tc-titlebar button {
-zoom: 1;
-filter: alpha(opacity=100);
-opacity: 1;
 }</pre>
 </div>
 <div created="20150116175548155" creator="Tobias Beer" modified="20150120001546966" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles/examples" type="text/css">
@@ -15561,15 +15564,15 @@ Here's a rudimentary example to reorder lists using the ''calc'' macro...
 
 For example, you could have your own ''empty.html'' with customizations and plugins and then simply change the name of your wiki under [[ControlPanel|$:/ControlPanel]] / ''Saving'' and set ''Upload Filename'' accordingly. Then load that cloned wiki and continue to work there, saving changes to the new location.</pre>
 </div>
+<div created="20150116142054259" creator="Tobias Beer" icon="$:/core/images/permalink-button" modified="20150116142054259" modifier="Tobias Beer" title="Code">
+<pre></pre>
+</div>
 <div created="20141203172342097" creator="Tobias Beer" modified="20141203172352230" modifier="Tobias Beer" tags="Markup" title="code">
 <pre>&lt;dt&gt;&lt;pre&gt;&amp;#96;code&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
 &lt;dd&gt;`code` ...via backticks&lt;/dd&gt;
 
 &lt;dt&gt;&lt;pre&gt;&amp;#96;&amp;#96;with &amp;#96;backticks&amp;#96; &amp;#96;&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
 &lt;dd&gt;``with `backticks` ``&lt;/dd&gt;</pre>
-</div>
-<div created="20150116142054259" creator="Tobias Beer" icon="$:/core/images/permalink-button" modified="20150116142054259" modifier="Tobias Beer" title="Code">
-<pre></pre>
 </div>
 <div created="20150121121317298" creator="Tobias Beer" modified="20150122021331885" modifier="Tobias Beer" tags="Developer Code" title="Code-101">
 <pre>If you're new to TiddlyWiki, if not anything that looks like code, [[this discussion with Mat|https://groups.google.com/d/msg/tiddlywiki/l1Tu5uxSHSk/k8N9rvAm2OEJ]] may give you some pointers on how to approach all things programatic.
@@ -18171,9 +18174,6 @@ To use, simply install &lt;&lt;source $:/.tb/macros/localfolder&gt;&gt;
 
 &gt; It's actually historical. The angle bracket syntax for macros was first implemented early on, before transcluded attributes. Then as the widget syntax evolved it was clear that it was more flexible and extensible. Internally, everything is a widget, even plain text. All the wikitext syntax beyond the widget syntax is really just a series of shortcuts for more easily typing widgets and HTML. My expectation is that more and more of the basic idioms that we discover as we explore the way that widgets fit together will end up being elevated to wiki syntax. For example, we could evolve a wikitext syntax for assigning variables that is terser than the current `&lt;$set&gt;` widget.</pre>
 </div>
-<div created="20141125030221729" creator="Tobias Beer" icon="$:/core/images/right-arrow" modified="20150116143635878" modifier="Tobias Beer" title="Macros">
-<pre></pre>
-</div>
 <div created="20141203174056270" creator="Tobias Beer" modified="20141220114540160" modifier="Tobias Beer" tags="Markup" title="macros">
 <pre>\define test(x, y, z:'0')
 $x$ $y$ $z$
@@ -18255,6 +18255,9 @@ $name=&quot;test&quot;
 x=&lt;&lt;version&gt;&gt;
 y={{!!title}}/&gt;&lt;/code&gt;
 &lt;/dd&gt;</pre>
+</div>
+<div created="20141125030221729" creator="Tobias Beer" icon="$:/core/images/right-arrow" modified="20150116143635878" modifier="Tobias Beer" title="Macros">
+<pre></pre>
 </div>
 <div created="20150204132834965" creator="Tobias Beer" modified="20150205182656047" modifier="Tobias Beer" summary="by [[Alberto Molina]], enhances TiddlyWiki with a tabsbar at the bottom of each tiddler to manage related tiddlers via lists, allowing to create related items via forms&lt;!--magictabs, bottomtabs--&gt;" tags="References Solutions Tabs Info Lists Relationships [[Alberto Molina]]" title="magictabs" url="http://magictabs.tiddlyspot.com">
 <pre>; discussion
@@ -19275,7 +19278,7 @@ codeblock
 ```
 &lt;/dd&gt;</pre>
 </div>
-<div created="20150924063539052" creator="Tobias Beer" modified="20150924065123026" modifier="Tobias Beer" tags="Presentation Tiddlers CSS Styles" title="Mouseover Toolbar Visibility">
+<div created="20150924063539052" creator="Tobias Beer" modified="20150924065555137" modifier="Tobias Beer" tags="Presentation Tiddlers CSS Styles" title="Mouseover Toolbar Visibility">
 <pre>As [[Jeremy|Jeremy Ruston]] explains [[here|https://groups.google.com/d/msg/tiddlywiki/c6bWhRyUPBA/Ge0Gd5z1-WYJ]], if you wanted to show the tiddler toolbar buttons only when you actually hover or focus a tiddler's titlebar, add the following to a [[custom stylesheet|Custom Stylesheets]]:
 
 ```
@@ -19287,23 +19290,7 @@ opacity: 1;
 }
 ```
 
-The version below provides a smooth transition effect, showing the toolbar when you hover a tiddler rather than just its titlebar:
-
-```
-.tc-tiddler-frame .tc-titlebar button {
-opacity: 0;
--webkit-transition: opacity 1s ease-in-out;
--moz-transition: opacity 1s ease-in-out;
--ms-transition: opacity 1s ease-in-out;
--o-transition: opacity 1s ease-in-out;
-transition: opacity 1s ease-in-out;
-}
-.tc-tiddler-frame:hover .tc-titlebar button {
-zoom: 1;
-filter: alpha(opacity=100);
-opacity: 1;
-}
-```</pre>
+The version below provides a smooth transition effect, showing the toolbar when you hover a tiddler rather than just its titlebar, see &lt;&lt;source [[$:/.tb/demo/onhover-toolbar-styles]]&gt;&gt;</pre>
 </div>
 <div created="20141115120552984" creator="Tobias Beer" modified="20141117185956528" modifier="Tobias Beer" tags="Solutions Formatting Lists" title="Multiline Content In Lists">
 <pre>A tip from [[PMario|https://groups.google.com/d/msg/tiddlywiki/jtx3_lyMlIo/YZz1Hn_HtkQJ]]...
@@ -20701,9 +20688,6 @@ via &lt;&lt;source &quot;$:/.tb/demo/svg-circle&quot;&gt;&gt;</pre>
 &lt;&lt;ximg toc.jpg tooltip:&quot;example toc from tiddlywiki.com&quot; class:&quot;pretty&quot;&gt;&gt;
 example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 </div>
-<div created="20150116145013865" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116145013865" modifier="Tobias Beer" title="Tables">
-<pre></pre>
-</div>
 <div created="20141203173550546" creator="Tobias Beer" modified="20141203173601868" modifier="Tobias Beer" tags="Markup" title="tables">
 <pre>&lt;dt style=&quot;font-size:80%;&quot;&gt;
 
@@ -20727,6 +20711,9 @@ example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 |and|now| vertical |
 |&gt;| right|~|
 &lt;/dd&gt;</pre>
+</div>
+<div created="20150116145013865" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116145013865" modifier="Tobias Beer" title="Tables">
+<pre></pre>
 </div>
 <div created="20150206013252827" creator="Tobias Beer" modified="20150206014255748" modifier="Tobias Beer" tags="Tables Presentation Styles" title="Tables Without Borders">
 <pre>If you are wishing to use borderless tables [[like Diane|https://groups.google.com/d/msg/tiddlywiki/lPvh5gcea70/JHWgVmIvHdIJ]], here's what you do:
@@ -20996,6 +20983,9 @@ When was the last time you visited a website that allowed you to do just that?!
 
 Find something to be off? Then check out this [[simple documentation workflow|Documentation]] on how easy it is to make things better for the rest of us.</pre>
 </div>
+<div created="20150116142447533" creator="Tobias Beer" icon="$:/core/images/edit-button" modified="20150116142447533" modifier="Tobias Beer" title="Text">
+<pre></pre>
+</div>
 <div created="20150109171138176" creator="Tobias Beer" modified="20150109180720115" modifier="Tobias Beer" tags="" title="text">
 <pre>The ''text'' macro provides a most simple macro to output colored text...
 
@@ -21023,9 +21013,6 @@ So, learning a bit of [[wikitext markup|Markup]] may be that better choice.
 !! Installation
 
 Drag to your wiki: &lt;&lt;source [[$:/.tb/macros/text]]&gt;&gt;</pre>
-</div>
-<div created="20150116142447533" creator="Tobias Beer" icon="$:/core/images/edit-button" modified="20150116142447533" modifier="Tobias Beer" title="Text">
-<pre></pre>
 </div>
 <div created="20150918064818701" creator="Tobias Beer" modified="20150918075109594" modifier="Tobias Beer" tags="Text Solutions [[Matias Goldman]]" title="Text Excerpts">
 <pre>As &lt;&lt;excerpt &quot;I was wondering&quot;&gt;&gt; how to do simple text excerpts, &lt;&lt;excerpt &quot;I stumbled upon&quot;&gt;&gt; [[this post|https://groups.google.com/d/msg/tiddlywiki/8rXt-qVqTb0/gbgWItz0CgAJ]] by [[Mat|Matias Goldman]] and was inspired to create the following macros.
@@ -21297,9 +21284,6 @@ If you neither have a TiddlyWiki or TiddlySpot yet, here's a simple process to d
 &quot;$:/.tb/templates/list-search-me&quot;&gt;&gt;
 &lt;/dl&gt;</pre>
 </div>
-<div created="20150116141836162" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116141836162" modifier="Tobias Beer" title="ToC">
-<pre></pre>
-</div>
 <div created="20141125232200140" creator="Tobias Beer" modified="20141125232258995" modifier="Tobias Beer" title="toc">
 <pre>\define regexp-headings() (^!+.*)(?gmi)
 &lt;div class=&quot;tidtoc tc-tiddler-frame&quot;&gt;
@@ -21356,6 +21340,9 @@ float:right;
 text-align:right;
 }
 &lt;/style&gt;</pre>
+</div>
+<div created="20150116141836162" creator="Tobias Beer" icon="$:/core/images/menu-button" modified="20150116141836162" modifier="Tobias Beer" title="ToC">
+<pre></pre>
 </div>
 <div created="20150119101745352" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150119101745352" modifier="Tobias Beer" title="Toggle">
 <pre></pre>
@@ -21479,9 +21466,6 @@ The defined styles here...
 <div title="traffic-light-buttons.gif" type="image/gif">
 <pre>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</pre>
 </div>
-<div created="20150116142305496" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150116142305497" modifier="Tobias Beer" title="Transclusion">
-<pre></pre>
-</div>
 <div created="20141203173927301" creator="Tobias Beer" modified="20141206141731598" modifier="Tobias Beer" tags="Markup" title="transclusion" url="http://tiddlywiki.com/#Transclusion%20in%20WikiText">
 <pre>&lt;dt&gt;
 
@@ -21510,6 +21494,9 @@ The defined styles here...
 » list of tiddlers tagged `Foo`&lt;br&gt;
 » same using template `Bar`
 &lt;/dd&gt;</pre>
+</div>
+<div created="20150116142305496" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150116142305497" modifier="Tobias Beer" title="Transclusion">
+<pre></pre>
 </div>
 <div created="20141114203626843" creator="Tobias Beer" modified="20141204134556861" modifier="Tobias Beer" tags="Developer" title="Translate TW5">
 <pre>;Interactive Tool
