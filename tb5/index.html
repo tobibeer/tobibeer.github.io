@@ -619,9 +619,9 @@ Error message and password prompt
 
 <li>Clone Wikis Via store.php</li>
 
-<li>Code</li>
-
 <li>code</li>
+
+<li>Code</li>
 
 <li>Code-101</li>
 
@@ -817,9 +817,9 @@ Error message and password prompt
 
 <li>FilterOperator: join</li>
 
-<li>Filters</li>
-
 <li>filters</li>
+
+<li>Filters</li>
 
 <li>focus</li>
 
@@ -895,9 +895,9 @@ Error message and password prompt
 
 <li>ImageMaps</li>
 
-<li>Images</li>
-
 <li>images</li>
+
+<li>Images</li>
 
 <li>Import</li>
 
@@ -1028,6 +1028,8 @@ Error message and password prompt
 <li>Module Types</li>
 
 <li>monospaced-codeblock</li>
+
+<li>Mouseover Toolbar Visibility</li>
 
 <li>Multiline Content In Lists</li>
 
@@ -1277,9 +1279,9 @@ Error message and password prompt
 
 <li>Testing New Stuff</li>
 
-<li>Text</li>
-
 <li>text</li>
+
+<li>Text</li>
 
 <li>Text Excerpts</li>
 
@@ -4424,7 +4426,7 @@ exports.toc = function(source,operator,options) {
 <div created="20150918105409132" creator="Tobias Beer" modified="20150918105507957" modifier="Tobias Beer" tags="" title="$:/.tb/msg/tid-file">
 <pre>''Note:'' The above denotes [[TiddlerFiles Syntax|http://tiddlywiki.com/#TiddlerFiles]].</pre>
 </div>
-<div created="20141119102634212" creator="Tobias Beer" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20150213105530403" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles" type="text/css">
+<div created="20141119102634212" creator="Tobias Beer" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20150924064659918" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles" type="text/css">
 <pre>a.tc-tiddlylink-shadow {
 color:#567;
 font-weight:normal;
@@ -4560,6 +4562,20 @@ list-style-type: decimal;
 
 .tc-search-results {
 padding-top: 0;
+}
+
+.tc-tiddler-frame .tc-titlebar button {
+opacity: 0;
+-webkit-transition: opacity 1s ease-in-out;
+-moz-transition: opacity 1s ease-in-out;
+-ms-transition: opacity 1s ease-in-out;
+-o-transition: opacity 1s ease-in-out;
+transition: opacity 1s ease-in-out;
+}
+.tc-tiddler-frame:hover .tc-titlebar button {
+zoom: 1;
+filter: alpha(opacity=100);
+opacity: 1;
 }</pre>
 </div>
 <div created="20150116175548155" creator="Tobias Beer" modified="20150120001546966" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles/examples" type="text/css">
@@ -15545,15 +15561,15 @@ Here's a rudimentary example to reorder lists using the ''calc'' macro...
 
 For example, you could have your own ''empty.html'' with customizations and plugins and then simply change the name of your wiki under [[ControlPanel|$:/ControlPanel]] / ''Saving'' and set ''Upload Filename'' accordingly. Then load that cloned wiki and continue to work there, saving changes to the new location.</pre>
 </div>
-<div created="20150116142054259" creator="Tobias Beer" icon="$:/core/images/permalink-button" modified="20150116142054259" modifier="Tobias Beer" title="Code">
-<pre></pre>
-</div>
 <div created="20141203172342097" creator="Tobias Beer" modified="20141203172352230" modifier="Tobias Beer" tags="Markup" title="code">
 <pre>&lt;dt&gt;&lt;pre&gt;&amp;#96;code&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
 &lt;dd&gt;`code` ...via backticks&lt;/dd&gt;
 
 &lt;dt&gt;&lt;pre&gt;&amp;#96;&amp;#96;with &amp;#96;backticks&amp;#96; &amp;#96;&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
 &lt;dd&gt;``with `backticks` ``&lt;/dd&gt;</pre>
+</div>
+<div created="20150116142054259" creator="Tobias Beer" icon="$:/core/images/permalink-button" modified="20150116142054259" modifier="Tobias Beer" title="Code">
+<pre></pre>
 </div>
 <div created="20150121121317298" creator="Tobias Beer" modified="20150122021331885" modifier="Tobias Beer" tags="Developer Code" title="Code-101">
 <pre>If you're new to TiddlyWiki, if not anything that looks like code, [[this discussion with Mat|https://groups.google.com/d/msg/tiddlywiki/l1Tu5uxSHSk/k8N9rvAm2OEJ]] may give you some pointers on how to approach all things programatic.
@@ -16858,10 +16874,10 @@ drag to your wiki &lt;&lt;source [[$:/.tb/modules/filters/toc.js]]&gt;&gt;</pre>
 
 see source: &lt;&lt;source $:/core/modules/filters/join.js&gt;&gt;</pre>
 </div>
-<div created="20141126021240947" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150116141444836" modifier="Tobias Beer" tags="" title="Filters">
+<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150207094021145" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters">
 <pre></pre>
 </div>
-<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150207094021145" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters">
+<div created="20141126021240947" creator="Tobias Beer" icon="$:/core/images/storyview-pop" modified="20150116141444836" modifier="Tobias Beer" tags="" title="Filters">
 <pre></pre>
 </div>
 <div created="20141202232934876" creator="Tobias Beer" follow="yes" modified="20150207103743726" modifier="Tobias Beer" summary="trying to have the standard theme focus more on content, hiding controls from visitors&lt;!--focus--&gt;" tags="[[Tobias Beer]]" title="focus" url="http://tobibeer.github.io/tw/focus">
@@ -17447,9 +17463,6 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 
 &lt;&lt;source &quot;$:/.tb/demo/image-map&quot;&gt;&gt;</pre>
 </div>
-<div icon="$:/core/images/storyview-zoomin" modified="20141201174313618" modifier="Tobias Beer" title="Images">
-<pre></pre>
-</div>
 <div created="20141203173130415" creator="Tobias Beer" modified="20141203173139233" modifier="Tobias Beer" tags="Markup" title="images">
 <pre>&lt;dt&gt;
 
@@ -17468,6 +17481,9 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 [img width=16 [http://www.tiddlywiki.com/favicon.ico]]&lt;br&gt;
 [img class=&quot;tc-image&quot; [http://www.tiddlywiki.com/favicon.ico]]
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/storyview-zoomin" modified="20141201174313618" modifier="Tobias Beer" title="Images">
+<pre></pre>
 </div>
 <div created="20150116144431513" creator="Tobias Beer" icon="$:/core/images/export-button" modified="20150116144431513" modifier="Tobias Beer" title="Import">
 <pre></pre>
@@ -19259,6 +19275,36 @@ codeblock
 ```
 &lt;/dd&gt;</pre>
 </div>
+<div created="20150924063539052" creator="Tobias Beer" modified="20150924065123026" modifier="Tobias Beer" tags="Presentation Tiddlers CSS Styles" title="Mouseover Toolbar Visibility">
+<pre>As [[Jeremy|Jeremy Ruston]] explains [[here|https://groups.google.com/d/msg/tiddlywiki/c6bWhRyUPBA/Ge0Gd5z1-WYJ]], if you wanted to show the tiddler toolbar buttons only when you actually hover or focus a tiddler's titlebar, add the following to a [[custom stylesheet|Custom Stylesheets]]:
+
+```
+.tc-titlebar button {
+opacity: 0;
+}
+.tc-titlebar:hover button {
+opacity: 1;
+}
+```
+
+The version below provides a smooth transition effect, showing the toolbar when you hover a tiddler rather than just its titlebar:
+
+```
+.tc-tiddler-frame .tc-titlebar button {
+opacity: 0;
+-webkit-transition: opacity 1s ease-in-out;
+-moz-transition: opacity 1s ease-in-out;
+-ms-transition: opacity 1s ease-in-out;
+-o-transition: opacity 1s ease-in-out;
+transition: opacity 1s ease-in-out;
+}
+.tc-tiddler-frame:hover .tc-titlebar button {
+zoom: 1;
+filter: alpha(opacity=100);
+opacity: 1;
+}
+```</pre>
+</div>
 <div created="20141115120552984" creator="Tobias Beer" modified="20141117185956528" modifier="Tobias Beer" tags="Solutions Formatting Lists" title="Multiline Content In Lists">
 <pre>A tip from [[PMario|https://groups.google.com/d/msg/tiddlywiki/jtx3_lyMlIo/YZz1Hn_HtkQJ]]...
 
@@ -20950,9 +20996,6 @@ When was the last time you visited a website that allowed you to do just that?!
 
 Find something to be off? Then check out this [[simple documentation workflow|Documentation]] on how easy it is to make things better for the rest of us.</pre>
 </div>
-<div created="20150116142447533" creator="Tobias Beer" icon="$:/core/images/edit-button" modified="20150116142447533" modifier="Tobias Beer" title="Text">
-<pre></pre>
-</div>
 <div created="20150109171138176" creator="Tobias Beer" modified="20150109180720115" modifier="Tobias Beer" tags="" title="text">
 <pre>The ''text'' macro provides a most simple macro to output colored text...
 
@@ -20980,6 +21023,9 @@ So, learning a bit of [[wikitext markup|Markup]] may be that better choice.
 !! Installation
 
 Drag to your wiki: &lt;&lt;source [[$:/.tb/macros/text]]&gt;&gt;</pre>
+</div>
+<div created="20150116142447533" creator="Tobias Beer" icon="$:/core/images/edit-button" modified="20150116142447533" modifier="Tobias Beer" title="Text">
+<pre></pre>
 </div>
 <div created="20150918064818701" creator="Tobias Beer" modified="20150918075109594" modifier="Tobias Beer" tags="Text Solutions [[Matias Goldman]]" title="Text Excerpts">
 <pre>As &lt;&lt;excerpt &quot;I was wondering&quot;&gt;&gt; how to do simple text excerpts, &lt;&lt;excerpt &quot;I stumbled upon&quot;&gt;&gt; [[this post|https://groups.google.com/d/msg/tiddlywiki/8rXt-qVqTb0/gbgWItz0CgAJ]] by [[Mat|Matias Goldman]] and was inspired to create the following macros.
