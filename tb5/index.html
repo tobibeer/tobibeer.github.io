@@ -593,9 +593,9 @@ Error message and password prompt
 
 <li>Clone Wikis Via store.php</li>
 
-<li>Code</li>
-
 <li>code</li>
+
+<li>Code</li>
 
 <li>Code-101</li>
 
@@ -957,9 +957,9 @@ Error message and password prompt
 
 <li>Macrocall vs. Macro</li>
 
-<li>Macros</li>
-
 <li>macros</li>
+
+<li>Macros</li>
 
 <li>magictabs</li>
 
@@ -1213,9 +1213,9 @@ Error message and password prompt
 
 <li>Table Of Contents In Sidebar</li>
 
-<li>tables</li>
-
 <li>Tables</li>
+
+<li>tables</li>
 
 <li>Tables Without Borders</li>
 
@@ -1295,9 +1295,9 @@ Error message and password prompt
 
 <li>Tobias Beer</li>
 
-<li>ToC</li>
-
 <li>toc</li>
+
+<li>ToC</li>
 
 <li>Toggle</li>
 
@@ -14723,15 +14723,15 @@ Here's a rudimentary example to reorder lists using the ''calc'' macro...
 
 For example, you could have your own ''empty.html'' with customizations and plugins and then simply change the name of your wiki under [[ControlPanel|$:/ControlPanel]] / ''Saving'' and set ''Upload Filename'' accordingly. Then load that cloned wiki and continue to work there, saving changes to the new location.</pre>
 </div>
-<div bag="default" icon="$:/core/images/permalink-button" revision="0" title="Code">
-<pre></pre>
-</div>
 <div bag="default" revision="0" tags="Markup" title="code" type="text/vnd.tiddlywiki">
 <pre>&lt;dt&gt;&lt;pre&gt;&amp;#96;code&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
 &lt;dd&gt;`code` ...via backticks&lt;/dd&gt;
 
 &lt;dt&gt;&lt;pre&gt;&amp;#96;&amp;#96;with &amp;#96;backticks&amp;#96; &amp;#96;&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
 &lt;dd&gt;``with `backticks` ``&lt;/dd&gt;</pre>
+</div>
+<div bag="default" icon="$:/core/images/permalink-button" revision="0" title="Code">
+<pre></pre>
 </div>
 <div bag="default" created="20150121121317298" creator="Tobias Beer" modified="20150122021331885" modifier="Tobias Beer" revision="0" tags="Developer Code" title="Code-101" type="text/vnd.tiddlywiki">
 <pre>If you're new to TiddlyWiki, if not anything that looks like code, [[this discussion with Mat|https://groups.google.com/d/msg/tiddlywiki/l1Tu5uxSHSk/k8N9rvAm2OEJ]] may give you some pointers on how to approach all things programatic.
@@ -15285,7 +15285,7 @@ html .tc-topbar button {
 
 Also see [[TopBar With Icon Links]].</pre>
 </div>
-<div bag="default" caption="Custom Title" created="20150927192947628" creator="Tobias Beer" modified="20150929120444277" revision="7" tags="Config Browser Presentation Solutions" title="Custom Window Title" type="text/vnd.tiddlywiki">
+<div bag="default" caption="Custom Title" created="20150927192947628" creator="Tobias Beer" modified="20150929120922460" revision="7" tags="Config Browser Presentation Solutions" title="Custom Window Title" type="text/vnd.tiddlywiki">
 <pre>As [[Jeremy Ruston]] explains [[here|https://groups.google.com/d/msg/tiddlywiki/aPjljLW1yHE/TrnVY3N1BAAJ]], the last tiddler you navigated to is stored in the ''current-tiddler'' field of the tiddler holding the history, i.e. [[$:/HistoryList]].
 
 This allows us to show the last opened tiddler in the browser's window or tab title by modifying &lt;&lt;source $:/core/wiki/title&gt;&gt;
@@ -15300,7 +15300,12 @@ The original shadow content being:
 
 Using the &lt;&lt;tw ViewWidget&gt;&gt; (and here the &lt;&lt;tw TiddlerWidget&gt;&gt; too), you can also show the caption, if defined, the title being the fallback:
 
-&lt;&lt;` &quot;&quot;&quot;{{$:/SiteTitle}} — &lt;$tiddler tiddler={{$:/HistoryList!!current-tiddler}}&gt;&lt;$view field=&quot;caption&quot;&gt;{{!!title}}&lt;/$view&gt;&lt;/$tiddler&gt;&quot;&quot;&quot;&gt;&gt;</pre>
+&lt;&lt;` &quot;&quot;&quot;{{$:/SiteTitle}} — &lt;$tiddler tiddler={{$:/HistoryList!!current-tiddler}}&gt;&lt;$view field=&quot;caption&quot;&gt;{{!!title}}&lt;/$view&gt;&lt;/$tiddler&gt;&quot;&quot;&quot;&gt;&gt;
+
+Verification:
+
+&lt;&lt;` &quot;&quot;&quot;{{!!caption}}&quot;&quot;&quot;&gt;&gt;
+</pre>
 </div>
 <div bag="default" revision="0" title="Customizations">
 <pre>@@float:right;text-align:right;color:#ccc; running version:&lt;br&gt;&lt;&lt;version&gt;&gt;@@
@@ -17382,9 +17387,6 @@ To use, simply install &lt;&lt;source $:/.tb/macros/localfolder&gt;&gt;
 
 &gt; It's actually historical. The angle bracket syntax for macros was first implemented early on, before transcluded attributes. Then as the widget syntax evolved it was clear that it was more flexible and extensible. Internally, everything is a widget, even plain text. All the wikitext syntax beyond the widget syntax is really just a series of shortcuts for more easily typing widgets and HTML. My expectation is that more and more of the basic idioms that we discover as we explore the way that widgets fit together will end up being elevated to wiki syntax. For example, we could evolve a wikitext syntax for assigning variables that is terser than the current `&lt;$set&gt;` widget.</pre>
 </div>
-<div bag="default" icon="$:/core/images/right-arrow" revision="0" title="Macros">
-<pre></pre>
-</div>
 <div bag="default" revision="0" tags="Markup" title="macros">
 <pre>\define test(x, y, z:'0')
 $x$ $y$ $z$
@@ -17466,6 +17468,9 @@ $name=&quot;test&quot;
 x=&lt;&lt;version&gt;&gt;
 y={{!!title}}/&gt;&lt;/code&gt;
 &lt;/dd&gt;</pre>
+</div>
+<div bag="default" icon="$:/core/images/right-arrow" revision="0" title="Macros">
+<pre></pre>
 </div>
 <div bag="default" revision="0" summary="by [[Alberto Molina]], enhances TiddlyWiki with a tabsbar at the bottom of each tiddler to manage related tiddlers via lists, allowing to create related items via forms&lt;!--magictabs, bottomtabs--&gt;" tags="References Solutions Tabs Info Lists Relationships [[Alberto Molina]]" title="magictabs" url="http://magictabs.tiddlyspot.com">
 <pre>; discussion
@@ -19897,6 +19902,9 @@ via &lt;&lt;source &quot;$:/.tb/demo/svg-circle&quot;&gt;&gt;</pre>
 &lt;&lt;ximg toc.jpg tooltip:&quot;example toc from tiddlywiki.com&quot; class:&quot;pretty&quot;&gt;&gt;
 example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 </div>
+<div bag="default" icon="$:/core/images/menu-button" revision="0" title="Tables">
+<pre></pre>
+</div>
 <div bag="default" revision="0" tags="Markup" title="tables">
 <pre>&lt;dt style=&quot;font-size:80%;&quot;&gt;
 
@@ -19920,9 +19928,6 @@ example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 |and|now| vertical |
 |&gt;| right|~|
 &lt;/dd&gt;</pre>
-</div>
-<div bag="default" icon="$:/core/images/menu-button" revision="0" title="Tables">
-<pre></pre>
 </div>
 <div bag="default" created="20150206013252827" creator="Tobias Beer" modified="20150206014255748" modifier="Tobias Beer" revision="0" tags="Tables Presentation Styles" title="Tables Without Borders" type="text/vnd.tiddlywiki">
 <pre>If you are wishing to use borderless tables [[like Diane|https://groups.google.com/d/msg/tiddlywiki/lPvh5gcea70/JHWgVmIvHdIJ]], here's what you do:
@@ -20487,9 +20492,6 @@ If you neither have a TiddlyWiki or TiddlySpot yet, here's a simple process to d
 &quot;$:/.tb/templates/list-search-me&quot;&gt;&gt;
 &lt;/dl&gt;</pre>
 </div>
-<div bag="default" icon="$:/core/images/menu-button" revision="0" title="ToC">
-<pre></pre>
-</div>
 <div bag="default" created="20141125232200140" creator="Tobias Beer" modified="20141125232258995" modifier="Tobias Beer" revision="0" title="toc" type="text/vnd.tiddlywiki">
 <pre>\define regexp-headings() (^!+.*)(?gmi)
 &lt;div class=&quot;tidtoc tc-tiddler-frame&quot;&gt;
@@ -20546,6 +20548,9 @@ float:right;
 text-align:right;
 }
 &lt;/style&gt;</pre>
+</div>
+<div bag="default" icon="$:/core/images/menu-button" revision="0" title="ToC">
+<pre></pre>
 </div>
 <div bag="default" icon="$:/core/images/storyview-pop" revision="0" title="Toggle">
 <pre></pre>
