@@ -249,6 +249,12 @@ Error message and password prompt
 
 <li>$:/.tb/styles/tiddlylinks</li>
 
+<li>$:/.tb/templates/atom/entries</li>
+
+<li>$:/.tb/templates/atom/filter</li>
+
+<li>$:/.tb/templates/atom/server</li>
+
 <li>$:/.tb/templates/delete-filter</li>
 
 <li>$:/.tb/templates/fields-core</li>
@@ -462,6 +468,8 @@ Error message and password prompt
 <li>$:/palettes/Vanilla-tb5</li>
 
 <li>$:/parsers/skeeve/rules/replace.js</li>
+
+<li>$:/plugins/felixhayashi/topstoryview</li>
 
 <li>$:/plugins/tobibeer/letfilter/let.js</li>
 
@@ -1219,9 +1227,9 @@ Error message and password prompt
 
 <li>Table Of Contents In Sidebar</li>
 
-<li>Tables</li>
-
 <li>tables</li>
+
+<li>Tables</li>
 
 <li>Tables Without Borders</li>
 
@@ -1252,6 +1260,8 @@ Error message and password prompt
 <li>tb-ui</li>
 
 <li>tb5</li>
+
+<li>tb5.atom</li>
 
 <li>td5</li>
 
@@ -1301,9 +1311,9 @@ Error message and password prompt
 
 <li>Tobias Beer</li>
 
-<li>ToC</li>
-
 <li>toc</li>
+
+<li>ToC</li>
 
 <li>Toggle</li>
 
@@ -1321,9 +1331,9 @@ Error message and password prompt
 
 <li>traffic-light-buttons.gif</li>
 
-<li>Transclusion</li>
-
 <li>transclusion</li>
+
+<li>Transclusion</li>
 
 <li>Translate TW5</li>
 
@@ -4844,6 +4854,87 @@ font-weight:normal;
 a.tc-tiddlylink-resolves.tc-tiddlylink-shadow {
 font-weight:bold;
 }</pre>
+</div>
+<div created="20150930093948972" creator="Tobias Beer" modified="20150930104919509" module-type="macro" title="$:/.tb/templates/atom/entries" type="application/javascript" revision="0" bag="default">
+<pre>/*\
+Macro to output tiddlers matching a filter as atom entries.
+http://www.ietf.org/rfc/rfc4287.txt
+\*/
+
+(function(){
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+&quot;use strict&quot;;
+
+exports.name = &quot;atom-entries&quot;;
+
+exports.params = [
+	{name: &quot;filter&quot;}
+];
+
+exports.run = function(filter) {
+	var data = [], lines=[],
+		server = $tw.wiki.getTiddlerText(&quot;$:/.tb/templates/atom/server&quot;,&quot;&quot;),
+		tiddlers = this.wiki.filterTiddlers(this.wiki.getTextReference(filter,&quot;&quot;));
+	for(var t=0; t &lt; tiddlers.length; t++) {
+		var tiddler = this.wiki.getTiddler(tiddlers[t]);
+		if(tiddler) {
+			var title = tiddler.getFieldString(&quot;title&quot;),
+				modified = tiddler.getFieldString(&quot;modified&quot;),
+				summary = tiddler.getFieldString(&quot;summary&quot;),
+				url = server + &quot;#&quot; + encodeURIComponent(title);
+			lines.push(&quot;`&lt;entry&gt;`&quot;);
+			lines.push(&quot;&amp;nbsp;&amp;nbsp;`&lt;title&gt;`[[&quot; + title + &quot;]]`&lt;/title&gt;`&quot;);
+			lines.push(&quot;&amp;nbsp;&amp;nbsp;`&lt;id&gt;`&lt;$text text='&quot; + url + &quot;'/&gt;`&lt;/id&gt;`&quot;);
+			lines.push(&quot;&amp;nbsp;&amp;nbsp;`&lt;link href='`&quot; + url + &quot;`'/&gt;`&quot;);
+			if (modified) {
+				lines.push(&quot;&amp;nbsp;&amp;nbsp;`&lt;updated&gt;`&quot; +
+					$tw.utils.formatDateString(
+						$tw.utils.parseDate(modified),
+						&quot;YYYY-0MM-0DDT0hh:0mm:0ss+02:00&quot;) +
+					&quot;`&lt;/updated&gt;`&quot;);
+			}
+			summary = $tw.wiki.renderText(
+				&quot;text/plain&quot;,
+				&quot;text/vnd.tiddlywiki&quot;,
+				summary || tiddler.getFieldString(&quot;text&quot;) || &quot;&quot;,
+				{
+					parseAsInline: true,
+					variables: {
+						currentTiddler: title
+				}
+			});
+			if(!tiddler.getFieldString(&quot;summary&quot;)) {
+				summary = summary
+					.split(&quot;&lt;&quot;)[0]
+					.split(&quot;`&quot;)[0]
+					.split(&quot;!&quot;)[0]
+					.substr(0,200)
+					+ &quot;...&quot;;
+			}
+			summary = summary;
+			lines.push(&quot;&amp;nbsp;&amp;nbsp;`&lt;summary&gt;`&lt;$text text=\&quot;\&quot;\&quot;&quot; + summary + &quot;\&quot;\&quot;\&quot;/&gt;`&lt;/summary&gt;`&quot;);
+			lines.push(&quot;`&lt;/entry&gt;`&quot;);
+		};
+	}
+	return &quot;&amp;nbsp;&amp;nbsp;&quot; + lines.join(&quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;&quot;);
+};
+
+})();</pre>
+</div>
+<div created="20150930123136679" creator="Tobias Beer" modified="20150930123137715" title="$:/.tb/templates/atom/filter" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>[tag[Tobias Beer]]
+[tag[Solutions]]
+[tag[Community]]
+[tag[References]]
+[tag[Plugin]]
+[tag[Core]]
+[tag[Dev]]
++[has[modified]!sort[modified]limit[50]]</pre>
+</div>
+<div created="20150930102714328" creator="Tobias Beer" modified="20150930102728899" tags="" title="$:/.tb/templates/atom/server" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>http://tobibeer.github.io/tb5</pre>
 </div>
 <div created="20141209104005777" creator="Tobias Beer" modified="20141211161015936" modifier="Tobias Beer" tags="" title="$:/.tb/templates/delete-filter" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;$edit-text tiddler=&quot;$:/temp/delete-filter&quot; tag=&quot;input&quot; placeholder=&quot;enter a filter&quot; default=&quot;&quot; size=50/&gt;
@@ -13433,6 +13524,44 @@ exports.parse = function() {
 })();
 </pre>
 </div>
+<div author="Felix Küppers" core-version="&gt;=5.1.5" created="20150930112239862" creator="Tobias Beer" dependents="" description="TopStoryView - Navigation scrolls tiddlers to the top" list="Configuration License Readme" plugin-type="plugin" released="" source="https://github.com/felixhayashi/TW5-TopStoryView" title="$:/plugins/felixhayashi/topstoryview" type="application/json" version="0.1.0" revision="0" bag="default">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/plugins/felixhayashi/topstoryview/config.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\n\ntitle: $:/plugins/felixhayashi/topstoryview/config.js\ntype: application/javascript\nmodule-type: library\n\n@preserve\n\n\\*/\n(function(){\&quot;use strict\&quot;;exports.config={classNames:{storyRiver:\&quot;tc-story-river\&quot;,backDrop:\&quot;story-backdrop\&quot;,tiddlerFrame:\&quot;tc-tiddler-frame\&quot;,tiddlerTitle:\&quot;tc-title\&quot;},references:{userConfig:\&quot;$:/config/topStoryView\&quot;,focussedTiddlerStore:\&quot;$:/temp/focussedTiddler\&quot;,refreshTrigger:\&quot;$:/temp/focussedTiddler/refresh\&quot;},checkbackTime:$tw.utils.getAnimationDuration()}})();&quot;,
+            &quot;title&quot;: &quot;$:/plugins/felixhayashi/topstoryview/config.js&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;library&quot;
+        },
+        &quot;$:/plugins/felixhayashi/topstoryview/layout&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/felixhayashi/topstoryview/layout&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;tags&quot;: [
+                &quot;$:/tags/Stylesheet&quot;
+            ],
+            &quot;text&quot;: &quot;html .tc-story-river:after {\n  content: \&quot;\&quot;;\n  display: block; }\n&quot;
+        },
+        &quot;$:/plugins/felixhayashi/topstoryview/Configuration&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/felixhayashi/topstoryview/Configuration&quot;,
+            &quot;text&quot;: &quot;Please see the [[GitHub page|https://github.com/felixhayashi/TW5-TopStoryView]] for more information on the options.\n\nSave and reload the wiki to activate changes.\n\n&lt;table&gt;\n  &lt;tr&gt;\n    &lt;th align=\&quot;left\&quot;&gt;Scroll offset:&lt;/th&gt;\n    &lt;td&gt;&lt;$edit-text tiddler=\&quot;$:/config/topStoryView\&quot; field=\&quot;scroll-offset\&quot; tag=\&quot;input\&quot; default=\&quot;150px\&quot; /&gt;&lt;/td&gt;\n  &lt;/tr&gt;\n&lt;/table&gt;&quot;
+        },
+        &quot;$:/plugins/felixhayashi/topstoryview/License&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/felixhayashi/topstoryview/License&quot;,
+            &quot;text&quot;: &quot;This code is released under the BSD license. For the exact terms visit:\n\nhttps://github.com/felixhayashi/TW5-TopStoryView/blob/master/LICENSE&quot;
+        },
+        &quot;$:/plugins/felixhayashi/topstoryview/Readme&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/felixhayashi/topstoryview/Readme&quot;,
+            &quot;text&quot;: &quot;Please visit the [[GitHub page|https://github.com/felixhayashi/TW5-TopStoryView]] for more information.&quot;
+        },
+        &quot;$:/plugins/felixhayashi/topstoryview/top.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/felixhayashi/topstoryview/top.js\ntype: application/javascript\nmodule-type: storyview\n\nViews the story as a linear sequence\n\n@preserve\n\n\\*/\n(function(){\&quot;use strict\&quot;;var t=require(\&quot;$:/plugins/felixhayashi/topstoryview/config.js\&quot;).config;var e=\&quot;cubic-bezier(0.645, 0.045, 0.355, 1)\&quot;;var i=function(e){this.listWidget=e;this.pageScroller=new $tw.utils.PageScroller;this.pageScroller.scrollIntoView=this.scrollIntoView;this.pageScroller.storyRiverDomNode=document.getElementsByClassName(t.classNames.storyRiver)[0];var i=$tw.wiki.getTiddler(t.references.userConfig);var o=i?i.fields:{};var r=parseInt(o[\&quot;scroll-offset\&quot;]);this.pageScroller.scrollOffset=isNaN(r)?71:r;this.recalculateBottomSpace()};i.prototype.refreshStart=function(t,e){};i.prototype.refreshEnd=function(t,e){};i.prototype.navigateTo=function(t){var e=this.listWidget.findListItem(0,t.title);if(e===undefined)return;var i=this.listWidget.children[e];var o=i.findFirstDomNode();if(!(o instanceof Element))return;this.pageScroller.scrollIntoView(o)};i.prototype.insert=function(t){if(!t)return;var e=t.findFirstDomNode();if(!(e instanceof Element))return;this.startInsertAnimation(e,function(){this.recalculateBottomSpace();this.pageScroller.scrollIntoView(e)}.bind(this))};i.prototype.remove=function(t){if(!t)return;var e=t.findFirstDomNode();if(!(e instanceof Element)){t.removeChildDomNodes();return}var i=this.getLastFrame()===e;this.startRemoveAnimation(t,e,function(){t.removeChildDomNodes();this.recalculateBottomSpace();if(i){this.pageScroller.scrollIntoView(this.getLastFrame())}}.bind(this))};i.prototype.getLastFrame=function(){var t=this.listWidget.children[this.listWidget.children.length-1];return t?t.findFirstDomNode():null};i.prototype.recalculateBottomSpace=function(){var t=this.pageScroller.storyRiverDomNode;if(this.getLastFrame()){var e=this.getLastFrame().getBoundingClientRect();var i=window.innerHeight;if(e.height&lt;i){t.style[\&quot;paddingBottom\&quot;]=i-e.height+\&quot;px\&quot;;return}}t.style[\&quot;paddingBottom\&quot;]=\&quot;\&quot;};i.prototype.scrollIntoView=function(t){if(!t)return;var e=$tw.utils.getAnimationDuration();this.cancelScroll();this.startTime=Date.now();var i=$tw.utils.getScrollPosition();var o=t.getBoundingClientRect(),r={left:o.left+i.x,top:o.top+i.y,width:o.width,height:o.height};var n=function(t,e,i,o){if(t&lt;=i){return t}else if(e&lt;o&amp;&amp;i&lt;t+e-o){return t+e-o}else if(i&lt;t){return t}else{return i}},s=n(r.left,r.width,i.x,window.innerWidth),a=r.top-this.scrollOffset;if(s!==i.x||a!==i.y){var l=this,c;c=function(){var t;if(e&lt;=0){t=1}else{t=(Date.now()-l.startTime)/e}if(t&gt;=1){l.cancelScroll();t=1}t=$tw.utils.slowInSlowOut(t);window.scrollTo(i.x+(s-i.x)*t,i.y+(a-i.y)*t);if(t&lt;1){l.idRequestFrame=l.requestAnimationFrame.call(window,c)}};c()}};i.prototype.startInsertAnimation=function(t,i){var o=$tw.utils.getAnimationDuration();var r=window.getComputedStyle(t),n=parseInt(r.marginBottom,10),s=parseInt(r.marginTop,10),a=t.offsetHeight+s;setTimeout(function(){$tw.utils.setStyle(t,[{transition:\&quot;none\&quot;},{marginBottom:\&quot;\&quot;}]);i()},o);$tw.utils.setStyle(t,[{transition:\&quot;none\&quot;},{marginBottom:-a+\&quot;px\&quot;},{opacity:\&quot;0.0\&quot;}]);$tw.utils.forceLayout(t);$tw.utils.setStyle(t,[{transition:\&quot;opacity \&quot;+o+\&quot;ms \&quot;+e+\&quot;, \&quot;+\&quot;margin-bottom \&quot;+o+\&quot;ms \&quot;+e},{marginBottom:n+\&quot;px\&quot;},{opacity:\&quot;1.0\&quot;}])};i.prototype.startRemoveAnimation=function(t,i,o){var r=$tw.utils.getAnimationDuration();var n=i.offsetWidth,s=window.getComputedStyle(i),a=parseInt(s.marginBottom,10),l=parseInt(s.marginTop,10),c=i.offsetHeight+l;setTimeout(o,r);$tw.utils.setStyle(i,[{transition:\&quot;none\&quot;},{transform:\&quot;translateX(0px)\&quot;},{marginBottom:a+\&quot;px\&quot;},{opacity:\&quot;1.0\&quot;}]);$tw.utils.forceLayout(i);$tw.utils.setStyle(i,[{transition:$tw.utils.roundTripPropertyName(\&quot;transform\&quot;)+\&quot; \&quot;+r+\&quot;ms \&quot;+e+\&quot;, \&quot;+\&quot;opacity \&quot;+r+\&quot;ms \&quot;+e+\&quot;, \&quot;+\&quot;margin-bottom \&quot;+r+\&quot;ms \&quot;+e},{transform:\&quot;translateX(-\&quot;+n+\&quot;px)\&quot;},{marginBottom:-c+\&quot;px\&quot;},{opacity:\&quot;0.0\&quot;}])};exports.top=i})();&quot;,
+            &quot;title&quot;: &quot;$:/plugins/felixhayashi/topstoryview/top.js&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;storyview&quot;
+        }
+    }
+}</pre>
+</div>
 <div created="20141125230000000" creator="Tobias Beer" modified="20150107175105073" modifier="Tobias Beer" module-type="filteroperator" tags="" title="$:/plugins/tobibeer/letfilter/let.js" type="application/javascript" revision="0" bag="default">
 <pre>/*\
 	title: $:/plugins/tobibeer/letfilter/let.js
@@ -14250,7 +14379,7 @@ The template is displayed at the top of each indexed tiddler because...
 
 Using the `redirected` class as defined in the template above, you can either add styles directly to the template or use a [[custom stylesheet|Custom Stylesheets]].</pre>
 </div>
-<div alink="|alink|alias|aliases|" created="20150109160713594" creator="Tobias Beer" modified="20150915095502945" modifier="Tobias Beer" tags="" title="alink" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div alink="|alink|alias|aliases|" created="20150109160713594" creator="Tobias Beer" modified="20150915095502945" modifier="Tobias Beer" title="alink" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>The [[alink]] macro or its shorthand `a:` simplify pretty-linking tiddlers in a case-insensitive manner, rendering a link to a target tiddler. To use it, define a `|piped|list|` field called `alink` at the target, encapsulating each `alias` in lowercase letters only with pipes `|`, e.g. `|alias|aliases|`.
 
 !! Parameters
@@ -16069,7 +16198,7 @@ If a plugin is not sufficiently configurable it is advisable to suggest customiz
 
 For example, for `$:/plugins/tiddlywiki/tw2parser` you could create an override `$:/plugins/tiddlywiki/tw2parser/my-project-config` leaving the original untouched while overriding components provided by the plugin.</pre>
 </div>
-<div created="20150930080515193" creator="Tobias Beer" modified="20150930081323458" tags="Popup Macros Solutions Presentation Images" title="Generic Popup" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20150930080515193" creator="Tobias Beer" modified="20150930112326308" summary="provides a macro to render a popup" tags="Popup Macros Solutions Presentation Images" title="Generic Popup" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>{{pop}}</pre>
 </div>
 <div icon="$:/core/images/permalink-button" tags="Developer" title="GitHub" revision="0" bag="default">
@@ -16422,7 +16551,7 @@ Some random, free hosting options...
 * https://www.bitballoon.com</pre>
 </div>
 <div created="20141116150413581" creator="Tobias Beer" modified="20150915084437861" modifier="Tobias Beer" tags="Server Solutions Hosting" title="Hosting On Google Drive" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>&lt;span style=&quot;color:red&quot;&gt;Hosting content on Google Drive will is [[deprecated|http://googleappsdeveloper.blogspot.co.uk/2015/08/deprecating-web-hosting-support-in.html]] by August 31st, 2016!&lt;/span&gt;
+<pre>&lt;span style=&quot;color:red&quot;&gt;Hosting content on Google Drive is [[deprecated|http://googleappsdeveloper.blogspot.co.uk/2015/08/deprecating-web-hosting-support-in.html]] by August 31st, 2016!&lt;/span&gt;
 
 # share your document publicly
 # construct URL below using your document's ID
@@ -18890,7 +19019,7 @@ Some [[information on plugins|http://tiddlywiki.com/#Plugins]] not included in t
 
 &lt;&lt;static Plugins 800px yes&gt;&gt;</pre>
 </div>
-<div created="20150930072206029" creator="Tobias Beer" modified="20150930083340787" tags="" title="pop" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<div created="20150930072206029" creator="Tobias Beer" modified="20150930083340787" tags="" title="pop" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>The [[&lt;&lt;pop&gt;&gt;|$:/.tb/macros/pop]] macro implements a generic popup as based on the &lt;&lt;tw PopupMechanism&gt;&gt;.
 
 !! Example
@@ -19421,7 +19550,7 @@ Setting a custom field of one of the &lt;&lt;tw SystemFields&gt;&gt; will overwr
 # add a link to a [[full timeline|Timeline]] at the bottom to access the full list
 # paste the original contents from [[$:/core/ui/SideBar/Recent]]</pre>
 </div>
-<div created="20150929145958666" creator="Tobias Beer" modified="20150929151607061" tags="Lists Presentation" title="Show Content For Empty Lists" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20150929145958666" creator="Tobias Beer" modified="20150930111239902" tags="Lists Presentation Solutions" title="Show Content For Empty Lists" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Ever so often it happens that a list returns no results. If you don't want to leave yourself or your visitors hanging, you can use the ''emptyValue'' of the &lt;&lt;tw ListWidget&gt;&gt; to declare content that is to be wikified when the list contains no items.
 
 For example:
@@ -19909,9 +20038,6 @@ via &lt;&lt;source &quot;$:/.tb/demo/svg-circle&quot;&gt;&gt;</pre>
 &lt;&lt;ximg toc.jpg tooltip:&quot;example toc from tiddlywiki.com&quot; class:&quot;pretty&quot;&gt;&gt;
 example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 </div>
-<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
-<pre></pre>
-</div>
 <div tags="Markup" title="tables" revision="0" bag="default">
 <pre>&lt;dt style=&quot;font-size:80%;&quot;&gt;
 
@@ -19935,6 +20061,9 @@ example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 |and|now| vertical |
 |&gt;| right|~|
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
+<pre></pre>
 </div>
 <div created="20150206013252827" creator="Tobias Beer" modified="20150206014255748" modifier="Tobias Beer" tags="Tables Presentation Styles" title="Tables Without Borders" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>If you are wishing to use borderless tables [[like Diane|https://groups.google.com/d/msg/tiddlywiki/lPvh5gcea70/JHWgVmIvHdIJ]], here's what you do:
@@ -20182,6 +20311,25 @@ also using these two templates for the table rows, which are needed to avoid sta
 </div>
 <div follow="yes" summary="you're looking at it ;-)" tags="[[Tobias Beer]]" title="tb5" url="https://tobibeer.github.io/tb5" revision="0" bag="default">
 <pre></pre>
+</div>
+<div created="20150930093105466" creator="Tobias Beer" modified="20150930125322632" tags="" title="tb5.atom" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>\define tv-wikilink-template() #$uri_encoded$
+\define tv-config-toolbar-icons() no
+\define tv-config-toolbar-text() no
+\define tv-config-toolbar-class() tc-btn-invisible
+
+`&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;`&lt;br&gt;
+`&lt;feed xmlns=&quot;http://www.w3.org/2005/Atom&quot;&gt;`&lt;br&gt;
+&amp;nbsp;&amp;nbsp;`&lt;id&gt;`http://tobibeer.github.io/tb5/tb5.atom`&lt;/id&gt;`&lt;br&gt;
+&amp;nbsp;&amp;nbsp;`&lt;title&gt;`{{$:/SiteTitle}}`&lt;/title&gt;`&lt;br&gt;
+&amp;nbsp;&amp;nbsp;`&lt;subtitle&gt;`{{$:/SiteSubtitle}}`&lt;/subtitle&gt;`&lt;br&gt;
+&amp;nbsp;&amp;nbsp;`&lt;link href=&quot;http://tobibeer.github.io/tb5/&quot; rel=&quot;self&quot; /&gt;`&lt;br&gt;
+&amp;nbsp;&amp;nbsp;`&lt;author&gt;`&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;`&lt;name&gt;`&lt;$list filter=&quot;[!is[system]!has[draft.of]!untagged[]!tag[static]!is[tag]!sort[modified]limit[1]]&quot;&gt;&lt;$link&gt;&lt;$view field=&quot;creator&quot; format=&quot;htmlencoded&quot;/&gt;&lt;/$link&gt;&lt;/$list&gt;`&lt;/name&gt;`&lt;br&gt;
+&amp;nbsp;&amp;nbsp;`&lt;/author&gt;`&lt;br&gt;
+&amp;nbsp;&amp;nbsp;`&lt;updated&gt;`&lt;$list filter=&quot;[!is[system]!has[draft.of]!sort[modified]limit[1]]&quot;&gt;&lt;$link&gt;&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;YYYY-0MM-0DDT0hh:0mm:0ss&quot;/&gt;&lt;/$link&gt;&lt;/$list&gt;+02:00`&lt;/updated&gt;`&lt;br&gt;
+&lt;&lt;atom-entries filter:&quot;$:/.tb/templates/atom/filter&quot;&gt;&gt;&lt;br&gt;
+`&lt;/feed&gt;`</pre>
 </div>
 <div follow="yes" summary="@@color:red; to do:@@ a tw5 gtd implementation&lt;!--td5--&gt;" tags="[[Tobias Beer]]" title="td5" url="http://tobibeer.github.io/tw/td5" revision="0" bag="default">
 <pre></pre>
@@ -20499,9 +20647,6 @@ If you neither have a TiddlyWiki or TiddlySpot yet, here's a simple process to d
 &quot;$:/.tb/templates/list-search-me&quot;&gt;&gt;
 &lt;/dl&gt;</pre>
 </div>
-<div icon="$:/core/images/menu-button" title="ToC" revision="0" bag="default">
-<pre></pre>
-</div>
 <div created="20141125232200140" creator="Tobias Beer" modified="20141125232258995" modifier="Tobias Beer" title="toc" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>\define regexp-headings() (^!+.*)(?gmi)
 &lt;div class=&quot;tidtoc tc-tiddler-frame&quot;&gt;
@@ -20558,6 +20703,9 @@ float:right;
 text-align:right;
 }
 &lt;/style&gt;</pre>
+</div>
+<div icon="$:/core/images/menu-button" title="ToC" revision="0" bag="default">
+<pre></pre>
 </div>
 <div icon="$:/core/images/storyview-pop" title="Toggle" revision="0" bag="default">
 <pre></pre>
@@ -20681,9 +20829,6 @@ The defined styles here...
 <div title="traffic-light-buttons.gif" type="image/gif" revision="0" bag="default">
 <pre>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</pre>
 </div>
-<div icon="$:/core/images/storyview-pop" title="Transclusion" revision="0" bag="default">
-<pre></pre>
-</div>
 <div tags="Markup" title="transclusion" url="http://tiddlywiki.com/#Transclusion%20in%20WikiText" revision="0" bag="default">
 <pre>&lt;dt&gt;
 
@@ -20712,6 +20857,9 @@ The defined styles here...
 » list of tiddlers tagged `Foo`&lt;br&gt;
 » same using template `Bar`
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/storyview-pop" title="Transclusion" revision="0" bag="default">
+<pre></pre>
 </div>
 <div created="20141114203626843" creator="Tobias Beer" modified="20141204134556861" modifier="Tobias Beer" tags="Developer" title="Translate TW5" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>;Interactive Tool
