@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <id>http://tobibeer.github.io/tb5/tb5.atom</id>
+  <id>http://tobibeer.github.io/tb5/feed.atom</id>
   <title>tb5</title>
   <subtitle>a pocket full of tips</subtitle>
-  <link href="http://tobibeer.github.io/tb5/" rel="self" />
+  <link href="http://tobibeer.github.io/tb5/feed.atom" rel="self" type="application/atom+xml"/>
   <author>
     <name>Tobias Beer</name>
   </author>
-  <updated>2015-09-30T14:53:22+02:00</updated>
+  <updated>2015-09-30T13:23:26+02:00</updated>
   <entry>
     <title>Generic Popup</title>
     <id>http://tobibeer.github.io/tb5#Generic%20Popup</id>
