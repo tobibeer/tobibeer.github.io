@@ -43,7 +43,7 @@ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF S
 DAMAGE.
 " />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>tb5 — Generic Popup</title>
+<title>tb5 — $:/ControlPanel</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~--><!--~~ Raw markup ~~-->
 
 </head>
@@ -16069,7 +16069,7 @@ If a plugin is not sufficiently configurable it is advisable to suggest customiz
 
 For example, for `$:/plugins/tiddlywiki/tw2parser` you could create an override `$:/plugins/tiddlywiki/tw2parser/my-project-config` leaving the original untouched while overriding components provided by the plugin.</pre>
 </div>
-<div created="20150930080515193" creator="Tobias Beer" modified="20150930081323458" tags="Popup Macros Solutions Presentation Images" title="Generic Popup" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<div created="20150930080515193" creator="Tobias Beer" modified="20150930081323458" tags="Popup Macros Solutions Presentation Images" title="Generic Popup" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>{{pop}}</pre>
 </div>
 <div icon="$:/core/images/permalink-button" tags="Developer" title="GitHub" revision="0" bag="default">
@@ -18890,7 +18890,7 @@ Some [[information on plugins|http://tiddlywiki.com/#Plugins]] not included in t
 
 &lt;&lt;static Plugins 800px yes&gt;&gt;</pre>
 </div>
-<div created="20150930072206029" creator="Tobias Beer" modified="20150930081250329" tags="" title="pop" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<div created="20150930072206029" creator="Tobias Beer" modified="20150930083340787" tags="" title="pop" type="text/vnd.tiddlywiki" revision="2" bag="default">
 <pre>The [[&lt;&lt;pop&gt;&gt;|$:/.tb/macros/pop]] macro implements a generic popup as based on the &lt;&lt;tw PopupMechanism&gt;&gt;.
 
 !! Example
@@ -18901,13 +18901,16 @@ Opens the tiddler [[Jack.jpg]] in a popup styled with the [[pretty|$:/styles/pre
 
 &lt;$macrocall $name=&quot;`&quot; text=&quot;&quot;&quot;&lt;&lt;pop Click! Jack.jpg pretty&gt;&gt;&quot;&quot;&quot;/&gt;
 
-''complex''
+''complex'' — (as link, with some @@color:deeppink;pink@@)
 
-&lt;$macrocall $name=&quot;`&quot; text=&quot;&quot;&quot;&lt;&lt;pop Pink! Jack.jpg pink-box btn-class:&quot;tc-btn-invisible tc-tiddlylink&quot; btn-selectedClass:&quot;pop-btn-my-selected&quot; state-id:&quot;Jack2&quot;&gt;&gt; (as link, with some @@color:deeppink;pink@@)
-&lt;style&gt;
+&lt;$macrocall $name=&quot;`&quot; text=&quot;&quot;&quot;&lt;&lt;pop Pink! Jack.jpg pink-box btn-class:&quot;tc-btn-invisible tc-tiddlylink&quot; btn-selectedClass:&quot;pop-btn-my-selected&quot; state-id:&quot;Jack2&quot;&gt;&gt;&quot;&quot;&quot;/&gt;
+
+with these styles...
+
+&lt;&lt;` &quot;&quot;&quot;&lt;style&gt;
 .pink-box{border: 3px solid pink;line-height:0;}
 .pop-btn-my-selected{color:deeppink !important;}
-&lt;/style&gt;&quot;&quot;&quot;/&gt;
+&lt;/style&gt;&quot;&quot;&quot;&gt;&gt;
 
 !! Parameters
 
