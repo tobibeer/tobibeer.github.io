@@ -43,7 +43,7 @@ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF S
 DAMAGE.
 " />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>tb5 — feed.atom</title>
+<title>tb5 — Welcome</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~--><!--~~ Raw markup ~~-->
 
 </head>
@@ -4076,7 +4076,7 @@ class=&quot;tc-tiddlylink-external&quot; target=&quot;_blank&quot;&gt;$page$&lt;
 <div created="20150930072145911" creator="Tobias Beer" modified="20150930075345625" tags="$:/tags/Macro" title="$:/.tb/macros/pop" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>\define pop(label, content, pop-class, animate, position, tooltip, btn-class, btn-tag:&quot;button&quot;, btn-selectedClass, state-id)
 &lt;$set name=&quot;state&quot; value=&lt;&lt;qualify &quot;&quot;&quot;$:/state/pop/$show$/$state-id$&quot;&quot;&quot;&gt;&gt;&gt;
-&lt;$button popup=&lt;&lt;state&gt;&gt; class=&quot;pop-btn $btn-class$&quot; tooltup=&quot;$tooltip$&quot; tag=&quot;$btn-tag$&quot; selectedClass=&quot;pop-btn-selected $btn-selectedClass$&quot;&gt;$label$&lt;/$button&gt;
+&lt;$button popup=&lt;&lt;state&gt;&gt; class=&quot;pop-btn $btn-class$&quot; tooltip=&quot;$tooltip$&quot; tag=&quot;$btn-tag$&quot; selectedClass=&quot;pop-btn-selected $btn-selectedClass$&quot;&gt;$label$&lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;state&gt;&gt; animate=&quot;$animate$&quot; position=&quot;$position$&quot;&gt;
 &lt;div class=&quot;pop-popup $pop-class$&quot;&gt;
 
