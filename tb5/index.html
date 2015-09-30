@@ -43,7 +43,7 @@ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF S
 DAMAGE.
 " />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>tb5 — $:/core</title>
+<title>tb5 — $:/plugins/tiddlywiki/tiddlyweb</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~--><!--~~ Raw markup ~~-->
 
 </head>
@@ -461,8 +461,6 @@ Error message and password prompt
 
 <li>$:/parsers/skeeve/rules/replace.js</li>
 
-<li>$:/plugins/felixhayashi/topstoryview</li>
-
 <li>$:/plugins/tobibeer/letfilter/let.js</li>
 
 <li>$:/SiteSubtitle</li>
@@ -498,6 +496,8 @@ Error message and password prompt
 <li>$:/UploadURL</li>
 
 <li>$:/view</li>
+
+<li>$/.tb/macros/pop</li>
 
 <li>A Document Of Numbered Chapters</li>
 
@@ -811,6 +811,8 @@ Error message and password prompt
 
 <li>Future Proof Plugin Configuration</li>
 
+<li>Generic Popup</li>
+
 <li>GitHub</li>
 
 <li>Google Calendar</li>
@@ -1069,6 +1071,8 @@ Error message and password prompt
 
 <li>Plugins</li>
 
+<li>pop</li>
+
 <li>Popups</li>
 
 <li>Popups In Tables</li>
@@ -1317,9 +1321,9 @@ Error message and password prompt
 
 <li>traffic-light-buttons.gif</li>
 
-<li>transclusion</li>
-
 <li>Transclusion</li>
+
+<li>transclusion</li>
 
 <li>Translate TW5</li>
 
@@ -13416,26 +13420,6 @@ exports.parse = function() {
 })();
 </pre>
 </div>
-<div author="Felix Küppers" core-version="&gt;=5.1.5" created="20150926074848183" dependents="" description="Alternative opening and scrolling behavior" list="" plugin-type="plugin" released="Thu, 08 Jan 2015 15:48:27 +0100" source="https://github.com/felixhayashi/TW5-TopStoryView" title="$:/plugins/felixhayashi/topstoryview" type="application/json" version="0.0.1+0" revision="0" bag="default">
-<pre>{
-    &quot;tiddlers&quot;: {
-        &quot;$:/plugins/felixhayashi/topstoryview/layout&quot;: {
-            &quot;title&quot;: &quot;$:/plugins/felixhayashi/topstoryview/layout&quot;,
-            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
-            &quot;tags&quot;: [
-                &quot;$:/tags/Stylesheet&quot;
-            ],
-            &quot;text&quot;: &quot;html .tc-story-river:after {\n  content: \&quot;\&quot;;\n  display: block;\n  height: 100vh;\n}&quot;
-        },
-        &quot;$:/plugins/felixhayashi/topstoryview/top.js&quot;: {
-            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/felixhayashi/topstoryview/top.js\ntype: application/javascript\nmodule-type: storyview\n\nViews the story as a linear sequence\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nvar easing = \&quot;cubic-bezier(0.645, 0.045, 0.355, 1)\&quot;; // From http://easings.net/#easeInOutCubic\n\nvar TopStoryView = function(listWidget) {\n  \n  this.listWidget = listWidget;\n  \n  this.pageScroller = new $tw.utils.PageScroller();\n  this.pageScroller.scrollIntoView = this.scrollIntoView;\n  this.pageScroller.storyRiverElement = document.getElementsByClassName(\&quot;tc-story-river\&quot;)[0];\n  \n};\n\nTopStoryView.prototype.navigateTo = function(historyInfo) {\n   \n  var listElementIndex = this.listWidget.findListItem(0,historyInfo.title);\n  if(listElementIndex === undefined) {\n    return;\n  }\n  var listItemWidget = this.listWidget.children[listElementIndex],\n      targetElement = listItemWidget.findFirstDomNode();\n  \n  if(targetElement instanceof Element) {\n    this.pageScroller.scrollIntoView(targetElement);\n  }  \n};\n\nTopStoryView.prototype.scrollIntoView = function(element) {\n\n  var duration = $tw.utils.getAnimationDuration();\n  // Now get ready to scroll the body\n  this.cancelScroll();\n  this.startTime = Date.now();\n  var scrollPosition = $tw.utils.getScrollPosition();\n  \n  this.offsetTop = this.storyRiverElement.firstElementChild.getBoundingClientRect().top\n                   + $tw.utils.getScrollPosition().y;\n  \n  // Get the client bounds of the element and adjust by the scroll position\n  var clientBounds = element.getBoundingClientRect(),\n    bounds = {\n      left: clientBounds.left + scrollPosition.x,\n      top: clientBounds.top + scrollPosition.y,\n      width: clientBounds.width,\n      height: clientBounds.height\n    };\n    // We'll consider the horizontal and vertical scroll directions separately via this function\n    var getEndPos = function(targetPos,targetSize,currentPos,currentSize) {\n      // If the target is above/left of the current view, then scroll to it's top/left\n      if(targetPos &lt;= currentPos) {\n        return targetPos;\n      // If the target is smaller than the window and the scroll position is too far up, then scroll till the target is at the bottom of the window\n      } else if(targetSize &lt; currentSize &amp;&amp; currentPos &lt; (targetPos + targetSize - currentSize)) {\n        return targetPos + targetSize - currentSize;\n      // If the target is big, then just scroll to the top\n      } else if(currentPos &lt; targetPos) {\n        return targetPos;\n      // Otherwise, stay where we are\n      } else {\n        return currentPos;\n      }\n    },\n    endX = getEndPos(bounds.left,bounds.width,scrollPosition.x,window.innerWidth),\n    endY = bounds.top - this.offsetTop;\n  // Only scroll if necessary\n  if(endX !== scrollPosition.x || endY !== scrollPosition.y) {\n    var self = this,\n      drawFrame;\n    drawFrame = function () {\n      var t;\n      if(duration &lt;= 0) {\n        t = 1;\n      } else {\n        t = ((Date.now()) - self.startTime) / duration; \n      }\n      if(t &gt;= 1) {\n        self.cancelScroll();\n        t = 1;\n      }\n      t = $tw.utils.slowInSlowOut(t);\n      window.scrollTo(scrollPosition.x + (endX - scrollPosition.x) * t,scrollPosition.y + (endY - scrollPosition.y) * t);\n      if(t &lt; 1) {\n        self.idRequestFrame = self.requestAnimationFrame.call(window,drawFrame);\n      }\n    };\n    drawFrame();\n  }\n}\n  \n  \nTopStoryView.prototype.insert = function(widget) {\n\n  var targetElement = widget.findFirstDomNode(),\n    duration = $tw.utils.getAnimationDuration();\n  // Abandon if the list entry isn't a DOM element (it might be a text node)\n  if(!(targetElement instanceof Element)) {\n    return;\n  }\n  // Get the current height of the tiddler\n  var computedStyle = window.getComputedStyle(targetElement),\n    currMarginBottom = parseInt(computedStyle.marginBottom,10),\n    currMarginTop = parseInt(computedStyle.marginTop,10),\n    currHeight = targetElement.offsetHeight + currMarginTop;\n  // Reset the margin once the transition is over\n  setTimeout(function() {\n    $tw.utils.setStyle(targetElement,[\n      {transition: \&quot;none\&quot;},\n      {marginBottom: \&quot;\&quot;}\n    ]);\n  },duration);\n  // Set up the initial position of the element\n  $tw.utils.setStyle(targetElement,[\n    {transition: \&quot;none\&quot;},\n    {marginBottom: (-currHeight) + \&quot;px\&quot;},\n    {opacity: \&quot;0.0\&quot;}\n  ]);\n  $tw.utils.forceLayout(targetElement);\n  // Transition to the final position\n  $tw.utils.setStyle(targetElement,[\n    {transition: \&quot;opacity \&quot; + duration + \&quot;ms \&quot; + easing + \&quot;, \&quot; +\n          \&quot;margin-bottom \&quot; + duration + \&quot;ms \&quot; + easing},\n    {marginBottom: currMarginBottom + \&quot;px\&quot;},\n    {opacity: \&quot;1.0\&quot;}\n  ]);\n\n};\n\n  \nTopStoryView.prototype.remove = function(widget) {\n  var targetElement = widget.findFirstDomNode(),\n    duration = $tw.utils.getAnimationDuration(),\n    removeElement = function() {\n      widget.removeChildDomNodes();\n    };\n  // Abandon if the list entry isn't a DOM element (it might be a text node)\n  if(!(targetElement instanceof Element)) {\n    removeElement();\n    return;\n  }\n  // Get the current height of the tiddler\n  var currWidth = targetElement.offsetWidth,\n    computedStyle = window.getComputedStyle(targetElement),\n    currMarginBottom = parseInt(computedStyle.marginBottom,10),\n    currMarginTop = parseInt(computedStyle.marginTop,10),\n    currHeight = targetElement.offsetHeight + currMarginTop;\n  // Remove the dom nodes of the widget at the end of the transition\n  setTimeout(removeElement,duration);\n  // Animate the closure\n  $tw.utils.setStyle(targetElement,[\n    {transition: \&quot;none\&quot;},\n    {transform: \&quot;translateX(0px)\&quot;},\n    {marginBottom:  currMarginBottom + \&quot;px\&quot;},\n    {opacity: \&quot;1.0\&quot;}\n  ]);\n  $tw.utils.forceLayout(targetElement);\n  $tw.utils.setStyle(targetElement,[\n    {transition: $tw.utils.roundTripPropertyName(\&quot;transform\&quot;) + \&quot; \&quot; + duration + \&quot;ms \&quot; + easing + \&quot;, \&quot; +\n          \&quot;opacity \&quot; + duration + \&quot;ms \&quot; + easing + \&quot;, \&quot; +\n          \&quot;margin-bottom \&quot; + duration + \&quot;ms \&quot; + easing},\n    {transform: \&quot;translateX(-\&quot; + currWidth + \&quot;px)\&quot;},\n    {marginBottom: (-currHeight) + \&quot;px\&quot;},\n    {opacity: \&quot;0.0\&quot;}\n  ]);\n  \n};\n\nexports.top = TopStoryView;\n\n})();&quot;,
-            &quot;title&quot;: &quot;$:/plugins/felixhayashi/topstoryview/top.js&quot;,
-            &quot;type&quot;: &quot;application/javascript&quot;,
-            &quot;module-type&quot;: &quot;storyview&quot;
-        }
-    }
-}</pre>
-</div>
 <div created="20141125230000000" creator="Tobias Beer" modified="20150107175105073" modifier="Tobias Beer" module-type="filteroperator" tags="" title="$:/plugins/tobibeer/letfilter/let.js" type="application/javascript" revision="0" bag="default">
 <pre>/*\
 	title: $:/plugins/tobibeer/letfilter/let.js
@@ -14034,6 +14018,19 @@ fill:#beb; /*#9e2*/
 </div>
 <div created="20150926074847964" modified="20150109001540715" modifier="Tobias Beer" title="$:/view" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>top</pre>
+</div>
+<div created="20150930072145911" creator="Tobias Beer" modified="20150930075345625" tags="$:/tags/Macro" title="$/.tb/macros/pop" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>\define pop(label, content, pop-class, animate, position, tooltip, btn-class, btn-tag:&quot;button&quot;, btn-selectedClass, state-id)
+&lt;$set name=&quot;state&quot; value=&lt;&lt;qualify &quot;&quot;&quot;$:/state/pop/$show$/$state-id$&quot;&quot;&quot;&gt;&gt;&gt;
+&lt;$button popup=&lt;&lt;state&gt;&gt; class=&quot;pop-btn $btn-class$&quot; tooltup=&quot;$tooltip$&quot; tag=&quot;$btn-tag$&quot; selectedClass=&quot;pop-btn-selected $btn-selectedClass$&quot;&gt;$label$&lt;/$button&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;state&gt;&gt; animate=&quot;$animate$&quot; position=&quot;$position$&quot;&gt;
+&lt;div class=&quot;pop-popup $pop-class$&quot;&gt;
+
+{{$content$}}
+&lt;/div&gt;
+&lt;/$reveal&gt;
+&lt;/$set&gt;
+\end</pre>
 </div>
 <div created="20150123000932045" creator="Tobias Beer" modified="20150123001447774" modifier="Tobias Beer" tags="[[Stephan Hradek]] Presentation Batch Documentation" title="A Document Of Numbered Chapters" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>[[Here|https://groups.google.com/d/msg/tiddlywiki/zbiwXL5orIk/qOWwb_UXjsoJ]], [[Stephan Hradek]] shows how to construct a document from numbered chapters:
@@ -16071,6 +16068,9 @@ This way, you ensure that plugin updates are still delivered to your wiki later 
 If a plugin is not sufficiently configurable it is advisable to suggest customization enhancements to the plugin author.
 
 For example, for `$:/plugins/tiddlywiki/tw2parser` you could create an override `$:/plugins/tiddlywiki/tw2parser/my-project-config` leaving the original untouched while overriding components provided by the plugin.</pre>
+</div>
+<div created="20150930080515193" creator="Tobias Beer" modified="20150930080541122" tags="Popup Macros Solutions Presentation" title="Generic Popup" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>{{pop}}</pre>
 </div>
 <div icon="$:/core/images/permalink-button" tags="Developer" title="GitHub" revision="0" bag="default">
 <pre>The place where the [[TW5 code|https://github.com/Jermolene/TiddlyWiki5]] resides.
@@ -18890,6 +18890,45 @@ Some [[information on plugins|http://tiddlywiki.com/#Plugins]] not included in t
 
 &lt;&lt;static Plugins 800px yes&gt;&gt;</pre>
 </div>
+<div created="20150930072206029" creator="Tobias Beer" modified="20150930080402088" tags="" title="pop" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>The [[&lt;&lt;pop&gt;&gt;|$/.tb/macros/pop]] macro implements a generic popup as based on the &lt;&lt;tw PopupMechanism&gt;&gt;.
+
+!! Example
+
+''simple''
+
+Opens the tiddler [[Jack.jpg]] in a popup styled with the [[pretty|$:/styles/pretty]] class:
+
+&lt;$macrocall $name=&quot;`&quot; text=&quot;&quot;&quot;&lt;&lt;pop Click! Jack.jpg pretty&gt;&gt;&quot;&quot;&quot;/&gt;
+
+''complex''
+
+&lt;$macrocall $name=&quot;`&quot; text=&quot;&quot;&quot;&lt;&lt;pop Pink! Jack.jpg pink-box btn-class:&quot;tc-btn-invisible tc-tiddlylink&quot; btn-selectedClass:&quot;pop-btn-my-selected&quot; state-id:&quot;Jack2&quot;&gt;&gt; (as link, with some @@color:deeppink;pink@@)
+&lt;style&gt;
+.pink-box{border: 3px solid pink;line-height:0;}
+.pop-btn-my-selected{color:deeppink !important;}
+&lt;/style&gt;&quot;&quot;&quot;/&gt;
+
+!! Parameters
+
+Many of the available parameters correspond 1:1 to those coming from the &lt;&lt;tw ButtonWidget&gt;&gt; and &lt;&lt;tw RevealWidget&gt;&gt; used inside the ''pop'' macro, see their documentation.
+
+| !# | !Parameter | !Description | !Default | !Widget |
+|1|''label''|the popup button label, transcluded |||
+|2|''content''|the popup contents, transcluded |||
+|3|''pop-class''|a custom popup class; always `pop-popup` ||&lt;&lt;tw RevealWidget $reveal&gt;&gt;|
+|4|''animate''|whether to animate the popup ||&lt;&lt;tw RevealWidget $reveal&gt;&gt;|
+|5|''position''|where to open the popup ||&lt;&lt;tw RevealWidget $reveal&gt;&gt;|
+|6|''tooltip''|the button tooltip ||&lt;&lt;tw ButtonWidget $button&gt;&gt;|
+|7|''btn-class''|a custom button class; always `pop-btn` ||&lt;&lt;tw ButtonWidget $button&gt;&gt;|
+|8|''btn-tag''|the html element tag for the button |`button`|&lt;&lt;tw ButtonWidget $button&gt;&gt;|
+|9|''btn-selectedClass''|the class for the button when the popup is shown; always `pop-btn-selected` ||&lt;&lt;tw ButtonWidget $button&gt;&gt;|
+|10|''state-id''|the state is always constructed as `$:/state/pop/&lt;qualify&gt;/&lt;state-id&gt;`&lt;br&gt;&lt;br&gt;use different values for `state-id` when you want to show the same `content` twice in the same tiddler&lt;br&gt;&lt;br&gt;implements the [[&lt;&lt;qualify&gt;&gt;|http://tiddlywiki.com#qualify%20Macro]]  macro|||
+
+!! Installation
+
+Drag to your wiki: &lt;&lt;source [[$/.tb/macros/pop]]&gt;&gt;</pre>
+</div>
 <div icon="$:/core/images/storyview-zoomin" title="Popups" revision="0" bag="default">
 <pre></pre>
 </div>
@@ -19756,7 +19795,7 @@ If you want to use TiddlyWiki alongside your TiddlyWiki related GitHub Projects 
 <div follow="yes" summary="showing how to change TiddlyWiki css styles, simple" tags="[[Tobias Beer]]" title="style" url="http://tobibeer.github.io/tw/style" revision="0" bag="default">
 <pre></pre>
 </div>
-<div created="20150929153628393" creator="Tobias Beer" modified="20150929155920329" modifier="Tobias Beer" tags="Styles CSS Tags Presentation Solutions Test" title="Style Tagged Tiddlers" type="application/x-tiddler" revision="4" bag="default">
+<div created="20150929153628393" creator="Tobias Beer" modified="20150929155920329" modifier="Tobias Beer" tags="Styles CSS Tags Presentation Solutions Test" title="Style Tagged Tiddlers" type="application/x-tiddler" revision="0" bag="default">
 <pre>To give tiddlers having a certain tag their very own looks, you can use [[this method|http://tobibeer.github.io/tw/style/#Style%20Tagged%20Tiddlers]].
 
 Also see [[How to apply custom styles by tag|http://tiddlywiki.com/#How%20to%20apply%20custom%20styles%20by%20tag]].
@@ -20639,6 +20678,9 @@ The defined styles here...
 <div title="traffic-light-buttons.gif" type="image/gif" revision="0" bag="default">
 <pre>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</pre>
 </div>
+<div icon="$:/core/images/storyview-pop" title="Transclusion" revision="0" bag="default">
+<pre></pre>
+</div>
 <div tags="Markup" title="transclusion" url="http://tiddlywiki.com/#Transclusion%20in%20WikiText" revision="0" bag="default">
 <pre>&lt;dt&gt;
 
@@ -20667,9 +20709,6 @@ The defined styles here...
 » list of tiddlers tagged `Foo`&lt;br&gt;
 » same using template `Bar`
 &lt;/dd&gt;</pre>
-</div>
-<div icon="$:/core/images/storyview-pop" title="Transclusion" revision="0" bag="default">
-<pre></pre>
 </div>
 <div created="20141114203626843" creator="Tobias Beer" modified="20141204134556861" modifier="Tobias Beer" tags="Developer" title="Translate TW5" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>;Interactive Tool
