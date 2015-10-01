@@ -43,7 +43,7 @@ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF S
 DAMAGE.
 " />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>tb5 — Welcome</title>
+<title>tb5 — filter: toc</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~--><!--~~ Raw markup ~~-->
 
 </head>
@@ -161,6 +161,8 @@ Error message and password prompt
 
 <li>$:/.tb/macros/catlist</li>
 
+<li>$:/.tb/macros/date-version</li>
+
 <li>$:/.tb/macros/demo-filter</li>
 
 <li>$:/.tb/macros/edit-inline</li>
@@ -192,6 +194,8 @@ Error message and password prompt
 <li>$:/.tb/macros/plain</li>
 
 <li>$:/.tb/macros/pop</li>
+
+<li>$:/.tb/macros/pop/styles</li>
 
 <li>$:/.tb/macros/slider</li>
 
@@ -775,9 +779,9 @@ Error message and password prompt
 
 <li>Felix Küppers</li>
 
-<li>fields</li>
-
 <li>Fields</li>
+
+<li>fields</li>
 
 <li>Fields: Core</li>
 
@@ -803,9 +807,9 @@ Error message and password prompt
 
 <li>FilterOperator: join</li>
 
-<li>Filters</li>
-
 <li>filters</li>
+
+<li>Filters</li>
 
 <li>focus</li>
 
@@ -883,9 +887,9 @@ Error message and password prompt
 
 <li>ImageMaps</li>
 
-<li>Images</li>
-
 <li>images</li>
+
+<li>Images</li>
 
 <li>Import</li>
 
@@ -1229,9 +1233,9 @@ Error message and password prompt
 
 <li>Table Of Contents In Sidebar</li>
 
-<li>Tables</li>
-
 <li>tables</li>
+
+<li>Tables</li>
 
 <li>Tables Without Borders</li>
 
@@ -1331,9 +1335,9 @@ Error message and password prompt
 
 <li>traffic-light-buttons.gif</li>
 
-<li>Transclusion</li>
-
 <li>transclusion</li>
+
+<li>Transclusion</li>
 
 <li>Translate TW5</li>
 
@@ -3786,6 +3790,14 @@ exports.run = function(value, operation, until, beyond, decimals, tiddler) {
 &lt;/dl&gt;
 \end</pre>
 </div>
+<div created="20151001070501581" creator="Tobias Beer" modified="20151001071006050" tags="$:/tags/Macro" title="$:/.tb/macros/date-version" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>\define date-version(tiddler)
+&lt;$view tiddler=&quot;$tiddler$&quot;
+field=&quot;modified&quot;
+format=&quot;date&quot;
+template=&quot;YYYY-0MM-0DD-0hh-0mm-0ss&quot;/&gt;
+\end</pre>
+</div>
 <div created="20150203174632088" creator="Tobias Beer" modified="20150203175144390" modifier="Tobias Beer" tags="$:/tags/Macro" title="$:/.tb/macros/demo-filter" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>\define f(filter,describe)
 &lt;dl&gt;
@@ -4073,18 +4085,31 @@ class=&quot;tc-tiddlylink-external&quot; target=&quot;_blank&quot;&gt;$page$&lt;
 {{$text$||$:/.tb/templates/plain}}
 \end</pre>
 </div>
-<div created="20150930072145911" creator="Tobias Beer" modified="20150930075345625" tags="$:/tags/Macro" title="$:/.tb/macros/pop" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20150930072145911" creator="Tobias Beer" modified="20151001070130400" tags="$:/tags/Macro" title="$:/.tb/macros/pop" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>\define pop(label, content, pop-class, animate, position, tooltip, btn-class, btn-tag:&quot;button&quot;, btn-selectedClass, state-id)
-&lt;$set name=&quot;state&quot; value=&lt;&lt;qualify &quot;&quot;&quot;$:/state/pop/$show$/$state-id$&quot;&quot;&quot;&gt;&gt;&gt;
-&lt;$button popup=&lt;&lt;state&gt;&gt; class=&quot;pop-btn $btn-class$&quot; tooltip=&quot;$tooltip$&quot; tag=&quot;$btn-tag$&quot; selectedClass=&quot;pop-btn-selected $btn-selectedClass$&quot;&gt;$label$&lt;/$button&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;state&gt;&gt; animate=&quot;$animate$&quot; position=&quot;$position$&quot;&gt;
-&lt;div class=&quot;pop-popup $pop-class$&quot;&gt;
+&lt;$set name=&quot;state&quot; value=&lt;&lt;qualify &quot;&quot;&quot;$:/state/pop-$content$-$state-id$&quot;&quot;&quot;&gt;&gt;&gt;
+&lt;$button popup=&lt;&lt;state&gt;&gt; class=&quot;pop-btn $btn-class$&quot; tooltip=&quot;$tooltip$&quot; tag=&quot;$btn-tag$&quot; selectedClass=&quot;pop-btn-selected $btn-selectedClass$&quot;&gt;$label$&lt;/$button&gt;&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;state&gt;&gt; animate=&quot;$animate$&quot; position=&quot;$position$&quot; class=&quot;tc-popup pop-popup $pop-class$&quot; style=&quot;$pop-style$&quot;&gt;
 
 {{$content$}}
-&lt;/div&gt;
 &lt;/$reveal&gt;
 &lt;/$set&gt;
 \end</pre>
+</div>
+<div created="20151001070335789" creator="Tobias Beer" modified="20151001071634044" tags="$:/tags/Stylesheet" title="$:/.tb/macros/pop/styles" type="text/css" revision="0" bag="default">
+<pre>.pop-tiddler {
+  padding:0 10px;
+  background:white;
+}
+
+.pop-img {
+  line-height:0;
+}
+
+.pretty.pop-popup {
+  -webkit-box-shadow: 2px 2px 15px 1px rgba(119, 119, 119, 0.5);
+  -moz-box-shadow: 2px 2px 15px 1px rgba(119, 119, 119, 0.5);
+  box-shadow: 2px 2px 15px 1px rgba(119, 119, 119, 0.5);
+}</pre>
 </div>
 <div created="20150108122803565" creator="Tobias Beer" modified="20150201183720734" modifier="Tobias Beer" summary="provides a slider macro" tags="$:/tags/Macro" title="$:/.tb/macros/slider" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>\define slider(label, content, state, tooltip, label-hide, animate: &quot;yes&quot;, class, btn-class:&quot;tc-btn-invisible tc-tiddlylink&quot;, element:&quot;div&quot;, plain)
@@ -4100,9 +4125,9 @@ class=&quot;tc-tiddlylink-external&quot; target=&quot;_blank&quot;&gt;$page$&lt;
 &lt;/$reveal&gt;&lt;/$element$&gt;&lt;/$reveal&gt;
 \end</pre>
 </div>
-<div created="20141117160505514" creator="Tobias Beer" modified="20141203221647345" modifier="Tobias Beer" summary="displays a link to a tiddler and its source in a codeblock" tags="$:/tags/Macro" title="$:/.tb/macros/source" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>\define source(source)
-[[$source$]]:
+<div created="20141117160505514" creator="Tobias Beer" modified="20151001071028630" modifier="Tobias Beer" summary="displays a link to a tiddler and its source in a codeblock" tags="$:/tags/Macro" title="$:/.tb/macros/source" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>\define source(source,version)
+[[$source$]]&lt;$reveal type=&quot;match&quot; text=&quot;$version$&quot; default=&quot;yes&quot;&gt; (version: &lt;&lt;date-version &quot;$source$&quot;&gt;&gt;)&lt;/$reveal&gt;:
 
 &lt;pre&gt;&lt;$view tiddler=&quot;$source$&quot; format=&quot;text&quot;/&gt;&lt;/pre&gt;
 \end</pre>
@@ -13959,8 +13984,9 @@ margin-left:20px;
 margin:0 2px;
 }</pre>
 </div>
-<div created="20141117084727358" creator="Tobias Beer" modified="20141209100655035" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/styles/pretty" type="text/plain" revision="0" bag="default">
-<pre>.pretty img,
+<div created="20141117084727358" creator="Tobias Beer" modified="20151001064523013" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/styles/pretty" type="text/plain" revision="0" bag="default">
+<pre>.pretty-pop,
+.pretty img,
 .pretty svg,
 img.pretty,
 .static{
@@ -14662,7 +14688,7 @@ Calculated values can be used as widget attributes so as to assign them to tiddl
 
 !! Installation
 
-Drag to your wiki, save, reload: [[$:/.tb/macros/calc]] — version: ''&lt;$view tiddler=&quot;$:/.tb/macros/calc&quot; field=&quot;modified&quot; format=&quot;date&quot; template=&quot;YYYY-0MM-0DD-0hh-0mm-0ss&quot;/&gt;''
+Drag to your wiki, save, reload: [[$:/.tb/macros/calc]] (version: &lt;&lt;date-version &quot;$:/.tb/macros/calc&quot;&gt;&gt;)
 
 !! Examples 
 
@@ -15948,13 +15974,13 @@ http://tiddlywiki.com&lt;br&gt;
 <div icon="$:/core/images/plugin-generic-language" summary="inventor of TiddlyMap&lt;!--Felix Küppers, vis.js--&gt;" tags="Community" title="Felix Küppers" url="[[felixhayashi@GitHub|https://github.com/felixhayashi/TW5-TiddlyMap]]" revision="0" bag="default">
 <pre></pre>
 </div>
+<div icon="$:/core/images/permalink-button" title="Fields" revision="0" bag="default">
+<pre></pre>
+</div>
 <div follow="yes" summary="explorations as to imporoving working with tiddler fields" tags="[[Tobias Beer]] Fields" title="fields" url="http://tobibeer.github.io/tw/fields" revision="0" bag="default">
 <pre>!!! Topics
 ; [[FieldsPopup|http://tobibeer.github.io/tw/fields/#FieldsPopup]]
 : &lt;&lt;git5 issues/1448&gt;&gt; — field editing popups</pre>
-</div>
-<div icon="$:/core/images/permalink-button" title="Fields" revision="0" bag="default">
-<pre></pre>
 </div>
 <div caption="core" created="20141118195032028" creator="Tobias Beer" modified="20150107195102560" modifier="Tobias Beer" tags="Fields Lists Filters Core" title="Fields: Core" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>all [[core fields|Fields: Core]] except [[standard fields|Fields: Standard]] as documented in the TiddlyWiki core:
@@ -16159,9 +16185,7 @@ the 11th most recent being last in the list, last 10 skipped&quot;&gt;&gt;</pre>
 
 !!Installation
 
-version: ''&lt;$view tiddler=&quot;$:/.tb/modules/filters/toc.js&quot; field=&quot;modified&quot; format=&quot;date&quot; template=&quot;YYYY-0MM-0DD-0hh-0mm-0ss&quot;/&gt;''
-
-drag to your wiki &lt;&lt;source [[$:/.tb/modules/filters/toc.js]]&gt;&gt;</pre>
+drag to your wiki: &lt;&lt;source [[$:/.tb/modules/filters/toc.js]] yes&gt;&gt;</pre>
 </div>
 <div created="20141118220324722" creator="Tobias Beer" modified="20150131125056066" modifier="Tobias Beer" tags="Filters [[Stephan Hradek]]" title="FilterOperator: join" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>An experimental [[filteroperator|http://tiddlywiki.com/#FilterOperators]] by [[Stephan Hradek]] [[proposed here|https://groups.google.com/d/msg/tiddlywiki/_x9CDAFtwQc/JOjUNfoxqF4J]] to concatenate filter strings...
@@ -16176,10 +16200,10 @@ drag to your wiki &lt;&lt;source [[$:/.tb/modules/filters/toc.js]]&gt;&gt;</pre>
 
 see source: &lt;&lt;source $:/core/modules/filters/join.js&gt;&gt;</pre>
 </div>
-<div icon="$:/core/images/storyview-pop" title="Filters" revision="0" bag="default">
+<div follow="yes" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters" revision="0" bag="default">
 <pre></pre>
 </div>
-<div follow="yes" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters" revision="0" bag="default">
+<div icon="$:/core/images/storyview-pop" title="Filters" revision="0" bag="default">
 <pre></pre>
 </div>
 <div follow="yes" summary="trying to have the standard theme focus more on content, hiding controls from visitors&lt;!--focus--&gt;" tags="[[Tobias Beer]]" title="focus" url="http://tobibeer.github.io/tw/focus" revision="0" bag="default">
@@ -16768,9 +16792,6 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 
 &lt;&lt;source &quot;$:/.tb/demo/image-map&quot;&gt;&gt;</pre>
 </div>
-<div icon="$:/core/images/storyview-zoomin" title="Images" revision="0" bag="default">
-<pre></pre>
-</div>
 <div tags="Markup" title="images" revision="0" bag="default">
 <pre>&lt;dt&gt;
 
@@ -16789,6 +16810,9 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 [img width=16 [http://www.tiddlywiki.com/favicon.ico]]&lt;br&gt;
 [img class=&quot;tc-image&quot; [http://www.tiddlywiki.com/favicon.ico]]
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/storyview-zoomin" title="Images" revision="0" bag="default">
+<pre></pre>
 </div>
 <div icon="$:/core/images/export-button" title="Import" revision="0" bag="default">
 <pre></pre>
@@ -19038,16 +19062,20 @@ Some [[information on plugins|http://tiddlywiki.com/#Plugins]] not included in t
 
 &lt;&lt;static Plugins 800px yes&gt;&gt;</pre>
 </div>
-<div created="20150930072206029" creator="Tobias Beer" modified="20150930083340787" tags="" title="pop" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20150930072206029" creator="Tobias Beer" modified="20151001072258024" tags="" title="pop" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>The [[&lt;&lt;pop&gt;&gt;|$:/.tb/macros/pop]] macro implements a generic popup as based on the &lt;&lt;tw PopupMechanism&gt;&gt;.
 
 !! Example
 
 ''simple''
 
-Opens the tiddler [[Jack.jpg]] in a popup styled with the [[pretty|$:/styles/pretty]] class:
+Opens the tiddler [[Jack.jpg]] in a popup styled with the [[classes|$:/.tb/macros/pop/styles]] ''pretty'' and ''pop-img'':
 
-&lt;$macrocall $name=&quot;`&quot; text=&quot;&quot;&quot;&lt;&lt;pop Click! Jack.jpg pretty&gt;&gt;&quot;&quot;&quot;/&gt;
+&lt;$macrocall $name=&quot;`&quot; text=&quot;&quot;&quot;&lt;&lt;pop Click! Jack.jpg &quot;pretty pop-img&quot;&gt;&gt;&quot;&quot;&quot;/&gt;
+
+''a tiddler''
+
+&lt;$macrocall $name=&quot;`&quot; text=&quot;&quot;&quot;&lt;&lt;pop Click! &quot;Style Tagged Tiddlers&quot; &quot;pretty pop-tiddler&quot;&gt;&gt;&quot;&quot;&quot;/&gt;
 
 ''complex'' — (as link, with some @@color:deeppink;pink@@)
 
@@ -19066,7 +19094,7 @@ Many of the available parameters correspond 1:1 to those coming from the &lt;&lt
 
 | !# | !Parameter | !Description | !Default | !Widget |
 |1|''label''|the popup button label, transcluded |||
-|2|''content''|the popup contents, transcluded |||
+|2|''content''|the popup contents via &lt;&lt;tw TextReference&gt;&gt;, transcluded |||
 |3|''pop-class''|a custom popup class; always `pop-popup` ||&lt;&lt;tw RevealWidget $reveal&gt;&gt;|
 |4|''animate''|whether to animate the popup ||&lt;&lt;tw RevealWidget $reveal&gt;&gt;|
 |5|''position''|where to open the popup ||&lt;&lt;tw RevealWidget $reveal&gt;&gt;|
@@ -19078,7 +19106,17 @@ Many of the available parameters correspond 1:1 to those coming from the &lt;&lt
 
 !! Installation
 
-Drag to your wiki: &lt;&lt;source [[$:/.tb/macros/pop]]&gt;&gt;</pre>
+Drag the macro and styles into your wiki...
+
+&lt;&lt;source &quot;$:/.tb/macros/pop&quot; yes&gt;&gt;
+&lt;&lt;source [[$:/.tb/macros/pop/styles]] yes&gt;&gt;
+
+!! Styles
+
+| !class | !description |
+|''pretty''|adds a dropshadow to the popup |
+|''pop-img''|removes nasty bottom padding when displaying just an image|
+|''pop-tiddler''|removes awkward translucency and sets default padding|</pre>
 </div>
 <div icon="$:/core/images/storyview-zoomin" title="Popups" revision="0" bag="default">
 <pre></pre>
@@ -20057,9 +20095,6 @@ via &lt;&lt;source &quot;$:/.tb/demo/svg-circle&quot;&gt;&gt;</pre>
 &lt;&lt;ximg toc.jpg tooltip:&quot;example toc from tiddlywiki.com&quot; class:&quot;pretty&quot;&gt;&gt;
 example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 </div>
-<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
-<pre></pre>
-</div>
 <div tags="Markup" title="tables" revision="0" bag="default">
 <pre>&lt;dt style=&quot;font-size:80%;&quot;&gt;
 
@@ -20083,6 +20118,9 @@ example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 |and|now| vertical |
 |&gt;| right|~|
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
+<pre></pre>
 </div>
 <div created="20150206013252827" creator="Tobias Beer" modified="20150206014255748" modifier="Tobias Beer" tags="Tables Presentation Styles" title="Tables Without Borders" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>If you are wishing to use borderless tables [[like Diane|https://groups.google.com/d/msg/tiddlywiki/lPvh5gcea70/JHWgVmIvHdIJ]], here's what you do:
@@ -20829,9 +20867,6 @@ The defined styles here...
 <div title="traffic-light-buttons.gif" type="image/gif" revision="0" bag="default">
 <pre>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</pre>
 </div>
-<div icon="$:/core/images/storyview-pop" title="Transclusion" revision="0" bag="default">
-<pre></pre>
-</div>
 <div tags="Markup" title="transclusion" url="http://tiddlywiki.com/#Transclusion%20in%20WikiText" revision="0" bag="default">
 <pre>&lt;dt&gt;
 
@@ -20860,6 +20895,9 @@ The defined styles here...
 » list of tiddlers tagged `Foo`&lt;br&gt;
 » same using template `Bar`
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/storyview-pop" title="Transclusion" revision="0" bag="default">
+<pre></pre>
 </div>
 <div created="20141114203626843" creator="Tobias Beer" modified="20141204134556861" modifier="Tobias Beer" tags="Developer" title="Translate TW5" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>;Interactive Tool
