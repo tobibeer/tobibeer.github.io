@@ -4958,6 +4958,8 @@ exports.run = function(filter) {
 					.split(&quot;!&quot;)[0]
 					.substr(0,200)
 					+ &quot;...&quot;;
+			} else {
+				summary = summary.replace(/\&lt;/mg,&quot;&quot;).replace(/\&gt;/mg,&quot;&quot;);
 			}
 			summary = summary;
 			lines.push(&quot;&amp;nbsp;&amp;nbsp;`&lt;summary&gt;`&lt;$text text=\&quot;\&quot;\&quot;&quot; + summary + &quot;\&quot;\&quot;\&quot;/&gt;`&lt;/summary&gt;`&quot;);
@@ -16800,7 +16802,7 @@ HTML tags work like that.
 <div icon="$:/core/images/star-filled" title="Icons" revision="0" bag="default">
 <pre></pre>
 </div>
-<div created="20150202230519361" creator="Tobias Beer" follow="yes" modified="20150213194129182" modifier="Tobias Beer" summary="a showcase and reference for icon fonts and libraries with previews" tags="[[Tobias Beer]] Solutions Icons Presentation Fonts" title="icons" url="http://tobibeer.github.io/tw/icons" revision="0" bag="default">
+<div created="20150202230519361" creator="Tobias Beer" follow="yes" modified="20150213194000000" modifier="Tobias Beer" summary="a showcase and reference for icon fonts and libraries with previews" tags="[[Tobias Beer]] Solutions Icons Presentation Fonts" title="icons" url="http://tobibeer.github.io/tw/icons" revision="0" bag="default">
 <pre></pre>
 </div>
 <div created="20150105231913568" creator="Tobias Beer" follow="no" modified="20150108114142058" modifier="Tobias Beer" summary="testing how two ~TiddlyWikis behave which mutually iframe their contents" tags="[[Tobias Beer]]" title="iframe-1" url="http://iframe-1.tiddlyspot.com" revision="0" bag="default">
@@ -19169,7 +19171,7 @@ To remedy this, apply use a custom stylesheet to apply `position:relative` to th
 &lt;tr&gt;&lt;td&gt;Click that button!&lt;/td&gt;&lt;th&gt;{{$:/core/ui/Buttons/more-tiddler-actions}}&lt;/th&gt;&lt;/tr&gt;
 &lt;/table&gt;</pre>
 </div>
-<div summary="the latest and greatest" tags="Main" title="Prerelease" url="http://tiddlywiki.com/prerelease" revision="0" bag="default">
+<div summary="the latest and greatest" tags="Main References" title="Prerelease" url="http://tiddlywiki.com/prerelease" revision="0" bag="default">
 <pre></pre>
 </div>
 <div icon="$:/core/images/storyview-zoomin" title="Presentation" revision="0" bag="default">
@@ -20005,7 +20007,7 @@ If you want to use TiddlyWiki alongside your TiddlyWiki related GitHub Projects 
 &lt;/dt&gt;
 &lt;dd&gt;~~strikethrough~~&lt;/dd&gt;</pre>
 </div>
-<div created="20150104193843499" creator="Tobias Beer" follow="yes" modified="20150108112355771" modifier="Tobias Beer" summary="showing how to change TiddlyWiki css styles, simple" tags="[[Tobias Beer]]" title="style" url="http://tobibeer.github.io/tw/style" revision="0" bag="default">
+<div created="20141211130023084" creator="Tobias Beer" follow="yes" modified="20150918124527965" modifier="Tobias Beer" summary="showing how to change TiddlyWiki css styles, simple" tags="[[Tobias Beer]]" title="style" url="http://tobibeer.github.io/tw/style" revision="0" bag="default">
 <pre></pre>
 </div>
 <div created="20150929153628393" creator="Tobias Beer" modified="20150929155920329" modifier="Tobias Beer" tags="Styles CSS Tags Presentation Solutions Test" title="Style Tagged Tiddlers" type="application/x-tiddler" revision="0" bag="default">
@@ -20645,7 +20647,7 @@ rendered via :
 <div icon="$:/core/images/globe" summary="bring clips, snips, and snapshots of web contents into your TiddlyWiki, configurably so ...also contains jsoneditor and taglist&lt;!--BJ TiddlyClip--&gt;" tags="Plugin References Solutions Addons Browser Plugins" title="TiddlyClip" url="http://tiddlyclip.tiddlyspot.com" revision="0" bag="default">
 <pre></pre>
 </div>
-<div summary="a Google Apps Script (GAS) implementation of a TiddlyWiki serverside by [[Danielo Rodríguez]]" tags="[[Danielo Rodríguez]]" title="TiddlyDrive" url="http://danielorodriguez.com/TiddlyDrive4Community" revision="0" bag="default">
+<div summary="a Google Apps Script (GAS) implementation of a TiddlyWiki serverside by [[Danielo Rodríguez]]" tags="[[Danielo Rodríguez]] References" title="TiddlyDrive" url="http://danielorodriguez.com/TiddlyDrive4Community" revision="0" bag="default">
 <pre>; GitHub
 : https://github.com/danielo515/TiddlyDrive</pre>
 </div>
@@ -20958,10 +20960,10 @@ From http://tiddlywiki.com/#Macros%20in%20WikiText...
 <div created="20141121233225833" creator="Tobias Beer" modified="20141205151537122" modifier="Tobias Beer" summary="[[Ton Gerner]] helping us introspect tw5 codebits&lt;!--exploration, explore--&gt;" tags="[[Ton Gerner]] References" title="TW5 Exploration" type="text/vnd.tiddlywiki" url="http://tw5exploration.tiddlyspot.com" revision="0" bag="default">
 <pre></pre>
 </div>
-<div summary="[[Dave Gifford]]'s catalogue of hints, tips and hacks for tw5&lt;!--mall--&gt;" tags="Community [[Dave Gifford]]" title="TW5Mall" url="http://www.giffmex.org/tw5mall.htm" revision="0" bag="default">
+<div summary="[[Dave Gifford]]'s catalogue of hints, tips and hacks for tw5&lt;!--mall--&gt;" tags="References [[Dave Gifford]]" title="TW5Mall" url="http://www.giffmex.org/tw5mall.htm" revision="0" bag="default">
 <pre>//abandoned//</pre>
 </div>
-<div icon="$:/core/images/globe" summary="tips and tutorials by Andreas Hahn for customizing TiddlyWiki, what others are using their wikis for, and a customizer to create custom builds, &lt;!--twguides--&gt;" tags="Community" title="TWGuides" url="http://twguides.org" revision="0" bag="default">
+<div icon="$:/core/images/globe" summary="tips and tutorials by Andreas Hahn for customizing TiddlyWiki, what others are using their wikis for, and a customizer to create custom builds, &lt;!--twguides--&gt;" tags="References" title="TWGuides" url="http://twguides.org" revision="0" bag="default">
 <pre></pre>
 </div>
 <div created="20141202215803450" creator="Tobias Beer" follow="yes" modified="20150108114218918" modifier="Tobias Beer" summary="@@color:red; to do:@@ a tiddlywiki quiz system&lt;!--twiz--&gt;" tags="[[Tobias Beer]]" title="twiz" url="http://twiz.tiddlyspot.com" revision="0" bag="default">

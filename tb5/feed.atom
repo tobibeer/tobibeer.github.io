@@ -121,6 +121,13 @@
     <summary>As posted by Spangenheim in this post you can use the $set widget to conditionally assign content to a variable by evaluating a filter and then using the emptyValue parameter as a fallback when the fi...</summary>
   </entry>
   <entry>
+    <title>style</title>
+    <id>http://tobibeer.github.io/tb5#style</id>
+    <link href='http://tobibeer.github.io/tb5#style'/>
+    <updated>2015-09-18T14:45:27+02:00</updated>
+    <summary>showing how to change TiddlyWiki css styles, simple</summary>
+  </entry>
+  <entry>
     <title>Text Excerpts</title>
     <id>http://tobibeer.github.io/tb5#Text%20Excerpts</id>
     <link href='http://tobibeer.github.io/tb5#Text%20Excerpts'/>
@@ -247,18 +254,18 @@
     <summary>As Albert points out, there's a very interesting method used by TheDiveO on how to embeded a custom font, e.g. FontAwesome: # check for a font you like #* make sure its license allows you to embed, m...</summary>
   </entry>
   <entry>
-    <title>icons</title>
-    <id>http://tobibeer.github.io/tb5#icons</id>
-    <link href='http://tobibeer.github.io/tb5#icons'/>
-    <updated>2015-02-13T20:41:29+02:00</updated>
-    <summary>a showcase and reference for icon fonts and libraries with previews</summary>
-  </entry>
-  <entry>
     <title>fontawesome</title>
     <id>http://tobibeer.github.io/tb5#fontawesome</id>
     <link href='http://tobibeer.github.io/tb5#fontawesome'/>
     <updated>2015-02-13T20:41:28+02:00</updated>
     <summary>FontAwesome icons and tips for implementation</summary>
+  </entry>
+  <entry>
+    <title>icons</title>
+    <id>http://tobibeer.github.io/tb5#icons</id>
+    <link href='http://tobibeer.github.io/tb5#icons'/>
+    <updated>2015-02-13T20:40:00+02:00</updated>
+    <summary>a showcase and reference for icon fonts and libraries with previews</summary>
   </entry>
   <entry>
     <title>Advanced Numbered Lists</title>
@@ -350,12 +357,5 @@
     <link href='http://tobibeer.github.io/tb5#focus'/>
     <updated>2015-02-07T11:37:43+02:00</updated>
     <summary>trying to have the standard theme focus more on content, hiding controls from visitors</summary>
-  </entry>
-  <entry>
-    <title>enable-js</title>
-    <id>http://tobibeer.github.io/tb5#enable-js</id>
-    <link href='http://tobibeer.github.io/tb5#enable-js'/>
-    <updated>2015-02-07T11:07:48+02:00</updated>
-    <summary> caution: know the consequences of enabling inline <script> tags</summary>
   </entry>
 </feed>
