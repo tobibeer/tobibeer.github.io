@@ -2,12 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://tobibeer.github.io/tb5/feed.atom</id>
   <title>tb5</title>
-  <subtitle>a pocket full of tips</subtitle>
+  <subtitle>a pocket full of tips </subtitle>
   <link href="http://tobibeer.github.io/tb5/feed.atom" rel="self" type="application/atom+xml"/>
   <author>
-    <name></name>
+    <name>Tobias Beer</name>
   </author>
-  <updated>2015-10-03T13:09:22+02:00</updated>
+  <updated>2015-10-03T15:32:28+02:00</updated>
+  <entry>
+    <title>Tobias Beer</title>
+    <id>http://tobibeer.github.io/tb5#Tobias%20Beer</id>
+    <link href='http://tobibeer.github.io/tb5#Tobias%20Beer'/>
+    <updated>2015-10-03T15:32:28+02:00</updated>
+    <summary>wikis I created and maintain</summary>
+  </entry>
   <entry>
     <title>core</title>
     <id>http://tobibeer.github.io/tb5#core</id>
@@ -205,6 +212,13 @@
     <summary>I asked Jeremy how to conditionally generate a summary section (or other related information) at the top of all tiddlers tagged X, so that one doesn't have to click twice, skim the fields until one fi...</summary>
   </entry>
   <entry>
+    <title>static</title>
+    <id>http://tobibeer.github.io/tb5#static</id>
+    <link href='http://tobibeer.github.io/tb5#static'/>
+    <updated>2015-02-17T20:13:33+02:00</updated>
+    <summary>a collection of references to articles on implementing static sites on node.js</summary>
+  </entry>
+  <entry>
     <title>Aliases And Redirecting Dead Links</title>
     <id>http://tobibeer.github.io/tb5#Aliases%20And%20Redirecting%20Dead%20Links</id>
     <link href='http://tobibeer.github.io/tb5#Aliases%20And%20Redirecting%20Dead%20Links'/>
@@ -233,6 +247,20 @@
     <summary>As Albert points out, there's a very interesting method used by TheDiveO on how to embeded a custom font, e.g. FontAwesome: # check for a font you like #* make sure its license allows you to embed, m...</summary>
   </entry>
   <entry>
+    <title>icons</title>
+    <id>http://tobibeer.github.io/tb5#icons</id>
+    <link href='http://tobibeer.github.io/tb5#icons'/>
+    <updated>2015-02-13T20:41:29+02:00</updated>
+    <summary>a showcase and reference for icon fonts and libraries with previews</summary>
+  </entry>
+  <entry>
+    <title>fontawesome</title>
+    <id>http://tobibeer.github.io/tb5#fontawesome</id>
+    <link href='http://tobibeer.github.io/tb5#fontawesome'/>
+    <updated>2015-02-13T20:41:28+02:00</updated>
+    <summary>FontAwesome icons and tips for implementation</summary>
+  </entry>
+  <entry>
     <title>Advanced Numbered Lists</title>
     <id>http://tobibeer.github.io/tb5#Advanced%20Numbered%20Lists</id>
     <link href='http://tobibeer.github.io/tb5#Advanced%20Numbered%20Lists'/>
@@ -245,6 +273,13 @@
     <link href='http://tobibeer.github.io/tb5#Embed%20An%20External%20Page'/>
     <updated>2015-02-12T17:06:32+02:00</updated>
     <summary>In TiddlyWiki you can embed external sites via iframes using simple html markup: ...</summary>
+  </entry>
+  <entry>
+    <title>td5</title>
+    <id>http://tobibeer.github.io/tb5#td5</id>
+    <link href='http://tobibeer.github.io/tb5#td5'/>
+    <updated>2015-02-12T13:32:43+02:00</updated>
+    <summary> to do: a tw5 gtd implementation</summary>
   </entry>
   <entry>
     <title>filter: is missing</title>
@@ -261,6 +296,48 @@
     <summary>this widget uses the ckeditor lib for WYSIWYG editing</summary>
   </entry>
   <entry>
+    <title>ibox</title>
+    <id>http://tobibeer.github.io/tb5#ibox</id>
+    <link href='http://tobibeer.github.io/tb5#ibox'/>
+    <updated>2015-02-09T14:25:00+02:00</updated>
+    <summary>demonstrating lightboxes in tw5</summary>
+  </entry>
+  <entry>
+    <title>classic</title>
+    <id>http://tobibeer.github.io/tb5#classic</id>
+    <link href='http://tobibeer.github.io/tb5#classic'/>
+    <updated>2015-02-09T14:21:49+02:00</updated>
+    <summary>differences between TWc and TW5</summary>
+  </entry>
+  <entry>
+    <title>fields</title>
+    <id>http://tobibeer.github.io/tb5#fields</id>
+    <link href='http://tobibeer.github.io/tb5#fields'/>
+    <updated>2015-02-09T09:45:20+02:00</updated>
+    <summary>explorations as to imporoving working with tiddler fields</summary>
+  </entry>
+  <entry>
+    <title>dev</title>
+    <id>http://tobibeer.github.io/tb5#dev</id>
+    <link href='http://tobibeer.github.io/tb5#dev'/>
+    <updated>2015-02-08T14:04:19+02:00</updated>
+    <summary>for managing that tw5 backlog of my own</summary>
+  </entry>
+  <entry>
+    <title>demo</title>
+    <id>http://tobibeer.github.io/tb5#demo</id>
+    <link href='http://tobibeer.github.io/tb5#demo'/>
+    <updated>2015-02-08T13:43:24+02:00</updated>
+    <summary>demonstrating things at work for group discussions and github </summary>
+  </entry>
+  <entry>
+    <title>me/ubi</title>
+    <id>http://tobibeer.github.io/tb5#me%2Fubi</id>
+    <link href='http://tobibeer.github.io/tb5#me%2Fubi'/>
+    <updated>2015-02-07T13:53:17+02:00</updated>
+    <summary>my notes on the idea of a Universal Basic Income, a UBI</summary>
+  </entry>
+  <entry>
     <title>www</title>
     <id>http://tobibeer.github.io/tb5#www</id>
     <link href='http://tobibeer.github.io/tb5#www'/>
@@ -268,94 +345,17 @@
     <summary>allows to link urls without a protocol http:// or http://www</summary>
   </entry>
   <entry>
-    <title>xlist</title>
-    <id>http://tobibeer.github.io/tb5#xlist</id>
-    <link href='http://tobibeer.github.io/tb5#xlist'/>
-    <updated>2015-02-07T10:29:32+02:00</updated>
-    <summary>the xlist macro shows crosslists of tiddlers tagging to categories grouped by another category</summary>
+    <title>focus</title>
+    <id>http://tobibeer.github.io/tb5#focus</id>
+    <link href='http://tobibeer.github.io/tb5#focus'/>
+    <updated>2015-02-07T11:37:43+02:00</updated>
+    <summary>trying to have the standard theme focus more on content, hiding controls from visitors</summary>
   </entry>
   <entry>
-    <title>External Image Path</title>
-    <id>http://tobibeer.github.io/tb5#External%20Image%20Path</id>
-    <link href='http://tobibeer.github.io/tb5#External%20Image%20Path'/>
-    <updated>2015-02-07T00:01:07+02:00</updated>
-    <summary>This solution inspired by PMario defines a global folder path for external images. This is more powerful than using relative paths [img[subfolder/file.JPG]] as you can move that image folder anywhere ...</summary>
-  </entry>
-  <entry>
-    <title>Tagging Macro</title>
-    <id>http://tobibeer.github.io/tb5#Tagging%20Macro</id>
-    <link href='http://tobibeer.github.io/tb5#Tagging%20Macro'/>
-    <updated>2015-02-06T14:04:03+02:00</updated>
-    <summary>$:/.tb/macros/tagging provides a global macro implementing the classic ...</summary>
-  </entry>
-  <entry>
-    <title>Quick Markup Reference</title>
-    <id>http://tobibeer.github.io/tb5#Quick%20Markup%20Reference</id>
-    <link href='http://tobibeer.github.io/tb5#Quick%20Markup%20Reference'/>
-    <updated>2015-02-06T13:52:47+02:00</updated>
-    <summary>the tw5 markup, neatly compacted</summary>
-  </entry>
-  <entry>
-    <title>How to style lists</title>
-    <id>http://tobibeer.github.io/tb5#How%20to%20style%20lists</id>
-    <link href='http://tobibeer.github.io/tb5#How%20to%20style%20lists'/>
-    <updated>2015-02-06T13:52:06+02:00</updated>
-    <summary>You may have noticed, a filter by itself does not render anything, widgets do, and consequently macros. So, to get a basic list, put your desired item-format inside the list widget that renders it: ...</summary>
-  </entry>
-  <entry>
-    <title>A Hierarchy Without Tags</title>
-    <id>http://tobibeer.github.io/tb5#A%20Hierarchy%20Without%20Tags</id>
-    <link href='http://tobibeer.github.io/tb5#A%20Hierarchy%20Without%20Tags'/>
-    <updated>2015-02-06T13:49:23+02:00</updated>
-    <summary>Based on a solution suggested by Stephan Hradek, here's how you can list entries to categories without a need to use tagging, optionally sorted by a custom order field. The example calls the catlis...</summary>
-  </entry>
-  <entry>
-    <title>TopBar With Icon Links</title>
-    <id>http://tobibeer.github.io/tb5#TopBar%20With%20Icon%20Links</id>
-    <link href='http://tobibeer.github.io/tb5#TopBar%20With%20Icon%20Links'/>
-    <updated>2015-02-06T13:48:48+02:00</updated>
-    <summary>This wiki implements a top-menu which renders the main topics as icon-links. Below the steps I took to achieve it. ...</summary>
-  </entry>
-  <entry>
-    <title>Original Shadow Text</title>
-    <id>http://tobibeer.github.io/tb5#Original%20Shadow%20Text</id>
-    <link href='http://tobibeer.github.io/tb5#Original%20Shadow%20Text'/>
-    <updated>2015-02-06T10:07:56+02:00</updated>
-    <summary> are tiddlers bundled in plugins, like the TiddlyWiki core itself. They are restored to their original contents once you delete a version you edited. To display the original contents of that have b...</summary>
-  </entry>
-  <entry>
-    <title>Accordeon Menu</title>
-    <id>http://tobibeer.github.io/tb5#Accordeon%20Menu</id>
-    <link href='http://tobibeer.github.io/tb5#Accordeon%20Menu'/>
-    <updated>2015-02-05T12:42:52+02:00</updated>
-    <summary>As Alberto Molina announces here, there are highly customizable slider and accordeon macros in TiddlyWiki For Scholars. You can find a demo of the accordeon working at the bottom of the start page at...</summary>
-  </entry>
-  <entry>
-    <title>filter: limit</title>
-    <id>http://tobibeer.github.io/tb5#filter%3A%20limit</id>
-    <link href='http://tobibeer.github.io/tb5#filter%3A%20limit'/>
-    <updated>2015-02-04T12:02:39+02:00</updated>
-    <summary>This wiki implements a different limit filter than the core. In fact, this version effectively overrides the core which implements a negation for limit that is not only wrong in terms of set theory bu...</summary>
-  </entry>
-  <entry>
-    <title>Managing Review Items?</title>
-    <id>http://tobibeer.github.io/tb5#Managing%20Review%20Items%3F</id>
-    <link href='http://tobibeer.github.io/tb5#Managing%20Review%20Items%3F'/>
-    <updated>2015-02-04T00:52:21+02:00</updated>
-    <summary>A worklflow proposed by Alex Hough... * something in the text raises an unanswered question? * write that question into the text as a link ** Managing Review Items? * use the sufix filters to extract...</summary>
-  </entry>
-  <entry>
-    <title>filter: toc</title>
-    <id>http://tobibeer.github.io/tb5#filter%3A%20toc</id>
-    <link href='http://tobibeer.github.io/tb5#filter%3A%20toc'/>
-    <updated>2015-02-03T13:07:17+02:00</updated>
-    <summary>The toc filter returns a flat list for a , e.g. for paging, down to a given level, level 1 meaning directly tagging to operand. ...</summary>
-  </entry>
-  <entry>
-    <title>One Button Multiple Actions</title>
-    <id>http://tobibeer.github.io/tb5#One%20Button%20Multiple%20Actions</id>
-    <link href='http://tobibeer.github.io/tb5#One%20Button%20Multiple%20Actions'/>
-    <updated>2015-02-03T00:00:43+02:00</updated>
-    <summary>In this dicussion, vpl asks how to have a button increment a counter, store it globally and set it for a new tiddler. So, this is what the below example does... # the calc macro is used to determine ...</summary>
+    <title>enable-js</title>
+    <id>http://tobibeer.github.io/tb5#enable-js</id>
+    <link href='http://tobibeer.github.io/tb5#enable-js'/>
+    <updated>2015-02-07T11:07:48+02:00</updated>
+    <summary> caution: know the consequences of enabling inline <script> tags</summary>
   </entry>
 </feed>
