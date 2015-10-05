@@ -43,7 +43,7 @@ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF S
 DAMAGE.
 " />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>tb5 — Contact</title>
+<title>tb5 — Pragmas</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~--><!--~~ Raw markup ~~-->
 
 </head>
@@ -605,9 +605,9 @@ Error message and password prompt
 
 <li>Clone Wikis Via store.php</li>
 
-<li>Code</li>
-
 <li>code</li>
+
+<li>Code</li>
 
 <li>Code-101</li>
 
@@ -641,9 +641,9 @@ Error message and password prompt
 
 <li>Contribute Via GitHub Web UI</li>
 
-<li>Core</li>
-
 <li>core</li>
+
+<li>Core</li>
 
 <li>Core Distro Plugins</li>
 
@@ -977,9 +977,9 @@ Error message and password prompt
 
 <li>Macrocall vs. Macro</li>
 
-<li>macros</li>
-
 <li>Macros</li>
+
+<li>macros</li>
 
 <li>magictabs</li>
 
@@ -1096,6 +1096,8 @@ Error message and password prompt
 <li>Popups</li>
 
 <li>Popups In Tables</li>
+
+<li>Pragmas</li>
 
 <li>Prerelease</li>
 
@@ -1239,9 +1241,9 @@ Error message and password prompt
 
 <li>Table Of Contents In Sidebar</li>
 
-<li>Tables</li>
-
 <li>tables</li>
+
+<li>Tables</li>
 
 <li>Tables Without Borders</li>
 
@@ -4461,7 +4463,7 @@ exports.toc = function(source,operator,options) {
 <div title="$:/.tb/msg/tid-file" revision="0" bag="default">
 <pre>''Note:'' The above denotes [[TiddlerFiles Syntax|http://tiddlywiki.com/#TiddlerFiles]].</pre>
 </div>
-<div created="20141119102634212" creator="Tobias Beer" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20151005061205813" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles" type="text/css" revision="1" bag="default">
+<div created="20141119102634212" creator="Tobias Beer" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20151005064747327" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles" type="text/css" revision="0" bag="default">
 <pre>a.tc-tiddlylink-shadow {
 color:#567;
 font-weight:normal;
@@ -4627,6 +4629,12 @@ height:150px;
 
 form.contact .gotcha {
 display:none;
+}
+
+iframe.contact {
+border:0;
+width:100%;
+height:400px;
 }</pre>
 </div>
 <div created="20150116175548155" creator="Tobias Beer" modified="20150120001546966" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles/examples" type="text/css" revision="0" bag="default">
@@ -5368,7 +5376,7 @@ field=&quot;story-name&quot;&gt;
 &lt;/div&gt;
 &lt;&lt;hack-142&gt;&gt;</pre>
 </div>
-<div created="20141125205730428" creator="Tobias Beer" list="Welcome Solutions Plugins Developer Core References Markup" modified="20150206124447460" modifier="Tobias Beer" title="$:/.tb/ui/TopLeftBar/config" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20141125205730428" creator="Tobias Beer" list="Welcome Solutions Plugins Developer Core References Markup Contact" modified="20151005065619890" modifier="Tobias Beer" title="$:/.tb/ui/TopLeftBar/config" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre></pre>
 </div>
 <div created="20150209205259313" creator="Tobias Beer" list-after="$:/core/ui/ViewTemplate/body" modified="20150209205911966" modifier="Tobias Beer" tags="$:/tags/ViewTemplate" title="$:/.tb/ui/ViewTemplate/journal-entries" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -14867,15 +14875,15 @@ Here's a rudimentary example to reorder lists using the ''calc'' macro...
 
 For example, you could have your own ''empty.html'' with customizations and plugins and then simply change the name of your wiki under [[ControlPanel|$:/ControlPanel]] / ''Saving'' and set ''Upload Filename'' accordingly. Then load that cloned wiki and continue to work there, saving changes to the new location.</pre>
 </div>
-<div icon="$:/core/images/permalink-button" title="Code" revision="0" bag="default">
-<pre></pre>
-</div>
 <div tags="Markup" title="code" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;dt&gt;&lt;pre&gt;&amp;#96;code&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
 &lt;dd&gt;`code` ...via backticks&lt;/dd&gt;
 
 &lt;dt&gt;&lt;pre&gt;&amp;#96;&amp;#96;with &amp;#96;backticks&amp;#96; &amp;#96;&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
 &lt;dd&gt;``with `backticks` ``&lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/permalink-button" title="Code" revision="0" bag="default">
+<pre></pre>
 </div>
 <div created="20150121121317298" creator="Tobias Beer" modified="20150122021331885" modifier="Tobias Beer" tags="Developer Code" title="Code-101" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>If you're new to TiddlyWiki, if not anything that looks like code, [[this discussion with Mat|https://groups.google.com/d/msg/tiddlywiki/l1Tu5uxSHSk/k8N9rvAm2OEJ]] may give you some pointers on how to approach all things programatic.
@@ -15062,14 +15070,17 @@ For all tiddlers tagged ''Project'', lists tiddlers tagging to them.
 <div icon="$:/core/images/options-button" title="Console" revision="0" bag="default">
 <pre></pre>
 </div>
-<div created="20151005054358855" creator="Tobias Beer" modified="20151005061216034" tags="" title="Contact" type="text/vnd.tiddlywiki" revision="7" bag="default">
-<pre>&lt;form class=&quot;contact&quot; action=&quot;http://formspree.io/beertobias@gmail.com&quot; target=&quot;contact&quot;&gt;
+<div caption="Contact" created="20151005054358855" creator="Tobias Beer" icon="{{$:/core/images/edit-button}}" menu="main" modified="20151005065814864" summary="write [[me|Tobias Beer]] an email" tags="" title="Contact" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<pre>&lt;form method=&quot;POST&quot; action=&quot;http://formspree.io/beertobias@gmail.com&quot;
+class=&quot;contact&quot; target=&quot;contact&quot;&gt;
   &lt;input type=&quot;email&quot; name=&quot;_replyto&quot; placeholder=&quot;Your email address...&quot;/&gt;
   &lt;textarea name=&quot;body&quot; placeholder=&quot;Your message...&quot;/&gt;
   &lt;input type=&quot;text&quot; name=&quot;_gotcha&quot; class=&quot;gotcha&quot;&gt;
   &lt;input type=&quot;hidden&quot; name=&quot;_subject&quot; value=&quot;tb5 contact&quot; /&gt;
   &lt;input type=&quot;submit&quot;/&gt;
-&lt;/form&gt;</pre>
+&lt;/form&gt;
+
+&lt;iframe name=&quot;contact&quot; class=&quot;contact&quot;/&gt;</pre>
 </div>
 <div icon="$:/core/images/edit-button" title="Content" revision="0" bag="default">
 <pre></pre>
@@ -15077,7 +15088,10 @@ For all tiddlers tagged ''Project'', lists tiddlers tagging to them.
 <div created="20141120171641267" creator="Tobias Beer" modified="20141125025528688" modifier="Tobias Beer" tags="GitHub Video Developer" title="Contribute Via GitHub Web UI" type="text/vnd.tiddlywiki" url="https://www.youtube.com/watch?v=L4zTkMYcri8" revision="0" bag="default">
 <pre>&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;http://www.youtube.com/embed/L4zTkMYcri8&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
 </div>
-<div caption="Core" created="20150929113328405" creator="Tobias Beer" icon="$:/core/icon" menu="main" menu-icon="{{$:/core/icon}}" modified="20150929113344998" summary="functional elements and constructs of the tw5 core" tags="Welcome" title="Core" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20151003110757144" creator="Tobias Beer" follow="no" modified="20151003110922889" modifier="Tobias Beer" summary="a documentation aiming to provide a comprehensive summary of all concepts and components of the TiddlyWiki core" tags="[[Tobias Beer]]" title="core" url="http://tobibeer.github.io/tw/core" revision="0" bag="default">
+<pre></pre>
+</div>
+<div caption="Core" created="20150929113328405" creator="Tobias Beer" icon="$:/core/icon" menu="main" menu-icon="{{$:/core/icon}}" modified="20151005065353765" summary="functional elements and constructs of the tw5 core" tags="Welcome" title="Core" type="text/vnd.tiddlywiki" revision="2" bag="default">
 <pre>;[[WikiText|http://tiddlywiki.com/#WikiText]]
 :[[TW5 markup|Markup]], syntax, hypertext, formatting
 ;[[Widgets|http://tiddlywiki.com/#Widgets]]
@@ -15102,15 +15116,9 @@ For all tiddlers tagged ''Project'', lists tiddlers tagging to them.
 ;[[Module Types|http://tiddlywiki.com/#%24%3A%2Fsnippets%2Fmodules]]
 :the different code modules by [[module type|Module Types]]
 ;[[Pragma|http://tiddlywiki.com/#Using%20Stylesheets]]
-:defined at the start of a tiddler, pragmas apply to the entire rest of the body
-:`\define` is used to declaring macros; multiline macros closing with `\end`
-:`\rules` constrain [[parser rules|Parser Rules]], e.g.: `\rules except inlinecode`
-:`\replace` is a pragma defined via a custom plugin: [[Replace Pragma]]
+:defined at the start of a tiddler, pragmas apply to the entire body, see [[Pragmas]]
 ;[[TextReferences|http://tiddlywiki.com/#TextReference]]
 :tiddler properties that can be retrieved or modified depending on the context</pre>
-</div>
-<div created="20151003110757144" creator="Tobias Beer" follow="no" modified="20151003110922889" modifier="Tobias Beer" summary="a documentation aiming to provide a comprehensive summary of all concepts and components of the TiddlyWiki core" tags="[[Tobias Beer]]" title="core" url="http://tobibeer.github.io/tw/core" revision="0" bag="default">
-<pre></pre>
 </div>
 <div created="20141120093416686" creator="Tobias Beer" modified="20141123203942199" modifier="Tobias Beer" title="Core Distro Plugins" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Although not packaged into a default TiddlyWiki, the following plugins are [[contained in the core distribution repository|http://tiddlywiki.com/#Plugins]]...
@@ -15626,7 +15634,7 @@ The source code to drag and drop to your wiki &lt;&lt;source $:/.tb/templates/de
 <div created="20150204084806981" creator="Tobias Beer" modified="20150207090129349" modifier="Tobias Beer" summary="notes about developing with TiddlyWiki" tags="[[Tobias Beer]] Developer" title="dev5" type="text/vnd.tiddlywiki" url="http://tobibeer.github.io/dev5" revision="0" bag="default">
 <pre></pre>
 </div>
-<div caption="Developer" icon="$:/core/images/permalink-button" menu="main" menu-icon="{{$:/core/images/permalink-button}}" summary="tidbits for [[developing|http://tiddlywiki.com/dev]] in and for tw5" tags="Welcome" title="Developer" revision="0" bag="default">
+<div caption="Dev" created="20151005065549213" icon="$:/core/images/permalink-button" menu="main" menu-icon="{{$:/core/images/permalink-button}}" modified="20151005065549525" summary="tidbits for [[developing|http://tiddlywiki.com/dev]] in and for tw5" tags="Welcome" title="Developer" revision="1" bag="default">
 <pre>!!Topics
 &lt;&lt;taggly state:&quot;$:/temp/tb/taggly-developer&quot;&gt;&gt;
 
@@ -17563,6 +17571,9 @@ To use, simply install &lt;&lt;source $:/.tb/macros/localfolder&gt;&gt;
 
 &gt; It's actually historical. The angle bracket syntax for macros was first implemented early on, before transcluded attributes. Then as the widget syntax evolved it was clear that it was more flexible and extensible. Internally, everything is a widget, even plain text. All the wikitext syntax beyond the widget syntax is really just a series of shortcuts for more easily typing widgets and HTML. My expectation is that more and more of the basic idioms that we discover as we explore the way that widgets fit together will end up being elevated to wiki syntax. For example, we could evolve a wikitext syntax for assigning variables that is terser than the current `&lt;$set&gt;` widget.</pre>
 </div>
+<div icon="$:/core/images/right-arrow" title="Macros" revision="0" bag="default">
+<pre></pre>
+</div>
 <div tags="Markup" title="macros" revision="0" bag="default">
 <pre>\define test(x, y, z:'0')
 $x$ $y$ $z$
@@ -17644,9 +17655,6 @@ $name=&quot;test&quot;
 x=&lt;&lt;version&gt;&gt;
 y={{!!title}}/&gt;&lt;/code&gt;
 &lt;/dd&gt;</pre>
-</div>
-<div icon="$:/core/images/right-arrow" title="Macros" revision="0" bag="default">
-<pre></pre>
 </div>
 <div summary="by [[Alberto Molina]], enhances TiddlyWiki with a tabsbar at the bottom of each tiddler to manage related tiddlers via lists, allowing to create related items via forms&lt;!--magictabs, bottomtabs--&gt;" tags="References Solutions Tabs Info Lists Relationships [[Alberto Molina]]" title="magictabs" url="http://magictabs.tiddlyspot.com" revision="0" bag="default">
 <pre>; discussion
@@ -19208,6 +19216,13 @@ To remedy this, apply use a custom stylesheet to apply `position:relative` to th
 &lt;tr&gt;&lt;td&gt;Click that button!&lt;/td&gt;&lt;th&gt;{{$:/core/ui/Buttons/more-tiddler-actions}}&lt;/th&gt;&lt;/tr&gt;
 &lt;/table&gt;</pre>
 </div>
+<div created="20151005065401016" modified="20151005065908319" tags="Core" title="Pragmas" revision="3" bag="default">
+<pre>[[Documentation on TiddlyWiki.com|http://tiddlywiki.com/#Pragma]]
+
+* `\define` is used to declaring macros; multiline macros closing with `\end`
+* `\rules` constrain [[parser rules|Parser Rules]], e.g.: `\rules except inlinecode`
+* `\replace` is a pragma defined via a custom plugin: [[Replace Pragma]]</pre>
+</div>
 <div summary="the latest and greatest" tags="Main References" title="Prerelease" url="http://tiddlywiki.com/prerelease" revision="0" bag="default">
 <pre></pre>
 </div>
@@ -20158,9 +20173,6 @@ via &lt;&lt;source &quot;$:/.tb/demo/svg-circle&quot;&gt;&gt;</pre>
 &lt;&lt;ximg toc.jpg tooltip:&quot;example toc from tiddlywiki.com&quot; class:&quot;pretty&quot;&gt;&gt;
 example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 </div>
-<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
-<pre></pre>
-</div>
 <div tags="Markup" title="tables" revision="0" bag="default">
 <pre>&lt;dt style=&quot;font-size:80%;&quot;&gt;
 
@@ -20184,6 +20196,9 @@ example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 |and|now| vertical |
 |&gt;| right|~|
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
+<pre></pre>
 </div>
 <div created="20150206013252827" creator="Tobias Beer" modified="20150206014255748" modifier="Tobias Beer" tags="Tables Presentation Styles" title="Tables Without Borders" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>If you are wishing to use borderless tables [[like Diane|https://groups.google.com/d/msg/tiddlywiki/lPvh5gcea70/JHWgVmIvHdIJ]], here's what you do:
