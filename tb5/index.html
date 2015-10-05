@@ -43,7 +43,7 @@ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF S
 DAMAGE.
 " />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>tb5 — Pragmas</title>
+<title>tb5 — Contact</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~--><!--~~ Raw markup ~~-->
 
 </head>
@@ -641,9 +641,9 @@ Error message and password prompt
 
 <li>Contribute Via GitHub Web UI</li>
 
-<li>core</li>
-
 <li>Core</li>
+
+<li>core</li>
 
 <li>Core Distro Plugins</li>
 
@@ -885,17 +885,17 @@ Error message and password prompt
 
 <li>ibox</li>
 
-<li>icons</li>
-
 <li>Icons</li>
+
+<li>icons</li>
 
 <li>iframe-1</li>
 
 <li>ImageMaps</li>
 
-<li>Images</li>
-
 <li>images</li>
+
+<li>Images</li>
 
 <li>Import</li>
 
@@ -1241,9 +1241,9 @@ Error message and password prompt
 
 <li>Table Of Contents In Sidebar</li>
 
-<li>tables</li>
-
 <li>Tables</li>
+
+<li>tables</li>
 
 <li>Tables Without Borders</li>
 
@@ -1343,9 +1343,9 @@ Error message and password prompt
 
 <li>traffic-light-buttons.gif</li>
 
-<li>Transclusion</li>
-
 <li>transclusion</li>
+
+<li>Transclusion</li>
 
 <li>Translate TW5</li>
 
@@ -4463,7 +4463,7 @@ exports.toc = function(source,operator,options) {
 <div title="$:/.tb/msg/tid-file" revision="0" bag="default">
 <pre>''Note:'' The above denotes [[TiddlerFiles Syntax|http://tiddlywiki.com/#TiddlerFiles]].</pre>
 </div>
-<div created="20141119102634212" creator="Tobias Beer" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20151005064747327" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles" type="text/css" revision="0" bag="default">
+<div created="20141119102634212" creator="Tobias Beer" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20151005071709901" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles" type="text/css" revision="3" bag="default">
 <pre>a.tc-tiddlylink-shadow {
 color:#567;
 font-weight:normal;
@@ -4606,7 +4606,7 @@ padding-top: 0;
 }
 
 form.contact {
-width:300px;
+width:100%;
 }
 
 form.contact input,
@@ -4631,10 +4631,18 @@ form.contact .gotcha {
 display:none;
 }
 
-iframe.contact {
-border:0;
-width:100%;
-height:400px;
+.contact-response {
+width: 100%;
+overflow: hidden;
+height: 120px;
+}
+
+.contact-response iframe {
+overflow: hidden;
+margin: -155px 0px 0 0px;
+border: 0;
+width: 600px;
+height: 1000px;
 }</pre>
 </div>
 <div created="20150116175548155" creator="Tobias Beer" modified="20150120001546966" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles/examples" type="text/css" revision="0" bag="default">
@@ -5376,7 +5384,7 @@ field=&quot;story-name&quot;&gt;
 &lt;/div&gt;
 &lt;&lt;hack-142&gt;&gt;</pre>
 </div>
-<div created="20141125205730428" creator="Tobias Beer" list="Welcome Solutions Plugins Developer Core References Markup Contact" modified="20151005065619890" modifier="Tobias Beer" title="$:/.tb/ui/TopLeftBar/config" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<div created="20141125205730428" creator="Tobias Beer" list="Welcome Solutions Plugins Developer Core References Markup Contact" modified="20151005065619890" modifier="Tobias Beer" title="$:/.tb/ui/TopLeftBar/config" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
 <div created="20150209205259313" creator="Tobias Beer" list-after="$:/core/ui/ViewTemplate/body" modified="20150209205911966" modifier="Tobias Beer" tags="$:/tags/ViewTemplate" title="$:/.tb/ui/ViewTemplate/journal-entries" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -15070,9 +15078,9 @@ For all tiddlers tagged ''Project'', lists tiddlers tagging to them.
 <div icon="$:/core/images/options-button" title="Console" revision="0" bag="default">
 <pre></pre>
 </div>
-<div caption="Contact" created="20151005054358855" creator="Tobias Beer" icon="{{$:/core/images/edit-button}}" menu="main" modified="20151005065814864" summary="write [[me|Tobias Beer]] an email" tags="" title="Contact" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<div caption="Contact" created="20151005054358855" creator="Tobias Beer" icon="$:/core/images/edit-button" menu="main" menu-icon="{{$:/core/images/edit-button}}" modified="20151005071744720" summary="write [[me|Tobias Beer]] an email" tags="" title="Contact" type="text/vnd.tiddlywiki" revision="5" bag="default">
 <pre>&lt;form method=&quot;POST&quot; action=&quot;http://formspree.io/beertobias@gmail.com&quot;
-class=&quot;contact&quot; target=&quot;contact&quot;&gt;
+class=&quot;contact&quot; target=&quot;contact-response&quot;&gt;
   &lt;input type=&quot;email&quot; name=&quot;_replyto&quot; placeholder=&quot;Your email address...&quot;/&gt;
   &lt;textarea name=&quot;body&quot; placeholder=&quot;Your message...&quot;/&gt;
   &lt;input type=&quot;text&quot; name=&quot;_gotcha&quot; class=&quot;gotcha&quot;&gt;
@@ -15080,7 +15088,9 @@ class=&quot;contact&quot; target=&quot;contact&quot;&gt;
   &lt;input type=&quot;submit&quot;/&gt;
 &lt;/form&gt;
 
-&lt;iframe name=&quot;contact&quot; class=&quot;contact&quot;/&gt;</pre>
+&lt;div class=&quot;contact-response&quot;&gt;
+&lt;iframe name=&quot;contact-response&quot; id=&quot;contact-response&quot;/&gt;
+&lt;/div&gt;</pre>
 </div>
 <div icon="$:/core/images/edit-button" title="Content" revision="0" bag="default">
 <pre></pre>
@@ -15088,10 +15098,7 @@ class=&quot;contact&quot; target=&quot;contact&quot;&gt;
 <div created="20141120171641267" creator="Tobias Beer" modified="20141125025528688" modifier="Tobias Beer" tags="GitHub Video Developer" title="Contribute Via GitHub Web UI" type="text/vnd.tiddlywiki" url="https://www.youtube.com/watch?v=L4zTkMYcri8" revision="0" bag="default">
 <pre>&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;http://www.youtube.com/embed/L4zTkMYcri8&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
 </div>
-<div created="20151003110757144" creator="Tobias Beer" follow="no" modified="20151003110922889" modifier="Tobias Beer" summary="a documentation aiming to provide a comprehensive summary of all concepts and components of the TiddlyWiki core" tags="[[Tobias Beer]]" title="core" url="http://tobibeer.github.io/tw/core" revision="0" bag="default">
-<pre></pre>
-</div>
-<div caption="Core" created="20150929113328405" creator="Tobias Beer" icon="$:/core/icon" menu="main" menu-icon="{{$:/core/icon}}" modified="20151005065353765" summary="functional elements and constructs of the tw5 core" tags="Welcome" title="Core" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<div caption="Core" created="20150929113328405" creator="Tobias Beer" icon="$:/core/icon" menu="main" menu-icon="{{$:/core/icon}}" modified="20151005065353765" summary="functional elements and constructs of the tw5 core" tags="Welcome" title="Core" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>;[[WikiText|http://tiddlywiki.com/#WikiText]]
 :[[TW5 markup|Markup]], syntax, hypertext, formatting
 ;[[Widgets|http://tiddlywiki.com/#Widgets]]
@@ -15119,6 +15126,9 @@ class=&quot;contact&quot; target=&quot;contact&quot;&gt;
 :defined at the start of a tiddler, pragmas apply to the entire body, see [[Pragmas]]
 ;[[TextReferences|http://tiddlywiki.com/#TextReference]]
 :tiddler properties that can be retrieved or modified depending on the context</pre>
+</div>
+<div created="20151003110757144" creator="Tobias Beer" follow="no" modified="20151003110922889" modifier="Tobias Beer" summary="a documentation aiming to provide a comprehensive summary of all concepts and components of the TiddlyWiki core" tags="[[Tobias Beer]]" title="core" url="http://tobibeer.github.io/tw/core" revision="0" bag="default">
+<pre></pre>
 </div>
 <div created="20141120093416686" creator="Tobias Beer" modified="20141123203942199" modifier="Tobias Beer" title="Core Distro Plugins" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Although not packaged into a default TiddlyWiki, the following plugins are [[contained in the core distribution repository|http://tiddlywiki.com/#Plugins]]...
@@ -15634,7 +15644,7 @@ The source code to drag and drop to your wiki &lt;&lt;source $:/.tb/templates/de
 <div created="20150204084806981" creator="Tobias Beer" modified="20150207090129349" modifier="Tobias Beer" summary="notes about developing with TiddlyWiki" tags="[[Tobias Beer]] Developer" title="dev5" type="text/vnd.tiddlywiki" url="http://tobibeer.github.io/dev5" revision="0" bag="default">
 <pre></pre>
 </div>
-<div caption="Dev" created="20151005065549213" icon="$:/core/images/permalink-button" menu="main" menu-icon="{{$:/core/images/permalink-button}}" modified="20151005065549525" summary="tidbits for [[developing|http://tiddlywiki.com/dev]] in and for tw5" tags="Welcome" title="Developer" revision="1" bag="default">
+<div caption="Dev" created="20151005065549213" creator="Tobias Beer" icon="$:/core/images/permalink-button" menu="main" menu-icon="{{$:/core/images/permalink-button}}" modified="20151005065549525" summary="tidbits for [[developing|http://tiddlywiki.com/dev]] in and for tw5" tags="Welcome" title="Developer" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!Topics
 &lt;&lt;taggly state:&quot;$:/temp/tb/taggly-developer&quot;&gt;&gt;
 
@@ -16844,10 +16854,10 @@ HTML tags work like that.
 <div created="20141211125930733" creator="Tobias Beer" follow="yes" modified="20150209132500215" modifier="Tobias Beer" summary="demonstrating lightboxes in tw5&lt;!--ibox--&gt;" tags="[[Tobias Beer]]" title="ibox" type="text/vnd.tiddlywiki" url="http://tobibeer.github.io/tw/ibox" revision="0" bag="default">
 <pre></pre>
 </div>
-<div created="20150202230519361" creator="Tobias Beer" follow="yes" modified="20150213194000000" modifier="Tobias Beer" summary="a showcase and reference for icon fonts and libraries with previews" tags="[[Tobias Beer]] Solutions Icons Presentation Fonts" title="icons" url="http://tobibeer.github.io/tw/icons" revision="0" bag="default">
+<div icon="$:/core/images/star-filled" title="Icons" revision="0" bag="default">
 <pre></pre>
 </div>
-<div icon="$:/core/images/star-filled" title="Icons" revision="0" bag="default">
+<div created="20150202230519361" creator="Tobias Beer" follow="yes" modified="20150213194000000" modifier="Tobias Beer" summary="a showcase and reference for icon fonts and libraries with previews" tags="[[Tobias Beer]] Solutions Icons Presentation Fonts" title="icons" url="http://tobibeer.github.io/tw/icons" revision="0" bag="default">
 <pre></pre>
 </div>
 <div created="20150105231913568" creator="Tobias Beer" follow="no" modified="20150108114142058" modifier="Tobias Beer" summary="testing how two ~TiddlyWikis behave which mutually iframe their contents" tags="[[Tobias Beer]]" title="iframe-1" url="http://iframe-1.tiddlyspot.com" revision="0" bag="default">
@@ -16862,9 +16872,6 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 {{$:/.tb/demo/image-map}}
 
 &lt;&lt;source &quot;$:/.tb/demo/image-map&quot;&gt;&gt;</pre>
-</div>
-<div icon="$:/core/images/storyview-zoomin" title="Images" revision="0" bag="default">
-<pre></pre>
 </div>
 <div tags="Markup" title="images" revision="0" bag="default">
 <pre>&lt;dt&gt;
@@ -16884,6 +16891,9 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 [img width=16 [http://www.tiddlywiki.com/favicon.ico]]&lt;br&gt;
 [img class=&quot;tc-image&quot; [http://www.tiddlywiki.com/favicon.ico]]
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/storyview-zoomin" title="Images" revision="0" bag="default">
+<pre></pre>
 </div>
 <div icon="$:/core/images/export-button" title="Import" revision="0" bag="default">
 <pre></pre>
@@ -17751,7 +17761,7 @@ using template [[$:/.tb/demo/makedoc]]
 <div summary="enables you to use tiddlers that are written in standard Markdown markup" tags="Core Parser Plugin" title="Markdown Plugin" url="http://tiddlywiki.com/plugins/tiddlywiki/markdown" revision="0" bag="default">
 <pre></pre>
 </div>
-<div caption="Markup" icon="$:/core/images/edit-button" list="bold italics bold-italics underline strikethrough superscript subscript dashes headings horizontal-rules code monospaced-codeblock hard-linebreaks paragraphs blockquotes unordered-lists ordered-lists definition-lists mixed-lists css-classes internal-links wiki-links external-links filesystem-links external-links-forced images external-images attribute-transclusion css-class-wrappers styled-wrappers combined-style-wrappers inline-styles tables html-elements html-element-attributes multiline-nested-html transclusion macros typed-blocks" menu="main" menu-icon="{{$:/core/images/edit-button}}" order="3" summary="a destillation of [[WikiText|http://tiddlywiki.com/#WikiText]] formatting in tw5" title="Markup" revision="0" bag="default">
+<div caption="Markup" created="20151005070658821" icon="$:/core/images/right-arrow" list="bold italics bold-italics underline strikethrough superscript subscript dashes headings horizontal-rules code monospaced-codeblock hard-linebreaks paragraphs blockquotes unordered-lists ordered-lists definition-lists mixed-lists css-classes internal-links wiki-links external-links filesystem-links external-links-forced images external-images attribute-transclusion css-class-wrappers styled-wrappers combined-style-wrappers inline-styles tables html-elements html-element-attributes multiline-nested-html transclusion macros typed-blocks" menu="main" menu-icon="{{$:/core/images/right-arrow}}" modified="20151005070709870" order="3" summary="a destillation of [[WikiText|http://tiddlywiki.com/#WikiText]] formatting in tw5" title="Markup" revision="1" bag="default">
 <pre>See [[Markup Reference]] for a non-filterable version to easily import to your wiki.
 
 &lt;div class=&quot;filter-markup&quot;&gt;
@@ -19216,7 +19226,7 @@ To remedy this, apply use a custom stylesheet to apply `position:relative` to th
 &lt;tr&gt;&lt;td&gt;Click that button!&lt;/td&gt;&lt;th&gt;{{$:/core/ui/Buttons/more-tiddler-actions}}&lt;/th&gt;&lt;/tr&gt;
 &lt;/table&gt;</pre>
 </div>
-<div created="20151005065401016" modified="20151005065908319" tags="Core" title="Pragmas" revision="3" bag="default">
+<div created="20151005065401016" creator="Tobias Beer" modified="20151005065908319" tags="Core" title="Pragmas" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>[[Documentation on TiddlyWiki.com|http://tiddlywiki.com/#Pragma]]
 
 * `\define` is used to declaring macros; multiline macros closing with `\end`
@@ -20173,6 +20183,9 @@ via &lt;&lt;source &quot;$:/.tb/demo/svg-circle&quot;&gt;&gt;</pre>
 &lt;&lt;ximg toc.jpg tooltip:&quot;example toc from tiddlywiki.com&quot; class:&quot;pretty&quot;&gt;&gt;
 example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 </div>
+<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
+<pre></pre>
+</div>
 <div tags="Markup" title="tables" revision="0" bag="default">
 <pre>&lt;dt style=&quot;font-size:80%;&quot;&gt;
 
@@ -20196,9 +20209,6 @@ example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 |and|now| vertical |
 |&gt;| right|~|
 &lt;/dd&gt;</pre>
-</div>
-<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
-<pre></pre>
 </div>
 <div created="20150206013252827" creator="Tobias Beer" modified="20150206014255748" modifier="Tobias Beer" tags="Tables Presentation Styles" title="Tables Without Borders" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>If you are wishing to use borderless tables [[like Diane|https://groups.google.com/d/msg/tiddlywiki/lPvh5gcea70/JHWgVmIvHdIJ]], here's what you do:
@@ -20945,9 +20955,6 @@ The defined styles here...
 <div title="traffic-light-buttons.gif" type="image/gif" revision="0" bag="default">
 <pre>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</pre>
 </div>
-<div icon="$:/core/images/storyview-pop" title="Transclusion" revision="0" bag="default">
-<pre></pre>
-</div>
 <div tags="Markup" title="transclusion" url="http://tiddlywiki.com/#Transclusion%20in%20WikiText" revision="0" bag="default">
 <pre>&lt;dt&gt;
 
@@ -20976,6 +20983,9 @@ The defined styles here...
 » list of tiddlers tagged `Foo`&lt;br&gt;
 » same using template `Bar`
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/storyview-pop" title="Transclusion" revision="0" bag="default">
+<pre></pre>
 </div>
 <div created="20141114203626843" creator="Tobias Beer" modified="20141204134556861" modifier="Tobias Beer" tags="Developer" title="Translate TW5" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>;Interactive Tool
