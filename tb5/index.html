@@ -607,9 +607,9 @@ Error message and password prompt
 
 <li>Clone Wikis Via store.php</li>
 
-<li>Code</li>
-
 <li>code</li>
+
+<li>Code</li>
 
 <li>Code-101</li>
 
@@ -815,9 +815,9 @@ Error message and password prompt
 
 <li>FilterOperator: join</li>
 
-<li>Filters</li>
-
 <li>filters</li>
+
+<li>Filters</li>
 
 <li>focus</li>
 
@@ -1243,9 +1243,9 @@ Error message and password prompt
 
 <li>Table Of Contents In Sidebar</li>
 
-<li>Tables</li>
-
 <li>tables</li>
+
+<li>Tables</li>
 
 <li>Tables Without Borders</li>
 
@@ -1345,9 +1345,9 @@ Error message and password prompt
 
 <li>traffic-light-buttons.gif</li>
 
-<li>transclusion</li>
-
 <li>Transclusion</li>
+
+<li>transclusion</li>
 
 <li>Translate TW5</li>
 
@@ -4457,7 +4457,7 @@ exports.toc = function(source,operator,options) {
 
 })();</pre>
 </div>
-<div created="20151005072531438" creator="Stephan Hradek" modified="20151005152125093" modifier="Tobias Beer" module-type="macro" summary="registers contact form validation" tags="" title="$:/.tb/modules/macros/validate.js" type="application/javascript" revision="0" bag="default">
+<div created="20151005072531438" creator="Stephan Hradek" modified="20151005152831001" modifier="Tobias Beer" module-type="macro" summary="registers contact form validation" tags="" title="$:/.tb/modules/macros/validate.js" type="application/javascript" revision="0" bag="default">
 <pre>/*\
 title: $:/.tb/modules/macros/validate.js
 type: application/javascript
@@ -4484,7 +4484,8 @@ exports.params = [
 Run the macro
 */
 exports.run = function(id) {
-    var f = document.getElementById(id);
+    var f = document.getElementById(id),
+		i = document.getElementById(id + &quot;-response&quot;);
     f.onsubmit = function() {
 		var mail = f._replyto.value,
 			body = f.body.value,
@@ -4514,6 +4515,9 @@ exports.run = function(id) {
 		}
 
 		f.style.display = &quot;none&quot;;
+		if(i &amp;&amp; i.parentNode) {
+			i.parentNode.style.display = &quot;block&quot;;
+		}
 
 		return true;
     };
@@ -4529,7 +4533,7 @@ exports.run = function(id) {
 <div title="$:/.tb/msg/tid-file" revision="0" bag="default">
 <pre>''Note:'' The above denotes [[TiddlerFiles Syntax|http://tiddlywiki.com/#TiddlerFiles]].</pre>
 </div>
-<div created="20141119102634212" creator="Tobias Beer" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20151005071709901" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles" type="text/css" revision="0" bag="default">
+<div created="20141119102634212" creator="Tobias Beer" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20151005152656215" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles" type="text/css" revision="0" bag="default">
 <pre>a.tc-tiddlylink-shadow {
 color:#567;
 font-weight:normal;
@@ -4701,6 +4705,7 @@ display:none;
 width: 100%;
 overflow: hidden;
 height: 120px;
+display:none;
 }
 
 .contact-response iframe {
@@ -14949,15 +14954,15 @@ Here's a rudimentary example to reorder lists using the ''calc'' macro...
 
 For example, you could have your own ''empty.html'' with customizations and plugins and then simply change the name of your wiki under [[ControlPanel|$:/ControlPanel]] / ''Saving'' and set ''Upload Filename'' accordingly. Then load that cloned wiki and continue to work there, saving changes to the new location.</pre>
 </div>
-<div icon="$:/core/images/permalink-button" title="Code" revision="0" bag="default">
-<pre></pre>
-</div>
 <div tags="Markup" title="code" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;dt&gt;&lt;pre&gt;&amp;#96;code&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
 &lt;dd&gt;`code` ...via backticks&lt;/dd&gt;
 
 &lt;dt&gt;&lt;pre&gt;&amp;#96;&amp;#96;with &amp;#96;backticks&amp;#96; &amp;#96;&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
 &lt;dd&gt;``with `backticks` ``&lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/permalink-button" title="Code" revision="0" bag="default">
+<pre></pre>
 </div>
 <div created="20150121121317298" creator="Tobias Beer" modified="20150122021331885" modifier="Tobias Beer" tags="Developer Code" title="Code-101" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>If you're new to TiddlyWiki, if not anything that looks like code, [[this discussion with Mat|https://groups.google.com/d/msg/tiddlywiki/l1Tu5uxSHSk/k8N9rvAm2OEJ]] may give you some pointers on how to approach all things programatic.
@@ -16348,10 +16353,10 @@ drag to your wiki: &lt;&lt;source [[$:/.tb/modules/filters/toc.js]] yes&gt;&gt;<
 
 see source: &lt;&lt;source $:/core/modules/filters/join.js&gt;&gt;</pre>
 </div>
-<div icon="$:/core/images/storyview-pop" title="Filters" revision="0" bag="default">
+<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150207094021145" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters" revision="0" bag="default">
 <pre></pre>
 </div>
-<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150207094021145" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters" revision="0" bag="default">
+<div icon="$:/core/images/storyview-pop" title="Filters" revision="0" bag="default">
 <pre></pre>
 </div>
 <div created="20141202232934876" creator="Tobias Beer" follow="yes" modified="20150207103743726" modifier="Tobias Beer" summary="trying to have the standard theme focus more on content, hiding controls from visitors&lt;!--focus--&gt;" tags="[[Tobias Beer]]" title="focus" url="http://tobibeer.github.io/tw/focus" revision="0" bag="default">
@@ -20250,9 +20255,6 @@ via &lt;&lt;source &quot;$:/.tb/demo/svg-circle&quot;&gt;&gt;</pre>
 &lt;&lt;ximg toc.jpg tooltip:&quot;example toc from tiddlywiki.com&quot; class:&quot;pretty&quot;&gt;&gt;
 example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 </div>
-<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
-<pre></pre>
-</div>
 <div tags="Markup" title="tables" revision="0" bag="default">
 <pre>&lt;dt style=&quot;font-size:80%;&quot;&gt;
 
@@ -20276,6 +20278,9 @@ example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 |and|now| vertical |
 |&gt;| right|~|
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
+<pre></pre>
 </div>
 <div created="20150206013252827" creator="Tobias Beer" modified="20150206014255748" modifier="Tobias Beer" tags="Tables Presentation Styles" title="Tables Without Borders" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>If you are wishing to use borderless tables [[like Diane|https://groups.google.com/d/msg/tiddlywiki/lPvh5gcea70/JHWgVmIvHdIJ]], here's what you do:
@@ -21022,6 +21027,9 @@ The defined styles here...
 <div title="traffic-light-buttons.gif" type="image/gif" revision="0" bag="default">
 <pre>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</pre>
 </div>
+<div icon="$:/core/images/storyview-pop" title="Transclusion" revision="0" bag="default">
+<pre></pre>
+</div>
 <div tags="Markup" title="transclusion" url="http://tiddlywiki.com/#Transclusion%20in%20WikiText" revision="0" bag="default">
 <pre>&lt;dt&gt;
 
@@ -21050,9 +21058,6 @@ The defined styles here...
 » list of tiddlers tagged `Foo`&lt;br&gt;
 » same using template `Bar`
 &lt;/dd&gt;</pre>
-</div>
-<div icon="$:/core/images/storyview-pop" title="Transclusion" revision="0" bag="default">
-<pre></pre>
 </div>
 <div created="20141114203626843" creator="Tobias Beer" modified="20141204134556861" modifier="Tobias Beer" tags="Developer" title="Translate TW5" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>;Interactive Tool
