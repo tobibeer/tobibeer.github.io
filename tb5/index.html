@@ -43,7 +43,7 @@ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF S
 DAMAGE.
 " />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>tb5 — Contact</title>
+<title>tb5 — Draft of '$:/Import'</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~--><!--~~ Raw markup ~~-->
 
 </head>
@@ -256,6 +256,36 @@ Error message and password prompt
 <li>$:/.tb/styles/tb5</li>
 
 <li>$:/.tb/styles/tiddlylinks</li>
+
+<li>$:/.tb/template/AfterSidebarLists</li>
+
+<li>$:/.tb/template/example-variables</li>
+
+<li>$:/.tb/template/gtd-project-tasks</li>
+
+<li>$:/.tb/template/redirected</li>
+
+<li>$:/.tb/template/sidebar-calendar</li>
+
+<li>$:/.tb/template/tag-table</li>
+
+<li>$:/.tb/template/tagged-summary</li>
+
+<li>$:/.tb/template/tagged-timeline</li>
+
+<li>$:/.tb/template/task-tagger</li>
+
+<li>$:/.tb/template/tasklist-simple</li>
+
+<li>$:/.tb/template/tasklist-tags</li>
+
+<li>$:/.tb/template/tasklist-tags/closed</li>
+
+<li>$:/.tb/template/tasklist-tags/open</li>
+
+<li>$:/.tb/template/test/more</li>
+
+<li>$:/.tb/template/view-template</li>
 
 <li>$:/.tb/templates/atom/entries</li>
 
@@ -787,9 +817,9 @@ Error message and password prompt
 
 <li>Felix Küppers</li>
 
-<li>Fields</li>
-
 <li>fields</li>
+
+<li>Fields</li>
 
 <li>Fields: Core</li>
 
@@ -815,9 +845,9 @@ Error message and password prompt
 
 <li>FilterOperator: join</li>
 
-<li>Filters</li>
-
 <li>filters</li>
+
+<li>Filters</li>
 
 <li>focus</li>
 
@@ -848,6 +878,8 @@ Error message and password prompt
 <li>GSD5 — Getting Stuff Done</li>
 
 <li>GTD</li>
+
+<li>Handling And Naming Tiddlers</li>
 
 <li>hard-linebreaks</li>
 
@@ -1243,9 +1275,9 @@ Error message and password prompt
 
 <li>Table Of Contents In Sidebar</li>
 
-<li>Tables</li>
-
 <li>tables</li>
+
+<li>Tables</li>
 
 <li>Tables Without Borders</li>
 
@@ -1325,9 +1357,9 @@ Error message and password prompt
 
 <li>Tobias Beer</li>
 
-<li>toc</li>
-
 <li>ToC</li>
+
+<li>toc</li>
 
 <li>Toggle</li>
 
@@ -1345,9 +1377,9 @@ Error message and password prompt
 
 <li>traffic-light-buttons.gif</li>
 
-<li>transclusion</li>
-
 <li>Transclusion</li>
+
+<li>transclusion</li>
 
 <li>Translate TW5</li>
 
@@ -3477,7 +3509,7 @@ own your data 100% - open source and free&lt;/dc:description&gt;
 &quot;$:/config/tbRedirected&quot;: &quot;$:/.tb/config/Redirected-tb5&quot;,
 &quot;$:/core/ui/MoreSideBar/Stories&quot;: &quot;$:/.tb/ui/MoreSideBar/Stories&quot;,
 &quot;$:/macros/linkimg&quot;:&quot;$:/.tb/macros/linkimg&quot;,
-&quot;$:/template/tb-redirected&quot;: &quot;$:/.tb/ui/ViewTemplate/redirected-tb5&quot;,
+&quot;$:/.tb/template/tb-redirected&quot;: &quot;$:/.tb/ui/ViewTemplate/redirected-tb5&quot;,
 &quot;ColumnsAndPopups&quot;:&quot;http://tbdemo.tiddlyspot.com/#ColumnsAndPopups&quot;,
 &quot;fiddle&quot;:&quot;[[enable-js]]&quot;,
 &quot;Redirecting Dead Links&quot;: &quot;[[Aliases And Redirecting Dead Links]]&quot;,
@@ -5019,6 +5051,174 @@ a.tc-tiddlylink-resolves.tc-tiddlylink-shadow {
 font-weight:bold;
 }</pre>
 </div>
+<div created="20141113164314372" creator="Tobias Beer" list-after="?!?" modified="20141113172731474" modifier="Tobias Beer" title="$:/.tb/template/AfterSidebarLists" revision="1" bag="default">
+<pre>[[this template|$:/.tb/template/AfterSidebarLists]] @@color:red; is intended to@@ define what is displayed right after the [[SidebarLists|$:/core/ui/SideBarLists]], but how?</pre>
+</div>
+<div created="20141120144458890" creator="Tobias Beer" modified="20141120145150302" modifier="Tobias Beer" title="$:/.tb/template/example-variables" revision="1" bag="default">
+<pre>&lt;&lt;currentTiddler&gt;&gt; — &lt;&lt;var1&gt;&gt; — &lt;&lt;var2&gt;&gt;</pre>
+</div>
+<div created="20141119175255586" creator="Tobias Beer" list-after="$:/core/ui/ViewTemplate/body" modified="20150116143430601" modifier="Tobias Beer" tags="$:/tags/ViewTemplate" title="$:/.tb/template/gtd-project-tasks" revision="1" bag="default">
+<pre>\define taskTags()
+[[$(currentTiddler)$]] Task
+\end
+
+\define projectTasks()
+[all[current]tags[]sort[title]]-[[$(currentTiddler)$]]-[[Task]]
+\end
+
+&lt;div class=&quot;gtd-project-tasks&quot;&gt;
+&lt;$list filter=&quot;[all[current]tag[Project]]&quot;&gt;
+  &lt;h2&gt;Open Project Tasks&lt;/h2&gt;
+    &lt;$set name=&quot;pTasks&quot; value=&lt;&lt;projectTasks&gt;&gt;&gt;
+    &lt;$list filter=&quot;[all[current]tagging[]tag[Task]!tag[Done]sort[created]]&quot;&gt;
+      &lt;$checkbox tag=&quot;Done&quot;&gt;
+        &lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;
+        &lt;span class=&quot;gtd-project-tasks-tags&quot;&gt;
+          &lt;$list filter=&lt;&lt;pTasks&gt;&gt; template=&quot;$:/core/ui/TagTemplate&quot;/&gt;
+        &lt;/span&gt;
+      &lt;/$checkbox&gt;&lt;br&gt;
+    &lt;/$list&gt;
+    &lt;/$set&gt;
+  &lt;br&gt;
+  &lt;$button&gt;
+    &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; title=&quot;New task&quot; tags=&lt;&lt;taskTags&gt;&gt;/&gt;
+    New Task
+  &lt;/$button&gt;
+&lt;/$list&gt;
+&lt;/div&gt;</pre>
+</div>
+<div created="20141127144832255" creator="Tobias Beer" list-before="$:/core/ui/ViewTemplate/body" modified="20141127145604971" modifier="Tobias Beer" tags="$:/tags/ViewTemplate" title="$:/.tb/template/redirected" revision="1" bag="default">
+<pre>&lt;div class=&quot;redirected&quot;&gt;
+&lt;$transclude tiddler=&quot;$:/config/Redirected&quot; index=&lt;&lt;currentTiddler&gt;&gt;/&gt;
+&lt;/div&gt;</pre>
+</div>
+<div caption="Calendar" created="20141119160204023" creator="Tobias Beer" list-after="$:/core/ui/MoreSideBar/Tags" modified="20141119162634120" modifier="Tobias Beer" title="$:/.tb/template/sidebar-calendar" revision="1" bag="default">
+<pre>&lt;iframe id=&quot;iframe-preview&quot; style=&quot; border-width:0 &quot; width=&quot;230&quot; height=&quot;240&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; src=&quot;http://bit.ly/1vpBKt5&quot;&gt;&lt;/iframe&gt;</pre>
+</div>
+<div created="20141118235352731" creator="Tobias Beer" modified="20141118235646059" modifier="Tobias Beer" title="$:/.tb/template/tag-table" revision="1" bag="default">
+<pre>&lt;tr&gt;
+&lt;td&gt;&lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;&lt;/td&gt;
+&lt;td&gt;&lt;$list filter=&quot;[all[current]tags[]sort[title]]-[[Solutions]]&quot; template=&quot;$:/core/ui/TagTemplate&quot;/&gt;&lt;/td&gt;
+&lt;/tr&gt;</pre>
+</div>
+<div created="20141120103200987" creator="Tobias Beer" modified="20141220144142580" modifier="Tobias Beer" title="$:/.tb/template/tagged-summary" revision="1" bag="default">
+<pre>&lt;div class=&quot;tb-timeline-item&quot;&gt;
+&lt;dt&gt;
+&lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;
+&lt;/dt&gt;
+&lt;dd class=&quot;tb-tagged-summary&quot;&gt;
+&lt;$transclude field=&quot;summary&quot;/&gt;
+&lt;/dd&gt;
+&lt;$list filter=&quot;[all[current]tag[Plugins]]&quot;&gt;
+&lt;dd class=&quot;tb-tagged-plugin-url&quot;&gt;
+{{!!url}}
+&lt;/dd&gt;
+&lt;/$list&gt;
+&lt;dd class=&quot;tb-timeline-tags&quot;&gt;
+&lt;$list filter=&quot;[all[current]tags[]sort[title]]-[[$remove$]]&quot; template=&quot;$:/core/ui/TagTemplate&quot;/&gt;
+&lt;/dd&gt;
+&lt;/div&gt;</pre>
+</div>
+<div created="20141119101948054" creator="Tobias Beer" modified="20141220145029328" modifier="Tobias Beer" title="$:/.tb/template/tagged-timeline" revision="1" bag="default">
+<pre>&lt;div class=&quot;tb-timeline-item&quot;&gt;
+&lt;dt&gt;
+&lt;span class=&quot;tb-timeline-date&quot;&gt;created &lt;$view field=&quot;created&quot; format=&quot;relativedate&quot;/&gt;&lt;/span&gt;
+&lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;
+&lt;/dt&gt;
+&lt;dd class=&quot;tb-timeline-tags&quot;&gt;
+&lt;$list filter=&quot;[all[current]tags[]sort[title]]-[&lt;remove&gt;]&quot; template=&quot;$:/core/ui/TagTemplate&quot;/&gt;
+&lt;/dd&gt;
+&lt;/div&gt;</pre>
+</div>
+<div created="20141116153002910" creator="Tobias Beer" list-after="$:/core/ui/ViewTemplate/tags" modified="20141119170429492" modifier="Tobias Beer" title="$:/.tb/template/task-tagger" revision="1" bag="default">
+<pre>&lt;$list filter=&quot;[is[current]tag[task]!tag[archived]]&quot;&gt;
+    set task status:
+    &lt;$fieldmangler&gt;
+        &lt;$set name=&quot;statuses&quot; value=&quot;[[next]] [[wait]] [[future]] [[done]] [[archived]]&quot;&gt;
+            &lt;$list filter=&lt;&lt;statuses&gt;&gt;&gt;
+                &lt;$button&gt;
+                    &lt;$list filter=&quot;&lt;&lt;statuses&gt;&gt; - [all[current]]&quot;&gt;
+                        &lt;$action-sendmessage $message=&quot;tm-remove-tag&quot; param=&quot;&lt;&lt;currentTiddler&gt;&gt;&quot;/&gt;
+                    &lt;/$list&gt;
+                    &lt;$action-sendmessage $message=&quot;tm-add-tag&quot; param=&quot;&lt;&lt;currentTiddler&gt;&gt;&quot;/&gt;
+                    &lt;&lt;currentTiddler&gt;&gt;
+                &lt;/$button&gt;
+            &lt;/$list&gt;
+        &lt;/$set&gt;
+    &lt;/$fieldmangler&gt;
+    @@color:red; Not yet working!@@
+&lt;/$list&gt;</pre>
+</div>
+<div created="20141119171624882" creator="Tobias Beer" modified="20141119181153342" modifier="Tobias Beer" title="$:/.tb/template/tasklist-simple" revision="1" bag="default">
+<pre>''Open''
+
+&lt;$list filter=&quot;[!has[draft.of]tag[Task]!tag[Done]sort[due]]&quot; mode=&quot;block&quot;&gt;
+&lt;$checkbox tag=&quot;Done&quot;&gt;
+&lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;
+&lt;span style=&quot;margin-left:10px;color:#999;font-size:0.8em;&quot;&gt;
+&lt;$view field=&quot;due&quot; class=&quot;due&quot;/&gt;
+&lt;/span&gt;
+&lt;/$checkbox&gt;&lt;br&gt;
+&lt;/$list&gt;
+
+''Done''
+
+&lt;$list filter=&quot;[!has[draft.of]tag[Task]tag[Done]sort[due]]&quot; mode=&quot;block&quot;&gt;
+&lt;$checkbox tag=&quot;Done&quot;&gt;
+~~&lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;~~
+&lt;/$checkbox&gt;
+&lt;/$list&gt;</pre>
+</div>
+<div created="20141119172124407" creator="Tobias Beer" modified="20141123210553383" modifier="Tobias Beer" title="$:/.tb/template/tasklist-tags" revision="1" bag="default">
+<pre>&lt;table&gt;
+&lt;tr&gt;
+&lt;th colspan=2 style=&quot;text-align:left;&quot;&gt;Open Tasks&lt;/th&gt;
+&lt;/tr&gt;
+&lt;$list filter=&quot;[!is[system]tag[Task]!tag[Done]sort[created]]&quot; template=&quot;$:/.tb/template/tasklist-tags/open&quot;&gt;
+&lt;/$list&gt;
+&lt;tr&gt;
+&lt;th colspan=2 style=&quot;text-align:left;&quot;&gt;Done Tasks&lt;/th&gt;
+&lt;/tr&gt;
+&lt;$list filter=&quot;[!is[system]tag[Task]tag[Done]sort[created]]&quot; template=&quot;$:/.tb/template/tasklist-tags/closed&quot;&gt;
+&lt;/$list&gt;
+&lt;/table&gt;</pre>
+</div>
+<div created="20141123210504632" creator="Tobias Beer" modified="20141123210527015" modifier="Tobias Beer" title="$:/.tb/template/tasklist-tags/closed" revision="1" bag="default">
+<pre>&lt;tr&gt;
+&lt;td&gt;
+&lt;$checkbox tag=&quot;Done&quot;&gt;
+~~&lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;~~
+&lt;/$checkbox&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;$list filter=&quot;[all[current]tags[]sort[title]]-[[Task]]-[[Done]]&quot; template=&quot;$:/core/ui/TagTemplate&quot; storyview=&quot;pop&quot;/&gt;&lt;/td&gt;
+&lt;/tr&gt;</pre>
+</div>
+<div created="20141123210420848" creator="Tobias Beer" modified="20141123210446340" modifier="Tobias Beer" title="$:/.tb/template/tasklist-tags/open" revision="1" bag="default">
+<pre>&lt;tr&gt;
+&lt;td&gt;
+&lt;$checkbox tag=&quot;Done&quot;&gt;
+&lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;
+&lt;/$checkbox&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;$list filter=&quot;[all[current]tags[]sort[title]]-[[Task]]&quot; template=&quot;$:/core/ui/TagTemplate&quot; storyview=&quot;pop&quot;/&gt;
+&lt;/td&gt;
+&lt;/tr&gt;</pre>
+</div>
+<div created="20141127002242293" creator="Tobias Beer" modified="20141127002610520" modifier="Tobias Beer" tags="" title="$:/.tb/template/test/more" revision="1" bag="default">
+<pre>{{$:/core/ui/Buttons/more-tiddler-actions}}</pre>
+</div>
+<div created="20141122165208913" creator="Tobias Beer" list-after="$:/core/ui/ViewTemplate/body" modified="20150107182443791" modifier="Tobias Beer" tags="$:/tags/ViewTemplate" title="$:/.tb/template/view-template" revision="1" bag="default">
+<pre>&lt;$list filter=&quot;[all[current]tag[$:/tags/ShowSource]]
+[all[current]prefix[$:/.tb/]]
+[all[current]prefix[$:/.tb/template/]]
+[all[current]prefix[$:/styles/]]
+-[has[type]]
++[limit[1]]&quot;&gt;
+&lt;pre&gt;&lt;$view tiddler=&lt;&lt;currentTiddler&gt;&gt; format=&quot;text&quot;/&gt;&lt;/pre&gt;
+&lt;/$list&gt;</pre>
+</div>
 <div created="20150930093948972" creator="Tobias Beer" modified="20150930104919509" module-type="macro" title="$:/.tb/templates/atom/entries" type="application/javascript" revision="0" bag="default">
 <pre>/*\
 Macro to output tiddlers matching a filter as atom entries.
@@ -5720,15 +5920,15 @@ Welcome</pre>
     &quot;Aliases And Redirecting Dead Links&quot;: &quot;Also see [[here|I don't exist!]].&quot;
 }</pre>
 </div>
-<div created="20141208222905240" creator="Tobias Beer" modified="20141208222929454" modifier="Tobias Beer" title="$:/config/SaverFilter" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20141208222905240" creator="Tobias Beer" modified="20151007151730515" modifier="Tobias Beer" title="$:/config/SaverFilter" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>[all[]]
 -[[$:/HistoryList]]
 -[[$:/StoryList]]
 -[[$:/Import]]
 -[[$:/isEncrypted]]
 -[[$:/UploadName]]
--[prefix[$:/state]]
--[prefix[$:/temp]]
+-[prefix[$:/state/]]
+-[prefix[$:/temp/]]
 -[prefix[$://]]</pre>
 </div>
 <div created="20141206115848298" creator="Tobias Beer" modified="20141206115950547" modifier="Tobias Beer" summary="override, see &lt;&lt;git5 issues/1199#issuecomment-65830444&gt;&gt;" title="$:/config/SaveWikiButton/Template" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -14521,7 +14721,7 @@ The class `ol` is defined in a [[custom stylesheet|Custom Stylesheets]] which yo
 You can simply drag these two to your wiki and start right away:
 
 * [[$:/config/Redirected]] — edit redirects here, see below
-* [[$:/template/redirected]]
+* [[$:/.tb/template/redirected]]
 
 !! Step 1 — define redirects
 
@@ -14535,7 +14735,7 @@ As explained before, you can create [[a conditional view-template section|Condit
 
 Here's one that displays a redirect message at the top of a tiddler...
 
-&lt;&lt;source [[$:/template/redirected]]&gt;&gt;
+&lt;&lt;source [[$:/.tb/template/redirected]]&gt;&gt;
 
 The template is displayed at the top of each indexed tiddler because...
 
@@ -14581,7 +14781,7 @@ Install [[$:/.tb/macros/alink]].
 &quot;[tag[Solutions]!sort[created]]&quot;
 search
 &quot;$:/temp/tb/solutions&quot;
-&quot;$:/template/tagged-timeline&quot;
+&quot;$:/.tb/template/tagged-timeline&quot;
 &quot;Filter solutions...&quot;&gt;&gt;&lt;style&gt;
 .solutions input {
 display:none;
@@ -16130,13 +16330,13 @@ http://tiddlywiki.com&lt;br&gt;
 <div icon="$:/core/images/plugin-generic-language" summary="inventor of TiddlyMap&lt;!--Felix Küppers, vis.js--&gt;" tags="Community" title="Felix Küppers" url="[[felixhayashi@GitHub|https://github.com/felixhayashi/TW5-TiddlyMap]]" revision="0" bag="default">
 <pre></pre>
 </div>
-<div icon="$:/core/images/permalink-button" title="Fields" revision="0" bag="default">
-<pre></pre>
-</div>
 <div created="20150201195001262" creator="Tobias Beer" follow="yes" modified="20150209084520349" modifier="Tobias Beer" summary="explorations as to imporoving working with tiddler fields" tags="[[Tobias Beer]] Fields" title="fields" url="http://tobibeer.github.io/tw/fields" revision="0" bag="default">
 <pre>!!! Topics
 ; [[FieldsPopup|http://tobibeer.github.io/tw/fields/#FieldsPopup]]
 : &lt;&lt;git5 issues/1448&gt;&gt; — field editing popups</pre>
+</div>
+<div icon="$:/core/images/permalink-button" title="Fields" revision="0" bag="default">
+<pre></pre>
 </div>
 <div caption="core" created="20141118195032028" creator="Tobias Beer" modified="20150107195102560" modifier="Tobias Beer" tags="Fields Lists Filters Core" title="Fields: Core" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>all [[core fields|Fields: Core]] except [[standard fields|Fields: Standard]] as documented in the TiddlyWiki core:
@@ -16356,10 +16556,10 @@ drag to your wiki: &lt;&lt;source [[$:/.tb/modules/filters/toc.js]] yes&gt;&gt;<
 
 see source: &lt;&lt;source $:/core/modules/filters/join.js&gt;&gt;</pre>
 </div>
-<div icon="$:/core/images/storyview-pop" title="Filters" revision="0" bag="default">
+<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150207094021145" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters" revision="0" bag="default">
 <pre></pre>
 </div>
-<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150207094021145" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters" revision="0" bag="default">
+<div icon="$:/core/images/storyview-pop" title="Filters" revision="0" bag="default">
 <pre></pre>
 </div>
 <div created="20141202232934876" creator="Tobias Beer" follow="yes" modified="20150207103743726" modifier="Tobias Beer" summary="trying to have the standard theme focus more on content, hiding controls from visitors&lt;!--focus--&gt;" tags="[[Tobias Beer]]" title="focus" url="http://tobibeer.github.io/tw/focus" revision="0" bag="default">
@@ -16424,19 +16624,19 @@ For example, for `$:/plugins/tiddlywiki/tw2parser` you could create an override 
 
 !!Example
 
-{{$:/template/sidebar-calendar}}
+{{$:/.tb/template/sidebar-calendar}}
 
-via &lt;&lt;source $:/template/sidebar-calendar&gt;&gt;
+via &lt;&lt;source $:/.tb/template/sidebar-calendar&gt;&gt;
 
 !!Sidebar Calendar
-To display [[your calendar|$:/template/sidebar-calendar]] in the sidebar...
+To display [[your calendar|$:/.tb/template/sidebar-calendar]] in the sidebar...
 
 # tag it [[$:/tags/SideBar]]
 # give it a `caption` field to display an alternative tab title, e.g. ''Calendar''
 # define the field `list-before` to display it before any other tab
 #* ''list-before'': [[$:/core/ui/SideBar/More]]
 
-''Tip:'' Go and try tagging [[this calendar|$:/template/sidebar-calendar]] with [[$:/tags/SideBar]]!
+''Tip:'' Go and try tagging [[this calendar|$:/.tb/template/sidebar-calendar]] with [[$:/tags/SideBar]]!
 
 !! Full Page Calendar
 
@@ -16484,6 +16684,78 @@ To display [[your calendar|$:/template/sidebar-calendar]] in the sidebar...
 </div>
 <div icon="$:/core/images/save-button" summary="GTD stands for Getting Things Done and these are all the solutions documented here that help you do just that with tw5..." tags="Project" title="GTD" revision="0" bag="default">
 <pre></pre>
+</div>
+<div created="20151007134913630" creator="Tobias Beer" modified="20151007152434472" summary="organizing and structuring your tidbits" tags="Tiddlers Workflows Config Solutions" title="Handling And Naming Tiddlers" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<pre>One very fundamental aspect to TiddlyWiki is that it entirely runs on tiddlers itself. This makes for a very powerful concept where application and document merge into one and the same well structured framework.
+
+With all the freedom of non-linearity TiddlyWiki provides, consider the following for any information, data or functional bits you wish to store in it:
+
+!!@@color:#909; Is it content, plain and simple?@@
+
+
+@@color:#909;''yes''@@&lt;br&gt;
+
+Make it a general content tiddler.&lt;br&gt;
+ &amp;nbsp; &amp;raquo; e.g. &quot;A Walk In The Park&quot;&lt;br&gt;
+Do you already have a tiddler for it?&lt;br&gt;
+ &amp;nbsp;  &amp;raquo; Perhaps update that, unless it becomes unwieldy.&lt;br&gt;
+Does it have relations to other tiddlers?&lt;br&gt;
+ &amp;nbsp; &amp;raquo; Use internal links extensively.&lt;br&gt;
+What tags help categorize this tidbit?&lt;br&gt;
+ &amp;nbsp; &amp;raquo; Tags help you navigate around and find related information quickly.&lt;br&gt;
+Will it be a tag, i.e have &quot;subitems&quot;?&lt;br&gt;
+ &amp;nbsp; &amp;raquo; For tags being part of a tag category, consider prefixes:&lt;br&gt;
+ &amp;nbsp;  &amp;nbsp; &amp;nbsp; &amp;raquo; ''category:'' Action / ''tags:'' #future, #next, #active, #waiting, #done&lt;br&gt;
+ &amp;nbsp;  &amp;nbsp; &amp;nbsp; &amp;raquo; ''category:'' Context / ''tags:'' @call, @read, @buy, @fix&lt;br&gt;
+&amp;nbsp; &amp;raquo; Use these tags for actual tiddlers thus becoming grand-children to a category tiddler.&lt;br&gt;
+Does it require certain fields for categorization or to trigger advanced functions?&lt;br&gt;
+&amp;nbsp; &amp;raquo; like @@color:grey;//the summary at the top of this tiddler//@@&lt;br&gt;
+
+If you need to give your tiddler some &lt;&lt;tw SystemTags&gt;&gt;, chances are you want to...&lt;br&gt;
+
+@@color:#909;''no''@@&lt;br&gt;
+
+Make it a &lt;&lt;tw SystemTiddler&gt;&gt;, i.e. stored under the system namespace.&lt;br&gt;
+ &amp;nbsp; &amp;raquo; Meaning: it's name will start `$:/`.&lt;br&gt;
+
+!!@@color:#909; If it is a system tiddler, is it a functional component?@@
+
+@@color:#909;''yes''@@&lt;br&gt;
+
+''Tip:'' Starting the system path with a special character like `_` or `.` puts it up top under ''sidebar &gt; system''.&lt;br&gt;
+
+Is it a ''macro''?&lt;br&gt;
+ &amp;nbsp; &amp;raquo; Place it under an appropriate namespace:&lt;br&gt;
+ &amp;nbsp;  &amp;nbsp;  &amp;nbsp; &amp;raquo; [[$:/_macros/my-macro|$:/.tb/macros/calc]] and tag it [[$:/tags/Macro]]&lt;br&gt;
+Is it a ''template''?&lt;br&gt;
+ &amp;nbsp; &amp;raquo; Again, place it under an appropriate namespace and tag it appropriately:&lt;br&gt;
+ &amp;nbsp;  &amp;nbsp;  &amp;nbsp; &amp;raquo; [[$:/_ui/ViewTemplate/summary|$:/.tb/ui/ViewTemplate/summary-link]]&lt;br&gt;
+ &amp;nbsp; &amp;raquo; I prefer to use a similar path to that of the core but starting from a different root.&lt;br&gt;
+&amp;nbsp;  &amp;nbsp;  &amp;nbsp; &amp;raquo; I use `$:/.tb/ui` instead of `$:/core/ui`&lt;br&gt;
+Is it a ''stylesheet''?&lt;br&gt;
+ &amp;nbsp; &amp;raquo; You guessed it:&lt;br&gt;
+ &amp;nbsp;  &amp;nbsp;  &amp;nbsp; &amp;raquo; [[$:/_styles/my-styles|$:/.tb/styles/markup]]&lt;br&gt;
+Is it for ''configuration''?&lt;br&gt;
+ &amp;nbsp; &amp;raquo; Use a config namespace:&lt;br&gt;
+ &amp;nbsp;  &amp;nbsp;  &amp;nbsp; &amp;raquo; [[$:/_config/my-config|$:/.tb/config/redirected-tb5]]&lt;br&gt;
+Does it hold ''data'' used to build a representation?&lt;br&gt;
+ &amp;nbsp; &amp;raquo; Perhaps use a data namespace:&lt;br&gt;
+ &amp;nbsp;  &amp;nbsp;  &amp;nbsp; &amp;raquo; [[$:/_data/my-special-items-list-as-json|$:/.tb/config/redirected-tb5]]&lt;br&gt;
+
+@@color:#909;''no''@@&lt;br&gt;
+
+Is it a &lt;&lt;tw StateMechanism state&gt;&gt;?&lt;br&gt;
+ &amp;nbsp; &amp;raquo; Widgets use them to remember the state of a component, e.g. a selected tab.&lt;br&gt;
+ &amp;nbsp; &amp;raquo; By default saved with TiddlyWiki and thus persisted accross sessions.&lt;br&gt;
+ &amp;nbsp; &amp;raquo; Place it under the states namespace with a __unique__ name.&lt;br&gt;
+ &amp;nbsp;  &amp;nbsp;  &amp;nbsp; &amp;raquo; `$:/state/my-path/the-state`&lt;br&gt;
+ &amp;nbsp; &amp;raquo; Don't want states to be saved?&lt;br&gt;
+ &amp;nbsp;  &amp;nbsp;  &amp;nbsp; &amp;raquo; Read: [[States And Temporary Tiddlers]]&lt;br&gt;
+
+Is it a ''temporary tiddler''?&lt;br&gt;
+ &amp;nbsp; &amp;raquo; These often handle states, too, but are __not saved__ with the wiki.&lt;br&gt;
+ &amp;nbsp; &amp;raquo; Place it under the temp namespace, again with a unique name.&lt;br&gt;
+ &amp;nbsp;  &amp;nbsp;  &amp;nbsp; &amp;raquo; `$:/temp/my-path/the-temporary-state`</pre>
 </div>
 <div tags="Markup" title="hard-linebreaks" revision="0" bag="default">
 <pre>&lt;dt&gt;
@@ -18956,7 +19228,7 @@ Open the project [[GTD]] and take a look at the ''Open Project Tasks'' section a
 !!The Solution
 This solution was implemented as explained in [[Conditional ViewTemplate Section]] using the following conditional template:
 
- &lt;&lt;source $:/template/gtd-project-tasks&gt;&gt;</pre>
+ &lt;&lt;source $:/.tb/template/gtd-project-tasks&gt;&gt;</pre>
 </div>
 <div tags="Markup" title="ordered-lists" revision="0" bag="default">
 <pre>&lt;dt&gt;
@@ -19161,21 +19433,21 @@ Object.keys($tw.Wiki.parsers[&quot;text/vnd.tiddlywiki&quot;].prototype.inlineRu
 ```
 &lt;$set name=&quot;var1&quot; value=&quot;val1&quot;&gt;
 &lt;$set name=&quot;var2&quot; value=&lt;&lt;currentTiddler&gt;&gt;&gt;
-{{foo||$:/template/example-variables}}
+{{foo||$:/.tb/template/example-variables}}
 &lt;/$set&gt;
 &lt;/$set&gt;
 ```
 
 The variables `var1` and `var2` are now accessible in the ''template'' via `&lt;&lt;val1&gt;&gt;` and whatever the name of the tiddler embedding the set widget.
 
-The above markup along with &lt;&lt;source $:/template/example-variables&gt;&gt;
+The above markup along with &lt;&lt;source $:/.tb/template/example-variables&gt;&gt;
 
 renders as:
 
 &lt;blockquote&gt;
 &lt;$set name=&quot;var1&quot; value=&quot;val1&quot;&gt;
 &lt;$set name=&quot;var2&quot; value=&lt;&lt;currentTiddler&gt;&gt; &gt;
-{{foo||$:/template/example-variables}}
+{{foo||$:/.tb/template/example-variables}}
 &lt;/$set&gt;
 &lt;/$set&gt;
 &lt;/blockquote&gt;
@@ -19201,7 +19473,7 @@ also see: [[Variables In Nested Lists]]</pre>
 filter:&quot;[tag[Plugin]sort[title]]&quot;
 search:search
 state:&quot;$:/temp/tb/list-plugins&quot;
-template:&quot;$:/template/tagged-summary&quot;&gt;&gt;
+template:&quot;$:/.tb/template/tagged-summary&quot;&gt;&gt;
 &lt;/$set&gt;</pre>
 </div>
 <div created="20141117194620547" creator="Tobias Beer" modified="20141125025525715" modifier="Tobias Beer" tags="GitHub Developer" title="Plugin Development with node.js and GitHub" type="text/vnd.tiddlywiki" url="http://tiddlywiki.com/dev/#Developing%20plugins%20using%20Node.js%20and%20GitHub" revision="0" bag="default">
@@ -19281,7 +19553,7 @@ Drag the macro and styles into your wiki...
 <pre>As [[Danielo Rodríguez]] [[pointed out|https://groups.google.com/d/msg/tiddlywiki/zsXxL4t29HI/gBuDKIpItWMJ]], you may run into a problem where — when you render a table containing popups — the popups would open at the wrong position, so you may not even see them!
 
 &lt;table&gt;
-&lt;tr&gt;&lt;td&gt;Click that button!&lt;/td&gt;&lt;th&gt;{{$:/template/test/more}}&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Click that button!&lt;/td&gt;&lt;th&gt;{{$:/.tb/template/test/more}}&lt;/th&gt;&lt;/tr&gt;
 &lt;/table&gt;
 
 To remedy this, apply use a custom stylesheet to apply `position:relative` to the table elements containing the popups, e.g.:
@@ -19822,11 +20094,11 @@ For the css, see &lt;&lt;source [[$:/styles/quiz]]&gt;&gt;</pre>
 <div created="20141119170921630" creator="Tobias Beer" due="2013-09-03" modified="20150113132542960" modifier="Tobias Beer" tags="GTD Dates Lists Task Done Solutions" title="Simple Tasklist" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Here is a simple tasklist:
 
-{{$:/template/tasklist-simple}}
+{{$:/.tb/template/tasklist-simple}}
 
 &lt;br&gt;&lt;br&gt;
 Also see [[Tiddlers By Due Date]], the above lists were rendered by transcluding:
-&lt;&lt;source $:/template/tasklist-simple&gt;&gt;</pre>
+&lt;&lt;source $:/.tb/template/tasklist-simple&gt;&gt;</pre>
 </div>
 <div created="20141220132127832" creator="Tobias Beer" modified="20141220133925204" modifier="Tobias Beer" tags="Solutions Presentation Website [[Mario Pietsch]] Animation" title="Single Page Mode" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>As [[Mario|Mario Pietsch]] explains [[here|https://github.com/Jermolene/TiddlyWiki5/issues/1081#issuecomment-67733908]], you can easily change your configuration to have TiddlyWiki work in a one-tiddler-at-a-time-mode.
@@ -20008,11 +20280,11 @@ label-hide=&lt;&lt;slider-label &quot;&quot; &quot; {{$:/core/images/chevron-dow
 <div icon="$:/core/images/down-arrow" title="Sliders" revision="0" bag="default">
 <pre></pre>
 </div>
-<div caption="Solutions" catlist="GTD ToC" created="20150929155615384" creator="Tobias Beer" icon="$:/core/images/star-filled" menu="main" menu-icon="{{$:/core/images/star-filled}}" modified="20150929155712685" order="3" summary="setting up tw5 to meet your needs" tags="Welcome" title="Solutions" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div caption="Solutions" catlist="GTD ToC" created="20150929155615384" creator="Tobias Beer" icon="$:/core/images/star-filled" menu="main" menu-icon="{{$:/core/images/star-filled}}" modified="20151007152359243" order="3" summary="setting up tw5 to meet your needs" tags="Welcome" title="Solutions" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre>&lt;div class=&quot;tb-taglist&quot;&gt;
 
 &lt;&lt;list-search
-&quot;[tag[Solutions]tags[]sort[title]!is[system]] -[tag[Community]] -[tag[Main]] -[tag[Welcome]] -Task -picture -Test &quot;
+&quot;[!is[system]tag[Solutions]tags[]sort[title]] -[tag[Community]] -[tag[Main]] -[tag[Welcome]] -Task -picture -Test &quot;
 search
 &quot;$:/temp/tb/solutions&quot;
 &quot;$:/.tb/templates/solution-tags&quot;
@@ -20026,7 +20298,7 @@ search
 &quot;[tag[Solutions]!sort[created]]&quot;
 &quot;search&quot;
 &quot;$:/temp/tb/solutions&quot;
-&quot;$:/template/tagged-timeline&quot;
+&quot;$:/.tb/template/tagged-timeline&quot;
 limit:20&gt;&gt;
 &lt;/$set&gt;
 &lt;/div&gt;
@@ -20258,9 +20530,6 @@ via &lt;&lt;source &quot;$:/.tb/demo/svg-circle&quot;&gt;&gt;</pre>
 &lt;&lt;ximg toc.jpg tooltip:&quot;example toc from tiddlywiki.com&quot; class:&quot;pretty&quot;&gt;&gt;
 example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 </div>
-<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
-<pre></pre>
-</div>
 <div tags="Markup" title="tables" revision="0" bag="default">
 <pre>&lt;dt style=&quot;font-size:80%;&quot;&gt;
 
@@ -20284,6 +20553,9 @@ example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 |and|now| vertical |
 |&gt;| right|~|
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
+<pre></pre>
 </div>
 <div created="20150206013252827" creator="Tobias Beer" modified="20150206014255748" modifier="Tobias Beer" tags="Tables Presentation Styles" title="Tables Without Borders" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>If you are wishing to use borderless tables [[like Diane|https://groups.google.com/d/msg/tiddlywiki/lPvh5gcea70/JHWgVmIvHdIJ]], here's what you do:
@@ -20516,15 +20788,15 @@ Some important filters for using tags...
 
 &lt;br&gt;
 
-{{$:/template/tasklist-tags}}
+{{$:/.tb/template/tasklist-tags}}
 
 &lt;br&gt;&lt;br&gt;
 rendered by transcluding:
-&lt;&lt;source $:/template/tasklist-tags&gt;&gt;
+&lt;&lt;source $:/.tb/template/tasklist-tags&gt;&gt;
 
 also using these two templates for the table rows, which are needed to avoid state-collisions, i.e. same tag pills opening up at once...
 
-[[$:/template/tasklist-tags/open]] and here's a preview of &lt;&lt;source [[$:/template/tasklist-tags/closed]]&gt;&gt;</pre>
+[[$:/.tb/template/tasklist-tags/open]] and here's a preview of &lt;&lt;source [[$:/.tb/template/tasklist-tags/closed]]&gt;&gt;</pre>
 </div>
 <div created="20141203124327133" creator="Tobias Beer" follow="no" modified="20150108112437126" modifier="Tobias Beer" summary="tidbits on web-ui-design, fonts, css, layout, etc." tags="[[Tobias Beer]]" title="tb-ui" url="http://tb-ui.tiddlyspot.com" revision="0" bag="default">
 <pre></pre>
@@ -20848,6 +21120,9 @@ If you neither have a TiddlyWiki or TiddlySpot yet, here's a simple process to d
 &quot;$:/.tb/templates/list-search-me&quot;&gt;&gt;
 &lt;/dl&gt;</pre>
 </div>
+<div icon="$:/core/images/menu-button" title="ToC" revision="0" bag="default">
+<pre></pre>
+</div>
 <div created="20141125232200140" creator="Tobias Beer" modified="20141125232258995" modifier="Tobias Beer" title="toc" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>\define regexp-headings() (^!+.*)(?gmi)
 &lt;div class=&quot;tidtoc tc-tiddler-frame&quot;&gt;
@@ -20904,9 +21179,6 @@ float:right;
 text-align:right;
 }
 &lt;/style&gt;</pre>
-</div>
-<div icon="$:/core/images/menu-button" title="ToC" revision="0" bag="default">
-<pre></pre>
 </div>
 <div icon="$:/core/images/storyview-pop" title="Toggle" revision="0" bag="default">
 <pre></pre>
@@ -21030,6 +21302,9 @@ The defined styles here...
 <div title="traffic-light-buttons.gif" type="image/gif" revision="0" bag="default">
 <pre>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</pre>
 </div>
+<div icon="$:/core/images/storyview-pop" title="Transclusion" revision="0" bag="default">
+<pre></pre>
+</div>
 <div tags="Markup" title="transclusion" url="http://tiddlywiki.com/#Transclusion%20in%20WikiText" revision="0" bag="default">
 <pre>&lt;dt&gt;
 
@@ -21058,9 +21333,6 @@ The defined styles here...
 » list of tiddlers tagged `Foo`&lt;br&gt;
 » same using template `Bar`
 &lt;/dd&gt;</pre>
-</div>
-<div icon="$:/core/images/storyview-pop" title="Transclusion" revision="0" bag="default">
-<pre></pre>
 </div>
 <div created="20141114203626843" creator="Tobias Beer" modified="20141204134556861" modifier="Tobias Beer" tags="Developer" title="Translate TW5" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>;Interactive Tool
