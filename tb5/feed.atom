@@ -7,7 +7,21 @@
   <author>
     <name>Tobias Beer</name>
   </author>
-  <updated>2015-10-03T15:32:28+02:00</updated>
+  <updated>2015-10-07T17:24:34+02:00</updated>
+  <entry>
+    <title>Handling And Naming Tiddlers</title>
+    <id>http://tobibeer.github.io/tb5#Handling%20And%20Naming%20Tiddlers</id>
+    <link href='http://tobibeer.github.io/tb5#Handling%20And%20Naming%20Tiddlers'/>
+    <updated>2015-10-07T17:24:34+02:00</updated>
+    <summary>organizing and structuring your tidbits</summary>
+  </entry>
+  <entry>
+    <title>Pragmas</title>
+    <id>http://tobibeer.github.io/tb5#Pragmas</id>
+    <link href='http://tobibeer.github.io/tb5#Pragmas'/>
+    <updated>2015-10-05T08:59:08+02:00</updated>
+    <summary>Documentation on TiddlyWiki.com * \define is used to declaring macros; multiline macros closing with \end * \rules constrain parser rules, e.g.: \rules except inlinecode * \replace is a pragma define...</summary>
+  </entry>
   <entry>
     <title>Tobias Beer</title>
     <id>http://tobibeer.github.io/tb5#Tobias%20Beer</id>
@@ -343,19 +357,5 @@
     <link href='http://tobibeer.github.io/tb5#me%2Fubi'/>
     <updated>2015-02-07T13:53:17+02:00</updated>
     <summary>my notes on the idea of a Universal Basic Income, a UBI</summary>
-  </entry>
-  <entry>
-    <title>www</title>
-    <id>http://tobibeer.github.io/tb5#www</id>
-    <link href='http://tobibeer.github.io/tb5#www'/>
-    <updated>2015-02-07T12:54:22+02:00</updated>
-    <summary>allows to link urls without a protocol http:// or http://www</summary>
-  </entry>
-  <entry>
-    <title>focus</title>
-    <id>http://tobibeer.github.io/tb5#focus</id>
-    <link href='http://tobibeer.github.io/tb5#focus'/>
-    <updated>2015-02-07T11:37:43+02:00</updated>
-    <summary>trying to have the standard theme focus more on content, hiding controls from visitors</summary>
   </entry>
 </feed>
