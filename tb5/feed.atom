@@ -5,9 +5,16 @@
   <subtitle>a pocket full of tips </subtitle>
   <link href="http://tobibeer.github.io/tb5/feed.atom" rel="self" type="application/atom+xml"/>
   <author>
-    <name>Tobias Beer</name>
+    <name></name>
   </author>
-  <updated>2015-10-07T17:24:34+02:00</updated>
+  <updated>2015-10-07T19:11:31+02:00</updated>
+  <entry>
+    <title>Hiding The Sidebar On Startup</title>
+    <id>http://tobibeer.github.io/tb5#Hiding%20The%20Sidebar%20On%20Startup</id>
+    <link href='http://tobibeer.github.io/tb5#Hiding%20The%20Sidebar%20On%20Startup'/>
+    <updated>2015-10-07T19:11:31+02:00</updated>
+    <summary>In this discussion, Evan asks how to hide the sidebar on startup. Motivated by just having helped out FrD over setting some fields at startup a few minutes earlier, I realized that this can quickly be...</summary>
+  </entry>
   <entry>
     <title>Handling And Naming Tiddlers</title>
     <id>http://tobibeer.github.io/tb5#Handling%20And%20Naming%20Tiddlers</id>
@@ -350,12 +357,5 @@
     <link href='http://tobibeer.github.io/tb5#demo'/>
     <updated>2015-02-08T13:43:24+02:00</updated>
     <summary>demonstrating things at work for group discussions and github </summary>
-  </entry>
-  <entry>
-    <title>me/ubi</title>
-    <id>http://tobibeer.github.io/tb5#me%2Fubi</id>
-    <link href='http://tobibeer.github.io/tb5#me%2Fubi'/>
-    <updated>2015-02-07T13:53:17+02:00</updated>
-    <summary>my notes on the idea of a Universal Basic Income, a UBI</summary>
   </entry>
 </feed>
