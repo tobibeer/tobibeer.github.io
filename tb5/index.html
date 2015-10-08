@@ -4550,6 +4550,9 @@ exports.toc = function(source,operator,options) {
 </div>
 <div created="20140110061443770" creator="Tobias Beer" modified="20151008100040598" module-type="macro" summary="a javascript macro allowing to cycle through tags" title="$:/.tb/modules/macros/cycletags.js" type="application/javascript" revision="0" bag="default">
 <pre>/*\
+created: 20151008200037346
+creator: Tobias Beer
+modified: 20151008200114256
 title: $:/.tb/modules/macros/cycletags.js
 type: application/javascript
 module-type: macro
@@ -4618,7 +4621,7 @@ exports.run = function(paramtags, group, btnText, btnTip, cls, reset, resetText,
 	cycle = &quot;&lt;$button class=\&quot;cycletags &quot; + cls + &quot;\&quot; tooltip=\&quot;&quot; + tip + &quot;\&quot;&gt;&quot; +
 		&quot;&lt;$action-sendmessage $message=\&quot;tm-add-tag\&quot; $param=\&quot;\&quot;\&quot;&quot; + tags[next] + &quot;\&quot;\&quot;\&quot;/&gt;&quot; +
 		removeAction +
-		tags[next] +
+		(btnText ? btnText : tags[next]) +
 		&quot;&lt;/$button&gt;&quot;;
 	if(reset &amp;&amp; current &gt; -1) {
 		tip = resetTip ?
@@ -15908,7 +15911,7 @@ Verification:
 
 &lt;/$list&gt;</pre>
 </div>
-<div created="20151008073052220" creator="Tobias Beer" modified="20151008102243499" summary="{{$:/.tb/modules/macros/cycletags.js!!summary}}" title="cycletags" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20151008073052220" creator="Tobias Beer" modified="20151008200438271" summary="{{$:/.tb/modules/macros/cycletags.js!!summary}}" title="cycletags" type="text/vnd.tiddlywiki" revision="34" bag="default">
 <pre>The [[cycletags|$:/.tb/modules/macros/cycletags.js]] macro provides functionality similar to [[its counterpart for TW2|http://lastfm.tiddlyspot.com/#cycleTagsInfo]], allowing you to cycle through a set of tags for the current tiddler, removing any tag of the cycle currently applied while adding the next one in the cycle.
 
 !! Examples
@@ -15916,6 +15919,14 @@ Verification:
 &lt;$macrocall $name=&quot;`&quot; text=&quot;&quot;&quot;&lt;&lt;cycletags &quot;foo bar baz&quot;&gt;&gt;&quot;&quot;&quot;/&gt;
 
 &lt;$macrocall $name=&quot;`&quot; text=&quot;&quot;&quot;&lt;&lt;cycletags &quot;1 2 3&quot; prio reset:&quot;yes&quot;&gt;&gt;&quot;&quot;&quot;/&gt;
+
+&lt;$macrocall $name=&quot;`&quot; text=&quot;&quot;&quot;&lt;$list filter=&quot;1 2 3&quot; variable=&quot;prio&quot;&gt;
+&lt;$list filter=&quot;[is[current]tag&lt;prio&gt;]&quot;&gt;
+&lt;$link to=&lt;&lt;prio&gt;&gt;&gt;&lt;$view tiddler=&lt;&lt;prio&gt;&gt; field=&quot;title&quot;/&gt;&lt;/$link&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;&lt;cycletags &quot;1 2 3&quot; prio label:&quot;&gt;&quot; class=&quot;tc-btn-invisible next-prio&quot;&gt;&gt;
+&lt;style&gt;.next-prio {color:grey}&lt;/style&gt;&quot;&quot;&quot;/&gt;
 
 &lt;$macrocall $name=&quot;`&quot; text=&quot;&quot;&quot;&lt;&lt;cycletags &quot;foo bar baz&quot; reset:&quot;yes&quot; class:&quot;tc-btn-invisible my-cycle-styles&quot;&gt;&gt;
 &lt;style&gt;.my-cycle-styles {background:pink;padding:2px 5px;border-radius:3px;margin-right:3px;}&lt;/style&gt;&quot;&quot;&quot;/&gt;
