@@ -131,6 +131,8 @@ Error message and password prompt
 
 <li>$:/.tb/demo/Buttons/new-recipe</li>
 
+<li>$:/.tb/demo/example.js</li>
+
 <li>$:/.tb/demo/hide-tag</li>
 
 <li>$:/.tb/demo/image-map</li>
@@ -239,13 +241,11 @@ Error message and password prompt
 
 <li>$:/.tb/modules/filters/toc.js</li>
 
-<li>$:/.tb/modules/macros/cycletags.js</li>
-
-<li>$:/.tb/modules/macros/cycletags.js/lingo</li>
+<li>$:/.tb/modules/macros/cycletags/lingo</li>
 
 <li>$:/.tb/modules/macros/validate.js</li>
 
-<li>$:/.tb/modules/startup/hide-sidebar.js</li>
+<li>$:/.tb/modules/maros/cycletags.js</li>
 
 <li>$:/.tb/msg/core-overwrite</li>
 
@@ -679,9 +679,9 @@ Error message and password prompt
 
 <li>Contribute Via GitHub Web UI</li>
 
-<li>Core</li>
-
 <li>core</li>
+
+<li>Core</li>
 
 <li>Core Distro Plugins</li>
 
@@ -855,9 +855,9 @@ Error message and password prompt
 
 <li>FilterOperator: join</li>
 
-<li>filters</li>
-
 <li>Filters</li>
+
+<li>filters</li>
 
 <li>focus</li>
 
@@ -931,9 +931,9 @@ Error message and password prompt
 
 <li>ibox</li>
 
-<li>Icons</li>
-
 <li>icons</li>
+
+<li>Icons</li>
 
 <li>iframe-1</li>
 
@@ -1287,9 +1287,9 @@ Error message and password prompt
 
 <li>Table Of Contents In Sidebar</li>
 
-<li>tables</li>
-
 <li>Tables</li>
+
+<li>tables</li>
 
 <li>Tables Without Borders</li>
 
@@ -3577,6 +3577,43 @@ class=&lt;&lt;tv-config-toolbar-class&gt;&gt;&gt;
 &lt;/$list&gt;
 &lt;/$button&gt;</pre>
 </div>
+<div module-type="macro" title="$:/.tb/demo/example.js" type="application/javascript" revision="0" bag="default">
+<pre>/*\
+title: $:/.tb/demo/example.js
+type: application/javascript
+module-type: macro
+
+&lt;&lt;examplemacro&gt;&gt;
+&lt;&lt;examplemacro &quot;foo bar&quot;&gt;&gt;
+
+\*/
+(function(){
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+&quot;use strict&quot;;
+
+/*
+An example js macro rendering an internal link.
+*/
+
+exports.name = &quot;examplemacro&quot;;
+
+exports.params = [
+	{ name: &quot;tid&quot; }
+];
+
+/*
+Run the macro
+*/
+exports.run = function(tid) {
+	var tid = tid || &quot;GettingStarted&quot;,
+	output =&quot;[[&quot; + tid + &quot;]]&quot;;
+	return output;
+};
+
+})();</pre>
+</div>
 <div created="20150116175954884" creator="Tobias Beer" modified="20150119165740856" modifier="Tobias Beer" summary="demonstrates a filter to remove tags to be hidden from the current tiddlers tags" tags="Examples" title="$:/.tb/demo/hide-tag" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;table class=&quot;hidden-tags&quot;&gt;
 &lt;tr&gt;&lt;th&gt;hidden tags&lt;/th&gt;&lt;th&gt;current tags&lt;/th&gt;&lt;th&gt;current w/o hidden&lt;/th&gt;&lt;/tr&gt;
@@ -4511,11 +4548,92 @@ exports.toc = function(source,operator,options) {
 
 })();</pre>
 </div>
-<div created="20140110061443770" creator="Stephan Hradek" modified="20151008100040598" modifier="Tobias Beer" module-type="macro" summary="a javascript macro allowing you to cycle through tags" title="$:/.tb/modules/macros/cycletags.js" type="application/javascript" revision="0" bag="default">
+<div title="$:/.tb/modules/macros/cycletags/lingo" type="application/x-tiddler-dictionary" revision="0" bag="default">
+<pre>tag: tag
+add: click to add
+remove: click to remove current
+removing: while removing</pre>
+</div>
+<div modifier="Tobias Beer" module-type="macro" summary="registers contact form validation" title="$:/.tb/modules/macros/validate.js" type="application/javascript" revision="0" bag="default">
 <pre>/*\
-group: $:/.tb/modules/maros/cycletags.js
+title: $:/.tb/modules/macros/validate.js
+type: application/javascript
+summary: registers contact form validation
+modifier: Tobias Beer
+module-type: macro
+\*/
+
+(function(){
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+&quot;use strict&quot;;
+
+/*
+contact form validation via &lt;&lt;validate &quot;form-id&quot;&gt;&gt;
+*/
+
+exports.name = &quot;validate&quot;;
+
+exports.params = [
+	{ name: &quot;id&quot; }
+];
+
+/*
+Run the macro
+*/
+exports.run = function(id) {
+    var f = document.getElementById(id);
+    f.onsubmit = function() {
+		var f = this,
+			i = document.getElementById(this.getAttribute(&quot;id&quot;) + &quot;-response&quot;),
+			mail = f._replyto.value,
+			body = f.body.value,
+			robot = f.answer.value,
+			re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+
+		if (mail == f._replyto.placeholder || !re.test(mail)) {
+			alert('Please enter a valid  email address!');
+			f._replyto.focus();
+			return false;
+		}
+
+		if (body === &quot;&quot; ||
+			body == f.body.placeholder){
+			alert(&quot;Please enter a message!&quot;);
+			f.body.focus();
+			return false;
+		}
+
+		robot = f.answer.value;
+		if (robot === &quot;&quot; ||
+			robot == f.answer.placeholder ||
+		   	robot.toLowerCase().substr(0,2) != &quot;no&quot;) {
+			alert(&quot;You better be honest or you won't pe able to continue!&quot;);
+			f.answer.focus();
+			return false;
+		}
+
+		f.style.display = &quot;none&quot;;
+		if(i &amp;&amp; i.parentNode) {
+			i.parentNode.style.display = &quot;block&quot;;
+		}
+
+		return true;
+    };
+};
+
+})();</pre>
+</div>
+<div created="20140110061443770" creator="Tobias Beer" modified="20151008100040598" module-type="macro" summary="a javascript macro allowing you to cycle through tags" title="$:/.tb/modules/maros/cycletags.js" type="application/javascript" revision="0" bag="default">
+<pre>/*\
+title: $:/.tb/modules/maros/cycletags.js
 type: application/javascript
 module-type: macro
+summary: a javascript macro allowing you to cycle through tags
+created: 20140110061443770
+creator: Tobias Beer
+modified: 20151008100040598
 
 &lt;&lt;cycletags &quot;&quot;&quot;foo bar baz&quot;&quot;&quot;&gt;&gt;
 
@@ -4597,113 +4715,6 @@ exports.run = function(paramtags, group, btnText, btnTip, cls, reset, resetText,
 		}
 	}
 	return &quot;&lt;$fieldmangler&gt;&quot; + cycle + &quot;&lt;/$fieldmangler&gt;&quot;;
-};
-
-})();</pre>
-</div>
-<div created="20151008094430003" creator="Tobias Beer" modified="20151008095929431" tags="" title="$:/.tb/modules/macros/cycletags.js/lingo" type="application/x-tiddler-dictionary" revision="0" bag="default">
-<pre>tag: tag
-add: click to add
-remove: click to remove current
-removing: while removing</pre>
-</div>
-<div modifier="Tobias Beer" module-type="macro" summary="registers contact form validation" title="$:/.tb/modules/macros/validate.js" type="application/javascript" revision="0" bag="default">
-<pre>/*\
-title: $:/.tb/modules/macros/validate.js
-type: application/javascript
-summary: registers contact form validation
-modifier: Tobias Beer
-module-type: macro
-\*/
-
-(function(){
-
-/*jslint node: true, browser: true */
-/*global $tw: false */
-&quot;use strict&quot;;
-
-/*
-contact form validation via &lt;&lt;validate &quot;form-id&quot;&gt;&gt;
-*/
-
-exports.name = &quot;validate&quot;;
-
-exports.params = [
-	{ name: &quot;id&quot; }
-];
-
-/*
-Run the macro
-*/
-exports.run = function(id) {
-    var f = document.getElementById(id);
-    f.onsubmit = function() {
-		var f = this,
-			i = document.getElementById(this.getAttribute(&quot;id&quot;) + &quot;-response&quot;),
-			mail = f._replyto.value,
-			body = f.body.value,
-			robot = f.answer.value,
-			re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-
-		if (mail == f._replyto.placeholder || !re.test(mail)) {
-			alert('Please enter a valid  email address!');
-			f._replyto.focus();
-			return false;
-		}
-
-		if (body === &quot;&quot; ||
-			body == f.body.placeholder){
-			alert(&quot;Please enter a message!&quot;);
-			f.body.focus();
-			return false;
-		}
-
-		robot = f.answer.value;
-		if (robot === &quot;&quot; ||
-			robot == f.answer.placeholder ||
-		   	robot.toLowerCase().substr(0,2) != &quot;no&quot;) {
-			alert(&quot;You better be honest or you won't pe able to continue!&quot;);
-			f.answer.focus();
-			return false;
-		}
-
-		f.style.display = &quot;none&quot;;
-		if(i &amp;&amp; i.parentNode) {
-			i.parentNode.style.display = &quot;block&quot;;
-		}
-
-		return true;
-    };
-};
-
-})();</pre>
-</div>
-<div created="20151007164106544" creator="Tobias Beer" modified="20151007170419496" module-type="startup" tags="" title="$:/.tb/modules/startup/hide-sidebar.js" type="application/javascript" revision="0" bag="default">
-<pre>/*\
-$:/.tb/modules/startup/hide-sidebar.js
-type: application/javascript
-module-type: startup
-
-Hides the sidebar on startup when the config tiddler [[$:/config/hide-sidebar-on-startup]] contains &quot;yes&quot;
-
-\*/
-(function(){
-
-/*jslint node: true, browser: true */
-/*global $tw: false */
-&quot;use strict&quot;;
-
-// Export name and synchronous status
-exports.name = &quot;hide-sidebar-on-startup&quot;;
-exports.platforms = [&quot;browser&quot;];
-exports.after = [&quot;startup&quot;];
-exports.synchronous = true;
-
-exports.startup = function() {
-	var conf = $tw.wiki.getTiddler(&quot;$:/config/HideSidebarOnStartup&quot;),
-		value = (conf ? conf.getFieldString(&quot;text&quot;) : &quot;&quot;).toLowerCase(),
-		state = value == &quot;yes&quot; ? &quot;no&quot; : &quot;yes&quot;;
-	$tw.wiki.setText(&quot;$:/state/sidebar&quot;, &quot;text&quot;, undefined, state);
 };
 
 })();</pre>
@@ -14998,7 +15009,7 @@ To additionally sort entries by a custom field, use the second macro parameter:
 
 `&lt;&lt;examplemacro &quot;foo bar&quot;&gt;&gt;` renders as: &lt;&lt;examplemacro &quot;foo bar&quot;&gt;&gt;
 
-&lt;&lt;source $:/macros/example.js&gt;&gt;</pre>
+&lt;&lt;source $:/.tb/demo/example.js&gt;&gt;</pre>
 </div>
 <div icon="$:/core/images/options-button" title="Batch" revision="0" bag="default">
 <pre></pre>
@@ -15476,6 +15487,9 @@ class=&quot;contact&quot; target=&quot;contact-response&quot; id=&quot;contact&q
 <div created="20141120171641267" creator="Tobias Beer" modified="20141125025528688" modifier="Tobias Beer" tags="GitHub Video Developer" title="Contribute Via GitHub Web UI" type="text/vnd.tiddlywiki" url="https://www.youtube.com/watch?v=L4zTkMYcri8" revision="0" bag="default">
 <pre>&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;http://www.youtube.com/embed/L4zTkMYcri8&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
 </div>
+<div created="20151003110757144" creator="Tobias Beer" follow="no" modified="20151003110922889" modifier="Tobias Beer" summary="a documentation aiming to provide a comprehensive summary of all concepts and components of the TiddlyWiki core" tags="[[Tobias Beer]]" title="core" url="http://tobibeer.github.io/tw/core" revision="0" bag="default">
+<pre></pre>
+</div>
 <div caption="Core" created="20150929113328405" creator="Tobias Beer" icon="$:/core/icon" menu="main" menu-icon="{{$:/core/icon}}" modified="20151005065353765" summary="functional elements and constructs of the tw5 core" tags="Welcome" title="Core" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>;[[WikiText|http://tiddlywiki.com/#WikiText]]
 :[[TW5 markup|Markup]], syntax, hypertext, formatting
@@ -15504,9 +15518,6 @@ class=&quot;contact&quot; target=&quot;contact-response&quot; id=&quot;contact&q
 :defined at the start of a tiddler, pragmas apply to the entire body, see [[Pragmas]]
 ;[[TextReferences|http://tiddlywiki.com/#TextReference]]
 :tiddler properties that can be retrieved or modified depending on the context</pre>
-</div>
-<div created="20151003110757144" creator="Tobias Beer" follow="no" modified="20151003110922889" modifier="Tobias Beer" summary="a documentation aiming to provide a comprehensive summary of all concepts and components of the TiddlyWiki core" tags="[[Tobias Beer]]" title="core" url="http://tobibeer.github.io/tw/core" revision="0" bag="default">
-<pre></pre>
 </div>
 <div created="20141120093416686" creator="Tobias Beer" modified="20141123203942199" modifier="Tobias Beer" title="Core Distro Plugins" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Although not packaged into a default TiddlyWiki, the following plugins are [[contained in the core distribution repository|http://tiddlywiki.com/#Plugins]]...
@@ -15897,8 +15908,8 @@ Verification:
 
 &lt;/$list&gt;</pre>
 </div>
-<div created="20151008073052220" creator="Tobias Beer" modified="20151008102243499" summary="{{$:/.tb/modules/macros/cycletags.js!!summary}}" title="cycletags" type="text/vnd.tiddlywiki" revision="1" bag="default">
-<pre>The [[cycletags|$:/.tb/modules/macros/cycletags.js]] macros provides functionality similar to [[its counterpart for TW2|http://lastfm.tiddlyspot.com/#cycleTagsInfo]], allowing you to cycle through a set of tags for the current tiddler, removing any tag of the cycle currently applied while adding the next one in the cycle.
+<div created="20151008073052220" creator="Tobias Beer" modified="20151008102243499" summary="{{$:/.tb/modules/macros/cycletags.js!!summary}}" title="cycletags" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>The [[cycletags|$:/.tb/modules/macros/cycletags.js]] macro provides functionality similar to [[its counterpart for TW2|http://lastfm.tiddlyspot.com/#cycleTagsInfo]], allowing you to cycle through a set of tags for the current tiddler, removing any tag of the cycle currently applied while adding the next one in the cycle.
 
 !! Examples
 
@@ -15939,7 +15950,7 @@ Drag these two to your wiki, save, reload:
 
 ; locale
 : for simple localization, modify this &lt;&lt;tw DictionaryTiddlers &quot;dictionary tiddler&quot;&gt;&gt;...
-: &lt;&lt;source &quot;$:/.tb/modules/macros/cycletags.js/lingo&quot;&gt;&gt; 
+: &lt;&lt;source &quot;$:/.tb/modules/macros/cycletags/lingo&quot;&gt;&gt; 
 ; macro
 : &lt;&lt;source &quot;$:/.tb/modules/macros/cycletags.js&quot; yes js&gt;&gt;</pre>
 </div>
@@ -16708,10 +16719,10 @@ drag to your wiki: &lt;&lt;source [[$:/.tb/modules/filters/toc.js]] yes&gt;&gt;<
 
 see source: &lt;&lt;source $:/core/modules/filters/join.js&gt;&gt;</pre>
 </div>
-<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150207094021145" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters" revision="0" bag="default">
+<div icon="$:/core/images/storyview-pop" title="Filters" revision="0" bag="default">
 <pre></pre>
 </div>
-<div icon="$:/core/images/storyview-pop" title="Filters" revision="0" bag="default">
+<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150207094021145" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters" revision="0" bag="default">
 <pre></pre>
 </div>
 <div created="20141202232934876" creator="Tobias Beer" follow="yes" modified="20150207103743726" modifier="Tobias Beer" summary="trying to have the standard theme focus more on content, hiding controls from visitors&lt;!--focus--&gt;" tags="[[Tobias Beer]]" title="focus" url="http://tobibeer.github.io/tw/focus" revision="0" bag="default">
@@ -17369,10 +17380,10 @@ HTML tags work like that.
 <div created="20141211125930733" creator="Tobias Beer" follow="yes" modified="20150209132500215" modifier="Tobias Beer" summary="demonstrating lightboxes in tw5&lt;!--ibox--&gt;" tags="[[Tobias Beer]]" title="ibox" type="text/vnd.tiddlywiki" url="http://tobibeer.github.io/tw/ibox" revision="0" bag="default">
 <pre></pre>
 </div>
-<div icon="$:/core/images/star-filled" title="Icons" revision="0" bag="default">
+<div created="20150202230519361" creator="Tobias Beer" follow="yes" modified="20150213194000000" modifier="Tobias Beer" summary="a showcase and reference for icon fonts and libraries with previews" tags="[[Tobias Beer]] Solutions Icons Presentation Fonts" title="icons" url="http://tobibeer.github.io/tw/icons" revision="0" bag="default">
 <pre></pre>
 </div>
-<div created="20150202230519361" creator="Tobias Beer" follow="yes" modified="20150213194000000" modifier="Tobias Beer" summary="a showcase and reference for icon fonts and libraries with previews" tags="[[Tobias Beer]] Solutions Icons Presentation Fonts" title="icons" url="http://tobibeer.github.io/tw/icons" revision="0" bag="default">
+<div icon="$:/core/images/star-filled" title="Icons" revision="0" bag="default">
 <pre></pre>
 </div>
 <div created="20150105231913568" creator="Tobias Beer" follow="no" modified="20150108114142058" modifier="Tobias Beer" summary="testing how two ~TiddlyWikis behave which mutually iframe their contents" tags="[[Tobias Beer]]" title="iframe-1" url="http://iframe-1.tiddlyspot.com" revision="0" bag="default">
@@ -20698,6 +20709,9 @@ via &lt;&lt;source &quot;$:/.tb/demo/svg-circle&quot;&gt;&gt;</pre>
 &lt;&lt;ximg toc.jpg tooltip:&quot;example toc from tiddlywiki.com&quot; class:&quot;pretty&quot;&gt;&gt;
 example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 </div>
+<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
+<pre></pre>
+</div>
 <div tags="Markup" title="tables" revision="0" bag="default">
 <pre>&lt;dt style=&quot;font-size:80%;&quot;&gt;
 
@@ -20721,9 +20735,6 @@ example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 |and|now| vertical |
 |&gt;| right|~|
 &lt;/dd&gt;</pre>
-</div>
-<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
-<pre></pre>
 </div>
 <div created="20150206013252827" creator="Tobias Beer" modified="20150206014255748" modifier="Tobias Beer" tags="Tables Presentation Styles" title="Tables Without Borders" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>If you are wishing to use borderless tables [[like Diane|https://groups.google.com/d/msg/tiddlywiki/lPvh5gcea70/JHWgVmIvHdIJ]], here's what you do:
