@@ -241,11 +241,11 @@ Error message and password prompt
 
 <li>$:/.tb/modules/filters/toc.js</li>
 
+<li>$:/.tb/modules/macros/cycletags.js</li>
+
 <li>$:/.tb/modules/macros/cycletags/lingo</li>
 
 <li>$:/.tb/modules/macros/validate.js</li>
-
-<li>$:/.tb/modules/maros/cycletags.js</li>
 
 <li>$:/.tb/msg/core-overwrite</li>
 
@@ -4548,89 +4548,12 @@ exports.toc = function(source,operator,options) {
 
 })();</pre>
 </div>
-<div title="$:/.tb/modules/macros/cycletags/lingo" type="application/x-tiddler-dictionary" revision="0" bag="default">
-<pre>tag: tag
-add: click to add
-remove: click to remove current
-removing: while removing</pre>
-</div>
-<div modifier="Tobias Beer" module-type="macro" summary="registers contact form validation" title="$:/.tb/modules/macros/validate.js" type="application/javascript" revision="0" bag="default">
+<div created="20140110061443770" creator="Tobias Beer" modified="20151008100040598" module-type="macro" summary="a javascript macro allowing to cycle through tags" title="$:/.tb/modules/macros/cycletags.js" type="application/javascript" revision="0" bag="default">
 <pre>/*\
-title: $:/.tb/modules/macros/validate.js
-type: application/javascript
-summary: registers contact form validation
-modifier: Tobias Beer
-module-type: macro
-\*/
-
-(function(){
-
-/*jslint node: true, browser: true */
-/*global $tw: false */
-&quot;use strict&quot;;
-
-/*
-contact form validation via &lt;&lt;validate &quot;form-id&quot;&gt;&gt;
-*/
-
-exports.name = &quot;validate&quot;;
-
-exports.params = [
-	{ name: &quot;id&quot; }
-];
-
-/*
-Run the macro
-*/
-exports.run = function(id) {
-    var f = document.getElementById(id);
-    f.onsubmit = function() {
-		var f = this,
-			i = document.getElementById(this.getAttribute(&quot;id&quot;) + &quot;-response&quot;),
-			mail = f._replyto.value,
-			body = f.body.value,
-			robot = f.answer.value,
-			re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-
-		if (mail == f._replyto.placeholder || !re.test(mail)) {
-			alert('Please enter a valid  email address!');
-			f._replyto.focus();
-			return false;
-		}
-
-		if (body === &quot;&quot; ||
-			body == f.body.placeholder){
-			alert(&quot;Please enter a message!&quot;);
-			f.body.focus();
-			return false;
-		}
-
-		robot = f.answer.value;
-		if (robot === &quot;&quot; ||
-			robot == f.answer.placeholder ||
-		   	robot.toLowerCase().substr(0,2) != &quot;no&quot;) {
-			alert(&quot;You better be honest or you won't pe able to continue!&quot;);
-			f.answer.focus();
-			return false;
-		}
-
-		f.style.display = &quot;none&quot;;
-		if(i &amp;&amp; i.parentNode) {
-			i.parentNode.style.display = &quot;block&quot;;
-		}
-
-		return true;
-    };
-};
-
-})();</pre>
-</div>
-<div created="20140110061443770" creator="Tobias Beer" modified="20151008100040598" module-type="macro" summary="a javascript macro allowing you to cycle through tags" title="$:/.tb/modules/maros/cycletags.js" type="application/javascript" revision="0" bag="default">
-<pre>/*\
-title: $:/.tb/modules/maros/cycletags.js
+title: $:/.tb/modules/macros/cycletags.js
 type: application/javascript
 module-type: macro
-summary: a javascript macro allowing you to cycle through tags
+summary: a javascript macro allowing to cycle through tags
 created: 20140110061443770
 creator: Tobias Beer
 modified: 20151008100040598
@@ -4715,6 +4638,83 @@ exports.run = function(paramtags, group, btnText, btnTip, cls, reset, resetText,
 		}
 	}
 	return &quot;&lt;$fieldmangler&gt;&quot; + cycle + &quot;&lt;/$fieldmangler&gt;&quot;;
+};
+
+})();</pre>
+</div>
+<div title="$:/.tb/modules/macros/cycletags/lingo" type="application/x-tiddler-dictionary" revision="0" bag="default">
+<pre>tag: tag
+add: click to add
+remove: click to remove current
+removing: while removing</pre>
+</div>
+<div modifier="Tobias Beer" module-type="macro" summary="registers contact form validation" title="$:/.tb/modules/macros/validate.js" type="application/javascript" revision="0" bag="default">
+<pre>/*\
+title: $:/.tb/modules/macros/validate.js
+type: application/javascript
+summary: registers contact form validation
+modifier: Tobias Beer
+module-type: macro
+\*/
+
+(function(){
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+&quot;use strict&quot;;
+
+/*
+contact form validation via &lt;&lt;validate &quot;form-id&quot;&gt;&gt;
+*/
+
+exports.name = &quot;validate&quot;;
+
+exports.params = [
+	{ name: &quot;id&quot; }
+];
+
+/*
+Run the macro
+*/
+exports.run = function(id) {
+    var f = document.getElementById(id);
+    f.onsubmit = function() {
+		var f = this,
+			i = document.getElementById(this.getAttribute(&quot;id&quot;) + &quot;-response&quot;),
+			mail = f._replyto.value,
+			body = f.body.value,
+			robot = f.answer.value,
+			re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+
+		if (mail == f._replyto.placeholder || !re.test(mail)) {
+			alert('Please enter a valid  email address!');
+			f._replyto.focus();
+			return false;
+		}
+
+		if (body === &quot;&quot; ||
+			body == f.body.placeholder){
+			alert(&quot;Please enter a message!&quot;);
+			f.body.focus();
+			return false;
+		}
+
+		robot = f.answer.value;
+		if (robot === &quot;&quot; ||
+			robot == f.answer.placeholder ||
+		   	robot.toLowerCase().substr(0,2) != &quot;no&quot;) {
+			alert(&quot;You better be honest or you won't pe able to continue!&quot;);
+			f.answer.focus();
+			return false;
+		}
+
+		f.style.display = &quot;none&quot;;
+		if(i &amp;&amp; i.parentNode) {
+			i.parentNode.style.display = &quot;block&quot;;
+		}
+
+		return true;
+    };
 };
 
 })();</pre>
