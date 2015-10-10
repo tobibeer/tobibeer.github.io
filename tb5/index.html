@@ -43,7 +43,7 @@ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF S
 DAMAGE.
 " />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>tb5 — cycletags</title>
+<title>tb5 — feed.atom</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~--><!--~~ Raw markup ~~-->
 
 </head>
@@ -138,6 +138,8 @@ Error message and password prompt
 <li>$:/.tb/demo/image-map</li>
 
 <li>$:/.tb/demo/makedoc</li>
+
+<li>$:/.tb/demo/new-with-dynamic-contents</li>
 
 <li>$:/.tb/demo/onhover-toolbar-styles</li>
 
@@ -643,9 +645,9 @@ Error message and password prompt
 
 <li>Clone Wikis Via store.php</li>
 
-<li>code</li>
-
 <li>Code</li>
+
+<li>code</li>
 
 <li>Code-101</li>
 
@@ -679,9 +681,9 @@ Error message and password prompt
 
 <li>Contribute Via GitHub Web UI</li>
 
-<li>core</li>
-
 <li>Core</li>
+
+<li>core</li>
 
 <li>Core Distro Plugins</li>
 
@@ -772,6 +774,8 @@ Error message and password prompt
 <li>draggable</li>
 
 <li>Dylan Kinnett</li>
+
+<li>Dynamic Contents In Macros</li>
 
 <li>Dynamically Setting A Default Tab</li>
 
@@ -1389,9 +1393,9 @@ Error message and password prompt
 
 <li>traffic-light-buttons.gif</li>
 
-<li>Transclusion</li>
-
 <li>transclusion</li>
+
+<li>Transclusion</li>
 
 <li>Translate TW5</li>
 
@@ -3641,6 +3645,25 @@ exports.run = function(tid) {
 {{||$:/.tb/ui/ViewTemplate/summary}}
 
 {{!!text}}</pre>
+</div>
+<div created="20151010123510353" creator="Tobias Beer" modified="20151010130841145" tags="" title="$:/.tb/demo/new-with-dynamic-contents" type="text/vnd.tiddlywiki" revision="26" bag="default">
+<pre>\define timeStampTitle() $(timeStamp)$ $(inputTitle)$
+\define createNew()
+&lt;$edit-text tiddler=&quot;$:/temp/timestamp-title&quot; tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;enter new title&quot;/&gt;
+&lt;$vars timeStamp=&lt;&lt;now YYYY-0MM-0DD&gt;&gt; inputTitle={{$:/temp/timestamp-title}}&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage
+  $message=&quot;tm-new-tiddler&quot;
+  title=&lt;&lt;timeStampTitle&gt;&gt;
+  created-at=&lt;&lt;currentTiddler&gt;&gt;
+  tags=&quot;foo bar baz&quot;/&gt;
+&lt;$action-setfield
+  $tiddler=&quot;$:/temp/timestamp-title&quot;
+  $value=&quot;&quot;/&gt;create&lt;/$button&gt;
+&lt;/$vars&gt;
+\end
+
+&lt;&lt;createNew&gt;&gt;</pre>
 </div>
 <div created="20150924065447163" creator="Tobias Beer" modified="20150925073004366" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/demo/onhover-toolbar-styles" type="text/css" revision="0" bag="default">
 <pre>.tc-tiddler-frame .tc-titlebar button {
@@ -15274,15 +15297,15 @@ Here's a rudimentary example to reorder lists using the ''calc'' macro...
 
 For example, you could have your own ''empty.html'' with customizations and plugins and then simply change the name of your wiki under [[ControlPanel|$:/ControlPanel]] / ''Saving'' and set ''Upload Filename'' accordingly. Then load that cloned wiki and continue to work there, saving changes to the new location.</pre>
 </div>
+<div icon="$:/core/images/permalink-button" title="Code" revision="0" bag="default">
+<pre></pre>
+</div>
 <div tags="Markup" title="code" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;dt&gt;&lt;pre&gt;&amp;#96;code&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
 &lt;dd&gt;`code` ...via backticks&lt;/dd&gt;
 
 &lt;dt&gt;&lt;pre&gt;&amp;#96;&amp;#96;with &amp;#96;backticks&amp;#96; &amp;#96;&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
 &lt;dd&gt;``with `backticks` ``&lt;/dd&gt;</pre>
-</div>
-<div icon="$:/core/images/permalink-button" title="Code" revision="0" bag="default">
-<pre></pre>
 </div>
 <div created="20150121121317298" creator="Tobias Beer" modified="20150122021331885" modifier="Tobias Beer" tags="Developer Code" title="Code-101" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>If you're new to TiddlyWiki, if not anything that looks like code, [[this discussion with Mat|https://groups.google.com/d/msg/tiddlywiki/l1Tu5uxSHSk/k8N9rvAm2OEJ]] may give you some pointers on how to approach all things programatic.
@@ -15490,9 +15513,6 @@ class=&quot;contact&quot; target=&quot;contact-response&quot; id=&quot;contact&q
 <div created="20141120171641267" creator="Tobias Beer" modified="20141125025528688" modifier="Tobias Beer" tags="GitHub Video Developer" title="Contribute Via GitHub Web UI" type="text/vnd.tiddlywiki" url="https://www.youtube.com/watch?v=L4zTkMYcri8" revision="0" bag="default">
 <pre>&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;http://www.youtube.com/embed/L4zTkMYcri8&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
 </div>
-<div created="20151003110757144" creator="Tobias Beer" follow="no" modified="20151003110922889" modifier="Tobias Beer" summary="a documentation aiming to provide a comprehensive summary of all concepts and components of the TiddlyWiki core" tags="[[Tobias Beer]]" title="core" url="http://tobibeer.github.io/tw/core" revision="0" bag="default">
-<pre></pre>
-</div>
 <div caption="Core" created="20150929113328405" creator="Tobias Beer" icon="$:/core/icon" menu="main" menu-icon="{{$:/core/icon}}" modified="20151005065353765" summary="functional elements and constructs of the tw5 core" tags="Welcome" title="Core" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>;[[WikiText|http://tiddlywiki.com/#WikiText]]
 :[[TW5 markup|Markup]], syntax, hypertext, formatting
@@ -15521,6 +15541,9 @@ class=&quot;contact&quot; target=&quot;contact-response&quot; id=&quot;contact&q
 :defined at the start of a tiddler, pragmas apply to the entire body, see [[Pragmas]]
 ;[[TextReferences|http://tiddlywiki.com/#TextReference]]
 :tiddler properties that can be retrieved or modified depending on the context</pre>
+</div>
+<div created="20151003110757144" creator="Tobias Beer" follow="no" modified="20151003110922889" modifier="Tobias Beer" summary="a documentation aiming to provide a comprehensive summary of all concepts and components of the TiddlyWiki core" tags="[[Tobias Beer]]" title="core" url="http://tobibeer.github.io/tw/core" revision="0" bag="default">
+<pre></pre>
 </div>
 <div created="20141120093416686" creator="Tobias Beer" modified="20141123203942199" modifier="Tobias Beer" title="Core Distro Plugins" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Although not packaged into a default TiddlyWiki, the following plugins are [[contained in the core distribution repository|http://tiddlywiki.com/#Plugins]]...
@@ -15911,7 +15934,7 @@ Verification:
 
 &lt;/$list&gt;</pre>
 </div>
-<div created="20151008073052220" creator="Tobias Beer" modified="20151008200438271" summary="{{$:/.tb/modules/macros/cycletags.js!!summary}}" title="cycletags" type="text/vnd.tiddlywiki" revision="34" bag="default">
+<div created="20151008073052220" creator="Tobias Beer" modified="20151008200438271" summary="{{$:/.tb/modules/macros/cycletags.js!!summary}}" title="cycletags" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>The [[cycletags|$:/.tb/modules/macros/cycletags.js]] macro provides functionality similar to [[its counterpart for TW2|http://lastfm.tiddlyspot.com/#cycleTagsInfo]], allowing you to cycle through a set of tags for the current tiddler, removing any tag of the cycle currently applied while adding the next one in the cycle.
 
 !! Examples
@@ -16158,6 +16181,30 @@ From [[Improving TiddlyWiki Documentation|http://tiddlywiki.com/#Improving%20Tid
 </div>
 <div created="20141121231458699" creator="Tobias Beer" modified="20141205150859810" modifier="Tobias Beer" summary="&quot;bestrew&quot; — a demo for paper submission management&lt;!--Dylan Kinnet--&gt;" tags="Community" title="Dylan Kinnett" type="text/vnd.tiddlywiki" url="http://nocategories.net/tiddlywiki/bestrew.html" revision="0" bag="default">
 <pre></pre>
+</div>
+<div created="20151010122132172" modified="20151010131358512" tags="Macros Variables TextReferences Buttons Solutions" title="Dynamic Contents In Macros" revision="34" bag="default">
+<pre>[[This problem|https://groups.google.com/forum/m/#!topic/tiddlywiki/tdunp-Tadfc]] often pops up when trying to concatenate dynamic contents in macros.
+
+Macros simply are a means to dynamically replace placeholders with parameterized text. And so, TiddlyWiki does not evaluate any &lt;&lt;tw Macros macro&gt;&gt; or &lt;&lt;tw TextReference &quot;text reference&quot;&gt;&gt; within a macro when the macro is &quot;called&quot; but rather inserts those as literal text.
+
+
+To use evaluated references within a macro...
+
+* wrap the content where you wish to use dynamic references in either the &lt;&lt;tw SetWidget&gt;&gt; to declare a single variable or the &lt;&lt;tw VarWidget&gt;&gt; for multiple variables
+* reference these variables in your macro via `$(my-variable)$`
+
+!! Example
+
+The below example (borrowing from [[Mark's example|https://groups.google.com/d/msg/tiddlywiki/tdunp-Tadfc/ocZHJxxODQAJ]])...
+
+* creates a tiddler whose title will be created from the user input ''and'' a time-stamp
+* gives the tiddler custom tags
+* references the tiddler where the new tiddler was created in a ''created-at'' field
+* clears the input upon hitting the button
+
+{{||$:/.tb/demo/new-with-dynamic-contents}}
+
+&lt;&lt;source $:/.tb/demo/new-with-dynamic-contents&gt;&gt;</pre>
 </div>
 <div created="20150128100800070" creator="Tobias Beer" modified="20150128101524989" modifier="Tobias Beer" tags="[[Felix Küppers]] Lists Tabs Variables" title="Dynamically Setting A Default Tab" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>As [[Felix Küppers]] shows in &lt;&lt;git5 pull/1382&gt;&gt;, here is how you can dynamically declare a default tab via filters, e.g. the most recent release.
@@ -21492,9 +21539,6 @@ The defined styles here...
 <div title="traffic-light-buttons.gif" type="image/gif" revision="0" bag="default">
 <pre>R0lGODlhbwAmAPf/AP///9l0dPkuLv42NvksLNx1dfv7+/r25fvuxfrooPvjjPvjifrjivvoofrtw/v58P7+/uTIyO8SEv8iIu8ZGeTk5Pr6+vry0/vjivrYW//dVf7cVfvZXPrllPz8/Pfb2+dnZ/47O/Q7O/07O98nJ/ssLPozM/4zM/czM/sqKtorK/U7O+dMTO3Dw/r47/rmnvvZVvvZWPvpquWAgN0iIvEhId8jI/4hIecmJvUlJek1Nf45OeYzM/QkJN4mJv4iItwhIfMhIeEiIvLy8vz68fjcgfngjP378r/fmKTZden02uOgoO4kJPQjI+8wMO08PPsfH+8zM+0kJPEuLvYcHO42Nu0zM/YfH/ElJfAiIuGbm/reffrgh8n1jJnuIp7ZZvPz8+jPz/40NP3R0f6Ojv4kJP5nZ/zOzv5iYv4pKf2urv2srP4uLurR0fvmnuDKgN7IgOLIf6LXdPn5+f6iov5xcf39/f5tbf7Ozv7Nzfvz1OLMgP7zyf7cV/7dW/7zx/vZWfv35bbyY/j98PriiePQiuPNgPrnnfv13v7fZPz23/rvw/7cWPvZXfvsu/7fZv744v3cXf7zyPzaVfvkjP356fvrsvrjidHhuvX67fvfdv3dZP3bVvvji6PTgKLtO+z72Pvkiv7dXPvki/Dw8J3cWabvP+372fvkjfvrqdPsr5ztKsr1jfvsvP3ead35t/r03f7dWvzxxPvifuLPiOLKgKPtO8Tzgfvz1uLIfvrlk9/MheDLgN7LhvroqZztK/ndfPrff5jtIrXyYfwyMvE6Ov1PT/2iov58fP5dXfypqf5ZWf2UlP2Rkfz23Pjcf/neg+343tzyvvj4+PQfH/4jI/5ISP5DQ/w1Nf4+Pv1DQ/0+PvvZV/vooOPj4/IdHeYsLPkcHOYrK+4TE+ckJPYaGuYkJOgkJPUcHO0lJevr6/ry1PviivrYWPvZW9WAgOlMTPlgYN1TU+RMTPtra/VmZuZISN9VVeJXV95OTtyQkPvtvfrjjPvllfrsu7dmWSH5BAgAAP8ALAAAAABvACYAAAj+AAEIHEiwoMGDCBMqXMiwocOHECNKnEixosWLGDNq3Mixo8ePIEOKHEmypMmTKFOeDCBggEuXBApcNHAAQQIFCxg0cPDAgEqLEIJGkDChqNEJFCoEDQrRwgUMGTRInbqBQ4cDHn5G/AAihIgQI0iUMHGiLIoUKkKEWBGCRQuHLl7AmEqXbgwZPrU6nDGBRg0bE27gyKFjB48ePn5MABJEyIQZQxgSKVK3Ml0jR1JCQJJEScMlTJpMaOLkCZQJUaRMmUClipUrE7Bk0QJh4YMtlnNL5ZK3JIQuXrx8AdMwjJgJYsaQKTPBzBk0E9KoWcNmwo42DA24mfrmjW44cab+yqhN8ndwL3LmNIRwXAwEOszr2LkTHU+e6jvIK9QzV8MegXz0UZcffwAAQXgaABJIecAFJ8ggDrGH3HvxzVfffdbph5ABhExVyEABTkWgQBAYMtUhvX1knoMQRtgehRPIR18a9uGn4UGIADJVIoqAKOCIAi3CyFSNPBDSil48CJGE7sEXo4U0YpjfQo7U9QgkIEZSoECSDDnVJAiAhKSSS77opIwX2qiQAZRUdiWJlZDXZWWWZNXRmC2WOeGZUNaY4ZqXWPYmQXNWxkCKDWGSiUJ4TsQkjGhGqWZCBmiS2yaZCVQJJ7l1gqhCdnjixSegINSoo2ZWOKOfU1IaimX+omw5UKF1jfJpQqSUEpwppxh0Kqp7qprmn5SiUlmsJB4hp5d0pWKnQ6qssmuvA0HAynlkUvQon6tKeaNBrdSFLJeuYMklsxqAKdEr0nrBK4nXsnjRtsJKSmxCsMQwVSyyzDrkoAAsIqBUHLgwEbvTWottnhXR+2S3k1I6y1S0+DvVoBDUMhUltzaEsBe23LJwRg5Hyuq3BuHSX8UA0CrVmxDkIpWCFn08MsmpPjxsq2vqMtUuvOjWS9BS+dLxQ6/8cjPOwepsL88KuQCMbrkFY0FGrwjjxTAMYwQBMcUYcwwyzCWjzDLRMdNMxAs58wzVdUGTaUbRSOPRNNRUU0ZvGdYwdw022USnzTb4qQeXLv3pxk03R+tlkDffGAVOOBOIMw45E5RjzjnoTJCOOk2tw047lrlzyQWNO27QO/DEU0cd8sxDTx312HPP6/jko89EBsCyDz8LYHBJP/4EcrXqyCev/PLMN+/889BHb1JAACH+ADs=</pre>
 </div>
-<div icon="$:/core/images/storyview-pop" title="Transclusion" revision="0" bag="default">
-<pre></pre>
-</div>
 <div tags="Markup" title="transclusion" url="http://tiddlywiki.com/#Transclusion%20in%20WikiText" revision="0" bag="default">
 <pre>&lt;dt&gt;
 
@@ -21523,6 +21567,9 @@ The defined styles here...
 » list of tiddlers tagged `Foo`&lt;br&gt;
 » same using template `Bar`
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/storyview-pop" title="Transclusion" revision="0" bag="default">
+<pre></pre>
 </div>
 <div created="20141114203626843" creator="Tobias Beer" modified="20141204134556861" modifier="Tobias Beer" tags="Developer" title="Translate TW5" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>;Interactive Tool
