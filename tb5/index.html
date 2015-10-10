@@ -43,7 +43,7 @@ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF S
 DAMAGE.
 " />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>tb5 — feed.atom</title>
+<title>tb5 — Hiding The Sidebar On Startup</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~--><!--~~ Raw markup ~~-->
 
 </head>
@@ -837,9 +837,9 @@ Error message and password prompt
 
 <li>Felix Küppers</li>
 
-<li>fields</li>
-
 <li>Fields</li>
+
+<li>fields</li>
 
 <li>Fields: Core</li>
 
@@ -865,9 +865,9 @@ Error message and password prompt
 
 <li>FilterOperator: join</li>
 
-<li>filters</li>
-
 <li>Filters</li>
+
+<li>filters</li>
 
 <li>focus</li>
 
@@ -943,17 +943,17 @@ Error message and password prompt
 
 <li>ibox</li>
 
-<li>Icons</li>
-
 <li>icons</li>
+
+<li>Icons</li>
 
 <li>iframe-1</li>
 
 <li>ImageMaps</li>
 
-<li>images</li>
-
 <li>Images</li>
+
+<li>images</li>
 
 <li>Import</li>
 
@@ -1299,9 +1299,9 @@ Error message and password prompt
 
 <li>Table Of Contents In Sidebar</li>
 
-<li>Tables</li>
-
 <li>tables</li>
+
+<li>Tables</li>
 
 <li>Tables Without Borders</li>
 
@@ -1381,9 +1381,9 @@ Error message and password prompt
 
 <li>Tobias Beer</li>
 
-<li>toc</li>
-
 <li>ToC</li>
+
+<li>toc</li>
 
 <li>Toggle</li>
 
@@ -4757,9 +4757,12 @@ exports.run = function(id) {
 </div>
 <div created="20151010151732122" creator="Tobias Beer" modified="20151010151750739" module-type="startup" title="$:/.tb/modules/startup/hide-sidebar.js" type="application/javascript" revision="0" bag="default">
 <pre>/*\
-$:/.tb/modules/startup/hide-sidebar.js
+title: $:/.tb/modules/startup/hide-sidebar.js
 type: application/javascript
 module-type: startup
+created: 20151010151732122
+creator: Tobias Beer
+modified: 20151010151750739
 
 Hides the sidebar on startup when the config tiddler [[$:/config/hide-sidebar-on-startup]] contains &quot;yes&quot;
 
@@ -16689,13 +16692,13 @@ http://tiddlywiki.com&lt;br&gt;
 <div icon="$:/core/images/plugin-generic-language" summary="inventor of TiddlyMap&lt;!--Felix Küppers, vis.js--&gt;" tags="Community" title="Felix Küppers" url="[[felixhayashi@GitHub|https://github.com/felixhayashi/TW5-TiddlyMap]]" revision="0" bag="default">
 <pre></pre>
 </div>
+<div icon="$:/core/images/permalink-button" title="Fields" revision="0" bag="default">
+<pre></pre>
+</div>
 <div created="20150201195001262" creator="Tobias Beer" follow="yes" modified="20150209084520349" modifier="Tobias Beer" summary="explorations as to imporoving working with tiddler fields" tags="[[Tobias Beer]] Fields" title="fields" url="http://tobibeer.github.io/tw/fields" revision="0" bag="default">
 <pre>!!! Topics
 ; [[FieldsPopup|http://tobibeer.github.io/tw/fields/#FieldsPopup]]
 : &lt;&lt;git5 issues/1448&gt;&gt; — field editing popups</pre>
-</div>
-<div icon="$:/core/images/permalink-button" title="Fields" revision="0" bag="default">
-<pre></pre>
 </div>
 <div caption="core" created="20141118195032028" creator="Tobias Beer" modified="20150107195102560" modifier="Tobias Beer" tags="Fields Lists Filters Core" title="Fields: Core" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>all [[core fields|Fields: Core]] except [[standard fields|Fields: Standard]] as documented in the TiddlyWiki core:
@@ -16915,10 +16918,10 @@ drag to your wiki: &lt;&lt;source [[$:/.tb/modules/filters/toc.js]] yes&gt;&gt;<
 
 see source: &lt;&lt;source $:/core/modules/filters/join.js&gt;&gt;</pre>
 </div>
-<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150207094021145" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters" revision="0" bag="default">
+<div icon="$:/core/images/storyview-pop" title="Filters" revision="0" bag="default">
 <pre></pre>
 </div>
-<div icon="$:/core/images/storyview-pop" title="Filters" revision="0" bag="default">
+<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150207094021145" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters" revision="0" bag="default">
 <pre></pre>
 </div>
 <div created="20141202232934876" creator="Tobias Beer" follow="yes" modified="20150207103743726" modifier="Tobias Beer" summary="trying to have the standard theme focus more on content, hiding controls from visitors&lt;!--focus--&gt;" tags="[[Tobias Beer]]" title="focus" url="http://tobibeer.github.io/tw/focus" revision="0" bag="default">
@@ -17519,7 +17522,7 @@ Here's an a bit more elaborate table syntax using a macro to generate a link...
 &lt;/table&gt;
 ```</pre>
 </div>
-<div created="20151010151944596" creator="Tobias Beer" icon="$:/core/images/right-arrow" modified="20151010151944596" title="HTML" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div icon="$:/core/images/right-arrow" title="HTML" revision="0" bag="default">
 <pre></pre>
 </div>
 <div tags="Markup" title="html-element-attributes" revision="0" bag="default">
@@ -17579,10 +17582,10 @@ HTML tags work like that.
 <div created="20141211125930733" creator="Tobias Beer" follow="yes" modified="20150209132500215" modifier="Tobias Beer" summary="demonstrating lightboxes in tw5&lt;!--ibox--&gt;" tags="[[Tobias Beer]]" title="ibox" type="text/vnd.tiddlywiki" url="http://tobibeer.github.io/tw/ibox" revision="0" bag="default">
 <pre></pre>
 </div>
-<div icon="$:/core/images/star-filled" title="Icons" revision="0" bag="default">
+<div created="20150202230519361" creator="Tobias Beer" follow="yes" modified="20150213194000000" modifier="Tobias Beer" summary="a showcase and reference for icon fonts and libraries with previews" tags="[[Tobias Beer]] Solutions Icons Presentation Fonts" title="icons" url="http://tobibeer.github.io/tw/icons" revision="0" bag="default">
 <pre></pre>
 </div>
-<div created="20150202230519361" creator="Tobias Beer" follow="yes" modified="20150213194000000" modifier="Tobias Beer" summary="a showcase and reference for icon fonts and libraries with previews" tags="[[Tobias Beer]] Solutions Icons Presentation Fonts" title="icons" url="http://tobibeer.github.io/tw/icons" revision="0" bag="default">
+<div icon="$:/core/images/star-filled" title="Icons" revision="0" bag="default">
 <pre></pre>
 </div>
 <div created="20150105231913568" creator="Tobias Beer" follow="no" modified="20150108114142058" modifier="Tobias Beer" summary="testing how two ~TiddlyWikis behave which mutually iframe their contents" tags="[[Tobias Beer]]" title="iframe-1" url="http://iframe-1.tiddlyspot.com" revision="0" bag="default">
@@ -17597,6 +17600,9 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 {{$:/.tb/demo/image-map}}
 
 &lt;&lt;source &quot;$:/.tb/demo/image-map&quot;&gt;&gt;</pre>
+</div>
+<div icon="$:/core/images/storyview-zoomin" title="Images" revision="0" bag="default">
+<pre></pre>
 </div>
 <div tags="Markup" title="images" revision="0" bag="default">
 <pre>&lt;dt&gt;
@@ -17616,9 +17622,6 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 [img width=16 [http://www.tiddlywiki.com/favicon.ico]]&lt;br&gt;
 [img class=&quot;tc-image&quot; [http://www.tiddlywiki.com/favicon.ico]]
 &lt;/dd&gt;</pre>
-</div>
-<div icon="$:/core/images/storyview-zoomin" title="Images" revision="0" bag="default">
-<pre></pre>
 </div>
 <div icon="$:/core/images/export-button" title="Import" revision="0" bag="default">
 <pre></pre>
@@ -20908,9 +20911,6 @@ via &lt;&lt;source &quot;$:/.tb/demo/svg-circle&quot;&gt;&gt;</pre>
 &lt;&lt;ximg toc.jpg tooltip:&quot;example toc from tiddlywiki.com&quot; class:&quot;pretty&quot;&gt;&gt;
 example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 </div>
-<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
-<pre></pre>
-</div>
 <div tags="Markup" title="tables" revision="0" bag="default">
 <pre>&lt;dt style=&quot;font-size:80%;&quot;&gt;
 
@@ -20934,6 +20934,9 @@ example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 |and|now| vertical |
 |&gt;| right|~|
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
+<pre></pre>
 </div>
 <div created="20150206013252827" creator="Tobias Beer" modified="20150206014255748" modifier="Tobias Beer" tags="Tables Presentation Styles" title="Tables Without Borders" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>If you are wishing to use borderless tables [[like Diane|https://groups.google.com/d/msg/tiddlywiki/lPvh5gcea70/JHWgVmIvHdIJ]], here's what you do:
@@ -21498,6 +21501,9 @@ If you neither have a TiddlyWiki or TiddlySpot yet, here's a simple process to d
 &quot;$:/.tb/templates/list-search-me&quot;&gt;&gt;
 &lt;/dl&gt;</pre>
 </div>
+<div icon="$:/core/images/menu-button" title="ToC" revision="0" bag="default">
+<pre></pre>
+</div>
 <div created="20141125232200140" creator="Tobias Beer" modified="20141125232258995" modifier="Tobias Beer" title="toc" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>\define regexp-headings() (^!+.*)(?gmi)
 &lt;div class=&quot;tidtoc tc-tiddler-frame&quot;&gt;
@@ -21554,9 +21560,6 @@ float:right;
 text-align:right;
 }
 &lt;/style&gt;</pre>
-</div>
-<div icon="$:/core/images/menu-button" title="ToC" revision="0" bag="default">
-<pre></pre>
 </div>
 <div icon="$:/core/images/storyview-pop" title="Toggle" revision="0" bag="default">
 <pre></pre>
@@ -21680,7 +21683,7 @@ The defined styles here...
 <div title="traffic-light-buttons.gif" type="image/gif" revision="0" bag="default">
 <pre>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</pre>
 </div>
-<div created="20151010153220557" creator="Tobias Beer" modified="20151010153857544" modifier="Tobias Beer" summary="using the codeblock widget right" tags="Code Solutions Presentation Transclusion" title="Transcluding Highlighted Code" revision="8" bag="default">
+<div created="20151010153220557" creator="Tobias Beer" modified="20151010153857544" modifier="Tobias Beer" summary="using the codeblock widget right" tags="Code Solutions Presentation Transclusion" title="Transcluding Highlighted Code" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>To transclude a tiddler as code with syntax highlighting, install [[Highlight Plugin|http://tiddlywiki.com/plugins/tiddlywiki/highlight/]] and then use the ''codeblock'' widget specifying the language used to highlight your code...
 
 &lt;&lt;` &quot;&quot;&quot;&lt;$codeblock language=“javascript” code={{$:/.tb/demo/example.js}}/&gt;&quot;&quot;&quot;&gt;&gt;
