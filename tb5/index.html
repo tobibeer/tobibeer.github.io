@@ -249,6 +249,8 @@ Error message and password prompt
 
 <li>$:/.tb/modules/macros/validate.js</li>
 
+<li>$:/.tb/modules/startup/hide-sidebar.js</li>
+
 <li>$:/.tb/msg/core-overwrite</li>
 
 <li>$:/.tb/msg/tid-file</li>
@@ -645,9 +647,9 @@ Error message and password prompt
 
 <li>Clone Wikis Via store.php</li>
 
-<li>Code</li>
-
 <li>code</li>
+
+<li>Code</li>
 
 <li>Code-101</li>
 
@@ -681,9 +683,9 @@ Error message and password prompt
 
 <li>Contribute Via GitHub Web UI</li>
 
-<li>Core</li>
-
 <li>core</li>
+
+<li>Core</li>
 
 <li>Core Distro Plugins</li>
 
@@ -740,6 +742,8 @@ Error message and password prompt
 <li>Dates</li>
 
 <li>Dave Gifford</li>
+
+<li>Definition Lists</li>
 
 <li>definition-lists</li>
 
@@ -831,9 +835,9 @@ Error message and password prompt
 
 <li>Felix Küppers</li>
 
-<li>fields</li>
-
 <li>Fields</li>
+
+<li>fields</li>
 
 <li>Fields: Core</li>
 
@@ -859,9 +863,9 @@ Error message and password prompt
 
 <li>FilterOperator: join</li>
 
-<li>Filters</li>
-
 <li>filters</li>
+
+<li>Filters</li>
 
 <li>focus</li>
 
@@ -928,6 +932,8 @@ Error message and password prompt
 <li>How Big Are Tiddlers In Size?</li>
 
 <li>How to style lists</li>
+
+<li>HTML</li>
 
 <li>html-element-attributes</li>
 
@@ -1027,9 +1033,9 @@ Error message and password prompt
 
 <li>Macrocall vs. Macro</li>
 
-<li>Macros</li>
-
 <li>macros</li>
+
+<li>Macros</li>
 
 <li>magictabs</li>
 
@@ -1291,9 +1297,9 @@ Error message and password prompt
 
 <li>Table Of Contents In Sidebar</li>
 
-<li>Tables</li>
-
 <li>tables</li>
+
+<li>Tables</li>
 
 <li>Tables Without Borders</li>
 
@@ -3646,7 +3652,7 @@ exports.run = function(tid) {
 
 {{!!text}}</pre>
 </div>
-<div created="20151010123510353" creator="Tobias Beer" modified="20151010130841145" tags="" title="$:/.tb/demo/new-with-dynamic-contents" type="text/vnd.tiddlywiki" revision="26" bag="default">
+<div created="20151010123510353" creator="Tobias Beer" modified="20151010130841145" tags="" title="$:/.tb/demo/new-with-dynamic-contents" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>\define timeStampTitle() $(timeStamp)$ $(inputTitle)$
 \define createNew()
 &lt;$edit-text tiddler=&quot;$:/temp/timestamp-title&quot; tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;enter new title&quot;/&gt;
@@ -4745,6 +4751,36 @@ exports.run = function(id) {
 
 })();</pre>
 </div>
+<div created="20151010151732122" creator="Tobias Beer" modified="20151010151750739" module-type="startup" title="$:/.tb/modules/startup/hide-sidebar.js" type="application/javascript" revision="0" bag="default">
+<pre>/*\
+$:/.tb/modules/startup/hide-sidebar.js
+type: application/javascript
+module-type: startup
+
+Hides the sidebar on startup when the config tiddler [[$:/config/hide-sidebar-on-startup]] contains &quot;yes&quot;
+
+\*/
+(function(){
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+&quot;use strict&quot;;
+
+// Export name and synchronous status
+exports.name = &quot;hide-sidebar-on-startup&quot;;
+exports.platforms = [&quot;browser&quot;];
+exports.after = [&quot;startup&quot;];
+exports.synchronous = true;
+
+exports.startup = function() {
+	var conf = $tw.wiki.getTiddler(&quot;$:/config/HideSidebarOnStartup&quot;),
+		value = (conf ? conf.getFieldString(&quot;text&quot;) : &quot;&quot;).toLowerCase(),
+		state = value == &quot;yes&quot; ? &quot;no&quot; : &quot;yes&quot;;
+	$tw.wiki.setText(&quot;$:/state/sidebar&quot;, &quot;text&quot;, undefined, state);
+};
+
+})();</pre>
+</div>
 <div title="$:/.tb/msg/core-overwrite" revision="0" bag="default">
 <pre>@@.caution
 ''Caution'': Modifying core tiddlers prevents future upgrades to this component in TiddlyWiki from taking effect since your [[core shadow|http://tiddlywiki.com/static/ShadowTiddlers.html]] is overwritten. To revert to the core version, simply delete your overwritten tab, then apply your desired settings anew.
@@ -5301,7 +5337,7 @@ font-weight:bold;
 &lt;/dd&gt;
 &lt;/div&gt;</pre>
 </div>
-<div title="$:/.tb/template/tagged-timeline" revision="0" bag="default">
+<div created="20151010151306819" creator="Tobias Beer" modified="20151010151327922" title="$:/.tb/template/tagged-timeline" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tb-timeline-item&quot;&gt;
 &lt;dt&gt;
 &lt;span class=&quot;tb-timeline-date&quot;&gt;created &lt;$view field=&quot;created&quot; format=&quot;relativedate&quot;/&gt;&lt;/span&gt;
@@ -5310,6 +5346,11 @@ font-weight:bold;
 &lt;dd class=&quot;tb-timeline-tags&quot;&gt;
 &lt;$list filter=&quot;[all[current]tags[]sort[title]]-[&lt;remove&gt;]&quot; template=&quot;$:/core/ui/TagTemplate&quot;/&gt;
 &lt;/dd&gt;
+&lt;$list filter=&quot;[all[current]has[summary]]&quot;&gt;
+&lt;dd class=&quot;tb-timeline-summary&quot;&gt;
+@@color:grey;//{{!!summary}}//@@
+&lt;/dd&gt;
+&lt;/$list&gt;
 &lt;/div&gt;</pre>
 </div>
 <div created="20141116153002910" creator="Tobias Beer" list-after="$:/core/ui/ViewTemplate/tags" modified="20141119170429492" modifier="Tobias Beer" title="$:/.tb/template/task-tagger" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -5562,7 +5603,7 @@ exports.run = function(filter) {
 <div title="$:/.tb/templates/tag" revision="0" bag="default">
 <pre>&lt;$transclude tiddler=&quot;$:/core/ui/TagTemplate&quot;&gt;</pre>
 </div>
-<div title="$:/.tb/templates/tagged-recent" revision="0" bag="default">
+<div created="20151010151124154" creator="Tobias Beer" modified="20151010151124745" title="$:/.tb/templates/tagged-recent" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;$tiddler tiddler=&lt;&lt;item&gt;&gt;&gt;
 &lt;div class=&quot;tb-timeline-item&quot;&gt;
 &lt;dt&gt;
@@ -5572,6 +5613,11 @@ exports.run = function(filter) {
 &lt;dd class=&quot;tb-timeline-tags&quot;&gt;
 &lt;$list filter=&quot;[all[current]tags[]sort[title]]-[&lt;remove&gt;]&quot; template=&quot;$:/core/ui/TagTemplate&quot;/&gt;
 &lt;/dd&gt;
+&lt;$list filter=&quot;[all[current]has[summary]]&quot;&gt;
+&lt;dd class=&quot;tb-timeline-summary&quot;&gt;
+@@color:grey;//{{!!summary}}//@@
+&lt;/dd&gt;
+&lt;/$list&gt;
 &lt;/div&gt;
 &lt;/$tiddler&gt;</pre>
 </div>
@@ -6060,7 +6106,7 @@ ribbon
 $:/tags/Tagging
 Welcome</pre>
 </div>
-<div created="20151007165524815" creator="Tobias Beer" modified="20151007170445305" tags="" title="$:/config/HideSidebarOnStartup" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20151007165524815" creator="Tobias Beer" modified="20151010151831027" tags="" title="$:/config/HideSidebarOnStartup" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>no</pre>
 </div>
 <div created="20150926074846550" modified="20141122162630341" modifier="Tobias Beer" title="$:/config/Navigation/UpdateAddressBar" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -14438,8 +14484,8 @@ exports.let = function(source,operator,options) {
 <div title="$:/status/IsLoggedIn" revision="2" bag="default">
 <pre>yes</pre>
 </div>
-<div title="$:/status/UserName" revision="1" bag="default">
-<pre></pre>
+<div created="20151010151952016" creator="T" modified="20151010151954611" modifier="Tobias Bee" title="$:/status/UserName" revision="12" bag="default">
+<pre>Tobias Beer</pre>
 </div>
 <div created="20141128172305347" creator="Tobias Beer" modified="20141128172350710" modifier="Tobias Beer" summary="see [[Overflowing Tables — Help!]] for instructions." tags="[[Danielo Rodríguez]]" title="$:/styles/fixed-table" type="text/css" revision="0" bag="default">
 <pre>.fixed td {
@@ -15297,15 +15343,15 @@ Here's a rudimentary example to reorder lists using the ''calc'' macro...
 
 For example, you could have your own ''empty.html'' with customizations and plugins and then simply change the name of your wiki under [[ControlPanel|$:/ControlPanel]] / ''Saving'' and set ''Upload Filename'' accordingly. Then load that cloned wiki and continue to work there, saving changes to the new location.</pre>
 </div>
-<div icon="$:/core/images/permalink-button" title="Code" revision="0" bag="default">
-<pre></pre>
-</div>
 <div tags="Markup" title="code" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;dt&gt;&lt;pre&gt;&amp;#96;code&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
 &lt;dd&gt;`code` ...via backticks&lt;/dd&gt;
 
 &lt;dt&gt;&lt;pre&gt;&amp;#96;&amp;#96;with &amp;#96;backticks&amp;#96; &amp;#96;&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
 &lt;dd&gt;``with `backticks` ``&lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/permalink-button" title="Code" revision="0" bag="default">
+<pre></pre>
 </div>
 <div created="20150121121317298" creator="Tobias Beer" modified="20150122021331885" modifier="Tobias Beer" tags="Developer Code" title="Code-101" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>If you're new to TiddlyWiki, if not anything that looks like code, [[this discussion with Mat|https://groups.google.com/d/msg/tiddlywiki/l1Tu5uxSHSk/k8N9rvAm2OEJ]] may give you some pointers on how to approach all things programatic.
@@ -15513,6 +15559,9 @@ class=&quot;contact&quot; target=&quot;contact-response&quot; id=&quot;contact&q
 <div created="20141120171641267" creator="Tobias Beer" modified="20141125025528688" modifier="Tobias Beer" tags="GitHub Video Developer" title="Contribute Via GitHub Web UI" type="text/vnd.tiddlywiki" url="https://www.youtube.com/watch?v=L4zTkMYcri8" revision="0" bag="default">
 <pre>&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;http://www.youtube.com/embed/L4zTkMYcri8&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
 </div>
+<div created="20151003110757144" creator="Tobias Beer" follow="no" modified="20151003110922889" modifier="Tobias Beer" summary="a documentation aiming to provide a comprehensive summary of all concepts and components of the TiddlyWiki core" tags="[[Tobias Beer]]" title="core" url="http://tobibeer.github.io/tw/core" revision="0" bag="default">
+<pre></pre>
+</div>
 <div caption="Core" created="20150929113328405" creator="Tobias Beer" icon="$:/core/icon" menu="main" menu-icon="{{$:/core/icon}}" modified="20151005065353765" summary="functional elements and constructs of the tw5 core" tags="Welcome" title="Core" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>;[[WikiText|http://tiddlywiki.com/#WikiText]]
 :[[TW5 markup|Markup]], syntax, hypertext, formatting
@@ -15541,9 +15590,6 @@ class=&quot;contact&quot; target=&quot;contact-response&quot; id=&quot;contact&q
 :defined at the start of a tiddler, pragmas apply to the entire body, see [[Pragmas]]
 ;[[TextReferences|http://tiddlywiki.com/#TextReference]]
 :tiddler properties that can be retrieved or modified depending on the context</pre>
-</div>
-<div created="20151003110757144" creator="Tobias Beer" follow="no" modified="20151003110922889" modifier="Tobias Beer" summary="a documentation aiming to provide a comprehensive summary of all concepts and components of the TiddlyWiki core" tags="[[Tobias Beer]]" title="core" url="http://tobibeer.github.io/tw/core" revision="0" bag="default">
-<pre></pre>
 </div>
 <div created="20141120093416686" creator="Tobias Beer" modified="20141123203942199" modifier="Tobias Beer" title="Core Distro Plugins" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Although not packaged into a default TiddlyWiki, the following plugins are [[contained in the core distribution repository|http://tiddlywiki.com/#Plugins]]...
@@ -16024,6 +16070,46 @@ foo --- bar
 :http://www.giffmex.org/recursosgiffmex.htm
 :una creciente base de datos acerca de la fe cristiana</pre>
 </div>
+<div created="20151010151014041" creator="Tobias Beer" def="{{!!summary}}" modified="20151010152030569" modifier="Tobias Beer" summary="lists items with descriptions, e.g. terms or abbreviations" tags="HTML Lists Markup Presentation Solutions" title="Definition Lists" type="text/vnd.tiddlywiki" revision="3" bag="default">
+<pre>[[Definition lists|http://www.w3schools.com/tags/tag_dl.asp]] prove handy in [[many usecases|http://maxdesign.com.au/articles/definition]] for semantically correct markup.
+
+For example...
+&lt;style&gt;
+.info:before{
+content:&quot;i&quot;;
+font-size:2em;
+float:left;
+margin:10px 10px 0 5px;
+padding:7px 14px;
+background: #ffa;
+border-radius: 30px;
+}
+.info {
+padding:3px 7px 7px 7px;
+border-radius: 15px;
+background:#f9f9f9;
+}
+.info dd:before {
+content:&quot;&quot;
+}
+&lt;/style&gt;
+
+&lt;&lt;` &quot;&quot;&quot;@@.info
+; an info box
+: quick and dirty, some text worthy of consideration
+@@&quot;&quot;&quot;&gt;&gt;
+
+Note that, as with [[tables|Tables]], to use definition lists with the &lt;&lt;tw ListWidget&gt;&gt; you need to use actual html elements, e.g. ''dl'' (the list), ''dt'' (a term) and ''dd'' (its definition):
+
+&lt;&lt;` &quot;&quot;&quot;&lt;dl&gt;
+&lt;$list filter=&quot;[has[def]]&quot;&gt;
+&lt;dt&gt;&lt;$link&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;&lt;/dt&gt;
+&lt;dd&gt;{{!!def}}&lt;/dd&gt;
+&lt;/$list&gt;
+&lt;/dl&gt;&quot;&quot;&quot;&gt;&gt;
+
+The list of my [[Latest]] [[Solutions]] also uses definition lists via the template $:/.tb/templates/tagged-recent to show tiddlers with summaries and tags.</pre>
+</div>
 <div tags="Markup" title="definition-lists" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;dt&gt;
 
@@ -16182,7 +16268,7 @@ From [[Improving TiddlyWiki Documentation|http://tiddlywiki.com/#Improving%20Tid
 <div created="20141121231458699" creator="Tobias Beer" modified="20141205150859810" modifier="Tobias Beer" summary="&quot;bestrew&quot; — a demo for paper submission management&lt;!--Dylan Kinnet--&gt;" tags="Community" title="Dylan Kinnett" type="text/vnd.tiddlywiki" url="http://nocategories.net/tiddlywiki/bestrew.html" revision="0" bag="default">
 <pre></pre>
 </div>
-<div created="20151010122132172" modified="20151010131358512" tags="Macros Variables TextReferences Buttons Solutions" title="Dynamic Contents In Macros" revision="34" bag="default">
+<div created="20151010122132172" creator="Tobias Beer" modified="20151010152026309" modifier="Tobias Beer" summary="evaluating macros or text-references within macros" tags="Macros Variables TextReferences Buttons Solutions" title="Dynamic Contents In Macros" type="text/vnd.tiddlywiki" revision="3" bag="default">
 <pre>[[This problem|https://groups.google.com/forum/m/#!topic/tiddlywiki/tdunp-Tadfc]] often pops up when trying to concatenate dynamic contents in macros.
 
 Macros simply are a means to dynamically replace placeholders with parameterized text. And so, TiddlyWiki does not evaluate any &lt;&lt;tw Macros macro&gt;&gt; or &lt;&lt;tw TextReference &quot;text reference&quot;&gt;&gt; within a macro when the macro is &quot;called&quot; but rather inserts those as literal text.
@@ -16551,13 +16637,13 @@ http://tiddlywiki.com&lt;br&gt;
 <div icon="$:/core/images/plugin-generic-language" summary="inventor of TiddlyMap&lt;!--Felix Küppers, vis.js--&gt;" tags="Community" title="Felix Küppers" url="[[felixhayashi@GitHub|https://github.com/felixhayashi/TW5-TiddlyMap]]" revision="0" bag="default">
 <pre></pre>
 </div>
+<div icon="$:/core/images/permalink-button" title="Fields" revision="0" bag="default">
+<pre></pre>
+</div>
 <div created="20150201195001262" creator="Tobias Beer" follow="yes" modified="20150209084520349" modifier="Tobias Beer" summary="explorations as to imporoving working with tiddler fields" tags="[[Tobias Beer]] Fields" title="fields" url="http://tobibeer.github.io/tw/fields" revision="0" bag="default">
 <pre>!!! Topics
 ; [[FieldsPopup|http://tobibeer.github.io/tw/fields/#FieldsPopup]]
 : &lt;&lt;git5 issues/1448&gt;&gt; — field editing popups</pre>
-</div>
-<div icon="$:/core/images/permalink-button" title="Fields" revision="0" bag="default">
-<pre></pre>
 </div>
 <div caption="core" created="20141118195032028" creator="Tobias Beer" modified="20150107195102560" modifier="Tobias Beer" tags="Fields Lists Filters Core" title="Fields: Core" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>all [[core fields|Fields: Core]] except [[standard fields|Fields: Standard]] as documented in the TiddlyWiki core:
@@ -16777,10 +16863,10 @@ drag to your wiki: &lt;&lt;source [[$:/.tb/modules/filters/toc.js]] yes&gt;&gt;<
 
 see source: &lt;&lt;source $:/core/modules/filters/join.js&gt;&gt;</pre>
 </div>
-<div icon="$:/core/images/storyview-pop" title="Filters" revision="0" bag="default">
+<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150207094021145" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters" revision="0" bag="default">
 <pre></pre>
 </div>
-<div created="20150106230013119" creator="Tobias Beer" follow="yes" modified="20150207094021145" modifier="Tobias Beer" summary="a demo wiki with lots of examples for filters and their use in lists" tags="[[Tobias Beer]] Solutions Lists Filters Variables" title="filters" url="http://tobibeer.github.io/tw/filters" revision="0" bag="default">
+<div icon="$:/core/images/storyview-pop" title="Filters" revision="0" bag="default">
 <pre></pre>
 </div>
 <div created="20141202232934876" creator="Tobias Beer" follow="yes" modified="20150207103743726" modifier="Tobias Beer" summary="trying to have the standard theme focus more on content, hiding controls from visitors&lt;!--focus--&gt;" tags="[[Tobias Beer]]" title="focus" url="http://tobibeer.github.io/tw/focus" revision="0" bag="default">
@@ -17171,8 +17257,8 @@ The code for the above table &lt;&lt;source $:/.tb/demo/hide-tag&gt;&gt;</pre>
 
 In this thread, [[Jeremy Ruston]] also outlines the basics of [[creating left MainMenu|https://groups.google.com/d/msg/tiddlywiki/WRHmF8d_AyI/ckzBYElx8sQJ]].</pre>
 </div>
-<div created="20151007170453626" creator="Tobias Beer" modified="20151007171131766" tags="Solutions Presentation Sidebar" title="Hiding The Sidebar On Startup" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>In [[this discussion|https://groups.google.com/d/msg/tiddlywiki/dQbt-JFdRR8/P0zR0njIAQAJ]], Evan asks how to hide the sidebar on startup. Motivated by just having helped out FrD over [[setting some fields at startup|https://groups.google.com/d/msg/tiddlywiki/l8fhn6EJB88/2KwbNbSrDAAJ]] a few minutes earlier, I realized that this can quickly be achieved via a javascript module of type startup.
+<div created="20151007170453626" creator="Tobias Beer" modified="20151010152020134" modifier="Tobias Beer" summary="using a startup module to set a tiddler when TiddlyWiki opens" tags="Solutions Presentation Sidebar" title="Hiding The Sidebar On Startup" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<pre>In [[this discussion|https://groups.google.com/d/msg/tiddlywiki/dQbt-JFdRR8/P0zR0njIAQAJ]], Evan asks how to hide the sidebar on startup. Motivated by just having helped out ~FrD over [[setting some fields at startup|https://groups.google.com/d/msg/tiddlywiki/l8fhn6EJB88/2KwbNbSrDAAJ]] a few minutes earlier, I realized that this can quickly be achieved via a javascript module of type startup.
 
 !!Installation
 
@@ -17380,6 +17466,9 @@ Here's an a bit more elaborate table syntax using a macro to generate a link...
 &lt;/$list&gt;
 &lt;/table&gt;
 ```</pre>
+</div>
+<div created="20151010151944596" icon="$:/core/images/right-arrow" modified="20151010151944596" title="HTML" revision="1" bag="default">
+<pre></pre>
 </div>
 <div tags="Markup" title="html-element-attributes" revision="0" bag="default">
 <pre>&lt;dt&gt;
@@ -18165,9 +18254,6 @@ To use, simply install &lt;&lt;source $:/.tb/macros/localfolder&gt;&gt;
 
 &gt; It's actually historical. The angle bracket syntax for macros was first implemented early on, before transcluded attributes. Then as the widget syntax evolved it was clear that it was more flexible and extensible. Internally, everything is a widget, even plain text. All the wikitext syntax beyond the widget syntax is really just a series of shortcuts for more easily typing widgets and HTML. My expectation is that more and more of the basic idioms that we discover as we explore the way that widgets fit together will end up being elevated to wiki syntax. For example, we could evolve a wikitext syntax for assigning variables that is terser than the current `&lt;$set&gt;` widget.</pre>
 </div>
-<div icon="$:/core/images/right-arrow" title="Macros" revision="0" bag="default">
-<pre></pre>
-</div>
 <div tags="Markup" title="macros" revision="0" bag="default">
 <pre>\define test(x, y, z:'0')
 $x$ $y$ $z$
@@ -18249,6 +18335,9 @@ $name=&quot;test&quot;
 x=&lt;&lt;version&gt;&gt;
 y={{!!title}}/&gt;&lt;/code&gt;
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/right-arrow" title="Macros" revision="0" bag="default">
+<pre></pre>
 </div>
 <div summary="by [[Alberto Molina]], enhances TiddlyWiki with a tabsbar at the bottom of each tiddler to manage related tiddlers via lists, allowing to create related items via forms&lt;!--magictabs, bottomtabs--&gt;" tags="References Solutions Tabs Info Lists Relationships [[Alberto Molina]]" title="magictabs" url="http://magictabs.tiddlyspot.com" revision="0" bag="default">
 <pre>; discussion
@@ -20767,9 +20856,6 @@ via &lt;&lt;source &quot;$:/.tb/demo/svg-circle&quot;&gt;&gt;</pre>
 &lt;&lt;ximg toc.jpg tooltip:&quot;example toc from tiddlywiki.com&quot; class:&quot;pretty&quot;&gt;&gt;
 example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 </div>
-<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
-<pre></pre>
-</div>
 <div tags="Markup" title="tables" revision="0" bag="default">
 <pre>&lt;dt style=&quot;font-size:80%;&quot;&gt;
 
@@ -20793,6 +20879,9 @@ example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 |and|now| vertical |
 |&gt;| right|~|
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
+<pre></pre>
 </div>
 <div created="20150206013252827" creator="Tobias Beer" modified="20150206014255748" modifier="Tobias Beer" tags="Tables Presentation Styles" title="Tables Without Borders" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>If you are wishing to use borderless tables [[like Diane|https://groups.google.com/d/msg/tiddlywiki/lPvh5gcea70/JHWgVmIvHdIJ]], here's what you do:

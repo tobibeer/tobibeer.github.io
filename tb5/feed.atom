@@ -5,15 +5,29 @@
   <subtitle>a pocket full of tips </subtitle>
   <link href="http://tobibeer.github.io/tb5/feed.atom" rel="self" type="application/atom+xml"/>
   <author>
-    <name></name>
+    <name>Tobias Beer</name>
   </author>
-  <updated>2015-10-10T15:13:58+02:00</updated>
+  <updated>2015-10-10T17:20:30+02:00</updated>
+  <entry>
+    <title>Definition Lists</title>
+    <id>http://tobibeer.github.io/tb5#Definition%20Lists</id>
+    <link href='http://tobibeer.github.io/tb5#Definition%20Lists'/>
+    <updated>2015-10-10T17:20:30+02:00</updated>
+    <summary>lists items with descriptions, e.g. terms or abbreviations</summary>
+  </entry>
   <entry>
     <title>Dynamic Contents In Macros</title>
     <id>http://tobibeer.github.io/tb5#Dynamic%20Contents%20In%20Macros</id>
     <link href='http://tobibeer.github.io/tb5#Dynamic%20Contents%20In%20Macros'/>
-    <updated>2015-10-10T15:13:58+02:00</updated>
-    <summary>This problem often pops up when trying to concatenate dynamic contents in macros. Macros simply are a means to dynamically replace placeholders with parameterized text. And so, TiddlyWiki does not ev...</summary>
+    <updated>2015-10-10T17:20:26+02:00</updated>
+    <summary>evaluating macros or text-references within macros</summary>
+  </entry>
+  <entry>
+    <title>Hiding The Sidebar On Startup</title>
+    <id>http://tobibeer.github.io/tb5#Hiding%20The%20Sidebar%20On%20Startup</id>
+    <link href='http://tobibeer.github.io/tb5#Hiding%20The%20Sidebar%20On%20Startup'/>
+    <updated>2015-10-10T17:20:20+02:00</updated>
+    <summary>using a startup module to set a tiddler when TiddlyWiki opens</summary>
   </entry>
   <entry>
     <title>Cycling Tags</title>
@@ -21,13 +35,6 @@
     <link href='http://tobibeer.github.io/tb5#Cycling%20Tags'/>
     <updated>2015-10-08T11:04:39+02:00</updated>
     <summary>a javascript macro allowing to cycle through tags</summary>
-  </entry>
-  <entry>
-    <title>Hiding The Sidebar On Startup</title>
-    <id>http://tobibeer.github.io/tb5#Hiding%20The%20Sidebar%20On%20Startup</id>
-    <link href='http://tobibeer.github.io/tb5#Hiding%20The%20Sidebar%20On%20Startup'/>
-    <updated>2015-10-07T19:11:31+02:00</updated>
-    <summary>In this discussion, Evan asks how to hide the sidebar on startup. Motivated by just having helped out FrD over setting some fields at startup a few minutes earlier, I realized that this can quickly be...</summary>
   </entry>
   <entry>
     <title>Handling And Naming Tiddlers</title>
@@ -350,12 +357,5 @@
     <link href='http://tobibeer.github.io/tb5#classic'/>
     <updated>2015-02-09T14:21:49+02:00</updated>
     <summary>differences between TWc and TW5</summary>
-  </entry>
-  <entry>
-    <title>fields</title>
-    <id>http://tobibeer.github.io/tb5#fields</id>
-    <link href='http://tobibeer.github.io/tb5#fields'/>
-    <updated>2015-02-09T09:45:20+02:00</updated>
-    <summary>explorations as to imporoving working with tiddler fields</summary>
   </entry>
 </feed>
