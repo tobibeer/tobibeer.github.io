@@ -5,9 +5,16 @@
   <subtitle>a pocket full of tips </subtitle>
   <link href="http://tobibeer.github.io/tb5/feed.atom" rel="self" type="application/atom+xml"/>
   <author>
-    <name>Tobias Beer</name>
+    <name></name>
   </author>
-  <updated>2015-10-10T17:38:57+02:00</updated>
+  <updated>2015-10-10T18:00:27+02:00</updated>
+  <entry>
+    <title>Invoking Macros As Widget Parameters</title>
+    <id>http://tobibeer.github.io/tb5#Invoking%20Macros%20As%20Widget%20Parameters</id>
+    <link href='http://tobibeer.github.io/tb5#Invoking%20Macros%20As%20Widget%20Parameters'/>
+    <updated>2015-10-10T18:00:27+02:00</updated>
+    <summary>As Jeremy explains here... > Macro invocations used as widget attributes may have parameters. However, there are a couple of points to watch: > >* the output of the macro is not wikified; it is use...</summary>
+  </entry>
   <entry>
     <title>Transcluding Highlighted Code</title>
     <id>http://tobibeer.github.io/tb5#Transcluding%20Highlighted%20Code</id>
@@ -350,12 +357,5 @@
     <link href='http://tobibeer.github.io/tb5#VisualEditor'/>
     <updated>2015-02-10T20:53:46+02:00</updated>
     <summary>this widget uses the ckeditor lib for WYSIWYG editing</summary>
-  </entry>
-  <entry>
-    <title>ibox</title>
-    <id>http://tobibeer.github.io/tb5#ibox</id>
-    <link href='http://tobibeer.github.io/tb5#ibox'/>
-    <updated>2015-02-09T14:25:00+02:00</updated>
-    <summary>demonstrating lightboxes in tw5</summary>
   </entry>
 </feed>
