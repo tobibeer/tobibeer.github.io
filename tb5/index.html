@@ -43,7 +43,7 @@ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF S
 DAMAGE.
 " />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>tb5 — feed.atom</title>
+<title>tb5 — Welcome</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~--><!--~~ Raw markup ~~-->
 
 </head>
@@ -399,8 +399,6 @@ Error message and password prompt
 
 <li>$:/config/OffsetY</li>
 
-<li>$:/config/PageControlButtons/Visibility/$:/_ui/Buttons/new-markdown</li>
-
 <li>$:/config/PageControlButtons/Visibility/$:/.tb/demo/Buttons/new-recipe</li>
 
 <li>$:/config/PageControlButtons/Visibility/$:/.tb/ui/Buttons/new-markdown</li>
@@ -444,8 +442,6 @@ Error message and password prompt
 <li>$:/core/modules/filters/limit.js</li>
 
 <li>$:/core/modules/filters/match.js</li>
-
-<li>$:/core/modules/wiki.js</li>
 
 <li>$:/core/ui/Buttons/delete</li>
 
@@ -649,9 +645,9 @@ Error message and password prompt
 
 <li>Clone Wikis Via store.php</li>
 
-<li>code</li>
-
 <li>Code</li>
+
+<li>code</li>
 
 <li>Code-101</li>
 
@@ -951,9 +947,9 @@ Error message and password prompt
 
 <li>ImageMaps</li>
 
-<li>Images</li>
-
 <li>images</li>
+
+<li>Images</li>
 
 <li>Import</li>
 
@@ -1301,9 +1297,9 @@ Error message and password prompt
 
 <li>Table Of Contents In Sidebar</li>
 
-<li>tables</li>
-
 <li>Tables</li>
+
+<li>tables</li>
 
 <li>Tables Without Borders</li>
 
@@ -1383,9 +1379,9 @@ Error message and password prompt
 
 <li>Tobias Beer</li>
 
-<li>toc</li>
-
 <li>ToC</li>
+
+<li>toc</li>
 
 <li>Toggle</li>
 
@@ -1405,9 +1401,9 @@ Error message and password prompt
 
 <li>Transcluding Highlighted Code</li>
 
-<li>Transclusion</li>
-
 <li>transclusion</li>
+
+<li>Transclusion</li>
 
 <li>Translate TW5</li>
 
@@ -6129,9 +6125,6 @@ Welcome</pre>
 </div>
 <div created="20141120133228389" creator="Tobias Beer" modified="20141123105230659" modifier="Tobias Beer" summary="configures offset for [[$:/hack-142-scroll.js]] for a fixed topbar tagged [[$:/tags/TopLeftBar]]" title="$:/config/OffsetY" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>42</pre>
-</div>
-<div created="20150926074846472" modified="20141211111011913" modifier="Tobias Beer" title="$:/config/PageControlButtons/Visibility/$:/_ui/Buttons/new-markdown" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>hide</pre>
 </div>
 <div created="20150926074846441" modified="20150128125016884" modifier="Tobias Beer" title="$:/config/PageControlButtons/Visibility/$:/.tb/demo/Buttons/new-recipe" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>hide</pre>
@@ -12100,1230 +12093,6 @@ return results;
 };
 })();</pre>
 </div>
-<div created="20150117103822942" creator="Tobias Beer" modified="20150117110109177" modifier="Tobias Beer" module-type="wikimethod" tags="[[Cleanup 5.1.8]]" title="$:/core/modules/wiki.js" type="application/javascript" revision="0" bag="default">
-<pre>/*\
-title: $:/core/modules/wiki.js
-type: application/javascript
-module-type: wikimethod
-
-Extension methods for the $tw.Wiki object
-
-Adds the following properties to the wiki object:
-
-* `eventListeners` is a hashmap by type of arrays of listener functions
-* `changedTiddlers` is a hashmap describing changes to named tiddlers since wiki change events were last dispatched. Each entry is a hashmap containing two fields:
-	modified: true/false
-	deleted: true/false
-* `changeCount` is a hashmap by tiddler title containing a numerical index that starts at zero and is incremented each time a tiddler is created changed or deleted
-* `caches` is a hashmap by tiddler title containing a further hashmap of named cache objects. Caches are automatically cleared when a tiddler is modified or deleted
-* `globalCache` is a hashmap by cache name of cache objects that are cleared whenever any tiddler change occurs
-
-\*/
-(function(){
-
-/*jslint node: true, browser: true */
-/*global $tw: false */
-&quot;use strict&quot;;
-
-var widget = require(&quot;$:/core/modules/widgets/widget.js&quot;);
-
-var USER_NAME_TITLE = &quot;$:/status/UserName&quot;;
-
-/*
-Get the value of a text reference. Text references can have any of these forms:
-	&lt;tiddlertitle&gt;
-	&lt;tiddlertitle&gt;!!&lt;fieldname&gt;
-	!!&lt;fieldname&gt; - specifies a field of the current tiddlers
-	&lt;tiddlertitle&gt;##&lt;index&gt;
-*/
-exports.getTextReference = function(textRef,defaultText,currTiddlerTitle) {
-	var tr = $tw.utils.parseTextReference(textRef),
-		title = tr.title || currTiddlerTitle;
-	if(tr.field) {
-		var tiddler = this.getTiddler(title);
-		if(tr.field === &quot;title&quot;) { // Special case so we can return the title of a non-existent tiddler
-			return title;
-		} else if(tiddler &amp;&amp; $tw.utils.hop(tiddler.fields,tr.field)) {
-			return tiddler.getFieldString(tr.field);
-		} else {
-			return defaultText;
-		}
-	} else if(tr.index) {
-		return this.extractTiddlerDataItem(title,tr.index,defaultText);
-	} else {
-		return this.getTiddlerText(title,defaultText);
-	}
-};
-
-exports.setTextReference = function(textRef,value,currTiddlerTitle) {
-	var tr = $tw.utils.parseTextReference(textRef),
-		title = tr.title || currTiddlerTitle;
-	this.setText(title,tr.field,tr.index,value);
-};
-
-exports.setText = function(title,field,index,value) {
-	// Check if it is a reference to a tiddler field
-	if(index) {
-		var data = this.getTiddlerData(title,Object.create(null));
-		data[index] = value;
-		this.setTiddlerData(title,data,this.getModificationFields());
-	} else {
-		var tiddler = this.getTiddler(title),
-			fields = {title: title};
-		fields[field || &quot;text&quot;] = value;
-		this.addTiddler(new $tw.Tiddler(tiddler,fields,this.getModificationFields()));
-	}
-};
-
-exports.deleteTextReference = function(textRef,currTiddlerTitle) {
-	var tr = $tw.utils.parseTextReference(textRef),
-		title,tiddler,fields;
-	// Check if it is a reference to a tiddler
-	if(tr.title &amp;&amp; !tr.field) {
-		this.deleteTiddler(tr.title);
-	// Else check for a field reference
-	} else if(tr.field) {
-		title = tr.title || currTiddlerTitle;
-		tiddler = this.getTiddler(title);
-		if(tiddler &amp;&amp; $tw.utils.hop(tiddler.fields,tr.field)) {
-			fields = Object.create(null);
-			fields[tr.field] = undefined;
-			this.addTiddler(new $tw.Tiddler(tiddler,fields,this.getModificationFields()));
-		}
-	}
-};
-
-exports.addEventListener = function(type,listener) {
-	this.eventListeners = this.eventListeners || {};
-	this.eventListeners[type] = this.eventListeners[type]  || [];
-	this.eventListeners[type].push(listener);	
-};
-
-exports.removeEventListener = function(type,listener) {
-	var listeners = this.eventListeners[type];
-	if(listeners) {
-		var p = listeners.indexOf(listener);
-		if(p !== -1) {
-			listeners.splice(p,1);
-		}
-	}
-};
-
-exports.dispatchEvent = function(type /*, args */) {
-	var args = Array.prototype.slice.call(arguments,1),
-		listeners = this.eventListeners[type];
-	if(listeners) {
-		for(var p=0; p&lt;listeners.length; p++) {
-			var listener = listeners[p];
-			listener.apply(listener,args);
-		}
-	}
-};
-
-/*
-Causes a tiddler to be marked as changed, incrementing the change count, and triggers event handlers.
-This method should be called after the changes it describes have been made to the wiki.tiddlers[] array.
-	title: Title of tiddler
-	isDeleted: defaults to false (meaning the tiddler has been created or modified),
-		true if the tiddler has been deleted
-*/
-exports.enqueueTiddlerEvent = function(title,isDeleted) {
-	// Record the touch in the list of changed tiddlers
-	this.changedTiddlers = this.changedTiddlers || Object.create(null);
-	this.changedTiddlers[title] = this.changedTiddlers[title] || Object.create(null);
-	this.changedTiddlers[title][isDeleted ? &quot;deleted&quot; : &quot;modified&quot;] = true;
-	// Increment the change count
-	this.changeCount = this.changeCount || Object.create(null);
-	if($tw.utils.hop(this.changeCount,title)) {
-		this.changeCount[title]++;
-	} else {
-		this.changeCount[title] = 1;
-	}
-	// Trigger events
-	this.eventListeners = this.eventListeners || [];
-	if(!this.eventsTriggered) {
-		var self = this;
-		$tw.utils.nextTick(function() {
-			var changes = self.changedTiddlers;
-			self.changedTiddlers = Object.create(null);
-			self.eventsTriggered = false;
-			if($tw.utils.count(changes) &gt; 0) {
-				self.dispatchEvent(&quot;change&quot;,changes);
-			}
-		});
-		this.eventsTriggered = true;
-	}
-};
-
-exports.getSizeOfTiddlerEventQueue = function() {
-	return $tw.utils.count(this.changedTiddlers);
-};
-
-exports.clearTiddlerEventQueue = function() {
-	this.changedTiddlers = Object.create(null);
-	this.changeCount = Object.create(null);
-};
-
-exports.getChangeCount = function(title) {
-	this.changeCount = this.changeCount || Object.create(null);
-	if($tw.utils.hop(this.changeCount,title)) {
-		return this.changeCount[title];
-	} else {
-		return 0;
-	}
-};
-
-/*
-Generate an unused title from the specified base
-*/
-exports.generateNewTitle = function(baseTitle,options) {
-	options = options || {};
-	var c = 0,
-		title = baseTitle;
-	while(this.tiddlerExists(title) || this.isShadowTiddler(title) || this.findDraft(title)) {
-		title = baseTitle + 
-			(options.prefix || &quot; &quot;) + 
-			(++c);
-	}
-	return title;
-};
-
-exports.isSystemTiddler = function(title) {
-	return title.indexOf(&quot;$:/&quot;) === 0;
-};
-
-exports.isTemporaryTiddler = function(title) {
-	return title.indexOf(&quot;$:/temp/&quot;) === 0;
-};
-
-exports.isImageTiddler = function(title) {
-	var tiddler = this.getTiddler(title);
-	if(tiddler) {		
-		var contentTypeInfo = $tw.config.contentTypeInfo[tiddler.fields.type || &quot;text/vnd.tiddlywiki&quot;];
-		return !!contentTypeInfo &amp;&amp; contentTypeInfo.flags.indexOf(&quot;image&quot;) !== -1;
-	} else {
-		return null;
-	}
-};
-
-/*
-Like addTiddler() except it will silently reject any plugin tiddlers that are older than the currently loaded version. Returns true if the tiddler was imported
-*/
-exports.importTiddler = function(tiddler) {
-	var existingTiddler = this.getTiddler(tiddler.fields.title);
-	// Check if we're dealing with a plugin
-	if(tiddler &amp;&amp; tiddler.hasField(&quot;plugin-type&quot;) &amp;&amp; tiddler.hasField(&quot;version&quot;) &amp;&amp; existingTiddler &amp;&amp; existingTiddler.hasField(&quot;plugin-type&quot;) &amp;&amp; existingTiddler.hasField(&quot;version&quot;)) {
-		// Reject the incoming plugin if it is older
-		if($tw.utils.checkVersions(existingTiddler.fields.version,tiddler.fields.version)) {
-			return false;
-		}
-	}
-	// Fall through to adding the tiddler
-	this.addTiddler(tiddler);
-	return true;
-};
-
-/*
-Return a hashmap of the fields that should be set when a tiddler is created
-*/
-exports.getCreationFields = function() {
-	var fields = {
-			created: new Date()
-		},
-		creator = this.getTiddlerText(USER_NAME_TITLE);
-	if(creator) {
-		fields.creator = creator;
-	}
-	return fields;
-};
-
-/*
-Return a hashmap of the fields that should be set when a tiddler is modified
-*/
-exports.getModificationFields = function() {
-	var fields = Object.create(null),
-		modifier = this.getTiddlerText(USER_NAME_TITLE);
-	fields.modified = new Date();
-	if(modifier) {
-		fields.modifier = modifier;
-	}
-	return fields;
-};
-
-/*
-Return a sorted array of tiddler titles.  Options include:
-sortField: field to sort by
-excludeTag: tag to exclude
-includeSystem: whether to include system tiddlers (defaults to false)
-*/
-exports.getTiddlers = function(options) {
-	options = options || Object.create(null);
-	var self = this,
-		sortField = options.sortField || &quot;title&quot;,
-		tiddlers = [], t, titles = [];
-	this.each(function(tiddler,title) {
-		if(options.includeSystem || !self.isSystemTiddler(title)) {
-			if(!options.excludeTag || !tiddler.hasTag(options.excludeTag)) {
-				tiddlers.push(tiddler);
-			}
-		}
-	});
-	tiddlers.sort(function(a,b) {
-		var aa = a.fields[sortField].toLowerCase() || &quot;&quot;,
-			bb = b.fields[sortField].toLowerCase() || &quot;&quot;;
-		if(aa &lt; bb) {
-			return -1;
-		} else {
-			if(aa &gt; bb) {
-				return 1;
-			} else {
-				return 0;
-			}
-		}
-	});
-	for(t=0; t&lt;tiddlers.length; t++) {
-		titles.push(tiddlers[t].fields.title);
-	}
-	return titles;
-};
-
-exports.countTiddlers = function(excludeTag) {
-	var tiddlers = this.getTiddlers({excludeTag: excludeTag});
-	return $tw.utils.count(tiddlers);
-};
-
-/*
-Returns a function iterator(callback) that iterates through the specified titles, and invokes the callback with callback(tiddler,title)
-*/
-exports.makeTiddlerIterator = function(titles) {
-	var self = this;
-	if(!$tw.utils.isArray(titles)) {
-		titles = Object.keys(titles);
-	} else {
-		titles = titles.slice(0);
-	}
-	return function(callback) {
-		titles.forEach(function(title) {
-			callback(self.getTiddler(title),title);
-		});
-	};
-};
-
-/*
-Sort an array of tiddler titles by a specified field
-	titles: array of titles (sorted in place)
-	sortField: name of field to sort by
-	isDescending: true if the sort should be descending
-	isCaseSensitive: true if the sort should consider upper and lower case letters to be different
-*/
-exports.sortTiddlers = function(titles,sortField,isDescending,isCaseSensitive,isNumeric) {
-	var self = this;
-	titles.sort(function(a,b) {
-		if(sortField !== &quot;title&quot;) {
-			var tiddlerA = self.getTiddler(a),
-				tiddlerB = self.getTiddler(b);
-			if(tiddlerA) {
-				a = tiddlerA.fields[sortField] || &quot;&quot;;
-			} else {
-				a = &quot;&quot;;
-			}
-			if(tiddlerB) {
-				b = tiddlerB.fields[sortField] || &quot;&quot;;
-			} else {
-				b = &quot;&quot;;
-			}
-		}
-		if(isNumeric) {
-			a = Number(a);
-			b = Number(b);
-			return isDescending ? b - a : a - b;
-		} else if($tw.utils.isDate(a) &amp;&amp; $tw.utils.isDate(b)) {
-			return isDescending ? b - a : a - b;
-		} else {
-			a = String(a);
-			b = String(b);
-			if(!isCaseSensitive) {
-				a = a.toLowerCase();
-				b = b.toLowerCase();
-			}
-			return isDescending ? b.localeCompare(a) : a.localeCompare(b);
-		}
-	});
-};
-
-/*
-For every tiddler invoke a callback(title,tiddler) with `this` set to the wiki object. Options include:
-sortField: field to sort by
-excludeTag: tag to exclude
-includeSystem: whether to include system tiddlers (defaults to false)
-*/
-exports.forEachTiddler = function(/* [options,]callback */) {
-	var arg = 0,
-		options = arguments.length &gt;= 2 ? arguments[arg++] : {},
-		callback = arguments[arg++],
-		titles = this.getTiddlers(options),
-		t, tiddler;
-	for(t=0; t&lt;titles.length; t++) {
-		tiddler = this.getTiddler(titles[t]);
-		if(tiddler) {
-			callback.call(this,tiddler.fields.title,tiddler);
-		}
-	}
-};
-
-/*
-Return an array of tiddler titles that are directly linked from the specified tiddler
-*/
-exports.getTiddlerLinks = function(title) {
-	var self = this;
-	// We'll cache the links so they only get computed if the tiddler changes
-	return this.getCacheForTiddler(title,&quot;links&quot;,function() {
-		// Parse the tiddler
-		var parser = self.parseTiddler(title);
-		// Count up the links
-		var links = [],
-			checkParseTree = function(parseTree) {
-				for(var t=0; t&lt;parseTree.length; t++) {
-					var parseTreeNode = parseTree[t];
-					if(parseTreeNode.type === &quot;link&quot; &amp;&amp; parseTreeNode.attributes.to &amp;&amp; parseTreeNode.attributes.to.type === &quot;string&quot;) {
-						var value = parseTreeNode.attributes.to.value;
-						if(links.indexOf(value) === -1) {
-							links.push(value);
-						}
-					}
-					if(parseTreeNode.children) {
-						checkParseTree(parseTreeNode.children);
-					}
-				}
-			};
-		if(parser) {
-			checkParseTree(parser.tree);
-		}
-		return links;
-	});
-};
-
-/*
-Return an array of tiddler titles that link to the specified tiddler
-*/
-exports.getTiddlerBacklinks = function(targetTitle) {
-	var self = this,
-		backlinks = [];
-	this.forEachTiddler(function(title,tiddler) {
-		var links = self.getTiddlerLinks(title);
-		if(links.indexOf(targetTitle) !== -1) {
-			backlinks.push(title);
-		}
-	});
-	return backlinks;
-};
-
-/*
-Return a hashmap of tiddler titles that are referenced but not defined. Each value is the number of times the missing tiddler is referenced
-*/
-exports.getMissingTitles = function() {
-	var self = this,
-		missing = [];
-// We should cache the missing tiddler list, even if we recreate it every time any tiddler is modified
-	this.forEachTiddler(function(title,tiddler) {
-		var links = self.getTiddlerLinks(title);
-		$tw.utils.each(links,function(link) {
-			if((!self.tiddlerExists(link) &amp;&amp; !self.isShadowTiddler(link)) &amp;&amp; missing.indexOf(link) === -1) {
-				missing.push(link);
-			}
-		});
-	});
-	return missing;
-};
-
-exports.getOrphanTitles = function() {
-	var self = this,
-		orphans = this.getTiddlers();
-	this.forEachTiddler(function(title,tiddler) {
-		var links = self.getTiddlerLinks(title);
-		$tw.utils.each(links,function(link) {
-			var p = orphans.indexOf(link);
-			if(p !== -1) {
-				orphans.splice(p,1);
-			}
-		});
-	});
-	return orphans; // Todo
-};
-
-/*
-Retrieves a list of the tiddler titles that are tagged with a given tag
-*/
-exports.getTiddlersWithTag = function(tag) {
-	var self = this;
-	return this.getGlobalCache(&quot;taglist-&quot; + tag,function() {
-		var tagmap = self.getTagMap();
-		return self.sortByList(tagmap[tag],tag);
-	});
-};
-
-/*
-Get a hashmap by tag of arrays of tiddler titles
-*/
-exports.getTagMap = function() {
-	var self = this;
-	return this.getGlobalCache(&quot;tagmap&quot;,function() {
-		var tags = Object.create(null),
-			storeTags = function(tagArray,title) {
-				if(tagArray) {
-					for(var index=0; index&lt;tagArray.length; index++) {
-						var tag = tagArray[index];
-						if($tw.utils.hop(tags,tag)) {
-							tags[tag].push(title);
-						} else {
-							tags[tag] = [title];
-						}
-					}
-				}
-			},
-			title, tiddler;
-		// Collect up all the tags
-		self.eachShadow(function(tiddler,title) {
-			if(!self.tiddlerExists(title)) {
-				tiddler = self.getTiddler(title);
-				storeTags(tiddler.fields.tags,title);
-			}
-		});
-		self.each(function(tiddler,title) {
-			storeTags(tiddler.fields.tags,title);
-		});
-		return tags;
-	});
-};
-
-/*
-Lookup a given tiddler and return a list of all the tiddlers that include it in the specified list field
-*/
-exports.findListingsOfTiddler = function(targetTitle,fieldName) {
-	fieldName = fieldName || &quot;list&quot;;
-	var titles = [];
-	this.each(function(tiddler,title) {
-		var list = $tw.utils.parseStringArray(tiddler.fields[fieldName]);
-		if(list &amp;&amp; list.indexOf(targetTitle) !== -1) {
-			titles.push(title);
-		}
-	});
-	return titles;
-};
-
-/*
-Sorts an array of tiddler titles according to an ordered list
-*/
-exports.sortByList = function(array,listTitle) {
-	var list = this.getTiddlerList(listTitle);
-	if(!array || array.length === 0) {
-		return [];
-	} else {
-		var t, title, titles = [], unlisted = [];
-		// First place any entries that are present in the list
-		for(t=0; t&lt;list.length; t++) {
-			title = list[t];
-			if(array.indexOf(title) !== -1) {
-				titles.push(title);
-			}
-		}
-		// Add remaining entries to unlisted
-		for(t=0; t&lt;array.length; t++) {
-			title = array[t];
-			if(list.indexOf(title) === -1) {
-				unlisted.push(title);
-			}
-		}
-		//sort unlisted
-		$tw.wiki.sortTiddlers(unlisted,&quot;title&quot;,false,false);
-		//concat listed with unlisted
-		titles = titles.concat(unlisted);
-		// Finally obey the list-before and list-after fields of each tiddler in turn
-		var sortedTitles = titles.slice(0);
-		for(t=0; t&lt;sortedTitles.length; t++) {
-			title = sortedTitles[t];
-			var currPos = titles.indexOf(title),
-				newPos = -1,
-				tiddler = this.getTiddler(title);
-			if(tiddler) {
-				var beforeTitle = tiddler.fields[&quot;list-before&quot;],
-					afterTitle = tiddler.fields[&quot;list-after&quot;];
-				if(beforeTitle === &quot;&quot;) {
-					newPos = 0;
-				} else if(beforeTitle) {
-					newPos = titles.indexOf(beforeTitle);
-				} else if(afterTitle) {
-					newPos = titles.indexOf(afterTitle);
-					if(newPos &gt;= 0) {
-						++newPos;
-					}
-				}
-				if(newPos === -1) {
-					newPos = currPos;
-				}
-				if(newPos !== currPos) {
-					titles.splice(currPos,1);
-					if(newPos &gt;= currPos) {
-						newPos--;
-					}
-					titles.splice(newPos,0,title);
-				}
-			}
-
-		}
-		return titles;
-	}
-};
-
-exports.getSubTiddler = function(title,subTiddlerTitle) {
-	var bundleInfo = this.getPluginInfo(title) || this.getTiddlerData(title);
-	if(bundleInfo &amp;&amp; bundleInfo.tiddlers) {
-		var subTiddler = bundleInfo.tiddlers[subTiddlerTitle];
-		if(subTiddler) {
-			return new $tw.Tiddler(subTiddler);
-		}
-	}
-	return null;
-};
-
-/*
-Retrieve a tiddler as a JSON string of the fields
-*/
-exports.getTiddlerAsJson = function(title) {
-	var tiddler = this.getTiddler(title);
-	if(tiddler) {
-		var fields = Object.create(null);
-		$tw.utils.each(tiddler.fields,function(value,name) {
-			fields[name] = tiddler.getFieldString(name);
-		});
-		return JSON.stringify(fields);
-	} else {
-		return JSON.stringify({title: title});
-	}
-};
-
-/*
-Get the content of a tiddler as a JavaScript object. How this is done depends on the type of the tiddler:
-
-application/json: the tiddler JSON is parsed into an object
-application/x-tiddler-dictionary: the tiddler is parsed as sequence of name:value pairs
-
-Other types currently just return null.
-
-titleOrTiddler: string tiddler title or a tiddler object
-defaultData: default data to be returned if the tiddler is missing or doesn't contain data
-*/
-exports.getTiddlerData = function(titleOrTiddler,defaultData) {
-	var tiddler = titleOrTiddler,
-		data;
-	if(!(tiddler instanceof $tw.Tiddler)) {
-		tiddler = this.getTiddler(tiddler);	
-	}
-	if(tiddler &amp;&amp; tiddler.fields.text) {
-		switch(tiddler.fields.type) {
-			case &quot;application/json&quot;:
-				// JSON tiddler
-				try {
-					data = JSON.parse(tiddler.fields.text);
-				} catch(ex) {
-					return defaultData;
-				}
-				return data;
-			case &quot;application/x-tiddler-dictionary&quot;:
-				return $tw.utils.parseFields(tiddler.fields.text);
-		}
-	}
-	return defaultData;
-};
-
-/*
-Extract an indexed field from within a data tiddler
-*/
-exports.extractTiddlerDataItem = function(titleOrTiddler,index,defaultText) {
-	var data = this.getTiddlerData(titleOrTiddler,Object.create(null)),
-		text;
-	if(data &amp;&amp; $tw.utils.hop(data,index)) {
-		text = data[index];
-	}
-	if(typeof text === &quot;string&quot; || typeof text === &quot;number&quot;) {
-		return text.toString();
-	} else {
-		return defaultText;
-	}
-};
-
-/*
-Set a tiddlers content to a JavaScript object. Currently this is done by setting the tiddler's type to &quot;application/json&quot; and setting the text to the JSON text of the data.
-title: title of tiddler
-data: object that can be serialised to JSON
-fields: optional hashmap of additional tiddler fields to be set
-*/
-exports.setTiddlerData = function(title,data,fields) {
-	var existingTiddler = this.getTiddler(title),
-		newFields = {
-			title: title
-	};
-	if(existingTiddler &amp;&amp; existingTiddler.fields.type === &quot;application/x-tiddler-dictionary&quot;) {
-		newFields.text = $tw.utils.makeTiddlerDictionary(data);
-	} else {
-		newFields.type = &quot;application/json&quot;;
-		newFields.text = JSON.stringify(data,null,$tw.config.preferences.jsonSpaces);
-	}
-	this.addTiddler(new $tw.Tiddler(this.getCreationFields(),existingTiddler,fields,newFields,this.getModificationFields()));
-};
-
-/*
-Return the content of a tiddler as an array containing each line
-*/
-exports.getTiddlerList = function(title,field,index) {
-	if(index) {
-		return $tw.utils.parseStringArray(this.extractTiddlerDataItem(title,index,&quot;&quot;));
-	}
-	field = field || &quot;list&quot;;
-	var tiddler = this.getTiddler(title);
-	if(tiddler) {
-		return ($tw.utils.parseStringArray(tiddler.fields[field]) || []).slice(0);
-	}
-	return [];
-};
-
-// Return a named global cache object. Global cache objects are cleared whenever a tiddler change occurs
-exports.getGlobalCache = function(cacheName,initializer) {
-	this.globalCache = this.globalCache || Object.create(null);
-	if($tw.utils.hop(this.globalCache,cacheName)) {
-		return this.globalCache[cacheName];
-	} else {
-		this.globalCache[cacheName] = initializer();
-		return this.globalCache[cacheName];
-	}
-};
-
-exports.clearGlobalCache = function() {
-	this.globalCache = Object.create(null);
-};
-
-// Return the named cache object for a tiddler. If the cache doesn't exist then the initializer function is invoked to create it
-exports.getCacheForTiddler = function(title,cacheName,initializer) {
-
-// Temporarily disable caching so that tweakParseTreeNode() works
-return initializer();
-
-//	this.caches = this.caches || Object.create(null);
-//	var caches = this.caches[title];
-//	if(caches &amp;&amp; caches[cacheName]) {
-//		return caches[cacheName];
-//	} else {
-//		if(!caches) {
-//			caches = Object.create(null);
-//			this.caches[title] = caches;
-//		}
-//		caches[cacheName] = initializer();
-//		return caches[cacheName];
-//	}
-};
-
-// Clear all caches associated with a particular tiddler
-exports.clearCache = function(title) {
-	this.caches = this.caches || Object.create(null);
-	if($tw.utils.hop(this.caches,title)) {
-		delete this.caches[title];
-	}
-};
-
-exports.initParsers = function(moduleType) {
-	// Install the parser modules
-	$tw.Wiki.parsers = {};
-	var self = this;
-	$tw.modules.forEachModuleOfType(&quot;parser&quot;,function(title,module) {
-		for(var f in module) {
-			if($tw.utils.hop(module,f)) {
-				$tw.Wiki.parsers[f] = module[f]; // Store the parser class
-			}
-		}
-	});
-};
-
-/*
-Parse a block of text of a specified MIME type
-	type: content type of text to be parsed
-	text: text
-	options: see below
-Options include:
-	parseAsInline: if true, the text of the tiddler will be parsed as an inline run
-	_canonical_uri: optional string of the canonical URI of this content
-*/
-exports.old_parseText = function(type,text,options) {
-	options = options || {};
-	// Select a parser
-	var Parser = $tw.Wiki.parsers[type];
-	if(!Parser &amp;&amp; $tw.config.fileExtensionInfo[type]) {
-		Parser = $tw.Wiki.parsers[$tw.config.fileExtensionInfo[type].type];
-	}
-	if(!Parser) {
-		Parser = $tw.Wiki.parsers[options.defaultType || &quot;text/vnd.tiddlywiki&quot;];
-	}
-	if(!Parser) {
-		return null;
-	}
-	// Return the parser instance
-	return new Parser(type,text,{
-		parseAsInline: options.parseAsInline,
-		wiki: this,
-		_canonical_uri: options._canonical_uri
-	});
-};
-
-/*
-Parse a tiddler according to its MIME type
-*/
-exports.old_parseTiddler = function(title,options) {
-	options = $tw.utils.extend({},options);
-	var cacheType = options.parseAsInline ? &quot;newInlineParseTree&quot; : &quot;newBlockParseTree&quot;,
-		tiddler = this.getTiddler(title),
-		self = this;
-	return tiddler ? this.getCacheForTiddler(title,cacheType,function() {
-			if(tiddler.hasField(&quot;_canonical_uri&quot;)) {
-				options._canonical_uri = tiddler.fields._canonical_uri;
-			}
-			return self.old_parseText(tiddler.fields.type,tiddler.fields.text,options);
-		}) : null;
-};
-
-var tweakMacroDefinition = function(nodeList) {
-	if(nodeList &amp;&amp; nodeList[0] &amp;&amp; nodeList[0].type === &quot;macrodef&quot;) {
-		nodeList[0].type = &quot;set&quot;;
-		nodeList[0].attributes = {
-			name: {type: &quot;string&quot;, value: nodeList[0].name},
-			value: {type: &quot;string&quot;, value: nodeList[0].text}
-		};
-		nodeList[0].children = nodeList.slice(1);
-		nodeList.splice(1,nodeList.length-1);
-		tweakMacroDefinition(nodeList[0].children);
-	}
-};
-
-var tweakParser = function(parser) {
-	// Move any macro definitions to contain the body tree
-	tweakMacroDefinition(parser.tree);
-};
-
-exports.parseText = function(type,text,options) {
-	var parser = this.old_parseText(type,text,options);
-	if(parser) {
-		tweakParser(parser);
-	}
-	return parser;
-};
-
-exports.parseTiddler = function(title,options) {
-	var parser = this.old_parseTiddler(title,options);
-	if(parser) {
-		tweakParser(parser);
-	}
-	return parser;
-};
-
-exports.parseTextReference = function(title,field,index,options) {
-	var tiddler,text;
-	if(options.subTiddler) {
-		tiddler = this.getSubTiddler(title,options.subTiddler);
-	} else {
-		tiddler = this.getTiddler(title);
-		if(field === &quot;text&quot; || (!field &amp;&amp; !index)) {
-			this.getTiddlerText(title); // Force the tiddler to be lazily loaded
-			return this.parseTiddler(title,options);
-		}
-	}
-	if(field === &quot;text&quot; || (!field &amp;&amp; !index)) {
-		if(tiddler &amp;&amp; tiddler.fields) {
-			return this.parseText(tiddler.fields.type || &quot;text/vnd.tiddlywiki&quot;,tiddler.fields.text,options);			
-		} else {
-			return null;
-		}
-	} else if(field) {
-		if(field === &quot;title&quot;) {
-			text = title;
-		} else {
-			if(!tiddler || !tiddler.hasField(field)) {
-				return null;
-			}
-			text = tiddler.fields[field];
-		}
-		return this.parseText(&quot;text/vnd.tiddlywiki&quot;,text.toString(),options);
-	} else if(index) {
-		this.getTiddlerText(title); // Force the tiddler to be lazily loaded
-		text = this.extractTiddlerDataItem(tiddler,index,undefined);
-		if(text === undefined) {
-			return null;
-		}
-		return this.parseText(&quot;text/vnd.tiddlywiki&quot;,text,options);
-	}
-};
-
-/*
-Make a widget tree for a parse tree
-parser: parser object
-options: see below
-Options include:
-document: optional document to use
-variables: hashmap of variables to set
-parentWidget: optional parent widget for the root node
-*/
-exports.makeWidget = function(parser,options) {
-	options = options || {};
-	var widgetNode = {
-			type: &quot;widget&quot;,
-			children: []
-		},
-		currWidgetNode = widgetNode;
-	// Create set variable widgets for each variable
-	$tw.utils.each(options.variables,function(value,name) {
-		var setVariableWidget = {
-			type: &quot;set&quot;,
-			attributes: {
-				name: {type: &quot;string&quot;, value: name},
-				value: {type: &quot;string&quot;, value: value}
-			},
-			children: []
-		};
-		currWidgetNode.children = [setVariableWidget];
-		currWidgetNode = setVariableWidget;
-	});
-	// Add in the supplied parse tree nodes
-	currWidgetNode.children = parser ? parser.tree : [];
-	// Create the widget
-	return new widget.widget(widgetNode,{
-		wiki: this,
-		document: options.document || $tw.fakeDocument,
-		parentWidget: options.parentWidget
-	});
-};
-
-/*
-Make a widget tree for transclusion
-title: target tiddler title
-options: as for wiki.makeWidget() plus:
-options.field: optional field to transclude (defaults to &quot;text&quot;)
-options.children: optional array of children for the transclude widget
-*/
-exports.makeTranscludeWidget = function(title,options) {
-	options = options || {};
-	var parseTree = {tree: [{
-			type: &quot;element&quot;,
-			tag: &quot;div&quot;,
-			children: [{
-				type: &quot;transclude&quot;,
-				attributes: {
-					tiddler: {
-						name: &quot;tiddler&quot;,
-						type: &quot;string&quot;,
-						value: title}},
-				isBlock: !options.parseAsInline}]}
-	]};
-	if(options.field) {
-		parseTree.tree[0].children[0].attributes.field = {type: &quot;string&quot;, value: options.field};
-	}
-	if(options.children) {
-		parseTree.tree[0].children[0].children = options.children;
-	}
-	return $tw.wiki.makeWidget(parseTree,options);
-};
-
-/*
-Parse text in a specified format and render it into another format
-	outputType: content type for the output
-	textType: content type of the input text
-	text: input text
-	options: see below
-Options include:
-variables: hashmap of variables to set
-parentWidget: optional parent widget for the root node
-*/
-exports.renderText = function(outputType,textType,text,options) {
-	options = options || {};
-	var parser = this.parseText(textType,text,options),
-		widgetNode = this.makeWidget(parser,options);
-	var container = $tw.fakeDocument.createElement(&quot;div&quot;);
-	widgetNode.render(container,null);
-	return outputType === &quot;text/html&quot; ? container.innerHTML : container.textContent;
-};
-
-/*
-Parse text from a tiddler and render it into another format
-	outputType: content type for the output
-	title: title of the tiddler to be rendered
-	options: see below
-Options include:
-variables: hashmap of variables to set
-parentWidget: optional parent widget for the root node
-*/
-exports.renderTiddler = function(outputType,title,options) {
-	options = options || {};
-	var parser = this.parseTiddler(title,options),
-		widgetNode = this.makeWidget(parser,options);
-	var container = $tw.fakeDocument.createElement(&quot;div&quot;);
-	widgetNode.render(container,null);
-	return outputType === &quot;text/html&quot; ? container.innerHTML : (outputType === &quot;text/plain-formatted&quot; ? container.formattedTextContent : container.textContent);
-};
-
-/*
-Return an array of tiddler titles that match a search string
-	text: The text string to search for
-	options: see below
-Options available:
-	source: an iterator function for the source tiddlers, called source(iterator), where iterator is called as iterator(tiddler,title)
-	exclude: An array of tiddler titles to exclude from the search
-	invert: If true returns tiddlers that do not contain the specified string
-	caseSensitive: If true forces a case sensitive search
-	literal: If true, searches for literal string, rather than separate search terms
-	field: If specified, restricts the search to the specified field
-*/
-exports.search = function(text,options) {
-	options = options || {};
-	var self = this,
-		t,
-		invert = !!options.invert;
-	// Convert the search string into a regexp for each term
-	var terms, searchTermsRegExps,
-		flags = options.caseSensitive ? &quot;&quot; : &quot;i&quot;;
-	if(options.literal) {
-		if(text.length === 0) {
-			searchTermsRegExps = null;
-		} else {
-			searchTermsRegExps = [new RegExp(&quot;(&quot; + $tw.utils.escapeRegExp(text) + &quot;)&quot;,flags)];
-		}
-	} else {
-		terms = text.split(/ +/);
-		if(terms.length === 1 &amp;&amp; terms[0] === &quot;&quot;) {
-			searchTermsRegExps = null;
-		} else {
-			searchTermsRegExps = [];
-			for(t=0; t&lt;terms.length; t++) {
-				searchTermsRegExps.push(new RegExp(&quot;(&quot; + $tw.utils.escapeRegExp(terms[t]) + &quot;)&quot;,flags));
-			}
-		}
-	}
-	// Function to check a given tiddler for the search term
-	var searchTiddler = function(title) {
-		if(!searchTermsRegExps) {
-			return true;
-		}
-		var tiddler = self.getTiddler(title);
-		if(!tiddler) {
-			tiddler = new $tw.Tiddler({title: title, text: &quot;&quot;, type: &quot;text/vnd.tiddlywiki&quot;});
-		}
-		var contentTypeInfo = $tw.config.contentTypeInfo[tiddler.fields.type] || $tw.config.contentTypeInfo[&quot;text/vnd.tiddlywiki&quot;],
-			match;
-		for(var t=0; t&lt;searchTermsRegExps.length; t++) {
-			match = false;
-			if(options.field) {
-				match = searchTermsRegExps[t].test(tiddler.getFieldString(options.field));
-			} else {
-				// Search title, tags and body
-				if(contentTypeInfo.encoding === &quot;utf8&quot;) {
-					match = match || searchTermsRegExps[t].test(tiddler.fields.text);
-				}
-				var tags = tiddler.fields.tags ? tiddler.fields.tags.join(&quot;\0&quot;) : &quot;&quot;;
-				match = match || searchTermsRegExps[t].test(tags) || searchTermsRegExps[t].test(tiddler.fields.title);
-			}
-			if(!match) {
-				return false;
-			}
-		}
-		return true;
-	};
-	// Loop through all the tiddlers doing the search
-	var results = [],
-		source = options.source || this.each;
-	source(function(tiddler,title) {
-		if(searchTiddler(title) !== options.invert) {
-			results.push(title);
-		}
-	});
-	// Remove any of the results we have to exclude
-	if(options.exclude) {
-		for(t=0; t&lt;options.exclude.length; t++) {
-			var p = results.indexOf(options.exclude[t]);
-			if(p !== -1) {
-				results.splice(p,1);
-			}
-		}
-	}
-	return results;
-};
-
-/*
-Trigger a load for a tiddler if it is skinny. Returns the text, or undefined if the tiddler is missing, null if the tiddler is being lazily loaded.
-*/
-exports.getTiddlerText = function(title,defaultText) {
-	var tiddler = this.getTiddler(title);
-	// Return undefined if the tiddler isn't found
-	if(!tiddler) {
-		return defaultText;
-	}
-	if(tiddler.fields.text !== undefined) {
-		// Just return the text if we've got it
-		return tiddler.fields.text;
-	} else {
-		// Tell any listeners about the need to lazily load this tiddler
-		this.dispatchEvent(&quot;lazyLoad&quot;,title);
-		// Indicate that the text is being loaded
-		return null;
-	}
-};
-
-/*
-Read an array of browser File objects, invoking callback(tiddlerFieldsArray) once they're all read
-*/
-exports.readFiles = function(files,callback) {
-	var result = [],
-		outstanding = files.length;
-	for(var f=0; f&lt;files.length; f++) {
-		this.readFile(files[f],function(tiddlerFieldsArray) {
-			result.push.apply(result,tiddlerFieldsArray);
-			if(--outstanding === 0) {
-				callback(result);
-			}
-		});
-	}
-	return files.length;
-};
-
-/*
-Read a browser File object, invoking callback(tiddlerFieldsArray) with an array of tiddler fields objects
-*/
-exports.readFile = function(file,callback) {
-	// Get the type, falling back to the filename extension
-	var self = this,
-		type = file.type;
-	if(type === &quot;&quot; || !type) {
-		var dotPos = file.name.lastIndexOf(&quot;.&quot;);
-		if(dotPos !== -1) {
-			var fileExtensionInfo = $tw.config.fileExtensionInfo[file.name.substr(dotPos)];
-			if(fileExtensionInfo) {
-				type = fileExtensionInfo.type;
-			}
-		}
-	}
-	// Figure out if we're reading a binary file
-	var contentTypeInfo = $tw.config.contentTypeInfo[type],
-		isBinary = contentTypeInfo ? contentTypeInfo.encoding === &quot;base64&quot; : false;
-	// Log some debugging information
-	if($tw.log.IMPORT) {
-		console.log(&quot;Importing file '&quot; + file.name + &quot;', type: '&quot; + type + &quot;', isBinary: &quot; + isBinary);
-	}
-	// Create the FileReader
-	var reader = new FileReader();
-	// Onload
-	reader.onload = function(event) {
-		// Deserialise the file contents
-		var text = event.target.result,
-			tiddlerFields = {title: file.name || &quot;Untitled&quot;, type: type};
-		// Are we binary?
-		if(isBinary) {
-			// The base64 section starts after the first comma in the data URI
-			var commaPos = text.indexOf(&quot;,&quot;);
-			if(commaPos !== -1) {
-				tiddlerFields.text = text.substr(commaPos+1);
-				callback([tiddlerFields]);
-			}
-		} else {
-			// Check whether this is an encrypted TiddlyWiki file
-			var encryptedJson = $tw.utils.extractEncryptedStoreArea(text);
-			if(encryptedJson) {
-				// If so, attempt to decrypt it with the current password
-				$tw.utils.decryptStoreAreaInteractive(encryptedJson,function(tiddlers) {
-					callback(tiddlers);
-				});
-			} else {
-				// Otherwise, just try to deserialise any tiddlers in the file
-				callback(self.deserializeTiddlers(type,text,tiddlerFields));
-			}
-		}
-	};
-	// Kick off the read
-	if(isBinary) {
-		reader.readAsDataURL(file);
-	} else {
-		reader.readAsText(file);
-	}
-};
-
-/*
-Find any existing draft of a specified tiddler
-*/
-exports.findDraft = function(targetTitle) {
-	var draftTitle = undefined;
-	this.forEachTiddler({includeSystem: true},function(title,tiddler) {
-		if(tiddler.fields[&quot;draft.title&quot;] &amp;&amp; tiddler.fields[&quot;draft.of&quot;] === targetTitle) {
-			draftTitle = title;
-		}
-	});
-	return draftTitle;
-}
-
-/*
-Check whether the specified draft tiddler has been modified
-*/
-exports.isDraftModified = function(title) {
-	var tiddler = this.getTiddler(title);
-	if(!tiddler.isDraft()) {
-		return false;
-	}
-	var ignoredFields = [&quot;created&quot;, &quot;modified&quot;, &quot;title&quot;, &quot;draft.title&quot;, &quot;draft.of&quot;],
-		origTiddler = this.getTiddler(tiddler.fields[&quot;draft.of&quot;]);
-	if(!origTiddler) {
-		return tiddler.fields.text !== &quot;&quot;;
-	}
-	return tiddler.fields[&quot;draft.title&quot;] !== tiddler.fields[&quot;draft.of&quot;] || !tiddler.isEqual(origTiddler,ignoredFields);
-};
-
-/*
-Add a new record to the top of the history stack
-title: a title string or an array of title strings
-fromPageRect: page coordinates of the origin of the navigation
-historyTitle: title of history tiddler (defaults to $:/HistoryList)
-*/
-exports.addToHistory = function(title,fromPageRect,historyTitle) {
-	historyTitle = historyTitle || &quot;$:/HistoryList&quot;;
-	var titles = $tw.utils.isArray(title) ? title : [title];
-	// Add a new record to the top of the history stack
-	var historyList = this.getTiddlerData(historyTitle,[]);
-	$tw.utils.each(titles,function(title) {
-		historyList.push({title: title, fromPageRect: fromPageRect});
-	});
-	this.setTiddlerData(historyTitle,historyList,{&quot;current-tiddler&quot;: titles[titles.length-1]});
-};
-
-/*
-Invoke the available upgrader modules
-titles: array of tiddler titles to be processed
-tiddlers: hashmap by title of tiddler fields of pending import tiddlers. These can be modified by the upgraders. An entry with no fields indicates a tiddler that was pending import has been suppressed. When entries are added to the pending import the tiddlers hashmap may have entries that are not present in the titles array
-Returns a hashmap of messages keyed by tiddler title.
-*/
-exports.invokeUpgraders = function(titles,tiddlers) {
-	// Collect up the available upgrader modules
-	var self = this;
-	if(!this.upgraderModules) {
-		this.upgraderModules = [];
-		$tw.modules.forEachModuleOfType(&quot;upgrader&quot;,function(title,module) {
-			if(module.upgrade) {
-				self.upgraderModules.push(module);
-			}
-		});
-	}
-	// Invoke each upgrader in turn
-	var messages = {};
-	for(var t=0; t&lt;this.upgraderModules.length; t++) {
-		var upgrader = this.upgraderModules[t],
-			upgraderMessages = upgrader.upgrade(this,titles,tiddlers);
-		$tw.utils.extend(messages,upgraderMessages);
-	}
-	return messages;
-};
-
-})();</pre>
-</div>
 <div caption="{{$:/core/images/delete-button}} {{$:/language/Buttons/Delete/Caption}}" created="20150129120604715" creator="Tobias Beer" description="{{$:/language/Buttons/Delete/Hint}}" modified="20150129120604715" modifier="Tobias Beer" tags="$:/tags/EditToolbar $:/tags/ViewToolbar" title="$:/core/ui/Buttons/delete" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;$button message=&quot;tm-delete-tiddler&quot; tooltip={{$:/language/Buttons/Delete/Hint}} aria-label={{$:/language/Buttons/Delete/Caption}} class=&lt;&lt;tv-config-toolbar-class&gt;&gt;&gt;
 &lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;prefix[yes]]&quot;&gt;
@@ -15400,15 +14169,15 @@ Here's a rudimentary example to reorder lists using the ''calc'' macro...
 
 For example, you could have your own ''empty.html'' with customizations and plugins and then simply change the name of your wiki under [[ControlPanel|$:/ControlPanel]] / ''Saving'' and set ''Upload Filename'' accordingly. Then load that cloned wiki and continue to work there, saving changes to the new location.</pre>
 </div>
+<div icon="$:/core/images/permalink-button" title="Code" revision="0" bag="default">
+<pre></pre>
+</div>
 <div tags="Markup" title="code" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;dt&gt;&lt;pre&gt;&amp;#96;code&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
 &lt;dd&gt;`code` ...via backticks&lt;/dd&gt;
 
 &lt;dt&gt;&lt;pre&gt;&amp;#96;&amp;#96;with &amp;#96;backticks&amp;#96; &amp;#96;&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
 &lt;dd&gt;``with `backticks` ``&lt;/dd&gt;</pre>
-</div>
-<div icon="$:/core/images/permalink-button" title="Code" revision="0" bag="default">
-<pre></pre>
 </div>
 <div created="20150121121317298" creator="Tobias Beer" modified="20150122021331885" modifier="Tobias Beer" tags="Developer Code" title="Code-101" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>If you're new to TiddlyWiki, if not anything that looks like code, [[this discussion with Mat|https://groups.google.com/d/msg/tiddlywiki/l1Tu5uxSHSk/k8N9rvAm2OEJ]] may give you some pointers on how to approach all things programatic.
@@ -17603,9 +16372,6 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 
 &lt;&lt;source &quot;$:/.tb/demo/image-map&quot;&gt;&gt;</pre>
 </div>
-<div icon="$:/core/images/storyview-zoomin" title="Images" revision="0" bag="default">
-<pre></pre>
-</div>
 <div tags="Markup" title="images" revision="0" bag="default">
 <pre>&lt;dt&gt;
 
@@ -17624,6 +16390,9 @@ Notice how — in the markup below — the ''href'' attribute points to the loca
 [img width=16 [http://www.tiddlywiki.com/favicon.ico]]&lt;br&gt;
 [img class=&quot;tc-image&quot; [http://www.tiddlywiki.com/favicon.ico]]
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/storyview-zoomin" title="Images" revision="0" bag="default">
+<pre></pre>
 </div>
 <div icon="$:/core/images/export-button" title="Import" revision="0" bag="default">
 <pre></pre>
@@ -17809,7 +16578,7 @@ Here are some options...
 
 ''Note:'' Internally, a `&lt;&lt;variable&gt;&gt;`, in fact, is a macro, too.</pre>
 </div>
-<div created="20151010155952224" modified="20151010160027529" tags="Widgets Macros Solutions [[Jeremy Ruston]]" title="Invoking Macros As Widget Parameters" revision="2" bag="default">
+<div created="20151010155952224" creator="Tobias Beer" modified="20151010160027529" tags="Widgets Macros Solutions [[Jeremy Ruston]]" title="Invoking Macros As Widget Parameters" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>As Jeremy explains [[here|https://groups.google.com/d/msg/tiddlywiki/8IhXmNewLjs/9Jj4b42ECwAJ]]...
 
 &gt;  Macro invocations used as widget attributes may have parameters. However, there are a couple of points to watch:
@@ -20930,6 +19699,9 @@ via &lt;&lt;source &quot;$:/.tb/demo/svg-circle&quot;&gt;&gt;</pre>
 &lt;&lt;ximg toc.jpg tooltip:&quot;example toc from tiddlywiki.com&quot; class:&quot;pretty&quot;&gt;&gt;
 example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 </div>
+<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
+<pre></pre>
+</div>
 <div tags="Markup" title="tables" revision="0" bag="default">
 <pre>&lt;dt style=&quot;font-size:80%;&quot;&gt;
 
@@ -20953,9 +19725,6 @@ example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 |and|now| vertical |
 |&gt;| right|~|
 &lt;/dd&gt;</pre>
-</div>
-<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
-<pre></pre>
 </div>
 <div created="20150206013252827" creator="Tobias Beer" modified="20150206014255748" modifier="Tobias Beer" tags="Tables Presentation Styles" title="Tables Without Borders" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>If you are wishing to use borderless tables [[like Diane|https://groups.google.com/d/msg/tiddlywiki/lPvh5gcea70/JHWgVmIvHdIJ]], here's what you do:
@@ -21520,6 +20289,9 @@ If you neither have a TiddlyWiki or TiddlySpot yet, here's a simple process to d
 &quot;$:/.tb/templates/list-search-me&quot;&gt;&gt;
 &lt;/dl&gt;</pre>
 </div>
+<div icon="$:/core/images/menu-button" title="ToC" revision="0" bag="default">
+<pre></pre>
+</div>
 <div created="20141125232200140" creator="Tobias Beer" modified="20141125232258995" modifier="Tobias Beer" title="toc" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>\define regexp-headings() (^!+.*)(?gmi)
 &lt;div class=&quot;tidtoc tc-tiddler-frame&quot;&gt;
@@ -21576,9 +20348,6 @@ float:right;
 text-align:right;
 }
 &lt;/style&gt;</pre>
-</div>
-<div icon="$:/core/images/menu-button" title="ToC" revision="0" bag="default">
-<pre></pre>
 </div>
 <div icon="$:/core/images/storyview-pop" title="Toggle" revision="0" bag="default">
 <pre></pre>
@@ -21708,9 +20477,6 @@ The defined styles here...
 &lt;&lt;` &quot;&quot;&quot;&lt;$codeblock language=“javascript” code={{$:/.tb/demo/example.js}}/&gt;&quot;&quot;&quot;&gt;&gt;
 </pre>
 </div>
-<div icon="$:/core/images/storyview-pop" title="Transclusion" revision="0" bag="default">
-<pre></pre>
-</div>
 <div tags="Markup" title="transclusion" url="http://tiddlywiki.com/#Transclusion%20in%20WikiText" revision="0" bag="default">
 <pre>&lt;dt&gt;
 
@@ -21739,6 +20505,9 @@ The defined styles here...
 » list of tiddlers tagged `Foo`&lt;br&gt;
 » same using template `Bar`
 &lt;/dd&gt;</pre>
+</div>
+<div icon="$:/core/images/storyview-pop" title="Transclusion" revision="0" bag="default">
+<pre></pre>
 </div>
 <div created="20141114203626843" creator="Tobias Beer" modified="20141204134556861" modifier="Tobias Beer" tags="Developer" title="Translate TW5" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>;Interactive Tool
