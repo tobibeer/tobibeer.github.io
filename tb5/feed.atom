@@ -7,7 +7,14 @@
   <author>
     <name>Tobias Beer</name>
   </author>
-  <updated>2015-10-10T17:20:30+02:00</updated>
+  <updated>2015-10-10T17:38:57+02:00</updated>
+  <entry>
+    <title>Transcluding Highlighted Code</title>
+    <id>http://tobibeer.github.io/tb5#Transcluding%20Highlighted%20Code</id>
+    <link href='http://tobibeer.github.io/tb5#Transcluding%20Highlighted%20Code'/>
+    <updated>2015-10-10T17:38:57+02:00</updated>
+    <summary>using the codeblock widget right</summary>
+  </entry>
   <entry>
     <title>Definition Lists</title>
     <id>http://tobibeer.github.io/tb5#Definition%20Lists</id>
@@ -350,12 +357,5 @@
     <link href='http://tobibeer.github.io/tb5#ibox'/>
     <updated>2015-02-09T14:25:00+02:00</updated>
     <summary>demonstrating lightboxes in tw5</summary>
-  </entry>
-  <entry>
-    <title>classic</title>
-    <id>http://tobibeer.github.io/tb5#classic</id>
-    <link href='http://tobibeer.github.io/tb5#classic'/>
-    <updated>2015-02-09T14:21:49+02:00</updated>
-    <summary>differences between TWc and TW5</summary>
   </entry>
 </feed>
