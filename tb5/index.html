@@ -43,7 +43,7 @@ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF S
 DAMAGE.
 " />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>tb5 — Text</title>
+<title>tb5 — feed.atom</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~--><!--~~ Raw markup ~~-->
 
 </head>
@@ -645,9 +645,9 @@ Error message and password prompt
 
 <li>Clone Wikis Via store.php</li>
 
-<li>code</li>
-
 <li>Code</li>
+
+<li>code</li>
 
 <li>Code-101</li>
 
@@ -681,9 +681,9 @@ Error message and password prompt
 
 <li>Contribute Via GitHub Web UI</li>
 
-<li>Core</li>
-
 <li>core</li>
+
+<li>Core</li>
 
 <li>Core Distro Plugins</li>
 
@@ -833,9 +833,9 @@ Error message and password prompt
 
 <li>Felix Küppers</li>
 
-<li>Fields</li>
-
 <li>fields</li>
+
+<li>Fields</li>
 
 <li>Fields: Core</li>
 
@@ -926,6 +926,8 @@ Error message and password prompt
 <li>Hosting</li>
 
 <li>Hosting On Google Drive</li>
+
+<li>Hosting Via node.js Or store.php?</li>
 
 <li>How Big Are Tiddlers In Size?</li>
 
@@ -1297,9 +1299,9 @@ Error message and password prompt
 
 <li>Table Of Contents In Sidebar</li>
 
-<li>tables</li>
-
 <li>Tables</li>
+
+<li>tables</li>
 
 <li>Tables Without Borders</li>
 
@@ -1381,9 +1383,9 @@ Error message and password prompt
 
 <li>Tobias Beer</li>
 
-<li>ToC</li>
-
 <li>toc</li>
+
+<li>ToC</li>
 
 <li>Toggle</li>
 
@@ -4796,7 +4798,7 @@ exports.startup = function() {
 <div title="$:/.tb/msg/tid-file" revision="0" bag="default">
 <pre>''Note:'' The above denotes [[TiddlerFiles Syntax|http://tiddlywiki.com/#TiddlerFiles]].</pre>
 </div>
-<div created="20141119102634212" creator="Tobias Beer" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20151005152656215" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles" type="text/css" revision="0" bag="default">
+<div created="20141119102634212" creator="Tobias Beer" list-after="$:/themes/tiddlywiki/vanilla/base" modified="20151011062154444" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles" type="text/css" revision="4" bag="default">
 <pre>a.tc-tiddlylink-shadow {
 color:#567;
 font-weight:normal;
@@ -4977,6 +4979,13 @@ margin: -155px 0px 0 0px;
 border: 0;
 width: 600px;
 height: 1000px;
+}
+
+.note {
+padding: 10px;
+background: #fcfcfc;
+border-radius: 15px;
+border: 1px solid #ccc;
 }</pre>
 </div>
 <div created="20150116175548155" creator="Tobias Beer" modified="20150120001546966" modifier="Tobias Beer" tags="$:/tags/Stylesheet" title="$:/.tb/styles/examples" type="text/css" revision="0" bag="default">
@@ -14171,15 +14180,15 @@ Here's a rudimentary example to reorder lists using the ''calc'' macro...
 
 For example, you could have your own ''empty.html'' with customizations and plugins and then simply change the name of your wiki under [[ControlPanel|$:/ControlPanel]] / ''Saving'' and set ''Upload Filename'' accordingly. Then load that cloned wiki and continue to work there, saving changes to the new location.</pre>
 </div>
+<div icon="$:/core/images/permalink-button" title="Code" revision="0" bag="default">
+<pre></pre>
+</div>
 <div tags="Markup" title="code" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;dt&gt;&lt;pre&gt;&amp;#96;code&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
 &lt;dd&gt;`code` ...via backticks&lt;/dd&gt;
 
 &lt;dt&gt;&lt;pre&gt;&amp;#96;&amp;#96;with &amp;#96;backticks&amp;#96; &amp;#96;&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
 &lt;dd&gt;``with `backticks` ``&lt;/dd&gt;</pre>
-</div>
-<div icon="$:/core/images/permalink-button" title="Code" revision="0" bag="default">
-<pre></pre>
 </div>
 <div created="20150121121317298" creator="Tobias Beer" modified="20150122021331885" modifier="Tobias Beer" tags="Developer Code" title="Code-101" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>If you're new to TiddlyWiki, if not anything that looks like code, [[this discussion with Mat|https://groups.google.com/d/msg/tiddlywiki/l1Tu5uxSHSk/k8N9rvAm2OEJ]] may give you some pointers on how to approach all things programatic.
@@ -14387,6 +14396,9 @@ class=&quot;contact&quot; target=&quot;contact-response&quot; id=&quot;contact&q
 <div created="20141120171641267" creator="Tobias Beer" modified="20141125025528688" modifier="Tobias Beer" tags="GitHub Video Developer" title="Contribute Via GitHub Web UI" type="text/vnd.tiddlywiki" url="https://www.youtube.com/watch?v=L4zTkMYcri8" revision="0" bag="default">
 <pre>&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;http://www.youtube.com/embed/L4zTkMYcri8&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
 </div>
+<div created="20151003110757144" creator="Tobias Beer" follow="no" modified="20151003110922889" modifier="Tobias Beer" summary="a documentation aiming to provide a comprehensive summary of all concepts and components of the TiddlyWiki core" tags="[[Tobias Beer]]" title="core" url="http://tobibeer.github.io/tw/core" revision="0" bag="default">
+<pre></pre>
+</div>
 <div caption="Core" created="20150929113328405" creator="Tobias Beer" icon="$:/core/icon" menu="main" menu-icon="{{$:/core/icon}}" modified="20151005065353765" summary="functional elements and constructs of the tw5 core" tags="Welcome" title="Core" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>;[[WikiText|http://tiddlywiki.com/#WikiText]]
 :[[TW5 markup|Markup]], syntax, hypertext, formatting
@@ -14415,9 +14427,6 @@ class=&quot;contact&quot; target=&quot;contact-response&quot; id=&quot;contact&q
 :defined at the start of a tiddler, pragmas apply to the entire body, see [[Pragmas]]
 ;[[TextReferences|http://tiddlywiki.com/#TextReference]]
 :tiddler properties that can be retrieved or modified depending on the context</pre>
-</div>
-<div created="20151003110757144" creator="Tobias Beer" follow="no" modified="20151003110922889" modifier="Tobias Beer" summary="a documentation aiming to provide a comprehensive summary of all concepts and components of the TiddlyWiki core" tags="[[Tobias Beer]]" title="core" url="http://tobibeer.github.io/tw/core" revision="0" bag="default">
-<pre></pre>
 </div>
 <div created="20141120093416686" creator="Tobias Beer" modified="20141123203942199" modifier="Tobias Beer" title="Core Distro Plugins" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Although not packaged into a default TiddlyWiki, the following plugins are [[contained in the core distribution repository|http://tiddlywiki.com/#Plugins]]...
@@ -15465,13 +15474,13 @@ http://tiddlywiki.com&lt;br&gt;
 <div icon="$:/core/images/plugin-generic-language" summary="inventor of TiddlyMap&lt;!--Felix Küppers, vis.js--&gt;" tags="Community" title="Felix Küppers" url="[[felixhayashi@GitHub|https://github.com/felixhayashi/TW5-TiddlyMap]]" revision="0" bag="default">
 <pre></pre>
 </div>
-<div icon="$:/core/images/permalink-button" title="Fields" revision="0" bag="default">
-<pre></pre>
-</div>
 <div created="20150201195001262" creator="Tobias Beer" follow="yes" modified="20150209084520349" modifier="Tobias Beer" summary="explorations as to imporoving working with tiddler fields" tags="[[Tobias Beer]] Fields" title="fields" url="http://tobibeer.github.io/tw/fields" revision="0" bag="default">
 <pre>!!! Topics
 ; [[FieldsPopup|http://tobibeer.github.io/tw/fields/#FieldsPopup]]
 : &lt;&lt;git5 issues/1448&gt;&gt; — field editing popups</pre>
+</div>
+<div icon="$:/core/images/permalink-button" title="Fields" revision="0" bag="default">
+<pre></pre>
 </div>
 <div caption="core" created="20141118195032028" creator="Tobias Beer" modified="20150107195102560" modifier="Tobias Beer" tags="Fields Lists Filters Core" title="Fields: Core" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>all [[core fields|Fields: Core]] except [[standard fields|Fields: Standard]] as documented in the TiddlyWiki core:
@@ -16180,6 +16189,60 @@ Some random, free hosting options...
 # use desktop client for local editing with ''Firefox'' / [[TiddlyFox|http://tiddlywiki.com#TiddlyFox]]
 
 See http://googledrive.com/host/0B51gSXixfJ2Qb0I4R2M4MWJVMlU</pre>
+</div>
+<div created="20151011055343242" modified="20151011062337560" tags="Solutions Hosting Node.js store.php GitHub" title="Hosting Via node.js Or store.php?" revision="36" bag="default">
+<pre>As explained [[here|https://groups.google.com/d/msg/tiddlywiki/Q-U87Gol31c/KUNAqN_ADQAJ]], those are two radically different modes to operate. Between the two, right now, there's really just one option I would recommend to use.
+
+!! [[store.php|Your own TiddlySpot-like upload server]]
+
+# ''server'' =&gt; simple
+#* requires &quot;just&quot; php
+#* very common, plenty of affordable or free options
+#* nothing more to set up in terms of TiddlyWiki, at all
+# ''store''
+#* operates on a per wiki basis
+# ''authentication''
+#* simple autentication, tried and tested even with TW2 since 2008
+# ''backups''
+#* backs up wiki files
+
+!! [[node.js|http://tiddlywiki.com/#ServerCommand]]
+
+# ''server'' =&gt; pro
+#* requires a node capable server
+#* not so common, commercially more pricey
+#* requires to manage TiddlyWiki and possibly other npm packages
+# ''store''
+#* operates on a per-tiddler basis
+# ''authentication''
+#* none? =&gt; should possibly be called &quot;experimental&quot;
+#*use with mucho-care-o (whatever that means, must be spanglish ;-)
+# ''backups''
+#* none out of the box
+#* you need to figure out how to care of that for your server
+
+! The Third Way
+
+What I actually do right now for [[tb5|Welcome]] is...
+
+!! [[node.js|http://tiddlywiki.com/#TiddlyWiki%20on%20Node.js]] + standalone wiki
+
+# ''server'' =&gt; dead-simple
+#* requires just the basic, cheapest of hosting, plenty-o-free
+#* [[github pages|http://pages.github.com]] is just fine for me atm
+#* node and TiddlyWiki are installed on your local machine =&gt; full control
+# ''store''
+#* organize and edit on a per tiddler basis, but node bakes full standalone wikis
+# ''authentication''
+#* none needed other than basic [[FTP|https://filezilla-project.org/]] or GitHub
+#* fool-proof, most secure, never writing to any server-store via web
+# ''backups''
+#* manage however you want, locally, e.g. GitHub
+
+@@.note
+
+''Note:'' Unlike the other two above, this does not allow any editing over the web.&lt;br&gt;&lt;br&gt;You can always edit your contents, preview changes and temporarily store them, say, in a [[trello|https://trello.com]], email yourself the entire wiki, or edit tiddlers in GitHub as we already do with documentation for TiddlyWiki (having to merge things at some point).
+@@</pre>
 </div>
 <div created="20141203004643548" creator="Tobias Beer" modified="20141203102826716" modifier="Tobias Beer" tags="Solutions Utilities Console Tiddlers Files [[Stephan Hradek]]" title="How Big Are Tiddlers In Size?" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>In a [[reply to Rich|https://groups.google.com/d/msg/tiddlywiki/hr75FTeEL_g/Zq9c1OJz6KkJ]], [[Stephan Hradek]] posted two solutions about byte-sizes...
@@ -19701,6 +19764,9 @@ via &lt;&lt;source &quot;$:/.tb/demo/svg-circle&quot;&gt;&gt;</pre>
 &lt;&lt;ximg toc.jpg tooltip:&quot;example toc from tiddlywiki.com&quot; class:&quot;pretty&quot;&gt;&gt;
 example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 </div>
+<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
+<pre></pre>
+</div>
 <div tags="Markup" title="tables" revision="0" bag="default">
 <pre>&lt;dt style=&quot;font-size:80%;&quot;&gt;
 
@@ -19724,9 +19790,6 @@ example toc from [[tiddlywiki.com|http://tiddlywiki.com/#TableOfContents]]</pre>
 |and|now| vertical |
 |&gt;| right|~|
 &lt;/dd&gt;</pre>
-</div>
-<div icon="$:/core/images/menu-button" title="Tables" revision="0" bag="default">
-<pre></pre>
 </div>
 <div created="20150206013252827" creator="Tobias Beer" modified="20150206014255748" modifier="Tobias Beer" tags="Tables Presentation Styles" title="Tables Without Borders" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>If you are wishing to use borderless tables [[like Diane|https://groups.google.com/d/msg/tiddlywiki/lPvh5gcea70/JHWgVmIvHdIJ]], here's what you do:
@@ -20300,9 +20363,6 @@ If you neither have a TiddlyWiki or TiddlySpot yet, here's a simple process to d
 &quot;$:/.tb/templates/list-search-me&quot;&gt;&gt;
 &lt;/dl&gt;</pre>
 </div>
-<div icon="$:/core/images/menu-button" title="ToC" revision="0" bag="default">
-<pre></pre>
-</div>
 <div created="20141125232200140" creator="Tobias Beer" modified="20141125232258995" modifier="Tobias Beer" title="toc" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>\define regexp-headings() (^!+.*)(?gmi)
 &lt;div class=&quot;tidtoc tc-tiddler-frame&quot;&gt;
@@ -20359,6 +20419,9 @@ float:right;
 text-align:right;
 }
 &lt;/style&gt;</pre>
+</div>
+<div icon="$:/core/images/menu-button" title="ToC" revision="0" bag="default">
+<pre></pre>
 </div>
 <div icon="$:/core/images/storyview-pop" title="Toggle" revision="0" bag="default">
 <pre></pre>

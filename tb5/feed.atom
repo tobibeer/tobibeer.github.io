@@ -7,7 +7,21 @@
   <author>
     <name></name>
   </author>
-  <updated>2015-10-10T18:00:27+02:00</updated>
+  <updated>2015-10-11T08:23:37+02:00</updated>
+  <entry>
+    <title>Hosting Via node.js Or store.php?</title>
+    <id>http://tobibeer.github.io/tb5#Hosting%20Via%20node.js%20Or%20store.php%3F</id>
+    <link href='http://tobibeer.github.io/tb5#Hosting%20Via%20node.js%20Or%20store.php%3F'/>
+    <updated>2015-10-11T08:23:37+02:00</updated>
+    <summary>As explained here, those are two radically different modes to operate. Between the two, right now, there's really just one option I would recommend to use. ...</summary>
+  </entry>
+  <entry>
+    <title>Dynamic Contents In Macros</title>
+    <id>http://tobibeer.github.io/tb5#Dynamic%20Contents%20In%20Macros</id>
+    <link href='http://tobibeer.github.io/tb5#Dynamic%20Contents%20In%20Macros'/>
+    <updated>2015-10-10T21:34:39+02:00</updated>
+    <summary>evaluating macros or text-references within macros</summary>
+  </entry>
   <entry>
     <title>Invoking Macros As Widget Parameters</title>
     <id>http://tobibeer.github.io/tb5#Invoking%20Macros%20As%20Widget%20Parameters</id>
@@ -28,13 +42,6 @@
     <link href='http://tobibeer.github.io/tb5#Definition%20Lists'/>
     <updated>2015-10-10T17:20:30+02:00</updated>
     <summary>lists items with descriptions, e.g. terms or abbreviations</summary>
-  </entry>
-  <entry>
-    <title>Dynamic Contents In Macros</title>
-    <id>http://tobibeer.github.io/tb5#Dynamic%20Contents%20In%20Macros</id>
-    <link href='http://tobibeer.github.io/tb5#Dynamic%20Contents%20In%20Macros'/>
-    <updated>2015-10-10T17:20:26+02:00</updated>
-    <summary>evaluating macros or text-references within macros</summary>
   </entry>
   <entry>
     <title>Hiding The Sidebar On Startup</title>
@@ -350,12 +357,5 @@
     <link href='http://tobibeer.github.io/tb5#filter%3A%20is%20missing'/>
     <updated>2015-02-11T11:46:48+02:00</updated>
     <summary>This wiki implements a different is[missing] filter than the TiddlyWiki core. This version, in fact, effectively overrides the core filter which returns whether or not the tiddlers in the input set ex...</summary>
-  </entry>
-  <entry>
-    <title>VisualEditor</title>
-    <id>http://tobibeer.github.io/tb5#VisualEditor</id>
-    <link href='http://tobibeer.github.io/tb5#VisualEditor'/>
-    <updated>2015-02-10T20:53:46+02:00</updated>
-    <summary>this widget uses the ckeditor lib for WYSIWYG editing</summary>
   </entry>
 </feed>
