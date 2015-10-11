@@ -43,7 +43,7 @@ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF S
 DAMAGE.
 " />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>tb5 — Dynamic Contents In Macros</title>
+<title>tb5 — Variable Parameter Defaults</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~--><!--~~ Raw markup ~~-->
 
 </head>
@@ -20857,7 +20857,10 @@ The macro simply interprets all it is given as individual paramets, e.g. the fir
 
 ''Renders as...''
 
-&lt;&lt;concat {{ Getting Started } }&gt;&gt;</pre>
+&lt;&lt;&lt;
+
+&lt;&lt;concat {{ Getting Started } }&gt;&gt;
+&lt;&lt;&lt;</pre>
 </div>
 <div created="20150201145130864" creator="Tobias Beer" folder="bar" modified="20150201152922416" modifier="Tobias Beer" tags="Macros Variables Text Links [[Jed Carty]] Files Folders Solutions" title="Variable Substitution In Folder Path" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>\define linkFolder()
