@@ -207,6 +207,8 @@ Error message and password prompt
 
 <li>actions and events</li>
 
+<li>batch setting tiddler fields</li>
+
 <li>code injection via 3rd party</li>
 
 <li>console scripts</li>
@@ -6444,7 +6446,7 @@ very-muted-foreground: #888888</pre>
 <div modified="20150206093306235" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div list="[[rebasing a branch to upstream/master]]" title="$:/StoryList">
+<div list="[[batch setting tiddler fields]] Start [[updating a tiddler]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6464,7 +6466,7 @@ very-muted-foreground: #888888</pre>
 <div created="20150109155655454" modified="20150121194550674" title="$:/temp/list-search-list-examples">
 <pre></pre>
 </div>
-<div created="20150108211157577" modified="20151008123851280" title="$:/temp/NewTagName">
+<div created="20150108211157577" modified="20151012102718844" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div created="20150121142438533" modified="20151008123824688" title="$:/temp/search">
@@ -6601,6 +6603,27 @@ This looks to see if the current widget has a function for handling the current 
 Eventually the message will reach the ''navigator'' widget, which does have a handler for ''tm-save-tiddler'', namely the ''handleSaveTiddlerEvent'' function that you've already found. This handler is installed by the constructor function for creating any new navigator widget, right at the top of [[$:/core/modules/widgets/navigator.js]].
 &lt;&lt;&lt;
 </pre>
+</div>
+<div created="20151012102703940" modified="20151012103000972" summary="how to update tiddler fields" tags="tiddler fields update Dev console" title="batch setting tiddler fields">
+<pre>To batch set fields of one or more tiddlers, use the setText method of the wiki object.
+
+```
+$tw.wiki.setText = function(title,field,index,value,options) {...}
+```
+
+The below example removes a field, here &quot;changecount&quot; from any tiddler that has it.
+
+```
+var field = &quot;changecount&quot;,
+    filter=&quot;[has[&quot; + field + &quot;]]&quot;;
+
+$tw.utils.each(
+  $tw.wiki.filterTiddlers(filter),
+  function(t){
+    $tw.wiki.setText(t,field,index,undefined);
+  }
+)
+```</pre>
 </div>
 <div created="20150112141247793" modified="20150112151809834" summary="3rd party software injecting code into html can render TiddlyWiki unusable" tags="server hosting html browser extension error Dev" title="code injection via 3rd party">
 <pre>Via either...
