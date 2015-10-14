@@ -7154,7 +7154,7 @@ $param={{$:/temp/replace-tag!!replace}}/&gt;
 <div modified="20151014135304253" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div list="Welcome" title="$:/StoryList">
+<div list="Welcome commands" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20151013061916253" modified="20151013061920056" title="$:/temp/advancedsearch">
@@ -7364,8 +7364,10 @@ node ../../tiddlywiki.js \
 
 </pre>
 </div>
-<div created="20150117174359000" modified="20151014122603015" p.wikipath="an optional path to the [[wiki]] folder to be loaded&lt;br&gt;» default: if not defined, the current working directory is used" summary="commands prefixed `--` for [[tiddlywiki]] on the [[node.js]] command-line " tags="concepts" title="commands">
-<pre>Any [[tiddlywiki]] [[commands]] run from the &lt;&lt;cl&gt;&gt; are interpreted from left to right with their available [[parameters]], all arguments separated with spaces. Available [[commands]] differ from their parameters via the `--` prefix.
+<div created="20150117174359000" modified="20151014135433999" p.wikipath="an optional path to the [[wiki]] folder to be loaded&lt;br&gt;» default: if not defined, the current working directory is used" summary="commands prefixed `--` for [[tiddlywiki]] on the [[node.js]] command-line " tags="concepts" title="commands">
+<pre>Any [[tiddlywiki]] [[commands]] run from the &lt;&lt;cl&gt;&gt; are interpreted from left to right with their available [[parameters]], all arguments separated with spaces.
+
+Available [[commands]] are prefixed `--`, their parameters are not:
 
 ```
 tiddlywiki [&lt;wikipath&gt;] [--&lt;command&gt; [&lt;arg&gt;[,&lt;arg&gt;]]]
