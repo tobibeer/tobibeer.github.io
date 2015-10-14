@@ -7,13 +7,27 @@
   <author>
     <name></name>
   </author>
-  <updated>2015-10-11T08:23:37+02:00</updated>
+  <updated>2015-10-14T19:09:03+02:00</updated>
+  <entry>
+    <title>node</title>
+    <id>http://tobibeer.github.io/tb5#node</id>
+    <link href='http://tobibeer.github.io/tb5#node'/>
+    <updated>2015-10-14T19:09:03+02:00</updated>
+    <summary>provides an overview for using TiddlyWiki under node.js on the basis of related content from tiddlywiki.com.</summary>
+  </entry>
+  <entry>
+    <title>Better Missing</title>
+    <id>http://tobibeer.github.io/tb5#Better%20Missing</id>
+    <link href='http://tobibeer.github.io/tb5#Better%20Missing'/>
+    <updated>2015-10-14T19:03:13+02:00</updated>
+    <summary>Need a quick-create dashboard displayed when a tiddler you just linked to doesn't yet exist? Here's how you do...</summary>
+  </entry>
   <entry>
     <title>Hosting Via node.js Or store.php?</title>
     <id>http://tobibeer.github.io/tb5#Hosting%20Via%20node.js%20Or%20store.php%3F</id>
     <link href='http://tobibeer.github.io/tb5#Hosting%20Via%20node.js%20Or%20store.php%3F'/>
     <updated>2015-10-11T08:23:37+02:00</updated>
-    <summary>As explained here, those are two radically different modes to operate. Between the two, right now, there's really just one option I would recommend to use. ...</summary>
+    <summary>hosting options for TiddlyWiki</summary>
   </entry>
   <entry>
     <title>Dynamic Contents In Macros</title>
@@ -27,7 +41,7 @@
     <id>http://tobibeer.github.io/tb5#Invoking%20Macros%20As%20Widget%20Parameters</id>
     <link href='http://tobibeer.github.io/tb5#Invoking%20Macros%20As%20Widget%20Parameters'/>
     <updated>2015-10-10T18:00:27+02:00</updated>
-    <summary>As Jeremy explains here... > Macro invocations used as widget attributes may have parameters. However, there are a couple of points to watch: > >* the output of the macro is not wikified; it is use...</summary>
+    <summary>using macros as attributes; for evaluated parameters see Dynamic Contents In Macros</summary>
   </entry>
   <entry>
     <title>Transcluding Highlighted Code</title>
@@ -343,19 +357,5 @@
     <link href='http://tobibeer.github.io/tb5#Embed%20An%20External%20Page'/>
     <updated>2015-02-12T17:06:32+02:00</updated>
     <summary>In TiddlyWiki you can embed external sites via iframes using simple html markup: ...</summary>
-  </entry>
-  <entry>
-    <title>td5</title>
-    <id>http://tobibeer.github.io/tb5#td5</id>
-    <link href='http://tobibeer.github.io/tb5#td5'/>
-    <updated>2015-02-12T13:32:43+02:00</updated>
-    <summary> to do: a tw5 gtd implementation</summary>
-  </entry>
-  <entry>
-    <title>filter: is missing</title>
-    <id>http://tobibeer.github.io/tb5#filter%3A%20is%20missing</id>
-    <link href='http://tobibeer.github.io/tb5#filter%3A%20is%20missing'/>
-    <updated>2015-02-11T11:46:48+02:00</updated>
-    <summary>This wiki implements a different is[missing] filter than the TiddlyWiki core. This version, in fact, effectively overrides the core filter which returns whether or not the tiddlers in the input set ex...</summary>
   </entry>
 </feed>

@@ -477,8 +477,6 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
-<li>$:/export.jpg</li>
-
 <li>$:/follow</li>
 
 <li>$:/forms/user</li>
@@ -620,6 +618,8 @@ Error message and password prompt
 <li>bc.classic</li>
 
 <li>Best Practice</li>
+
+<li>Better Missing</li>
 
 <li>blockquotes</li>
 
@@ -837,9 +837,9 @@ Error message and password prompt
 
 <li>Felix Küppers</li>
 
-<li>fields</li>
-
 <li>Fields</li>
+
+<li>fields</li>
 
 <li>Fields: Core</li>
 
@@ -947,9 +947,9 @@ Error message and password prompt
 
 <li>ibox</li>
 
-<li>Icons</li>
-
 <li>icons</li>
+
+<li>Icons</li>
 
 <li>iframe-1</li>
 
@@ -1041,9 +1041,9 @@ Error message and password prompt
 
 <li>Macrocall vs. Macro</li>
 
-<li>macros</li>
-
 <li>Macros</li>
+
+<li>macros</li>
 
 <li>magictabs</li>
 
@@ -1104,6 +1104,8 @@ Error message and password prompt
 <li>New MarkDown Button</li>
 
 <li>New Tiddler From Form</li>
+
+<li>node</li>
 
 <li>Node.js</li>
 
@@ -1411,9 +1413,9 @@ Error message and password prompt
 
 <li>Transcluding Highlighted Code</li>
 
-<li>transclusion</li>
-
 <li>Transclusion</li>
+
+<li>transclusion</li>
 
 <li>Translate TW5</li>
 
@@ -12347,9 +12349,6 @@ view:ViewWidget</pre>
 <div title="$:/DefaultTiddlers" revision="0" bag="default">
 <pre>Welcome</pre>
 </div>
-<div title="$:/export.jpg" revision="0" bag="default">
-<pre>&lt;$view field=&quot;text&quot;/&gt;</pre>
-</div>
 <div created="20150108112519669" creator="Tobias Beer" modified="20150108115216791" modifier="Tobias Beer" tags="" title="$:/follow" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>For references to my projects and wikis, when the `follow` field is set to `yes` you can go ahead and index for [[Community Search]], if interesting, when set to `no`, please don't.
 
@@ -12521,8 +12520,13 @@ exports.run = function() {
 <div created="20150926074847261" modified="20141216175926782" modifier="Tobias Beer" title="$:/language" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$:/languages/en-GB</pre>
 </div>
-<div created="20150106175724172" creator="Tobias Beer" modified="20150106175856631" modifier="Tobias Beer" title="$:/language/MissingTiddler/Hint" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre></pre>
+<div created="20150106175724172" creator="Tobias Beer" modified="20151014170218993" modifier="Tobias Beer" summary="displayed when a tiddler doesn't exist" title="$:/language/MissingTiddler/Hint" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&lt;$reveal state=&quot;$:/.tb/config/redirected-tb5##$(currentTiddler)$&quot; type=&quot;match&quot; text=&quot;&quot;&gt;This tiddler doesn't exist, back to
+&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot;&gt;
+&lt;$action-sendmessage $message=&quot;tm-close-tiddler&quot;/&gt;
+&lt;$action-navigate $to=&quot;Welcome&quot;/&gt;Welcome
+&lt;/$button&gt;?
+&lt;/$reveal&gt;</pre>
 </div>
 <div created="20141116230931118" creator="Tobias Beer" modified="20141119005234397" modifier="Tobias Beer" summary="modifies the default tooltop for opening a link" tags="$:/tags/Macro" title="$:/macros/default-tooltip" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>\define tv-wikilink-tooltip()
@@ -13975,6 +13979,27 @@ Now you should have imported a bunch of tiddlers from your desktop into TiddlyWi
 </div>
 <div icon="$:/core/images/star-filled" title="Best Practice" revision="0" bag="default">
 <pre></pre>
+</div>
+<div created="20151014151545865" creator="Tobias Beer" modified="20151014170313866" summary="Need a  quick-create dashboard displayed when a tiddler you just linked to doesn't yet exist? Here's how you do..." tags="Solutions Presentation Tiddlers Tags" title="Better Missing" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>As of version 5.1.9, when you navigate to a missing tiddler this message is shown:
+
+&gt; Missing tiddler &quot;foo&quot; - click {{$:/core/images/edit-button}} to create.
+
+While this can be useful for editing a wiki, it is not so much for visiting a published wiki. To modify this message, you can edit the following tiddler, as is done here:
+
+ &lt;&lt;source [[$:/language/MissingTiddler/Hint]]&gt;&gt;
+
+On tb5, [[another template|$:/.tb/ui/ViewTemplate/redirected-tb5]] already shows links for [[redirected tiddlers|Aliases And Redirecting Dead Links]], so in the above:
+
+* the reveal widget only shows its content when no redirects are defined
+** see [[Aliases And Redirecting Dead Links]]
+* only then a note is displayed with a button that looks like a link which...
+** closes the current tiddler
+** navigates to the [[Welcome]] tiddler
+
+&gt; {{this missing tiddler||$:/.tb/ui/ViewTemplate/missing}}
+
+Try it out at: [[this missing tiddler]]</pre>
 </div>
 <div tags="Markup" title="blockquotes" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;dt&gt;
@@ -15497,13 +15522,13 @@ http://tiddlywiki.com&lt;br&gt;
 <div icon="$:/core/images/plugin-generic-language" summary="inventor of TiddlyMap&lt;!--Felix Küppers, vis.js--&gt;" tags="Community" title="Felix Küppers" url="[[felixhayashi@GitHub|https://github.com/felixhayashi/TW5-TiddlyMap]]" revision="0" bag="default">
 <pre></pre>
 </div>
+<div icon="$:/core/images/permalink-button" title="Fields" revision="0" bag="default">
+<pre></pre>
+</div>
 <div created="20150201195001262" creator="Tobias Beer" follow="yes" modified="20150209084520349" modifier="Tobias Beer" summary="explorations as to imporoving working with tiddler fields" tags="[[Tobias Beer]] Fields" title="fields" url="http://tobibeer.github.io/tw/fields" revision="0" bag="default">
 <pre>!!! Topics
 ; [[FieldsPopup|http://tobibeer.github.io/tw/fields/#FieldsPopup]]
 : &lt;&lt;git5 issues/1448&gt;&gt; — field editing popups</pre>
-</div>
-<div icon="$:/core/images/permalink-button" title="Fields" revision="0" bag="default">
-<pre></pre>
 </div>
 <div caption="core" created="20141118195032028" creator="Tobias Beer" modified="20150107195102560" modifier="Tobias Beer" tags="Fields Lists Filters Core" title="Fields: Core" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>all [[core fields|Fields: Core]] except [[standard fields|Fields: Standard]] as documented in the TiddlyWiki core:
@@ -16444,10 +16469,10 @@ HTML tags work like that.
 <div created="20141211125930733" creator="Tobias Beer" follow="yes" modified="20150209132500215" modifier="Tobias Beer" summary="demonstrating lightboxes in tw5&lt;!--ibox--&gt;" tags="[[Tobias Beer]]" title="ibox" type="text/vnd.tiddlywiki" url="http://tobibeer.github.io/tw/ibox" revision="0" bag="default">
 <pre></pre>
 </div>
-<div icon="$:/core/images/star-filled" title="Icons" revision="0" bag="default">
+<div created="20150202230519361" creator="Tobias Beer" follow="yes" modified="20150213194000000" modifier="Tobias Beer" summary="a showcase and reference for icon fonts and libraries with previews" tags="[[Tobias Beer]] Solutions Icons Presentation Fonts" title="icons" url="http://tobibeer.github.io/tw/icons" revision="0" bag="default">
 <pre></pre>
 </div>
-<div created="20150202230519361" creator="Tobias Beer" follow="yes" modified="20150213194000000" modifier="Tobias Beer" summary="a showcase and reference for icon fonts and libraries with previews" tags="[[Tobias Beer]] Solutions Icons Presentation Fonts" title="icons" url="http://tobibeer.github.io/tw/icons" revision="0" bag="default">
+<div icon="$:/core/images/star-filled" title="Icons" revision="0" bag="default">
 <pre></pre>
 </div>
 <div created="20150105231913568" creator="Tobias Beer" follow="no" modified="20150108114142058" modifier="Tobias Beer" summary="testing how two ~TiddlyWikis behave which mutually iframe their contents" tags="[[Tobias Beer]]" title="iframe-1" url="http://iframe-1.tiddlyspot.com" revision="0" bag="default">
@@ -17188,6 +17213,9 @@ To use, simply install &lt;&lt;source $:/.tb/macros/localfolder&gt;&gt;
 
 &gt; It's actually historical. The angle bracket syntax for macros was first implemented early on, before transcluded attributes. Then as the widget syntax evolved it was clear that it was more flexible and extensible. Internally, everything is a widget, even plain text. All the wikitext syntax beyond the widget syntax is really just a series of shortcuts for more easily typing widgets and HTML. My expectation is that more and more of the basic idioms that we discover as we explore the way that widgets fit together will end up being elevated to wiki syntax. For example, we could evolve a wikitext syntax for assigning variables that is terser than the current `&lt;$set&gt;` widget.</pre>
 </div>
+<div icon="$:/core/images/right-arrow" title="Macros" revision="0" bag="default">
+<pre></pre>
+</div>
 <div tags="Markup" title="macros" revision="0" bag="default">
 <pre>\define test(x, y, z:'0')
 $x$ $y$ $z$
@@ -17269,9 +17297,6 @@ $name=&quot;test&quot;
 x=&lt;&lt;version&gt;&gt;
 y={{!!title}}/&gt;&lt;/code&gt;
 &lt;/dd&gt;</pre>
-</div>
-<div icon="$:/core/images/right-arrow" title="Macros" revision="0" bag="default">
-<pre></pre>
 </div>
 <div summary="by [[Alberto Molina]], enhances TiddlyWiki with a tabsbar at the bottom of each tiddler to manage related tiddlers via lists, allowing to create related items via forms&lt;!--magictabs, bottomtabs--&gt;" tags="References Solutions Tabs Info Lists Relationships [[Alberto Molina]]" title="magictabs" url="http://magictabs.tiddlyspot.com" revision="0" bag="default">
 <pre>; discussion
@@ -18383,6 +18408,9 @@ You can toggle the button visibility in ''Sidebar'' / ''Tools''...</pre>
 !!Code
 [[$:/forms/user]]
 &lt;&lt;wikitext-source &quot;$:/forms/user&quot;&gt;&gt;</pre>
+</div>
+<div created="20151014170341645" creator="Tobias Beer" follow="yes" modified="20151014170903762" summary="provides an overview for using TiddlyWiki under node.js on the basis of related content from tiddlywiki.com." tags="[[Tobias Beer]]" title="node" type="text/vnd.tiddlywiki" url="http://tobibeer.github.io/tw/node" revision="0" bag="default">
+<pre></pre>
 </div>
 <div icon="$:/core/images/globe" tags="Developer" title="Node.js" revision="0" bag="default">
 <pre>; tw on node.js
@@ -20577,6 +20605,9 @@ The defined styles here...
 &lt;&lt;` &quot;&quot;&quot;&lt;$codeblock language=“javascript” code={{$:/.tb/demo/example.js}}/&gt;&quot;&quot;&quot;&gt;&gt;
 </pre>
 </div>
+<div icon="$:/core/images/storyview-pop" title="Transclusion" revision="0" bag="default">
+<pre></pre>
+</div>
 <div tags="Markup" title="transclusion" url="http://tiddlywiki.com/#Transclusion%20in%20WikiText" revision="0" bag="default">
 <pre>&lt;dt&gt;
 
@@ -20605,9 +20636,6 @@ The defined styles here...
 » list of tiddlers tagged `Foo`&lt;br&gt;
 » same using template `Bar`
 &lt;/dd&gt;</pre>
-</div>
-<div icon="$:/core/images/storyview-pop" title="Transclusion" revision="0" bag="default">
-<pre></pre>
 </div>
 <div created="20141114203626843" creator="Tobias Beer" modified="20141204134556861" modifier="Tobias Beer" tags="Developer" title="Translate TW5" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>;Interactive Tool
