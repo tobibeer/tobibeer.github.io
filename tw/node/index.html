@@ -153,6 +153,16 @@ Error message and password prompt
 
 <li>--version</li>
 
+<li>.html</li>
+
+<li>.json</li>
+
+<li>.meta</li>
+
+<li>.tid</li>
+
+<li>.tiddler</li>
+
 <li>&quot;noclean&quot;</li>
 
 <li>&lt;command&gt;</li>
@@ -194,6 +204,8 @@ Error message and password prompt
 <li>&lt;type&gt;</li>
 
 <li>&lt;username&gt;</li>
+
+<li>&lt;wikipath&gt;</li>
 
 <li>$:/.node/commands/--build/description</li>
 
@@ -245,6 +257,8 @@ Error message and password prompt
 
 <li>$:/.node/ui/ViewTemplate/commands-before</li>
 
+<li>$:/.node/ui/ViewTemplate/files-before</li>
+
 <li>$:/.node/ui/ViewTemplate/parameters-after</li>
 
 <li>$:/.node/ui/ViewTemplate/summary-link</li>
@@ -273,6 +287,10 @@ Error message and password prompt
 
 <li>$:/state/tab--1498284803</li>
 
+<li>$:/state/tab--1651166503</li>
+
+<li>$:/state/tab--1662423279</li>
+
 <li>$:/state/tab--2112689675</li>
 
 <li>$:/state/tab--445653096</li>
@@ -284,6 +302,8 @@ Error message and password prompt
 <li>$:/state/tab-1489714900</li>
 
 <li>$:/state/tab-1749438307</li>
+
+<li>$:/state/tab-1796839568</li>
 
 <li>$:/state/tab-2142297613</li>
 
@@ -333,8 +353,6 @@ Error message and password prompt
 
 <li>ecosystem</li>
 
-<li>editiondescription Operator</li>
-
 <li>editions</li>
 
 <li>editions Operator</li>
@@ -353,7 +371,7 @@ Error message and password prompt
 
 <li>GettingStarted - Node.js</li>
 
-<li>GitHub</li>
+<li>github</li>
 
 <li>GitHub Project Documentation With TiddlyWiki</li>
 
@@ -365,7 +383,7 @@ Error message and password prompt
 
 <li>images</li>
 
-<li>InfoMechanism</li>
+<li>info</li>
 
 <li>Installing TiddlyWiki</li>
 
@@ -373,7 +391,7 @@ Error message and password prompt
 
 <li>javascript</li>
 
-<li>JSON</li>
+<li>json</li>
 
 <li>Kris Johnson: Setting Up a Personal TiddlyWiki Server on OS X</li>
 
@@ -385,15 +403,11 @@ Error message and password prompt
 
 <li>modules</li>
 
-<li>node-webkit</li>
-
 <li>node.js</li>
 
 <li>Notes for upgrading to 5.0.8-beta</li>
 
 <li>npm</li>
-
-<li>NW.js</li>
 
 <li>output (folder)</li>
 
@@ -409,11 +423,9 @@ Error message and password prompt
 
 <li>References</li>
 
-<li>SavingMechanism</li>
+<li>saving</li>
 
 <li>Scott Kingery: TW5 Tribal Knowledge</li>
-
-<li>Scripts for TiddlyWiki on Node.js</li>
 
 <li>Server Doesn't Serve Static Resources</li>
 
@@ -422,6 +434,8 @@ Error message and password prompt
 <li>StartupMechanism</li>
 
 <li>static</li>
+
+<li>syncing</li>
 
 <li>tests</li>
 
@@ -446,10 +460,6 @@ Error message and password prompt
 <li>type</li>
 
 <li>Updating TiddlyWiki</li>
-
-<li>UpgradeMechanism</li>
-
-<li>Using a custom path prefix with the client-server edition</li>
 
 <li>Welcome</li>
 
@@ -481,7 +491,7 @@ See [[tiddlywiki.info]] for defining build targets.</pre>
 <div created="20140225195548209" modified="20151014050801390" p.command="(optional) the [[command|commands]] for which to display the help&lt;br&gt;» default: when omitted lists available commands" params="&lt;command&gt;" summary="displays help text for a [[command|commands]]" tags="commands" title="--help">
 <pre></pre>
 </div>
-<div created="20140223195548209" modified="20151013202648241" p.edition="(optional) an edition to copy into the new [[wiki]] folder" params="&lt;edition&gt; [&lt;edition&gt; ...]" summary="initialises a new [[wiki]] folder with a copy of a specified [[edition|editions]]" tags="commands" title="--init">
+<div created="20140223195548209" modified="20151014122658470" p.edition="(optional) an edition to copy into the new [[wiki]] folder" params="&lt;edition&gt; [&lt;edition&gt; ...]" summary="initialises a new [[wiki]] folder with the contents of specified [[editions]]" tags="commands" title="--init">
 <pre>&lt;&lt;hl Editions&gt;&gt;
 
 When not specified, the [[&lt;edition&gt;]] defaults to the ''empty'' [[edition|editions]]. Any `includeWikis` definitions in an [[editions]]' [[tiddlywiki.info]] file are ignored.
@@ -492,7 +502,7 @@ The [[--editions]] [[comand|commands]] returns a list of available [[editions]].
 
 Also see: [[environment-variables]].</pre>
 </div>
-<div created="20140119201439976" modified="20151014050909389" p.filepath="the path of the file from which to load the tiddler(s)" params="&lt;filepath&gt;" summary="load tiddlers from file, e.g. `.tiddler`, `.tid`, `.json`, and `.html` (incl. [[tiddlywiki]] 2.x.x)" tags="commands" title="--load">
+<div created="20140119201439976" modified="20151014122728299" p.filepath="the path of the file from which to load the tiddler(s)" params="&lt;filepath&gt;" summary="load tiddlers from file, e.g. `.tiddler`, `.tid`, `.json`, `.html` (incl. tw 2.x.x)" tags="commands" title="--load">
 <pre>''Note:'' For any plugins are already loaded, no older version will be loaded by [[tiddlywiki]].
 
 !! Loading Encrypted Wikis
@@ -503,10 +513,10 @@ To load from an encrypted [[tiddlywiki]] file, first use the [[--password]] [[co
 tiddlywiki ./MyWiki --password pa55w0rd --load my_encrypted_wiki.html
 ```</pre>
 </div>
-<div created="20140903085210479" modified="20151014050954336" p.title="(optional) the plugin tiddler&lt;br&gt;» default: `&quot;$:/UpgradeLibrary&quot;`" params="&lt;title&gt;" summary="construct the plugin ''&lt;$text text=&quot;$:/UpgradeLibrary&quot;/&gt;'' required by the upgrade process" tags="commands" title="--makelibrary">
+<div created="20140903085210479" modified="20151014123301676" p.title="(optional) the plugin tiddler&lt;br&gt;» default: `&quot;$:/UpgradeLibrary&quot;`" params="&lt;title&gt;" summary="constructs the plugin [[$:/UpgradeLibrary|--makelibrary]] used  by the [[TiddlyWiki Upgrade Wizard|http://tiddlywiki.com/upgrade.html]] for upgrading [[standalone]] wikis" tags="commands" title="--makelibrary">
 <pre>The upgrade library is constructed as an ordinary plugin tiddler with the plugin type `library`. It contains a copy of all [[plugins]], [[themes]] and [[languages]] of the [[tiddlywiki]] repo.
 
-See the UpgradeMechanism for more details.</pre>
+See the &lt;&lt;tw UpgradeMechanism&gt;&gt; for more details.</pre>
 </div>
 <div created="20140425085548209" modified="20151014051016301" p.pathname="(optional) the output directory&lt;br&gt;» default: the ''output'' folder in the current [[wiki]] / [[edition|editions]] folder" params="&lt;pathname&gt;" summary="sets the base output directory for subsequent commands" tags="commands" title="--output">
 <pre></pre>
@@ -549,6 +559,86 @@ With SSL you can achieve the same level of transit encryption as with online ser
 <div created="20151014051232135" modified="20151014051309209" summary="displays the [[tiddlywiki]] version number" tags="commands" title="--version">
 <pre></pre>
 </div>
+<div content-type="text/html" created="20151014134509618" modified="20151014134901579" summary="a ''.html'' file holding a collection of tiddlers encoded in [[.tiddler]] format via [[html]] ''div''s" tags="files" title=".html">
+<pre>For [[tiddlywiki]] to import an unencrypted [[html]] file, it requires a `&lt;div id=&quot;storeArea&quot;&gt;` containing [[.tiddler]]file ''div''s:
+
+```
+&lt;div id=&quot;storeArea&quot;&gt;
+&lt;div created=&quot;20130302085406905&quot; modified=&quot;20130302084548184&quot; tags=&quot;Examples&quot; title=&quot;A tiddler title&quot;&gt;
+&lt;pre&gt;HTML encoded text of tiddler
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div created=&quot;20140315085406905&quot; modified=&quot;20140321084548184&quot; tags=&quot;One Two [[Three with Space]]&quot; title=&quot;Another title&quot; customfield=&quot;field value&quot;&gt;
+&lt;pre&gt;Text of this tiddler
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+```
+</pre>
+</div>
+<div content-type="application/json" created="20151014134319630" modified="20151014134445566" summary="a json formated file holding an array of tiddler objects" tags="files" title=".json">
+<pre>A ''.json'' file is a straightforward array of tiddler objects holding `name: value` properties as field values specified via strings.
+
+```
+[
+	{
+		&quot;title&quot;: &quot;First Tiddler&quot;,
+		&quot;text&quot;: &quot;Text of first tiddler&quot;,
+		&quot;tags&quot;: &quot;one two [[t h r e e]]&quot;
+	},{
+		&quot;title&quot;: &quot;Second Tiddler&quot;,
+		&quot;text&quot;: &quot;Text of second tiddler&quot;,
+		&quot;modified&quot;: &quot;20150216171751154&quot;
+	}
+]
+```</pre>
+</div>
+<div created="20151014132857684" modified="20151014134814265" summary="for content-types unrecognized by [[tiddlywiki]] on [[node.js]], specify a `.meta` file by the same name" tags="files" title=".meta">
+<pre>A ''.meta'' file contains a sequence of `name: value` pairs specifying the tiddler's fields:
+
+```
+title: TheTitle
+modifier: someone
+```
+</pre>
+</div>
+<div content-type="application/x-tiddler" created="20151014133116018" modified="20151014133252589" summary="the basic tiddler file format" tags="files" title=".tid">
+<pre>A basic ''.tid'' file consists of a sequence of lines defining tiddler fields as `name: value` pairs, then a blank line followed by the ''text'' field of the tiddler:
+
+```
+title: MyTiddler
+modifier: Jeremy
+
+This is the text of my tiddler.
+```
+
+Alternatively, specify the ''text'' of a tiddler as if a field on a single line:
+
+```
+title: MyTiddler
+modifier: Jeremy
+text: This is the text of my tiddler.
+```</pre>
+</div>
+<div content-type="application/x-tiddler-html-div" created="20151014133952533" modified="20151014134148312" summary="a tiddler encoded using html elements" tags="files" title=".tiddler">
+<pre>A ''.tiddler'' files look like this:
+
+```
+&lt;div title=&quot;AnotherExampleStyleSheet&quot; modifier=&quot;blaine&quot; created=&quot;201102111106&quot; modified=&quot;201102111310&quot; tags=&quot;examples&quot; creator=&quot;psd&quot;&gt;
+&lt;pre&gt;Note that there is an embedded &lt;pre&gt; tag, and line feeds are not escaped.
+
+And, weirdly, there is no HTML encoding of the body.&lt;/pre&gt;
+&lt;/div&gt;
+```
+
+A ''.tiddler'' file is not exactly the same as the tiddlers inside a [[tiddlywiki]] [[.html]] file where they are html-encoded.
+
+Older ''.tiddler'' files more closely matched the store format used in [[tiddlywiki]] 2.x.x:
+
+```
+&lt;div tiddler=&quot;AnotherExampleStyleSheet&quot; modifier=&quot;JeremyRuston&quot; modified=&quot;200508181432&quot; created=&quot;200508181432&quot; tags=&quot;examples&quot;&gt;This is an old-school .tiddler file, without an embedded &amp;lt;pre&amp;gt; tag.\nNote how the body is &amp;quot;HTML encoded&amp;quot; and new lines are escaped to \\n&lt;/div&gt;
+```</pre>
+</div>
 <div created="20151014102132927" modified="20151014102132927" tags="parameters" title="&quot;noclean&quot;">
 <pre></pre>
 </div>
@@ -581,8 +671,24 @@ With SSL you can achieve the same level of transit encryption as with online ser
 <div created="20151014050321274" modified="20151014050321274" tags="parameters" title="&lt;pathname&gt;">
 <pre></pre>
 </div>
-<div created="20151013055358974" modified="20151013055358974" tags="parameters" title="&lt;pathprefix&gt;">
-<pre></pre>
+<div created="20151013055358974" modified="20151014131413230" tags="parameters" title="&lt;pathprefix&gt;">
+<pre>Running [[tiddlywiki]] on [[node.js]], the [[--server]] [[command|commands]] by default exposes the wiki at a uri formed from protocol, host, and port, e.g.
+
+`http://127.0.0.1:8080/`
+
+To run the wiki for a custom path like:
+
+`http://127.0.0.1:8080/path/to/my/wiki/`
+
+follow these steps:
+
+# use the [[--server]] [[command|commands]] passing the [[&lt;pathprefix&gt;]] argument as:&lt;div&gt;
+ `/path/to/my/wiki`
+&lt;/div&gt;
+# configure the client by creating the following tiddler:&lt;div&gt;
+title: `$:/config/tiddlyweb/host`&lt;br&gt;
+text: `$protocol$//$host$/path/to/my/wiki/`
+&lt;/div&gt;</pre>
 </div>
 <div created="20151013052837915" modified="20151013053902363" tags="parameters" title="&lt;port&gt;">
 <pre></pre>
@@ -613,6 +719,9 @@ With SSL you can achieve the same level of transit encryption as with online ser
 </div>
 <div created="20151013055315024" modified="20151013055600911" tags="parameters" title="&lt;username&gt;">
 <pre>{{&lt;password&gt;}}</pre>
+</div>
+<div created="20151014122354628" modified="20151014122354628" tags="parameters" title="&lt;wikipath&gt;">
+<pre></pre>
 </div>
 <div created="20151013060139121" modified="20151013202231877" title="$:/.node/commands/--build/description">
 <pre>Use the [[tiddlywiki.info]] file of a [[wiki]] folder to define build targets.</pre>
@@ -791,8 +900,8 @@ To run multiple [[tiddlywiki]] servers simultaneously, put each one on a differe
 }
 </pre>
 </div>
-<div created="20151013142403163" modified="20151013205200649" tags="$:/tags/Macro" title="$:/.node/macros/aliases">
-<pre>\define cl() ([[node.js]]) command-line
+<div created="20151013142403163" modified="20151014122254997" tags="$:/tags/Macro" title="$:/.node/macros/aliases">
+<pre>\define cl() [[command-line|node.js]]
 \define s(tid) [[$tid$|$tid$s]]
 \define so() [[standalone]] wiki
 \define ts() [[tiddlyspace]]
@@ -820,13 +929,22 @@ To run multiple [[tiddlywiki]] servers simultaneously, put each one on a differe
 
 \end</pre>
 </div>
-<div created="20150109114505490" modified="20151013095514061" summary="outputs a definition list of summaries for tiddlers matching a filter, by default tagging to the current tiddler" tags="$:/tags/Macro" title="$:/.node/macros/summaries">
-<pre>\define summaries(filter:&quot;[{!!title}tagging[]]&quot;)
+<div created="20150109114505490" modified="20151014134255464" summary="outputs a definition list of summaries for tiddlers matching a filter, by default tagging to the current tiddler" tags="$:/tags/Macro" title="$:/.node/macros/summaries">
+<pre>\define summaries(filter:&quot;[{!!title}tagging[]]&quot;, field)
 &lt;dl&gt;
+&lt;$reveal type=&quot;match&quot; text=&quot;$field$&quot; default=&quot;&quot;&gt;
 &lt;$list filter=&quot;$filter$&quot;&gt;
 &lt;dt&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field=title/&gt;&lt;/$link&gt;&lt;/dt&gt;
 &lt;dd&gt;@@color:grey;//{{!!summary}}//@@&lt;/dd&gt;
 &lt;/$list&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type=&quot;nomatch&quot; text=&quot;$field$&quot; default=&quot;&quot;&gt;
+&lt;$list filter=&quot;$filter$&quot;&gt;
+&lt;dt&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field=title/&gt;&lt;/$link&gt;&lt;/dt&gt;
+&lt;dd&gt;@@color:grey;//{{!!summary}}//@@&lt;/dd&gt;
+&lt;$list filter=&quot;[all[current]has[$field$]]&quot;&gt;&lt;dd&gt;$field$: &lt;code&gt;&lt;$text text={{!!$field$}}/&gt;&lt;/code&gt;&lt;/dd&gt;&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$reveal&gt;
 &lt;/dl&gt;
 \end</pre>
 </div>
@@ -896,6 +1014,12 @@ no further parameters
 &lt;/$list&gt;
 &lt;/$set&gt;
 
+&lt;/$list&gt;</pre>
+</div>
+<div created="20151014133310736" list-after="$:/core/ui/ViewTemplate/body" modified="20151014133529903" tags="$:/tags/ViewTemplate" title="$:/.node/ui/ViewTemplate/files-before">
+<pre>&lt;$list filter=&quot;[all[current]tag[files]has[content-type]]&quot;&gt;
+&lt;h2&gt;Content Type&lt;/h2&gt;
+Internally, the content-type &lt;code&gt;{{!!content-type}}&lt;/code&gt; is used for a &lt;$link&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt; file.
 &lt;/$list&gt;</pre>
 </div>
 <div created="20151013052844888" list-after="$:/core/ui/ViewTemplate/body" modified="20151014102353067" roottiddler="the tiddler to serve at the root (defaults to &quot;$:/core/save/all&quot;)" tags="$:/tags/ViewTemplate" title="$:/.node/ui/ViewTemplate/parameters-after">
@@ -6929,7 +7053,7 @@ $param={{$:/temp/replace-tag!!replace}}/&gt;
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[UpgradeMechanism]]</pre>
+# [[fields]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -6991,6 +7115,12 @@ $param={{$:/temp/replace-tag!!replace}}/&gt;
 <div modified="20151013061914143" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
 </div>
+<div modified="20151014121438569" title="$:/state/tab--1651166503">
+<pre>$:/core/ui/TiddlerInfo/References</pre>
+</div>
+<div modified="20151014122003851" title="$:/state/tab--1662423279">
+<pre>$:/core/ui/TiddlerInfo/References</pre>
+</div>
 <div modified="20151013101958478" title="$:/state/tab--2112689675">
 <pre>$:/core/ui/ControlPanel/Advanced</pre>
 </div>
@@ -7009,19 +7139,22 @@ $param={{$:/temp/replace-tag!!replace}}/&gt;
 <div modified="20151014102747144" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
+<div modified="20151014122019294" title="$:/state/tab-1796839568">
+<pre>$:/core/ui/TiddlerInfo/References</pre>
+</div>
 <div modified="20151013062410544" title="$:/state/tab-2142297613">
 <pre>$:/core/ui/TiddlerInfo/References</pre>
 </div>
 <div modified="20151013063155723" title="$:/state/tab-836423958">
 <pre>$:/core/ui/TiddlerInfo/References</pre>
 </div>
-<div modified="20151013184953646" title="$:/state/tab/moresidebar-401116514">
+<div modified="20151014133304121" title="$:/state/tab/moresidebar-401116514">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div modified="20151014103122018" title="$:/state/tab/sidebar--1835078512">
+<div modified="20151014135304253" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div list="Welcome workflows" title="$:/StoryList">
+<div list="Welcome" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20151013061916253" modified="20151013061920056" title="$:/temp/advancedsearch">
@@ -7041,13 +7174,13 @@ $param={{$:/temp/replace-tag!!replace}}/&gt;
     }
 }</pre>
 </div>
-<div created="20151012150350527" modified="20151014102403181" title="$:/temp/NewTagName">
+<div created="20151012150350527" modified="20151014130118361" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div created="20151013150129733" modified="20151013150134832" replace="framework" title="$:/temp/replace-tag" with="ecosystem">
 <pre></pre>
 </div>
-<div created="20151012193606226" modified="20151014094909389" title="$:/temp/search">
+<div created="20151012193606226" modified="20151014135248159" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.9">
@@ -7231,14 +7364,15 @@ node ../../tiddlywiki.js \
 
 </pre>
 </div>
-<div created="20150117174359000" modified="20151013200500458" summary="command-line options for [[tiddlywiki]] on [[node.js]], prefixed `--`" tags="concepts" title="commands">
+<div created="20150117174359000" modified="20151014122603015" p.wikipath="an optional path to the [[wiki]] folder to be loaded&lt;br&gt;» default: if not defined, the current working directory is used" summary="commands prefixed `--` for [[tiddlywiki]] on the [[node.js]] command-line " tags="concepts" title="commands">
 <pre>Any [[tiddlywiki]] [[commands]] run from the &lt;&lt;cl&gt;&gt; are interpreted from left to right with their available [[parameters]], all arguments separated with spaces. Available [[commands]] differ from their parameters via the `--` prefix.
 
 ```
 tiddlywiki [&lt;wikipath&gt;] [--&lt;command&gt; [&lt;arg&gt;[,&lt;arg&gt;]]]
 ```
 
-The first argument is an optional path to the [[wiki]] folder to be loaded. If not defined, the current working directory is used.
+; [[&lt;wikipath&gt;]]
+: {{!!p.wikipath}}
 
 ''available commands''
 
@@ -7250,11 +7384,17 @@ The first argument is an optional path to the [[wiki]] folder to be loaded. If n
 <div created="20151013095304103" list="wiki commands workflows editions images" modified="20151013095405358" summary="concepts around TiddlyWiki on [[node.js]]" title="concepts">
 <pre>&lt;&lt;summaries&gt;&gt;</pre>
 </div>
-<div created="20151014102433108" modified="20151014102433108" summary="content types of output formats for tiddlers" tags="core" title="content-type">
-<pre></pre>
+<div created="20151014102433108" modified="20151014135227230" summary="content types of output formats for tiddlers" tags="core" title="content-type">
+<pre>&lt;dl&gt;
+&lt;$list filter=&quot;[has[content-type]sort[title]]&quot;&gt;
+&lt;dt&gt;&lt;$view field=&quot;content-type&quot;/&gt;&lt;/dt&gt;
+&lt;dd&gt;{{!!summary}}&lt;/dd&gt;
+&lt;dd&gt;see &lt;$link&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;&lt;/dd&gt;
+&lt;/$list&gt;
+&lt;/dl&gt;</pre>
 </div>
-<div created="20151013101737025" modified="20151013145458421" summary="core processes, [[modules]], components" tags="concepts" title="core">
-<pre>&lt;&lt;summaries&gt;&gt;</pre>
+<div created="20151013101737025" modified="20151014130402391" summary="core processes, [[modules]], components" tags="concepts" title="core">
+<pre>&lt;&lt;summaries &quot;[tag&lt;currentTiddler&gt;sort[title]]&quot;&gt;&gt;</pre>
 </div>
 <div created="20151013070925724" modified="20151013142119866" summary="how to create a new [[wiki]] instance" tags="workflows" title="Creating A New Wiki">
 <pre># create an empty [[folder|folders]]
@@ -7279,20 +7419,14 @@ When ~TiddlyWiki is running on [[Node.js|TiddlyWiki on Node.js]], it uses a fake
 <div created="20151013145422163" modified="20151013150223815" summary="the bells and whistles vital to the [[tiddlywiki]]-universe" tags="concepts" title="ecosystem">
 <pre>&lt;&lt;summaries&gt;&gt;</pre>
 </div>
-<div caption="editiondescription" created="20150111145738451" modified="20150203184528000" op-input="a [[selection|Title Selection]] of edition names" op-output="the description string of each edition in the input" op-parameter="none" op-purpose="select the descriptions of the input editions" tags="[[Filter Operators]] [[Special Operators]]" title="editiondescription Operator" type="text/vnd.tiddlywiki">
-<pre>Each input title is processed in turn, ignoring any that is not the name of a ~TiddlyWiki edition.
-
-&lt;&lt;.node-only-operator&gt;&gt;
-</pre>
-</div>
-<div created="20151013061216578" modified="20151013091056704" summary="in a repository with shared resources, an edition is a [[wiki]] instance defining a [[--build]] environment via its own [[tiddlywiki.info]] file and additional resources, e.g. a [[tiddlers folder|folders]]" tags="concepts" title="editions">
+<div created="20151013061216578" modified="20151014131641155" summary="in a repository with shared resources, an edition is a [[wiki]] instance defining a [[build|--build]] environment via its own [[tiddlywiki.info]] file and additional resources, e.g. a [[tiddlers folder|folders]]" tags="concepts" title="editions">
 <pre></pre>
 </div>
 <div caption="editions" created="20150111145738451" modified="20150203184604000" op-input="ignored" op-output="the name of each ~TiddlyWiki edition, in alphabetical order" op-parameter="none" op-purpose="select the names of all the ~TiddlyWiki editions" tags="[[Filter Operators]] [[Special Operators]] [[Selection Constructors]]" title="editions Operator" type="text/vnd.tiddlywiki">
 <pre>&lt;&lt;.node-only-operator&gt;&gt;
 </pre>
 </div>
-<div created="20140617211749290" modified="20151013193927367" summary="environment variables for your operating system supported by [[tiddlywiki]] on [[node.js]]" tags="concepts" title="environment-variables" type="text/vnd.tiddlywiki">
+<div created="20140617211749290" modified="20151014121643469" summary="environment variables for your operating system supported by [[tiddlywiki]] on [[node.js]]" tags="concepts" title="environment-variables" type="text/vnd.tiddlywiki">
 <pre>Specified as a colon-delimited list of paths to have [[tiddlywiki]] search for:
 
 ; plugins
@@ -7304,7 +7438,7 @@ When ~TiddlyWiki is running on [[Node.js|TiddlyWiki on Node.js]], it uses a fake
 ; editions
 : `TIDDLYWIKI_EDITION_PATH` - used by the [[--init]] [[command|commands]]
 
-Paths should point to folders equivalent to those in the [[tiddlywiki GitHub repository|http://github.com/Jermolene/TiddlyWiki5/]]:
+Paths should point to folders equivalent to those in the [[tiddlywiki github repository|http://github.com/Jermolene/TiddlyWiki5/]]:
 
 ; [[plugins]], [[themes]], [[languages]]
 : folders structured as `publisher/plugin-name/&lt;files&gt;`
@@ -7318,101 +7452,11 @@ TIDDLYWIKI_PLUGIN_PATH=~/MyPluginStore
 tiddlywiki mywiki --build index
 ```</pre>
 </div>
-<div created="20151013145759009" modified="20151013150007300" summary="a tiddler is a bundle of fields, [[tiddlywiki]] [[core]] fields can be extended with user-defined fields" tags="core" title="fields">
-<pre></pre>
+<div created="20151013145759009" modified="20151014130517663" summary="a tiddler is a bundle of fields, [[tiddlywiki]] [[core]] fields can be extended with user-defined fields" tags="core" title="fields">
+<pre>Also see &lt;&lt;tw TiddlerFields&gt;&gt;.</pre>
 </div>
-<div created="20130825150000000" modified="20151013172846256" summary="text file formats for storing tiddlers" tags="concepts" title="files">
-<pre>Files containing single tiddlers can also have an auxiliary `.meta` file formatted as a sequence of name:value pairs:
-
-```
-title: TheTitle
-modifier: someone
-```
-
-!! ~TiddlyWeb-style .tid files
-
-These files consist of a sequence of lines containing name:value pairs, a blank line and then the text of the tiddler. For example:
-
-```
-title: MyTiddler
-modifier: Jeremy
-
-This is the text of my tiddler.
-```
-
-Note that many text editors require that files include a terminating newline. If you want to avoid including the terminating newline in the text of the tiddler you can use this alternative syntax:
-
-```
-title: MyTiddler
-modifier: Jeremy
-text: This is the text of my tiddler.
-```
-
-//The ContentType `application/x-tiddler` is used internally for these files//
-
-!! [[tiddlywiki]] `&lt;DIV&gt;` .tiddler files
-
-In [[tiddlywiki]], `*.tiddler` files look like this:
-
-```
-&lt;div title=&quot;AnotherExampleStyleSheet&quot; modifier=&quot;blaine&quot; created=&quot;201102111106&quot; modified=&quot;201102111310&quot; tags=&quot;examples&quot; creator=&quot;psd&quot;&gt;
-&lt;pre&gt;Note that there is an embedded &lt;pre&gt; tag, and line feeds are not escaped.
-
-And, weirdly, there is no HTML encoding of the body.&lt;/pre&gt;
-&lt;/div&gt;
-```
-
-These `*.tiddler` files are not exactly the same as the tiddlers inside a [[tiddlywiki]] HTML file where they are HTML encoded.
-
-Older `*.tiddler` files more closely matched the store format used by [[tiddlywiki]] at the time:
-
-```
-&lt;div tiddler=&quot;AnotherExampleStyleSheet&quot; modifier=&quot;JeremyRuston&quot; modified=&quot;200508181432&quot; created=&quot;200508181432&quot; tags=&quot;examples&quot;&gt;This is an old-school .tiddler file, without an embedded &amp;lt;pre&amp;gt; tag.\nNote how the body is &amp;quot;HTML encoded&amp;quot; and new lines are escaped to \\n&lt;/div&gt;
-```
-
-//The ContentType `application/x-tiddler-html-div` is used internally for these files//
-
-!! ~TiddlyWeb-style JSON files
-
-These files are a straightforward array of hashmaps of `name:value` properties. All field values must be specified as strings.
-
-For example:
-
-```
-[
-	{
-		&quot;title&quot;: &quot;First Tiddler&quot;,
-		&quot;text&quot;: &quot;Text of first tiddler&quot;,
-		&quot;tags&quot;: &quot;one two [[t h r e e]]&quot;
-	},{
-		&quot;title&quot;: &quot;Second Tiddler&quot;,
-		&quot;text&quot;: &quot;Text of second tiddler&quot;,
-		&quot;modified&quot;: &quot;20150216171751154&quot;
-	}
-]
-```
-
-//The ContentType `application/json` is used internally for these files//
-
-!! [[tiddlywiki]] HTML files
-
-[[tiddlywiki]] HTML files contain a collection of tiddlers encoded in `&lt;DIV&gt;` format.
-
-For [[tiddlywiki]] to import an unencrypted HTML file, it requires a `&lt;div id=&quot;storeArea&quot;&gt;` containing tiddler DIVs as explained above. For example:
-
-```
-&lt;div id=&quot;storeArea&quot;&gt;
-&lt;div created=&quot;20130302085406905&quot; modified=&quot;20130302084548184&quot; tags=&quot;Examples&quot; title=&quot;A tiddler title&quot;&gt;
-&lt;pre&gt;HTML encoded text of tiddler
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div created=&quot;20140315085406905&quot; modified=&quot;20140321084548184&quot; tags=&quot;One Two [[Three with Space]]&quot; title=&quot;Another title&quot; customfield=&quot;field value&quot;&gt;
-&lt;pre&gt;Text of this tiddler
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-```
-</pre>
+<div created="20130825150000000" list=".tid .tiddler .meta .html .json" modified="20151014134943604" summary="text file formats for storing tiddlers and tiddler meta-data" tags="concepts" title="files">
+<pre>&lt;&lt;summaries field:&quot;content-type&quot;&gt;&gt;</pre>
 </div>
 <div created="20151013063220372" modified="20151013190250541" summary="how [[tiddlywiki]] on [[node.js]] interacts with the filesystem" tags="ecosystem" title="filesystem">
 <pre>Using command-line operations with [[node.js]], [[tiddlywiki]] can perform a number of operations on [[wiki]] folders, tiddler [[files]] and [[standalone]] wiki files.
@@ -7425,8 +7469,8 @@ tiddlywiki --verbose --load mywiki.html --rendertiddler ReadMe ./readme.html
 
 Running `tiddlywiki` from your &lt;&lt;cl&gt;&gt; [[boots|boot]] [[tiddlywiki]] kernel, loads the core [[plugins]] and establishes an empty [[wiki]] store and then runs the specified [[commands]], in the above example [[--verbose]], [[--load]] and finally [[--rendertiddler]].</pre>
 </div>
-<div created="20151014100149814" modified="20151014100203867" summary="filter operators are used extensively in [[tiddlywiki]] to define sets of tiddlers for processing" tags="core" title="filters">
-<pre></pre>
+<div created="20151014100149814" modified="20151014130542321" summary="filter operators are used extensively in [[tiddlywiki]] to define sets of tiddlers for processing" tags="core" title="filters">
+<pre>Also see &lt;&lt;tw Filters&gt;&gt;.</pre>
 </div>
 <div created="20130828190200000" modified="20151013154944129" summary="using [[tiddlywiki]] to generate static [[html]] representations of your [[wiki]] that don't require [[javascript]]" tags="workflows" title="Generating Static Sites">
 <pre>To explore a static representation of &lt;&lt;twcom&gt;&gt;, see &lt;a href=&quot;http://tiddlywiki.com/static.html&quot; target=&quot;_blank&quot;&gt;static.html&lt;/a&gt;. This is a static snapshot of the wiki as it is displayed on startup.
@@ -7460,18 +7504,18 @@ For an example, see &lt;a href=&quot;http://tiddlywiki.com/alltiddlers.html&quot
 <pre>{{Installing TiddlyWiki on Node.js}}
 </pre>
 </div>
-<div created="20151013143152309" modified="20151013143604471" summary="collaboration, code review, and code management for open source and private projects, free for public code" title="GitHub" url="http://github.com">
+<div created="20151013143152309" modified="20151014121629042" summary="collaboration, code review, and code management for open source and private projects, free for public code" tags="ecosystem" title="github" url="http://github.com">
 <pre>!! Hosting
 
-; GitHub pages
+; ~GitHub Pages
 : allow you to to host static files alongside your GitHub project
 : http://pages.github.com</pre>
 </div>
-<div created="20130825150100000" modified="20151013155445229" summary="use [[tiddlywiki]] to maintain the documentation for your GitHub project based on a [[wiki]] containing separate tiddler [[files]] under full source code control" tags="workflows" title="GitHub Project Documentation With TiddlyWiki">
+<div created="20130825150100000" modified="20151014121613495" summary="use [[tiddlywiki]] to maintain the documentation for your [[github]] project based on a [[wiki]] containing separate tiddler [[files]] under full source code control" tags="workflows" title="GitHub Project Documentation With TiddlyWiki">
 <pre>You have a number of options to leverage [[tiddlywiki]] for your project documentation...
 
 * easily produce a [[readme.md]] for inclusion in your project
-* public access via GitHub pages you can...
+* public access via [[github pages|github]] you can...
 ** generate a [[standalone]] [[wiki]] for project documentation
 ** generate [[static]] [[html]] files
 
@@ -7588,18 +7632,14 @@ Note that these operations modify the tiddlers in the wiki store and so may affe
 You can't edit an external image directly in the browser except by changing the URI field to point to a different image.
 </pre>
 </div>
-<div created="20140720164948099" modified="20140720165248031" tags="Mechanisms" title="InfoMechanism" type="text/vnd.tiddlywiki">
-<pre>System tiddlers in the namespace `$:/info/` are used to expose information about the system (including the current browser) so that WikiText applications can adapt themselves to available features.
+<div created="20140720164948099" modified="20151014130317559" summary="[[tiddlywiki]] exposes information about the system using tiddlers under the namespace `$:/info/` allowing modules and components to adapt to the current environment" tags="core" title="info" type="text/vnd.tiddlywiki">
+<pre>|!Tiddler |!Info |!Values |
+|[[$:/info/browser]] |running in the browser?| `yes` / `no` |
+|[[$:/info/node]] |running under [[node.js]]?| `yes` / `no` |
 
-! Information Tiddlers
-
-|!Title |!Description |
-|[[$:/info/browser]] |Running in the browser? (&quot;yes&quot; or &quot;no&quot;) |
-|[[$:/info/node]] |Running under [[Node.js]]? (&quot;yes&quot; or &quot;no&quot;) |
-
-</pre>
+&lt;&lt;note &quot;&quot;&quot;The [[browser-sniff|http://tiddlywiki.com/#%24%3A%2Fplugins%2Ftiddlywiki%2Fbrowser-sniff]] plugin extends this method by providing details about the current browser environment.&quot;&quot;&quot;&gt;&gt;</pre>
 </div>
-<div created="20131219100608529" modified="20151013142220597" summary="instructions for installing [[tiddlywiki]] for [[node.js]]" tags="workflows" title="Installing TiddlyWiki">
+<div created="20131219100608529" modified="20151014121811490" summary="instructions for installing [[tiddlywiki]] for [[node.js]]" tags="workflows" title="Installing TiddlyWiki">
 <pre># ''install'' [[node.js]]
 #* from http://nodejs.org
 # ''install'' [[tiddlywiki]] 
@@ -7612,12 +7652,13 @@ You can't edit an external image directly in the browser except by changing the 
 #* [[tiddlywiki]] should report its version, e.g. &lt;&lt;version&gt;&gt; (and other debug info)
 # ''test''
 ## on the command-line, navigate to a desired target folder for your new wiki
-## create a new wiki [[folder|folders]] with a basic configuration, e.g. [[tiddlywiki.info]]:
+## create a new [[wiki]] folders with a basic configuration, e.g. [[tiddlywiki.info]]:
 ##* `tiddlywiki mywiki --init server` (see [[--init]])
 ## start the [[tiddlywiki]]  server:
 ##* `tiddlywiki mywiki --server` (see [[--server]])
-## visit `http://127.0.0.1:8080/` in your browser
-## create and edit tiddlers observing the command-line and ''tiddlers'' [[folder|folders]]
+## open your browser and visit:
+##* `http://127.0.0.1:8080` 
+## create and edit tiddlers observing the command-line and [[tiddlers (folder)]]
 
 !! Debian
 
@@ -7634,8 +7675,8 @@ See github [[issue 1434|http://github.com/Jermolene/TiddlyWiki5/issues/1434]].</
 <div created="20151012145913246" edu="http://www.w3schools.com/js" modified="20151013150136875" summary="the scripted language on which both [[node.js]] and [[tiddlywiki]] run" tags="ecosystem" title="javascript">
 <pre>{{{[[JavaScript]backlinks[]]}}}</pre>
 </div>
-<div created="20151013100200979" edu="http://www.w3schools.com/json" modified="20151013100333137" summary="a file format for the web" title="JSON">
-<pre>JSON specifies a compact and efficient file format to transport data over the web.</pre>
+<div created="20151013100200979" edu="http://www.w3schools.com/json" modified="20151014121458078" summary="a file format for the web" tags="ecosystem" title="json">
+<pre>''JSON'' specifies a compact and efficient file format to transport data over the web.</pre>
 </div>
 <div created="20150403104015626" modified="20151013163501725" summary="a detailed description of setting up [[tiddlywiki]] on [[node.js]] on OS X" tags="References" title="Kris Johnson: Setting Up a Personal TiddlyWiki Server on OS X" url="[[UndefinedValue.com // setting-personal-tiddlywiki-server-os-x|http://undefinedvalue.com/2015/04/02/setting-personal-tiddlywiki-server-os-x]]">
 <pre>&lt;&lt;&lt;
@@ -7684,10 +7725,6 @@ The browser-based search in [[tiddlywiki]] only searches the text of fully loade
 <pre>!! Loaded Modules
 
 {{$:/core/ui/ControlPanel/LoadedModules}}</pre>
-</div>
-<div created="20140101164042231" modified="20150310165059118" title="node-webkit" type="text/vnd.tiddlywiki">
-<pre>&quot;node-webkit&quot; was the original name for the project now known as [[NW.js]].
-</pre>
 </div>
 <div created="20131129094353704" modified="20151013172521802" summary="an environment leveraging the power of [[javascript]] outside browsers" title="node.js" url="http://nodejs.org">
 <pre>Important benefits of using [[tiddlywiki] on [[node.js]] brings over a [[stnadalone]] version are:
@@ -7765,13 +7802,6 @@ Note that the name of the ''clientserver'' edition has changed to ''server''.
 <div created="20151013141856184" modified="20151013142038967" summary="the node package manager allows to manage packages for [[node.js]], e.g. install or update" title="npm">
 <pre></pre>
 </div>
-<div created="20150310165059118" modified="20150310165059118" tags="Definitions" title="NW.js" type="text/vnd.tiddlywiki">
-<pre>NW.js is an OpenSource application that fuses the functionality of a web browser with that of [[Node.js]]. It makes it possible to use web applications as though they were native apps, with full access to the file system and other native facilities. Learn more from the [[official site|https://github.com/nwjs/nw.js]] or [[this introductory blog post|http://net.tutsplus.com/tutorials/javascript-ajax/introduction-to-html5-desktop-apps-with-node-webkit/]].
-
-See [[TiddlyWiki on NW.js]] for details of how to use TiddlyWiki with NW.js.
-
-</pre>
-</div>
 <div caption="output" created="20151014052758027" is="optional" modified="20151014052926001" summary="a ''folder'' containing any output generated via the [[commands]] [[--build]], [[--rendertiddler]] or [[rendertiddlers]]" tags="wiki" title="output (folder)">
 <pre></pre>
 </div>
@@ -7795,10 +7825,10 @@ See [[TiddlyWiki on NW.js]] for details of how to use TiddlyWiki with NW.js.
 <div caption="plugins" created="20151013092602950" is="optional" modified="20151013100128154" summary="a ''folder'' containing &lt;&lt;tw PluginMechanism &quot;plugin folders&quot;&gt;&gt; to be included in the [[wiki]]" tags="wiki" title="plugins (folder)">
 <pre></pre>
 </div>
-<div created="20151013155449914" modified="20151013161243295" summary="using [[tiddlywiki]] to generate your project's [[readme.md]] on GitHub" title="readme.md">
-<pre>When a repository is visited, GitHub will look for a `readme.md` file and display it. As a security measure, ~GitHub displays [[markdown]] instead of full [[html]] files.
+<div created="20151013155449914" modified="20151014121909454" summary="using [[tiddlywiki]] to generate your project's [[readme.md]] on [[github]]" title="readme.md">
+<pre>When a repository is visited, [[github]] will look for a `readme.md` file and display it. As a security measure, github displays [[markdown]] instead of full [[html]] files.
 
-Based on the safe subset of html elements permitted by markdown, you can use the [[--rendertiddler]] command on the &lt;&lt;cl&gt;&gt; to have [[tiddlywiki]] save the contents of the html representation of a tiddler as a ''readme.md'' suitable for GitHub:
+Based on the safe subset of html elements permitted by markdown, you can use the [[--rendertiddler]] command on the &lt;&lt;cl&gt;&gt; to have [[tiddlywiki]] save the contents of the html representation of a tiddler as a ''readme.md'' suitable for github:
 
 ```
 --rendertiddler ReadMe ./readme.md text/html
@@ -7827,77 +7857,24 @@ The above redirect all internal links to static [[html]] files for tiddlers on &
 <div created="20151013161859125" modified="20151014103154278" summary="references for getting from A to B with [[tiddlywiki]] for [[node.js]]" tags="workflows" title="References">
 <pre>&lt;&lt;summaries&gt;&gt;</pre>
 </div>
-<div created="20150709150749755" modified="20150712080651008" tags="Mechanisms" title="SavingMechanism" type="text/vnd.tiddlywiki">
-<pre>The SavingMechanism is the mechanism by which TiddlyWiki generates a new HTML file and stores it. It is different from the SyncMechanism, which is concerned with synchronising changes to individual tiddlers back to a server.
+<div created="20150709150749755" modified="20151014124900658" summary="the mechanism by which [[tiddlywiki]] generates a new [[html]] file and stores it as compared to [[syncing]] where changes to individual tiddlers are synchronised back to a server" tags="core" title="saving" type="text/vnd.tiddlywiki">
+<pre>The following steps are involved:
 
-The following steps are involved:
+# the filter in $:/config/SaverFilter specifies which tiddlers when modified trigger the dirty state for the [[wiki]] in a browser, &quot;dirty&quot; meaning: the wiki needs saving
+# the ''save button'' {{$:/core/ui/Buttons/save}} is used to dispatch a &lt;&lt;tw &quot;WidgetMessage%3A%20tm-save-wiki&quot; tm-save-wiki&gt;&gt; message that triggers the saving operation
+# the optional parameter for ''tm-save-wiki'' specifies the template used for generating the [[html]] file, defaulting to $:/core/save/all
+#* in the client-server configuration, the [[tiddlyweb]] plugin uses the template [[$:/plugins/tiddlywiki/tiddlyweb/save/offline|https://github.com/Jermolene/TiddlyWiki5/blob/master/plugins/tiddlywiki/tiddlyweb/save-offline.tid]] instead
+# a variable assignment in the template specifies a filter for all tiddlers to be included in the saved file while transcluding the main page template [[$:/core/templates/tiddlywiki5.html]]
+#* the template includes a reference that allows you to customise the filter by defining a global variable called ''publishFilter''
+# eventually, ''tm-save-wiki'' renders the template to generate the [[html]] file chosing the highest priority saver module to handle saving the file
 
-# The saver mechanism uses the filter defined in $:/config/SaverFilter to specify which modified tiddlers trigger the dirty state for the wiki
-# The ButtonWidget is used to generate a [[tm-save-wiki|WidgetMessage: tm-save-wiki]] message to trigger the save operation
-# The optional parameter for the message specifies the template that will be used for generating the HTML file, defaulting to $:/core/save/all
-#* The plugin $:/plugins/tiddlywiki/tiddlyweb in the client-server configuration replaces the default template with $:/plugins/tiddlywiki/tiddlyweb/save/offline
-# The template includes a variable assignment that specifies a filter to select the tiddlers that should be included in the saved file. It then transcludes the main page template `$:/core/templates/tiddlywiki5.html`
-#* The template includes a reference to `$(publishFilter)$` that allows the filter to be customised via a global variable
-# The [[tm-save-wiki|WidgetMessage: tm-save-wiki]] handler renders the template to generate the HTML file
-# The message handler chooses the highest priority &quot;saver&quot; module that can handle saving the file
-#* See http://tiddlywiki.com/dev/#Saver for more details
-</pre>
+
+For more details, see: http://tiddlywiki.com/dev/#Saver</pre>
 </div>
 <div created="20140315085406905" modified="20151013163442330" summary="tips and guides for using [[tiddlywiki]]" tags="References" title="Scott Kingery: TW5 Tribal Knowledge" url="[[TW5TribalKnowledge|http://dl.dropboxusercontent.com/u/118970/wiki/tw5tribalknowledge.html]]">
 <pre>&lt;&lt;&lt;
 I never used Node.js until a couple weeks ago when I wanted to try a TW5 installation on Node and expand my knowledge a bit. I figured someone else may be in the same boat so I wrote it all down
 &lt;&lt;&lt;
-</pre>
-</div>
-<div created="20131219100637788" modified="20151013061901871" tags="node.js" title="Scripts for TiddlyWiki on Node.js" type="text/vnd.tiddlywiki">
-<pre>! Script Files
-
-The TiddlyWiki5 repository contains several scripts in the `bin` folder that you can use to automate common tasks, or as a useful starting point for your own scripts. See [[Scripts for building tiddlywiki.com]] for details of the scripts used to build and release http://tiddlywiki.com/.
-
-All the scripts expect to be run from the root folder of the repository.
-
-!! `serve`: serves tw5.com
-
-```
-./bin/serve.sh -h
-./bin/serve.sh [edition dir] [username] [password] [host] [port]
-```
-
-Or:
-
-```
-./bin/serve.cmd -h
-./bin/serve.cmd [edition dir] [username] [password] [host] [port]
-```
-
-This script starts TiddlyWiki5 running as an HTTP server, defaulting to the content from the `tw5.com-server` edition. By default, the Node.js serves on port 8080. If the optional `username` parameter is provided, it is used for signing edits. If the `password` is provided then HTTP basic authentication is used. Run the script with the `-h` parameter to see online help.
-
-To experiment with this configuration, run the script and then visit `http://127.0.0.1:8080` in a browser.
-
-Changes made in the browser propagate to the server over HTTP (use the browser developer console to see these requests). The server then syncs changes to the file system (and logs each change to the screen).
-
-!! `test`: build and run tests
-
-This script runs the `test` edition of TiddlyWiki on the server to perform the server-side tests and to build `test.html` for running the tests in the browser.
-
-!! `lazy`: serves tw5.com with lazily loaded images
-
-```
-./bin/lazy.sh &lt;username&gt; [&lt;password&gt;]
-```
-
-Or:
-
-```
-./bin/lazy.cmd &lt;username&gt; [&lt;password&gt;]
-```
-
-This script serves the `tw5.com-server` edition content with LazyLoading applied to images.
-
-!! `2bld`: builds TiddlyWiki 2.6.5
-
-This script builds TiddlyWiki 2.6.5 from the original source and then displays the differences between them (`diff` is used for *nix, `fc` for Windows).
-
 </pre>
 </div>
 <div created="20151013085119427" modified="20151013190326046" summary="the tiddlywiki [[--server]] cannot serve static resources like images as referenced in a `_canonical_uri` field" tags="issues" title="Server Doesn't Serve Static Resources">
@@ -7938,6 +7915,9 @@ The core defines the following startup modules:
 </pre>
 </div>
 <div created="20151014102725404" modified="20151014102725404" summary="with [[tiddlywiki]] for [[node.js]] you can render tiddlers into static [[html]] files that do not depend on [[javascript]]" title="static">
+<pre></pre>
+</div>
+<div created="20151014125101665" modified="20151014130120677" summary="how [[tiddlywiki]] in a browser syncs changes to tiddlers back to a server and uses [[lazy-loading]] to fetch the full body of tiddlers initially loaded with a &quot;skinny&quot; version" tags="core" title="syncing">
 <pre></pre>
 </div>
 <div created="20151013162308908" modified="20151013172413263" summary="the [[tiddlywiki]] [[core]] test environment" tags="core" title="tests">
@@ -8021,7 +8001,7 @@ Velow the content of the [[tiddlywiki.files]] in the [[tiddlers (folder)]] of th
 
 &lt;$codeblock language=&quot;javascript&quot; code={{$:/.node/examples/tiddlywiki.files}}/&gt;</pre>
 </div>
-<div created="20151013061507656" is="required" modified="20151013100143832" summary="a [[JSON]] ''file'' defining metadata for a [[wiki]] / [[edition|editions]] that TiddlyWiki for [[Node.js]] requires to run any available [[commands]]" tags="wiki" title="tiddlywiki.info">
+<div created="20151013061507656" is="required" modified="20151014121426846" summary="a [[json]] ''file'' defining metadata for a [[wiki]] / [[edition|editions]] that [[tiddlywiki]] for [[node.js]] requires to run any available [[commands]]" tags="wiki" title="tiddlywiki.info">
 <pre>The [[tiddlywiki.info]] file in a wiki folder defines a JSON object with following fields:
 
 ; plugins
@@ -8088,7 +8068,7 @@ If no such macro exists, the tiddlers are written to files whose names are [[per
 <div created="20151013145634096" modified="20151013145704623" summary="tiddler types" tags="tid" title="type">
 <pre></pre>
 </div>
-<div created="20131202102427114" modified="20151013142016198" summary="upgrading [[tiddlywiki]] via [[npm]] command-line" tags="workflows" title="Updating TiddlyWiki" type="text/vnd.tiddlywiki">
+<div created="20131202102427114" modified="20151014131502767" summary="updating the [[tiddlywiki]] executable via [[npm]] command-line" tags="workflows" title="Updating TiddlyWiki" type="text/vnd.tiddlywiki">
 <pre>With any core update, please remember ''The First Rule Of Using ~TiddlyWiki'':
 
 &lt;&lt;&lt;
@@ -8105,45 +8085,13 @@ To run as admin on linux / mac:
 
 For upgrading a [[standalone]] wiki, see &lt;&lt;tw Upgrading&gt;&gt;.</pre>
 </div>
-<div created="20140711090154150" modified="20140711090154150" tags="Mechanisms" title="UpgradeMechanism">
-<pre># Open upgrade.html
-# Includes a data tiddler called `$:/UpgradeLibrary` that contains the latest compatible versions of all plugins in the library
-# Drag in old wiki file
-# Place tiddlers into a data tiddler `$:/Import` that is typed as a &quot;pending import&quot;
-# Kick off import processing for each tiddler
-## Give each &quot;upgrader&quot; module a chance to inspect the incoming tiddlers
-## Upgrader modules can trigger actions for each tiddler:
-##* Display a warning message
-##* Don't import
-##* Replace with another tiddler from the upgrade library
-##* Disable incompatible plugins
-# Display the newly created pending import tiddler through a new view template segment
-## Displays the payload tiddlers as a list of titles and checkboxes, with a dropdown showing the full details of the tiddler
-## Perhaps we also suppress the usual JSON display for data tiddlers behind a reveal widget
-# The user can adjust the selection checkboxes
-# Clicking &quot;done&quot; unpacks the selected tiddlers from the pending import tiddler
-# The pending import tiddler and the upgrade library tiddler are excluded from the subsequent save operation
-
-</pre>
-</div>
-<div created="20140613133627669" modified="20151013061902467" tags="node.js" title="Using a custom path prefix with the client-server edition" type="text/vnd.tiddlywiki">
-<pre>By default, when running [[TiddlyWiki on Node.js]], the server exposes the wiki at the URI formed from the protocol, host and port - for example, `http://127.0.0.1:8080/`.
-
-There are two steps to running the wiki at a custom path like `http://127.0.0.1:8080/path/to/my/wiki/`:
-
-# Configure the server by passing `/path/to/my/wiki` as the ''pathprefix'' argument of the ServerCommand
-# Configure the client by creating a tiddler called `$:/config/tiddlyweb/host` that contains `$protocol$//$host$/path/to/my/wiki/`
-
-
-</pre>
-</div>
 <div created="20151012145814948" modified="20151013190421693" title="Welcome">
 <pre>This wiki provides an overview for using [[tiddlywiki]] under [[node.js]].
 
 &lt;&lt;summaries &quot;[[concepts]tagging[]]&quot;&gt;&gt;</pre>
 </div>
-<div created="20151013090614510" list="tiddlywiki.info [[tiddlers (folder)]] [[plugins (folder)]]" modified="20151013135547348" summary="an instance of TiddlyWiki in a folder with a [[tiddlywiki.info]] file optionally contianing folders with [[tiddler files|files]], also see [[editions]]" tags="concepts" title="wiki">
-<pre>By default, [[tiddlywiki]] on [[node.js]] stores individual [[tiddler files|files]]. Additionally, it supports to [[--build]] [[standalone]] wikis for display in a browser.
+<div created="20151013090614510" list="tiddlywiki.info [[tiddlers (folder)]] [[plugins (folder)]]" modified="20151014121356704" summary="an instance of [[tiddlywiki]] in a folder with a [[tiddlywiki.info]] file optionally containing folders with [[tiddler files|files]], also see [[editions]]" tags="concepts" title="wiki">
+<pre>By default, [[tiddlywiki]] on [[node.js]] stores individual tiddler [[files]]. These can be edited in a browser using the default client-server configuration via the [[--server]] [[command|commands]]. Additionally, it can generate [[standalone]] wikis for display in browser using the [[--build]] [[command|commands]] or turn tiddlers into static html files using the [[--rendertiddlers]] [[command|commands]].
 
 A wiki folder is comprised of the following:
 
@@ -8156,7 +8104,7 @@ A wiki folder is comprised of the following:
 
 Any files and folders not listed above are ignored.</pre>
 </div>
-<div created="20151013065857639" list="[[Installing TiddlyWiki]] [[Creating A New Wiki]] [[Updating TiddlyWiki]] [[Building Standalone Wikis]] [[Generating Static Sites]]" modified="20151013162434706" summary="all the things to do with working with TiddlyWiki on [[node.js]]" tags="concepts" title="workflows">
+<div created="20151013065857639" list="[[Installing TiddlyWiki]] [[Creating A New Wiki]] [[Updating TiddlyWiki]] [[Building Standalone Wikis]] [[Generating Static Sites]]" modified="20151014122119581" summary="working with [[tiddlywiki]] on [[node.js]]" tags="concepts" title="workflows">
 <pre>&lt;&lt;summaries&gt;&gt;</pre>
 </div>
 
