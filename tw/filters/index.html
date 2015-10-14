@@ -277,9 +277,9 @@ Error message and password prompt
 
 <li>$:/state/tag-manager/Macros</li>
 
-<li>$:/state/tag-manager/Nested</li>
-
 <li>$:/state/tag-manager/nested</li>
+
+<li>$:/state/tag-manager/Nested</li>
 
 <li>$:/state/tag-manager/prefix</li>
 
@@ -368,6 +368,8 @@ Error message and password prompt
 <li>core fields</li>
 
 <li>current</li>
+
+<li>currently displayed in the story</li>
 
 <li>custom fields</li>
 
@@ -7987,10 +7989,10 @@ exports.let = function(source,operator,options) {
 <div modified="20150107095357451" title="$:/state/tag-manager/Macros">
 <pre>closed</pre>
 </div>
-<div modified="20150107201641001" title="$:/state/tag-manager/Nested">
+<div modified="20150117100131977" modifier="Tobias Beer" title="$:/state/tag-manager/nested">
 <pre>closed</pre>
 </div>
-<div modified="20150117100131977" modifier="Tobias Beer" title="$:/state/tag-manager/nested">
+<div modified="20150107201641001" title="$:/state/tag-manager/Nested">
 <pre>closed</pre>
 </div>
 <div modified="20150109193816061" title="$:/state/tag-manager/prefix">
@@ -8047,7 +8049,7 @@ exports.let = function(source,operator,options) {
 <div created="20150117094910198" creator="T" modified="20150117094911575" modifier="Tobias Bee" title="$:/status/UserName">
 <pre>Tobias Beer</pre>
 </div>
-<div list="$:/ControlPanel [[Filter Examples]]" title="$:/StoryList">
+<div list="[[currently displayed in the story]] [[Filter Examples]] [[dependent selects via system tiddlers]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20150122171552659" creator="Tobias Beer" modified="20150122173452427" modifier="Tobias Beer" title="$:/temp/advancedsearch">
@@ -8073,7 +8075,7 @@ exports.let = function(source,operator,options) {
 <div created="20150106212006232" creator="Tobias Beer" modified="20150129195716697" modifier="Tobias Beer" title="$:/temp/list-search-list-examples">
 <pre></pre>
 </div>
-<div created="20150106210155098" creator="Tobias Beer" modified="20150129200306743" modifier="Tobias Beer" title="$:/temp/NewTagName">
+<div created="20150106210155098" creator="Tobias Beer" modified="20151013114331789" modifier="Tobias Beer" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div created="20150107110752105" creator="Tobias Beer" modified="20150120114153976" modifier="Tobias Beer" title="$:/temp/RenameTags/replace">
@@ -8082,7 +8084,7 @@ exports.let = function(source,operator,options) {
 <div created="20150107110750083" creator="Tobias Beer" modified="20150120114152496" modifier="Tobias Beer" title="$:/temp/RenameTags/search">
 <pre>Authors</pre>
 </div>
-<div created="20150107114534700" creator="Tobias Beer" modified="20150117101930194" modifier="Tobias Beer" title="$:/temp/search">
+<div created="20150107114534700" creator="Tobias Beer" modified="20151013114303809" modifier="Tobias Beer" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150107125555152" title="$:/temp/widget-browser">
@@ -8246,6 +8248,9 @@ Rendered via...
 </div>
 <div color="#fafab1" created="20150106213942649" modified="20150107210942751" tags="AllOperand FilterOperand" title="current">
 <pre></pre>
+</div>
+<div created="20151013114305136" creator="Tobias Beer" filter="[list[$:/StoryList!!list]]" modified="20151013114501123" modifier="Tobias Beer" summary="gives a list of all tiddlers currently displayed in the story river" tags="list Filters" title="currently displayed in the story">
+<pre>&lt;&lt;list-links &quot;[list[$:/StoryList!!list]]&quot;&gt;&gt;</pre>
 </div>
 <div caption="custom" created="20150107200528125" creator="Tobias Beer" filter="[all[tiddlers]fields[]sort[title]] -[all[shadows]removeprefix[$:/language/Docs/Fields/]]" modified="20150122171800228" modifier="Tobias Beer" summary="all custom fields that are not [[part of the TiddlyWiki core|all core fields]] (not documented)" tags="removeprefix Filters Variable tiddlers fields shadows all Fields" title="custom fields">
 <pre>{{$:/.tb/template/fields-non-standard}}
