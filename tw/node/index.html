@@ -1039,11 +1039,11 @@ This parameter for [[tiddlywiki]] on [[node.js]] is used with these command-line
 &lt;/dl&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div bag="default" created="20141119004109928" creator="Tobias Beer" list-after="$:/core/ui/ViewTemplate/tags" modified="20151013100906611" modifier="Tobias Beer" revision="0" summary="shows a summary or link" tags="$:/tags/ViewTemplate" title="$:/.node/ui/ViewTemplate/summary-link" type="text/vnd.tiddlywiki">
+<div bag="default" created="20141119004109928" creator="Tobias Beer" list-after="$:/core/ui/ViewTemplate/tags" modified="20151014135822170" modifier="Tobias Beer" revision="0" summary="shows a summary or link" tags="$:/tags/ViewTemplate" title="$:/.node/ui/ViewTemplate/summary-link" type="text/vnd.tiddlywiki">
 <pre>\define title() Learn more about $(currentTiddler)$
 
 &lt;$list filter=&quot;[all[current]has[summary]]&quot;&gt;
-&lt;$list filter=&quot;[all[current]has[edu]]&quot;&gt;@@float:right;&lt;a href={{!!edu}} target=&quot;_blank&quot; title=&lt;&lt;title&gt;&gt;&gt;learn more&lt;/a&gt;@@&lt;/$list&gt;
+&lt;$list filter=&quot;[all[current]has[edu]]&quot;&gt;@@float:right;margin-left:20px;&lt;a href={{!!edu}} target=&quot;_blank&quot; title=&lt;&lt;title&gt;&gt;&gt;learn more&lt;/a&gt;@@&lt;/$list&gt;
 @@color:grey; //&lt;$transclude field=&quot;summary&quot; mode=&quot;block&quot;/&gt;//@@
 &lt;/$list&gt;
 &lt;$list filter=&quot;[all[current]has[url]]&quot;&gt;
@@ -7148,13 +7148,13 @@ $param={{$:/temp/replace-tag!!replace}}/&gt;
 <div modified="20151013063155723" title="$:/state/tab-836423958">
 <pre>$:/core/ui/TiddlerInfo/References</pre>
 </div>
-<div modified="20151014133304121" title="$:/state/tab/moresidebar-401116514">
+<div modified="20151014135803021" title="$:/state/tab/moresidebar-401116514">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div modified="20151014135304253" title="$:/state/tab/sidebar--1835078512">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div modified="20151014135921364" title="$:/state/tab/sidebar--1835078512">
+<pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Welcome commands ecosystem" title="$:/StoryList">
+<div list="" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20151013061916253" modified="20151013061920056" title="$:/temp/advancedsearch">
@@ -7407,7 +7407,7 @@ tiddlywiki [&lt;wikipath&gt;] [--&lt;command&gt; [&lt;arg&gt;[,&lt;arg&gt;]]]
 ##* Alternatively, just copy the `editions/empty` folder from the TiddlyWiki5 repo
 # Create individual TiddlerFiles in the `~/MyWiki/tiddlers` directory</pre>
 </div>
-<div created="20151001084556687" edu="http://www.w3schools.com/css" modified="20151013150136739" summary="the visual presentation of TiddlyWiki is defined via [[CSS|http://www.w3schools.com/css]] against a layout in [[html]]" tags="ecosystem" title="css">
+<div created="20151001084556687" edu="http://www.w3schools.com/css" modified="20151014135645210" summary="the visual presentation of [[tiddlywiki]] is defined via ''css'' against a layout in [[html]]" tags="ecosystem" title="css">
 <pre></pre>
 </div>
 <div created="20150228133106000" modified="20150228134018000" tags="Definitions" title="Document Object Model" type="text/vnd.tiddlywiki">
@@ -7554,7 +7554,7 @@ To display content when the story is empty, create $:/config/EmptyStoryMessage a
 {{GettingStarted||$:/core/ui/ViewTemplate}}
 ```</pre>
 </div>
-<div created="20151001084524319" edu="http://www.w3schools.com/html" modified="20151013150136633" summary="a TiddlyWiki is a [[html|http://www.w3schools.com/html]] file with logic implemented in [[javascript]] and styled via [[css]]" tags="ecosystem" title="html">
+<div created="20151001084524319" edu="http://www.w3schools.com/html" modified="20151014135746719" summary="[[tiddlywiki]] for the browser is a ''html'' file with logic implemented in [[javascript]] and styled via [[css]]" tags="ecosystem" title="html">
 <pre></pre>
 </div>
 <div created="20141009170239174" modified="20151013163520678" summary="tips and notes about using [[tiddlyWiki]] on [[node.js]]" tags="References" title="Iannis Zannos: TiddlyWiki5^2 documenting while learning TiddlyWiki5" url="[[TW5Square|http://larigot.avarts.ionio.gr/users/iani/wikis/tw5square.html#TiddlyWiki5%20on%20Node.js]]">
@@ -7677,7 +7677,7 @@ See github [[issue 1434|http://github.com/Jermolene/TiddlyWiki5/issues/1434]].</
 <div created="20151012145913246" edu="http://www.w3schools.com/js" modified="20151013150136875" summary="the scripted language on which both [[node.js]] and [[tiddlywiki]] run" tags="ecosystem" title="javascript">
 <pre>{{{[[JavaScript]backlinks[]]}}}</pre>
 </div>
-<div created="20151013100200979" edu="http://www.w3schools.com/json" modified="20151014121458078" summary="a file format for the web" tags="ecosystem" title="json">
+<div created="20151013100200979" edu="http://www.w3schools.com/json" modified="20151014135855352" summary="a concise file format for the web using object notation" tags="ecosystem" title="json">
 <pre>''JSON'' specifies a compact and efficient file format to transport data over the web.</pre>
 </div>
 <div created="20150403104015626" modified="20151013163501725" summary="a detailed description of setting up [[tiddlywiki]] on [[node.js]] on OS X" tags="References" title="Kris Johnson: Setting Up a Personal TiddlyWiki Server on OS X" url="[[UndefinedValue.com // setting-personal-tiddlywiki-server-os-x|http://undefinedvalue.com/2015/04/02/setting-personal-tiddlywiki-server-os-x]]">
