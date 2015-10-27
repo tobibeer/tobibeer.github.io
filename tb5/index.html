@@ -3815,7 +3815,7 @@ $text$
 &lt;&lt;a: &quot;$target$&quot;&gt;&gt; 
 \end</pre>
 </div>
-<div created="20150126131341956" creator="Tobias Beer" modified="20150917062507711" modifier="Tobias Beer" module-type="macro" summary="allows simple calculations based on tiddler fields" tags="" title="$:/.tb/macros/calc" type="application/javascript" revision="0" bag="default">
+<div created="20150126131341956" creator="Tobias Beer" modified="20151027082111900" modifier="Tobias Beer" module-type="macro" summary="allows simple calculations based on tiddler fields" tags="" title="$:/.tb/macros/calc" type="application/javascript" revision="0" bag="default">
 <pre>/*\
 title: $:/.tb/macros/calc.js
 type: application/javascript
@@ -3842,18 +3842,19 @@ exports.params = [
 	{name: &quot;until&quot;},
 	{name: &quot;beyond&quot;},
 	{name: &quot;decimals&quot;},
-	{name: &quot;tiddler&quot;}
+	{name: &quot;tiddler&quot;},
+	{name: &quot;by&quot;}
 ];
 
 /*
 Run the macro
 */
-exports.run = function(value, operation, until, beyond, decimals, tiddler) {
+exports.run = function(value, operation, until, beyond, decimals, tiddler, by) {
 	if(!value) {
 		return;
 	}
 	if(&quot;&quot; == operation){
-		operation = &quot;0&quot;;
+		operation = &quot;+&quot;;
 	}
 
 	var 
@@ -3870,8 +3871,19 @@ exports.run = function(value, operation, until, beyond, decimals, tiddler) {
 	decimals = parseInt(decimals);
 
 	op = operation.charAt(0);
-	val = parseFloat(0 &gt; ops.indexOf(op) ? operation : operation.substr(1));
-	op = 0 &gt; ops.indexOf(op) ? &quot;+&quot; : op;
+	op = ops.indexOf(op) &lt; 0 ? &quot;+&quot; : op;
+	val = parseFloat(
+		0 &gt; by.indexOf('!!') ?
+		by :
+		this.wiki.getTextReference(by, &quot;NaN&quot;, tiddler || this.getVariable(&quot;currentTiddler&quot;))
+	);
+	if(by === &quot;&quot;) {
+		if(0 &gt; ops.indexOf(op)) {
+			val =  parseFloat(operation);
+		} else {
+			val = operation.length &lt; 2 ? 0 : parseFloat(operation.substr(1));
+		}
+	}
 
 	if(isNaN(curr)) {
 		result = &quot;NaN&quot;;
@@ -14072,7 +14084,7 @@ easy
 <div icon="$:/core/images/new-button" title="Buttons" revision="0" bag="default">
 <pre></pre>
 </div>
-<div counter="1" created="20150126150739422" creator="Tobias Beer" foo="foo value" modified="20150917063241698" modifier="Tobias Beer" order="1" tags="Macros Calculation Solutions" title="calc" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div counter="1" created="20150126150739422" creator="Tobias Beer" foo="foo value" modified="20151027082111991" modifier="Tobias Beer" order="1" tags="Macros Calculation Solutions" title="calc" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Inspired by [[mathmacros @ tiddlyspot|http://mathmacros.tiddlyspot.com]] from [[Danielo Rodríguez]], the ''calc'' macro allows you to do simple calculations based on tiddler fields.
 
 ```
@@ -14092,11 +14104,12 @@ Calculated values can be used as widget attributes so as to assign them to tiddl
 
 |!#|!Parameter|!Description|!Default|
 |1|''value'' |a numeric value as a basis for the calculation or a &lt;&lt;tw TextReference&gt;&gt; to a field from which to fetch the value&lt;br&gt;&amp;raquo; returns `NaN` when undefined or ''~NaN''||
-|2|''operation'' |the operator and operand of the mathematical operation, e.g. `*2`, or `-1`, when no operator is defined, defaults to `+`, so `1` is the same as `+1`||
+|2|''operation'' |the operator (and optionally the operand) of the mathematical operation, e.g. `*2`, or `-1`, when no operator is defined, defaults to `+`, so `1` is the same as `+1`, use ''by'' to explicitly state an operand||
 |3|''until'' |defines a value until which to calculate&lt;br&gt;&amp;raquo; an upper boundary for `+` and `*`&lt;br&gt;&amp;raquo; a lower boundary for `-` and `/`&lt;br&gt;returns the boundary when surpassed||
 |4|''beyond'' |instead of a calculated value returns `true` or `false` depending on whether or not we are beyond the boundaries defined in ''until''&lt;br&gt;&amp;raquo; useful for &lt;&lt;tw RevealWidget&gt;&gt;||
 |5|''decimals''|the maximum number of decimals to output|`2`|
 |6|''tiddler''|the tiddler from which to retrieve the field value| ''currentTiddler''|
+|7|''by''|a value serving as the operand if the ''operation'' does not define any||
 
 !! Installation
 
@@ -14121,6 +14134,10 @@ Here's a rudimentary example to reorder lists using the ''calc'' macro...
 `&lt;&lt;calc !!order&gt;&gt;`
 
 &gt;&lt;&lt;calc !!order&gt;&gt;
+
+`{{!!foo}} = &lt;&lt;calc !!foo&gt;&gt;`
+
+&gt;{{!!foo}} = &lt;&lt;calc !!foo&gt;&gt;
 
 `&lt;&lt;calc !!order 1&gt;&gt;`
 
@@ -14201,6 +14218,19 @@ Here's a rudimentary example to reorder lists using the ''calc'' macro...
 `&lt;&lt;calc !!order -1 0 true&gt;&gt;`
 
 &gt;&lt;&lt;calc !!order -1 0 true&gt;&gt;
+
+`&lt;&lt;calc !!order / by:10&gt;&gt;`
+
+&gt;&lt;&lt;calc !!order / by:10&gt;&gt;
+
+`&lt;&lt;calc !!order * by:!!order&gt;&gt;`
+
+&gt;&lt;&lt;calc !!order * by:!!order&gt;&gt;
+
+!! Release Notes
+
+; 2015-10-27
+: added ''by''
 
 !! Alternatives
 
