@@ -522,7 +522,7 @@ tiddlywiki ./MyWiki --password pa55w0rd --load my_encrypted_wiki.html
 
 See the &lt;&lt;tw UpgradeMechanism&gt;&gt; for more details.</pre>
 </div>
-<div created="20140425085548209" modified="20151014051016301" p.pathname="(optional) the output directory&lt;br&gt;» default: the ''output'' folder in the current [[wiki]] / [[edition|editions]] folder" params="&lt;pathname&gt;" summary="sets the base output directory for subsequent commands" tags="commands" title="--output">
+<div created="20140425085548209" modified="20151111060122165" p.pathname="(optional) the output directory&lt;br&gt;» default: the ''output'' folder in the current [[wiki]] / [[edition|editions]] folder" params="&lt;pathname&gt;" summary="sets the base output directory for __subsequent__ commands" tags="commands" title="--output">
 <pre></pre>
 </div>
 <div created="20151014051037849" modified="20151014051137614" p.password="(required) the password" params="&lt;password&gt;" summary="set a password for subsequent crypto operations" tags="commands" title="--password">
@@ -749,12 +749,18 @@ tiddlywiki ./MyWikiFolder --init empty
 <div created="20151014050502264" modified="20151014050507238" tags="" title="$:/.node/commands/--output/description">
 <pre>A relative pathname is resolved relative to the current working directory.</pre>
 </div>
-<div created="20151014050403396" modified="20151014050429772" tags="" title="$:/.node/commands/--output/examples">
+<div created="20151014050403396" modified="20151111060024129" tags="" title="$:/.node/commands/--output/examples">
 <pre>```
 --output .
 ```
 
-&gt; sets the output directory to the current working directory</pre>
+&gt; sets the output directory to the current working directory
+
+```
+node ../tiddlywiki5/TiddlyWiki5/tiddlywiki.js --load tiddlywiki.html --output “myfolder&quot; --rendertiddlers “[tag[mytag]]&quot; $:/core/templates/tid-tiddler test2 text/vnd.tiddlywiki .tid --output “otherfolder&quot; --rendertiddlers “[tag[othertag]]&quot; $:/core/templates/tid-tiddler test2 text/vnd.tiddlywiki .tid
+```
+
+&gt; applies different output locations to subsequently executed commands</pre>
 </div>
 <div created="20151014052953269" modified="20151014053029795" tags="" title="$:/.node/commands/--rendertiddler/description">
 <pre>By default, the filename is resolved relative to the [[output (folder)]] of the current [[wiki]] / [[edition|editions]] folder. Any missing folder in the path to the filename is automatically created.
@@ -7177,7 +7183,7 @@ $param={{$:/temp/replace-tag!!replace}}/&gt;
 <div modified="20151014142858035" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Welcome" title="$:/StoryList">
+<div list="Welcome commands --output $:/.node/commands/--output/examples" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20151013061916253" modified="20151013061920056" title="$:/temp/advancedsearch">
