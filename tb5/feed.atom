@@ -11,7 +11,7 @@
   <author>
     <name>Tobias Beer</name>
   </author>
-  <updated>2015-11-12T13:21:23+02:00</updated>
+  <updated>2015-11-12T13:32:01+02:00</updated>
   <entry>    <title>calc</title>    <id>http://tobibeer.github.io/tb5#calc</id>    <link href='http://tobibeer.github.io/tb5#calc'/>    <updated>2015-10-27T09:21:11+02:00</updated>    <summary>Inspired by mathmacros @ tiddlyspot from Danielo Rodríguez, the calc macro allows you to do simple calculations based on tiddler fields.
 
 ...</summary>  </entry>  <entry>    <title>Link Images</title>    <id>http://tobibeer.github.io/tb5#Link%20Images</id>    <link href='http://tobibeer.github.io/tb5#Link%20Images'/>    <updated>2015-10-15T12:00:26+02:00</updated>    <summary>The following macro lets you link an image to an internal tiddler or to an external site...
