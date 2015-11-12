@@ -4842,14 +4842,18 @@ exports.startup = function() {
 			var n = Object.keys(window.responsive).length;
 			$tw.utils.each(window.responsive, function(theme, key){
 				n--;
-				var width = parseInt(key),
+				var current,
+					width = parseInt(key),
 					w = window,
 					d = document,
 					e = d.documentElement,
 					g = d.getElementsByTagName('body')[0],
 					bodyWidth = w.innerWidth || e.clientWidth || g.clientWidth;
 				if (n == 0 || bodyWidth &lt; width &amp;&amp; !isNaN(width)) {
-					$tw.wiki.setText(&quot;$:/theme&quot;,&quot;text&quot;,null,theme);
+					current = $tw.wiki.getTiddlerText(&quot;$:/theme&quot;);
+				  	if (current != theme) {
+						$tw.wiki.setText(&quot;$:/theme&quot;,&quot;text&quot;,null,theme);
+					}
 					return false;
 				}
 			});
@@ -13525,7 +13529,7 @@ fill:#beb; /*#9e2*/
     }
 }</pre>
 </div>
-<div created="20150926074848011" creator="Tobias Beer" modified="20151112122109382" modifier="Tobias Beer" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20150926074848011" creator="Tobias Beer" modified="20151112122940525" modifier="Tobias Beer" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$:/themes/tiddlywiki/snowwhite</pre>
 </div>
 <div created="20151112112432698" creator="Tobias Beer" modified="20151112121553645" modifier="Tobias Beer" title="$:/theme/responsive" type="application/x-tiddler-dictionary" revision="0" bag="default">
