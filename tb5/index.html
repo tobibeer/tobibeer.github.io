@@ -251,6 +251,8 @@ Error message and password prompt
 
 <li>$:/.tb/modules/startup/hide-sidebar.js</li>
 
+<li>$:/.tb/modules/startup/responsive.js</li>
+
 <li>$:/.tb/msg/core-overwrite</li>
 
 <li>$:/.tb/msg/tid-file</li>
@@ -545,6 +547,8 @@ Error message and password prompt
 
 <li>$:/theme</li>
 
+<li>$:/theme/responsive</li>
+
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
@@ -837,9 +841,9 @@ Error message and password prompt
 
 <li>Felix Küppers</li>
 
-<li>fields</li>
-
 <li>Fields</li>
+
+<li>fields</li>
 
 <li>Fields: Core</li>
 
@@ -1201,6 +1205,8 @@ Error message and password prompt
 
 <li>Replace Pragma</li>
 
+<li>Responsive Theming</li>
+
 <li>Reusing Macros</li>
 
 <li>Reveal Widget Without State</li>
@@ -1347,9 +1353,9 @@ Error message and password prompt
 
 <li>Testing New Stuff</li>
 
-<li>text</li>
-
 <li>Text</li>
+
+<li>text</li>
 
 <li>Text Excerpts</li>
 
@@ -1391,9 +1397,9 @@ Error message and password prompt
 
 <li>Tobias Beer</li>
 
-<li>toc</li>
-
 <li>ToC</li>
+
+<li>toc</li>
 
 <li>Toggle</li>
 
@@ -4809,6 +4815,52 @@ exports.startup = function() {
 };
 
 })();</pre>
+</div>
+<div module-type="startup" title="$:/.tb/modules/startup/responsive.js" type="application/javascript" revision="0" bag="default">
+<pre>/*\
+title: $:/.tb/modules/startup/responsive.js
+type: application/javascript
+module-type: startup
+
+Switches themes depending on screen size.
+
+\*/
+(function(){
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+&quot;use strict&quot;;
+
+// Export name and synchronous status
+exports.name = &quot;responsive&quot;;
+exports.platforms = [&quot;browser&quot;];
+exports.after = [&quot;startup&quot;];
+exports.synchronous = true;
+
+exports.startup = function() {
+	var handler = function(event) {
+			var n = Object.keys(window.responsive).length;
+			$tw.utils.each(window.responsive, function(theme, key){
+				n--;
+				var width = parseInt(key),
+					w = window,
+					d = document,
+					e = d.documentElement,
+					g = d.getElementsByTagName('body')[0],
+					bodyWidth = w.innerWidth || e.clientWidth || g.clientWidth;
+				if (n == 0 || bodyWidth &lt; width &amp;&amp; !isNaN(width)) {
+					$tw.wiki.setText(&quot;$:/theme&quot;,&quot;text&quot;,null,theme);
+					return false;
+				}
+			});
+		};
+	window.addEventListener(&quot;resize&quot;,handler);
+	window.responsive = $tw.wiki.getTiddlerData(&quot;$:/theme/responsive&quot;,Object.create(null));
+	handler();
+};
+
+})();
+</pre>
 </div>
 <div title="$:/.tb/msg/core-overwrite" revision="0" bag="default">
 <pre>@@.caution
@@ -13473,8 +13525,12 @@ fill:#beb; /*#9e2*/
     }
 }</pre>
 </div>
-<div created="20150926074848011" modified="20150120131729164" modifier="Tobias Beer" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20150926074848011" creator="Tobias Beer" modified="20151112122109382" modifier="Tobias Beer" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$:/themes/tiddlywiki/snowwhite</pre>
+</div>
+<div created="20151112112432698" creator="Tobias Beer" modified="20151112121553645" modifier="Tobias Beer" title="$:/theme/responsive" type="application/x-tiddler-dictionary" revision="0" bag="default">
+<pre>960: $:/themes/tiddlywiki/vanilla
+more: $:/themes/tiddlywiki/snowwhite</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.9" revision="0" bag="default">
 <pre>{
@@ -15547,13 +15603,13 @@ http://tiddlywiki.com&lt;br&gt;
 <div icon="$:/core/images/plugin-generic-language" summary="inventor of TiddlyMap&lt;!--Felix Küppers, vis.js--&gt;" tags="Community" title="Felix Küppers" url="[[felixhayashi@GitHub|https://github.com/felixhayashi/TW5-TiddlyMap]]" revision="0" bag="default">
 <pre></pre>
 </div>
+<div icon="$:/core/images/permalink-button" title="Fields" revision="0" bag="default">
+<pre></pre>
+</div>
 <div created="20150201195001262" creator="Tobias Beer" follow="yes" modified="20150209084520349" modifier="Tobias Beer" summary="explorations as to imporoving working with tiddler fields" tags="[[Tobias Beer]] Fields" title="fields" url="http://tobibeer.github.io/tw/fields" revision="0" bag="default">
 <pre>!!! Topics
 ; [[FieldsPopup|http://tobibeer.github.io/tw/fields/#FieldsPopup]]
 : &lt;&lt;git5 issues/1448&gt;&gt; — field editing popups</pre>
-</div>
-<div icon="$:/core/images/permalink-button" title="Fields" revision="0" bag="default">
-<pre></pre>
 </div>
 <div caption="core" created="20141118195032028" creator="Tobias Beer" modified="20150107195102560" modifier="Tobias Beer" tags="Fields Lists Filters Core" title="Fields: Core" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>all [[core fields|Fields: Core]] except [[standard fields|Fields: Standard]] as documented in the TiddlyWiki core:
@@ -19067,6 +19123,23 @@ Code: [[$:/parsers/skeeve/rules/replace.js]]
 
 ''Note:'' this particular example can be achieved via [[Multiline Content In Lists]] without a need for using this plugin.</pre>
 </div>
+<div created="20151112120337215" creator="Tobias Beer" modified="20151112122123644" tags="Themes Presentation" title="Responsive Theming" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>The startup module [[responsive.js|$:/.tb/modules/startup/responsive.js]] allows you to define which theme to apply depending on the viewport width, in ascending order in the config tiddler &lt;&lt;source [[$:/theme/responsive]]&gt;&gt;
+
+Here, the vanilla theme is applied for resolutions below 960 px, the snowwhite theme applied beyond that.
+
+The indexes are expected as integers corresponding to the viewport width. The last index can be named freely and is applied by default when none of the previous rules applied.
+
+!! Installation
+
+drag to your wiki and reload:
+
+; module
+: [[$:/.tb/modules/startup/responsive.js]]
+; settings
+: [[$:/theme/responsive]]
+: adjust to your preferences</pre>
+</div>
 <div created="20150207172925634" creator="Tobias Beer" modified="20150207180231033" modifier="Tobias Beer" tags="Macros Widgets Templates Automation Utilities" title="Reusing Macros" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>As [[Jeremy Ruston]] [[points out here|https://groups.google.com/d/msg/tiddlywiki/KGPqvYpJVH0/EPwmqzqfpAkJ]], to reuse macros you have at least two options...
 
@@ -20138,6 +20211,9 @@ When was the last time you visited a website that allowed you to do just that?!
 
 Find something to be off? Then check out this [[simple documentation workflow|Documentation]] on how easy it is to make things better for the rest of us.</pre>
 </div>
+<div icon="$:/core/images/edit-button" title="Text" revision="0" bag="default">
+<pre></pre>
+</div>
 <div created="20150109171138176" creator="Tobias Beer" modified="20150109180720115" modifier="Tobias Beer" title="text" revision="0" bag="default">
 <pre>The ''text'' macro provides a most simple macro to output colored text...
 
@@ -20165,9 +20241,6 @@ So, learning a bit of [[wikitext markup|Markup]] may be that better choice.
 !! Installation
 
 Drag to your wiki: &lt;&lt;source [[$:/.tb/macros/text]]&gt;&gt;</pre>
-</div>
-<div icon="$:/core/images/edit-button" title="Text" revision="0" bag="default">
-<pre></pre>
 </div>
 <div created="20150918064818701" creator="Tobias Beer" modified="20150918075109594" modifier="Tobias Beer" tags="Text Solutions [[Matias Goldman]]" title="Text Excerpts" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>As &lt;&lt;excerpt &quot;I was wondering&quot;&gt;&gt; how to do simple text excerpts, &lt;&lt;excerpt &quot;I stumbled upon&quot;&gt;&gt; [[this post|https://groups.google.com/d/msg/tiddlywiki/8rXt-qVqTb0/gbgWItz0CgAJ]] by [[Mat|Matias Goldman]] and was inspired to create the following macros.
@@ -20442,6 +20515,9 @@ If you neither have a TiddlyWiki or TiddlySpot yet, here's a simple process to d
 &quot;$:/.tb/templates/list-search-me&quot;&gt;&gt;
 &lt;/dl&gt;</pre>
 </div>
+<div icon="$:/core/images/menu-button" title="ToC" revision="0" bag="default">
+<pre></pre>
+</div>
 <div created="20141125232200140" creator="Tobias Beer" modified="20141125232258995" modifier="Tobias Beer" title="toc" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>\define regexp-headings() (^!+.*)(?gmi)
 &lt;div class=&quot;tidtoc tc-tiddler-frame&quot;&gt;
@@ -20498,9 +20574,6 @@ float:right;
 text-align:right;
 }
 &lt;/style&gt;</pre>
-</div>
-<div icon="$:/core/images/menu-button" title="ToC" revision="0" bag="default">
-<pre></pre>
 </div>
 <div icon="$:/core/images/storyview-pop" title="Toggle" revision="0" bag="default">
 <pre></pre>
