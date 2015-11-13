@@ -14149,7 +14149,7 @@ easy
 <div icon="$:/core/images/new-button" title="Buttons" revision="0" bag="default">
 <pre></pre>
 </div>
-<div counter="1" created="20150126150739422" creator="Tobias Beer" foo="foo value" modified="20151113085355681" modifier="Tobias Beer" order="1" tags="Macros Calculation Solutions" title="calc" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div counter="1" created="20150126150739422" creator="Tobias Beer" foo="foo value" modified="20151113090249926" modifier="Tobias Beer" order="1" tags="Macros Calculation Solutions" title="calc" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Inspired by [[mathmacros @ tiddlyspot|http://mathmacros.tiddlyspot.com]] from [[Danielo Rodríguez]], the ''calc'' macro allows you to do simple calculations based on tiddler fields.
 
 ```
@@ -14215,6 +14215,14 @@ Here's a rudimentary example to reorder lists using the ''calc'' macro...
 `&lt;&lt;calc calc!!order +1&gt;&gt;`
 
 &gt;&lt;&lt;calc calc!!order +1&gt;&gt;
+
+`&lt;&lt;calc !!order / by:10&gt;&gt;`
+
+&gt;&lt;&lt;calc !!order / by:10&gt;&gt;
+
+`&lt;&lt;calc !!order * by:!!order&gt;&gt;`
+
+&gt;&lt;&lt;calc !!order * by:!!order&gt;&gt;
 
 `&lt;&lt;calc !!order -2&gt;&gt;`
 
@@ -14284,16 +14292,10 @@ Here's a rudimentary example to reorder lists using the ''calc'' macro...
 
 &gt;&lt;&lt;calc !!order -1 0 true&gt;&gt;
 
-`&lt;&lt;calc !!order / by:10&gt;&gt;`
-
-&gt;&lt;&lt;calc !!order / by:10&gt;&gt;
-
-`&lt;&lt;calc !!order * by:!!order&gt;&gt;`
-
-&gt;&lt;&lt;calc !!order * by:!!order&gt;&gt;
-
 !! Release Notes
 
+; 2015-11-13
+: [[fixed minor bug|http://bit.ly/1Ldi79B]]
 ; 2015-10-27
 : added ''by''
 
