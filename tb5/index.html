@@ -3859,7 +3859,7 @@ exports.run = function(value, operation, until, beyond, decimals, tiddler, by) {
 	if(!value) {
 		return;
 	}
-	if(&quot;&quot; == operation){
+	if(&quot;&quot; === operation){
 		operation = &quot;+&quot;;
 	}
 
@@ -3899,7 +3899,8 @@ exports.run = function(value, operation, until, beyond, decimals, tiddler, by) {
 			case &quot;*&quot;: result = curr * val; break;
 			case &quot;/&quot;: result = curr / val; break;
 			case &quot;+&quot;:
-			default: result = curr + val;		
+				/* falls through */
+			default: result = curr + val;
 		}
 		if(!isNaN(until)) {
 			if (!(
@@ -3929,7 +3930,7 @@ exports.run = function(value, operation, until, beyond, decimals, tiddler, by) {
 				isNaN(decimals) &amp;&amp; dec &gt; 2
 			){
 				result = result.toFixed(isNaN(decimals) ? 2 : decimals);
-			}			
+			}
 		}
 	}
 	return result.toString();
@@ -14148,7 +14149,7 @@ easy
 <div icon="$:/core/images/new-button" title="Buttons" revision="0" bag="default">
 <pre></pre>
 </div>
-<div counter="1" created="20150126150739422" creator="Tobias Beer" foo="foo value" modified="20151027082111991" modifier="Tobias Beer" order="1" tags="Macros Calculation Solutions" title="calc" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div counter="1" created="20150126150739422" creator="Tobias Beer" foo="foo value" modified="20151113085355681" modifier="Tobias Beer" order="1" tags="Macros Calculation Solutions" title="calc" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Inspired by [[mathmacros @ tiddlyspot|http://mathmacros.tiddlyspot.com]] from [[Danielo Rodríguez]], the ''calc'' macro allows you to do simple calculations based on tiddler fields.
 
 ```
@@ -17482,7 +17483,7 @@ using template [[$:/.tb/demo/makedoc]]
 <div summary="enables you to use tiddlers that are written in standard Markdown markup" tags="Core Parser Plugin" title="Markdown Plugin" url="http://tiddlywiki.com/plugins/tiddlywiki/markdown" revision="0" bag="default">
 <pre></pre>
 </div>
-<div caption="Markup" created="20151005070658821" creator="Tobias Beer" icon="$:/core/images/right-arrow" list="bold italics bold-italics underline strikethrough superscript subscript dashes headings horizontal-rules code monospaced-codeblock hard-linebreaks paragraphs blockquotes unordered-lists ordered-lists definition-lists mixed-lists css-classes internal-links wiki-links external-links filesystem-links external-links-forced images external-images attribute-transclusion css-class-wrappers styled-wrappers combined-style-wrappers inline-styles tables html-elements html-element-attributes multiline-nested-html transclusion macros typed-blocks" menu="main" menu-icon="{{$:/core/images/right-arrow}}" modified="20151113083449369" order="3" summary="a destillation of [[WikiText|http://tiddlywiki.com/#WikiText]] formatting in tw5" title="Markup" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div caption="Markup" created="20151005070658821" creator="Tobias Beer" icon="$:/core/images/right-arrow" list="bold italics bold-italics underline strikethrough superscript subscript dashes headings horizontal-rules code monospaced-codeblock hard-linebreaks paragraphs blockquotes unordered-lists ordered-lists definition-lists mixed-lists css-classes internal-links wiki-links external-links filesystem-links external-links-forced images external-images attribute-transclusion css-class-wrappers styled-wrappers combined-style-wrappers inline-styles tables html-elements html-element-attributes multiline-nested-html transclusion macros typed-blocks" menu="main" menu-icon="{{$:/core/images/right-arrow}}" modified="20151113085350748" order="2" summary="a destillation of [[WikiText|http://tiddlywiki.com/#WikiText]] formatting in tw5" title="Markup" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>See [[Markup Reference]] for a non-filterable version to easily import to your wiki.
 
 &lt;div class=&quot;filter-markup&quot;&gt;
