@@ -3821,9 +3821,9 @@ $text$
 &lt;&lt;a: &quot;$target$&quot;&gt;&gt; 
 \end</pre>
 </div>
-<div created="20150126131341956" creator="Tobias Beer" modified="20151027082111900" modifier="Tobias Beer" module-type="macro" summary="allows simple calculations based on tiddler fields" tags="" title="$:/.tb/macros/calc" type="application/javascript" revision="0" bag="default">
+<div created="20150126131341956" creator="Tobias Beer" modified="20151113083502594" modifier="Tobias Beer" module-type="macro" summary="allows simple calculations based on tiddler fields" title="$:/.tb/macros/calc" type="application/javascript" revision="0" bag="default">
 <pre>/*\
-title: $:/.tb/macros/calc.js
+title: $:/.tb/macros/calc
 type: application/javascript
 module-type: macro
 
@@ -3863,8 +3863,8 @@ exports.run = function(value, operation, until, beyond, decimals, tiddler, by) {
 		operation = &quot;+&quot;;
 	}
 
-	var 
-		curr,dec,op,r,result,val,
+	var
+		curr,dec,op,opGiven,r,result,val,
 		ops = [&quot;+&quot;,&quot;-&quot;,&quot;*&quot;,&quot;/&quot;];
 
 	curr = parseFloat(
@@ -3877,20 +3877,20 @@ exports.run = function(value, operation, until, beyond, decimals, tiddler, by) {
 	decimals = parseInt(decimals);
 
 	op = operation.charAt(0);
-	op = ops.indexOf(op) &lt; 0 ? &quot;+&quot; : op;
+	opGiven = ops.indexOf(op) &gt;= 0;
+	if(!opGiven) {
+		op = &quot;+&quot;;
+	}
 	val = parseFloat(
 		0 &gt; by.indexOf('!!') ?
 		by :
 		this.wiki.getTextReference(by, &quot;NaN&quot;, tiddler || this.getVariable(&quot;currentTiddler&quot;))
 	);
 	if(by === &quot;&quot;) {
-		if(0 &gt; ops.indexOf(op)) {
-			val =  parseFloat(operation);
-		} else {
-			val = operation.length &lt; 2 ? 0 : parseFloat(operation.substr(1));
-		}
+		val = opGiven ?
+			(operation.length &lt; 2 ? 0 : parseFloat(operation.substr(1))) :
+			parseFloat(operation);
 	}
-
 	if(isNaN(curr)) {
 		result = &quot;NaN&quot;;
 	} else {
@@ -17482,7 +17482,7 @@ using template [[$:/.tb/demo/makedoc]]
 <div summary="enables you to use tiddlers that are written in standard Markdown markup" tags="Core Parser Plugin" title="Markdown Plugin" url="http://tiddlywiki.com/plugins/tiddlywiki/markdown" revision="0" bag="default">
 <pre></pre>
 </div>
-<div caption="Markup" created="20151005070658821" creator="Tobias Beer" icon="$:/core/images/right-arrow" list="bold italics bold-italics underline strikethrough superscript subscript dashes headings horizontal-rules code monospaced-codeblock hard-linebreaks paragraphs blockquotes unordered-lists ordered-lists definition-lists mixed-lists css-classes internal-links wiki-links external-links filesystem-links external-links-forced images external-images attribute-transclusion css-class-wrappers styled-wrappers combined-style-wrappers inline-styles tables html-elements html-element-attributes multiline-nested-html transclusion macros typed-blocks" menu="main" menu-icon="{{$:/core/images/right-arrow}}" modified="20151005070709870" order="3" summary="a destillation of [[WikiText|http://tiddlywiki.com/#WikiText]] formatting in tw5" title="Markup" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div caption="Markup" created="20151005070658821" creator="Tobias Beer" icon="$:/core/images/right-arrow" list="bold italics bold-italics underline strikethrough superscript subscript dashes headings horizontal-rules code monospaced-codeblock hard-linebreaks paragraphs blockquotes unordered-lists ordered-lists definition-lists mixed-lists css-classes internal-links wiki-links external-links filesystem-links external-links-forced images external-images attribute-transclusion css-class-wrappers styled-wrappers combined-style-wrappers inline-styles tables html-elements html-element-attributes multiline-nested-html transclusion macros typed-blocks" menu="main" menu-icon="{{$:/core/images/right-arrow}}" modified="20151113083449369" order="3" summary="a destillation of [[WikiText|http://tiddlywiki.com/#WikiText]] formatting in tw5" title="Markup" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>See [[Markup Reference]] for a non-filterable version to easily import to your wiki.
 
 &lt;div class=&quot;filter-markup&quot;&gt;
