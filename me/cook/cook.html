@@ -321,7 +321,7 @@ exports.case = function(source,operator,options) {
 })();
 </pre>
 </div>
-<div bag="default" created="20151125192506334" modified="20151125220914143" module-type="macro" revision="0" title="$:/.tb/modules/macros/filterby.js" type="application/javascript">
+<div bag="default" created="20151125192506334" modified="20151126073834584" module-type="macro" revision="0" title="$:/.tb/modules/macros/filterby.js" type="application/javascript">
 <pre>/*\
 title: $:/.tb/modules/macros/filterby.js
 type: application/javascript
@@ -353,30 +353,25 @@ exports.params = [
 Run the macro
 */
 exports.run = function(variable, base, join, tiddler) {
-	var filter= &quot;&quot;,self=this,
+	var mode,filter= &quot;&quot;,self=this,
 		cats = this.getVariable(variable ? variable : &quot;categories&quot;);
 
 	join = join || &quot;tag&quot;;
 	base = this.getVariable(base ? base : &quot;base&quot;);
 	tiddler = $tw.wiki.getTiddler(tiddler || this.getVariable(&quot;currentTiddler&quot;));
+	mode = tiddler.getFieldString(&quot;filterby-mode&quot;);
 
 	$tw.utils.each(
 		$tw.utils.parseStringArray(cats),
 		function(c){
-			console.log(
-				c.toLowerCase(), &quot; main=&gt; &quot;,
-				&quot;xxx&quot; + tiddler.getFieldString(c.toLowerCase()) + &quot;xxx&quot;
-			);
 			if(tiddler.getFieldString(c.toLowerCase()) !== &quot;&quot;) {
 				$tw.utils.each(
 					self.wiki.getTiddlersWithTag(c),
 					function(o) {
-						console.log(
-							c.toLowerCase() + &quot;-&quot; + o.toLowerCase(), &quot; sub=&gt; &quot;,
-							&quot;xxx&quot; + tiddler.getFieldString(c.toLowerCase() + &quot;-&quot; + o.toLowerCase()) + &quot;xxx&quot;
-						);
 						if(tiddler.getFieldString(c.toLowerCase() + &quot;-&quot; + o.toLowerCase())) {
-							filter += &quot;[&quot; + base + join + &quot;[&quot; + o + &quot;]]&quot;;
+							filter +=
+								(mode &amp;&amp; filter ? &quot;+&quot; : &quot;&quot;) +
+								&quot;[&quot; + base + join + &quot;[&quot; + o + &quot;]]&quot;;
 						}
 					}
 				);
@@ -6709,13 +6704,13 @@ color:#999;
 <div created="20151125182347149" modified="20151125182347149" title="$:/state/tab-1727826131">
 <pre>$:/core/ui/TiddlerInfo/Tagging</pre>
 </div>
-<div created="20151125183432343" modified="20151125183432343" title="$:/state/tab/moresidebar-401116514">
-<pre>$:/core/ui/MoreSideBar/System</pre>
+<div created="20151125183432343" modified="20151126073424741" title="$:/state/tab/moresidebar-401116514">
+<pre>$:/core/ui/MoreSideBar/All</pre>
 </div>
-<div created="20151125182032598" modified="20151125221622648" title="$:/state/tab/sidebar--1835078512">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20151125182032598" modified="20151126073704005" title="$:/state/tab/sidebar--1835078512">
+<pre>$:/core/ui/SideBar/More</pre>
 </div>
-<div list="Welcome" title="$:/StoryList">
+<div list="Welcome Search" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6891,7 +6886,7 @@ color:#999;
 <div created="20151125184226946" modified="20151125184229862" title="Ratings">
 <pre></pre>
 </div>
-<div created="20151125221021557" meals="" meals-breakfast="" meals-desert="" meals-dinner="" meals-lunch="" meals-snack="" modified="20151125221731928" ratings="" ratings-★="" ratings-★★="" ratings-★★★="" seasons="" seasons-any="" seasons-autumn="" seasons-spring="" seasons-summer="" seasons-winter="" tags="" title="Search">
+<div created="20151125221021557" filterby-mode="&amp;" meals="" meals-breakfast="" meals-desert="" meals-dinner="" meals-drinks="" meals-lunch="" meals-snack="" modified="20151126074118545" ratings="Ratings" ratings-★="" ratings-★★="" ratings-★★★="" seasons="" seasons-any="" seasons-autumn="" seasons-spring="" seasons-summer="" seasons-winter="" tags="" title="Search">
 <pre>\define sort() +[!sort[lastcooked]]
 \define base() tag[Recipes]
 \define filter() $(filterby)$ $(sort)$
