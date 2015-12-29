@@ -399,9 +399,9 @@ Error message and password prompt
 
 <li>field starting with current title</li>
 
-<li>Fields</li>
-
 <li>fields</li>
+
+<li>Fields</li>
 
 <li>fields of current tiddler</li>
 
@@ -476,6 +476,8 @@ Error message and password prompt
 <li>sort and iterate data tiddler indexes</li>
 
 <li>standard fields</li>
+
+<li>system tags in use</li>
 
 <li>tag</li>
 
@@ -8049,7 +8051,7 @@ exports.let = function(source,operator,options) {
 <div created="20150117094910198" creator="T" modified="20150117094911575" modifier="Tobias Bee" title="$:/status/UserName">
 <pre>Tobias Beer</pre>
 </div>
-<div list="[[currently displayed in the story]] [[Filter Examples]] [[dependent selects via system tiddlers]]" title="$:/StoryList">
+<div list="[[Filter Examples]] [[system tags in use]] [[dependent selects]] [[currently displayed in the story]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20150122171552659" creator="Tobias Beer" modified="20150122173452427" modifier="Tobias Beer" title="$:/temp/advancedsearch">
@@ -8072,10 +8074,10 @@ exports.let = function(source,operator,options) {
 <div created="20150106222852974" modified="20150107205714822" title="$:/temp/list-search-list-by-operator">
 <pre></pre>
 </div>
-<div created="20150106212006232" creator="Tobias Beer" modified="20150129195716697" modifier="Tobias Beer" title="$:/temp/list-search-list-examples">
-<pre></pre>
+<div created="20150106212006232" creator="Tobias Beer" modified="20151229112003009" modifier="Tobias Beer" title="$:/temp/list-search-list-examples">
+<pre>sys</pre>
 </div>
-<div created="20150106210155098" creator="Tobias Beer" modified="20151013114331789" modifier="Tobias Beer" title="$:/temp/NewTagName">
+<div created="20150106210155098" creator="Tobias Beer" modified="20151229111948128" modifier="Tobias Beer" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div created="20150107110752105" creator="Tobias Beer" modified="20150120114153976" modifier="Tobias Beer" title="$:/temp/RenameTags/replace">
@@ -8084,7 +8086,7 @@ exports.let = function(source,operator,options) {
 <div created="20150107110750083" creator="Tobias Beer" modified="20150120114152496" modifier="Tobias Beer" title="$:/temp/RenameTags/search">
 <pre>Authors</pre>
 </div>
-<div created="20150107114534700" creator="Tobias Beer" modified="20151013114303809" modifier="Tobias Beer" title="$:/temp/search">
+<div created="20150107114534700" creator="Tobias Beer" modified="20151229111650603" modifier="Tobias Beer" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150107125555152" title="$:/temp/widget-browser">
@@ -8469,13 +8471,13 @@ The following example uses a ''starts-with'' macro concatenating a regular expre
 : &lt;code&gt;{{!!my-field}}&lt;/code&gt;
 &lt;&lt;&lt;</pre>
 </div>
+<div color="#c6e1b5" created="20150107200333199" height="320px" modified="20150107200402405" tags="FilterOperator" title="fields">
+<pre></pre>
+</div>
 <div color="#eeeeee" created="20150107203407487" modified="20150107211209462" tags="" title="Fields">
 <pre>The following wiki markup examples use filters to list implemented fields types and related information...
 
 &lt;&lt;tabs &quot;[[standard fields]] [[core fields]] [[custom fields]] [[fields of current tiddler]] [[custom fields of current tiddler]]&quot; default:&quot;standard&quot; &quot;$:/state/tabs-fields&quot;&gt;&gt;</pre>
-</div>
-<div color="#c6e1b5" created="20150107200333199" height="320px" modified="20150107200402405" tags="FilterOperator" title="fields">
-<pre></pre>
 </div>
 <div caption="field values" created="20150107200214288" creator="Tobias Beer" filter="[all[current]fields[]sort[title]] -text" modified="20150122172013283" modifier="Tobias Beer" summary="output all fields and field values for the current tiddler" tags="Variable current fields Filters all Fields" title="fields of current tiddler">
 <pre>{{||$:/core/ui/TiddlerFields}}
@@ -8852,6 +8854,14 @@ You can use this in your wiki simply by dragging [[this link|Search And Replace 
 
 Rendered via...
 &lt;pre&gt;&lt;$view tiddler=&quot;$:/.tb/template/fields-standard&quot;/&gt;&lt;/pre&gt;</pre>
+</div>
+<div created="20151229111658483" creator="Tobias Beer" filter="[tags[]prefix[$:/tags/]]" filter2="[all[current]tagging[]]" modified="20151229112013976" modifier="Tobias Beer" summary="retrieves system tags in use and tiddlers that use them" tags="Filters tags prefix all current tagging" title="system tags in use">
+<pre>Here's how to list all system tags and tiddlers that have them:
+
+&lt;$list filter=&quot;[tags[]prefix[$:/tags/]]&quot;&gt;
+&lt;h2&gt;&lt;$link&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;&lt;/h2&gt;
+&lt;&lt;list-links &quot;[all[current]tagging[]]&quot;&gt;&gt;
+&lt;/$list&gt;</pre>
 </div>
 <div color="#c6e1b5" created="20150106213604589" height="520px" modified="20150106221322409" tags="FilterOperator" title="tag">
 <pre></pre>
